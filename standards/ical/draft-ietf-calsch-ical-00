@@ -1,0 +1,4206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+    <meta name="robots" content="index,follow" />
+    <meta name="creator" content="rfcmarkup version 1.43" />
+    <link rel="icon" href="/images/id.png" type="image/png" />
+    <link rel="shortcut icon" href="/images/id.png" type="image/png" />
+    <title>draft-ietf-calsch-ical-00 - Internet Calendaring and Scheduling Core Object Specification (iCalendar)</title>
+    
+    <style type="text/css">
+	body {
+	    margin: 8px 8px;
+            font-size: 1em;
+	}
+        h1, h2, h3, h4, h5, h6, h7, h8, h9 {
+            line-height: 0pt;
+            display: inline;
+            white-space: pre;
+            font-family: monospace;
+            font-size: 1em;
+        }
+	.pre {
+	    white-space: pre;
+	    font-family: monospace;
+	}
+	.header, .header2 {
+	    font-weight: bold;
+	}
+        @media print {
+            body {
+                font-size: 10.5pt;
+            }
+            h1, h2, h3, h4, h5, h6, h7, h8, h9 {
+                font-size: 10.5pt;
+            }
+        
+            a:link, a:visited {
+                color: inherit;
+                text-decoration: none;
+            }
+	    .break {
+		page-break-before: always;
+                text-decoration: none;
+	    }
+            .noprint {
+                display: none;
+	    }
+        }
+	@media screen {
+	    .grey, .grey a:link, .grey a:visited {
+		color: #777;
+	    }
+	    .break {
+                text-decoration: none;
+                display: none;
+	    }            
+            .docinfo {
+                background-color: #EEE;
+            }
+	}
+    </style>
+
+    <script><!--
+    function addHeaderTags() {
+	headertags = getElementsByTagAndClassName("span", "header");
+	for ( i=0; i < headertags.length; i++) {
+	    elem = headertags[i];
+	    if (elem) {
+		level = elem.getAttribute("level");
+		elem.innerHTML = "<h"+level+">"+elem.innerHTML+"</h"+level+">";		
+	    }
+	}
+    }
+    // -->
+    </script>
+</head>
+<body onload="addHeaderTags()"><span class="pre noprint docinfo">[<a href="../rfc/">RFCs</a>] [<a href="../html/">I-Ds</a>] [<a href="http://tools.ietf.org/id/draft-ietf-calsch-ical-00.txt">Plain Text</a>] [<a href="../wg/calsch">WG</a>] [<a href="../wg/calsch/draft-ietf-calsch-ical">Doc Info</a>]                              </span><br />
+<span class="pre docinfo">                                                                        </span><br />
+<span class="pre docinfo">Versions: <a href="./draft-ietf-calsch-ical-00">00</a> <a href="./draft-ietf-calsch-ical-01">01</a> <a href="./draft-ietf-calsch-ical-02">02</a> <a href="./draft-ietf-calsch-ical-03">03</a> <a href="./draft-ietf-calsch-ical-04">04</a> <a href="./draft-ietf-calsch-ical-05">05</a> <a href="./draft-ietf-calsch-ical-06">06</a> <a href="./draft-ietf-calsch-ical-07">07</a> <a href="./draft-ietf-calsch-ical-08">08</a> <a href="./draft-ietf-calsch-ical-09">09</a> <a href="./draft-ietf-calsch-ical-10">10</a> <a href="./draft-ietf-calsch-ical-11">11</a>                           
+          <a href="./rfc2445">RFC 2445</a>                                                      </span><br />
+<span class="pre docinfo">                                                                        </span><br />
+<pre>
+Network Working Group                               Frank Dawson, Lotus
+Internet Draft                               Derik Stenerson, Microsoft
+&lt;<a href="./draft-ietf-calsch-ical-00.txt">draft-ietf-calsch-ical-00.txt</a>&gt;                        February 3, 1997
+Expires August 1997
+
+
+     <span class="header" level="1">Internet Calendaring and Scheduling Core Object Specification</span>
+                              <span class="header2">(iCalendar)</span>
+
+
+Status of this Memo
+
+   This document is an Internet-Draft. Internet-Drafts are working
+   documents of the Internet Engineering Task Force (IETF), its areas,
+   and its working groups. Note that other groups may also distribute
+   working documents as Internet-Drafts.
+
+   Internet-Drafts are draft documents valid for a maximum of six
+   months. Internet-Drafts may be updated, replaced, or made obsolete by
+   other documents at any time. It is not appropriate to use Internet-
+   Drafts as reference material or to cite them other than as a "working
+   draft" or "work in progress".
+
+   To learn the current status of any Internet-Draft, please check the
+   1id-abstracts.txt listing contained in the Internet-Drafts Shadow
+   Directories on ds.internic.net (US East Coast), nic.nordu.net
+   (Europe), ftp.isi.edu (US West Coast), or munnari.oz.au (Pacific
+   Rim).
+
+   Distribution of this document is unlimited.
+
+
+Abstract
+
+   There is a clear need to provide and deploy interoperable calendaring
+   and scheduling services for the Internet. Current group scheduling
+   and Personal Information Management (PIM) products are being extended
+   for use across the Internet, today, in proprietary ways. This
+   document has been defined to provide the a definition of a common
+   format for openly exchanging calendaring and scheduling information
+   across the Internet.
+
+   This memo is formatted as a registration for a MIME media type per
+   [<a href="./rfc1521">RFC1521</a>]. However, the format in this memo is equally applicable for
+   use outside of a MIME message content type.
+
+        [Editor NOTE: This form will be changed to reflect the new MIME
+        memos in the next draft.]
+
+   The proposed media type value is "TEXT/CALENDAR". This string would
+   label a media type containing calendaring and scheduling information
+   encoded as text characters formatted in a manner outlined below.
+
+   This MIME media type provides a standard content type for capturing
+   calendar event and to-do information. It also can be used to convey
+   free/busy time information. The content type is suitable as a MIME
+   message entity that can be transferred over MIME based email systems
+
+
+Dawson/Stenerson                   1                Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+   or using HTTP. In addition, the content type is useful as an object
+   for interactions between desktop applications using the operating
+   system clipboard, drag/drop or file systems capabilities.
+
+   This document is based on the earlier work of the vCalendar
+   specification for the exchange of personal calendaring and scheduling
+   information. In order to avoid confusion with this referenced work,
+   this document is to be known as the iCalendar specification.
+
+   This document also includes the format for defining content type
+   profiles. A content type profile is a document that defines a set of
+   usage constraints for the iCalendar Object. For example, a profile
+   might be defined to specify how the iCalendar Object can be used to
+   provide for a set of interpersonal scheduling messages. Such a
+   profile might define scheduling messages that request an event be
+   scheduled, reply to an event request, send a cancellation notice for
+   an event, modify or replace the definition of an event, provide a
+   counter proposal for an original event request, delegate an event
+   request to another individual, request free or busy time, reply to a
+   free or busy time request, or provide similar scheduling messages for
+   a to-do calendar component.
+
+   Table of Contents
+
+<a href="#section-1">1</a>. Introduction........................................................<a href="#page-4">4</a>
+ <a href="#section-1.1">1.1</a> Definitions ......................................................<a href="#page-5">5</a>
+  <a href="#section-1.1.1">1.1.1</a> Calendar Scale ................................................<a href="#page-5">5</a>
+  <a href="#section-1.1.2">1.1.2</a> Coordinate Universal Time (UTC) ...............................<a href="#page-5">5</a>
+  <a href="#section-1.1.3">1.1.3</a> Daylight Saving Time (DST) ....................................<a href="#page-5">5</a>
+  <a href="#section-1.1.4">1.1.4</a> Gregorian Calendar ............................................<a href="#page-5">5</a>
+  <a href="#section-1.1.5">1.1.5</a> Local Time ....................................................<a href="#page-5">5</a>
+  <a href="#section-1.1.6">1.1.6</a> Standard Time .................................................<a href="#page-6">6</a>
+  <a href="#section-1.1.7">1.1.7</a> Time Zone .....................................................<a href="#page-6">6</a>
+<a href="#section-2">2</a>. TEXT/CALENDAR Registration Information..............................<a href="#page-6">6</a>
+<a href="#section-3">3</a>. Intended Use........................................................<a href="#page-7">7</a>
+ <a href="#section-3.1">3.1</a> Published specification ..........................................<a href="#page-8">8</a>
+  <a href="#section-3.1.1">3.1.1</a> Existing Message Header Fields ................................<a href="#page-8">8</a>
+    <a href="#section-3.1.1.1">3.1.1.1</a> Content-Type Header Field .................................<a href="#page-8">8</a>
+     <a href="#section-3.1.1.1.1">3.1.1.1.1</a> CHARSET Header Field Parameter .........................<a href="#page-8">8</a>
+    <a href="#section-3.1.1.2">3.1.1.2</a> Content-ID Header Field ...................................<a href="#page-9">9</a>
+    <a href="#section-3.1.1.3">3.1.1.3</a> Content-Language ..........................................<a href="#page-9">9</a>
+    <a href="#section-3.1.1.4">3.1.1.4</a> Message-ID Header Field ...................................<a href="#page-9">9</a>
+    <a href="#section-3.1.1.5">3.1.1.5</a> Transfer-Encoding Header Field ............................<a href="#page-9">9</a>
+  <a href="#section-3.1.2">3.1.2</a> Additional Content Type Parameter .............................<a href="#page-9">9</a>
+    <a href="#section-3.1.2.1">3.1.2.1</a> Profile ...................................................<a href="#page-9">9</a>
+  <a href="#section-3.1.3">3.1.3</a> Content Syntax Considerations ................................<a href="#page-10">10</a>
+    <a href="#section-3.1.3.1">3.1.3.1</a> Property .................................................<a href="#page-10">10</a>
+    <a href="#section-3.1.3.2">3.1.3.2</a> Delimiters ...............................................<a href="#page-11">11</a>
+    <a href="#section-3.1.3.3">3.1.3.3</a> Property Value Transfer Encoding .........................<a href="#page-12">12</a>
+    <a href="#section-3.1.3.4">3.1.3.4</a> Property Value Character Set .............................<a href="#page-12">12</a>
+    <a href="#section-3.1.3.5">3.1.3.5</a> Property Value Language ..................................<a href="#page-13">13</a>
+    <a href="#section-3.1.3.6">3.1.3.6</a> Property Value Data Type .................................<a href="#page-13">13</a>
+    <a href="#section-3.1.3.7">3.1.3.7</a> Date and Time ............................................<a href="#page-16">16</a>
+    <a href="#section-3.1.3.8">3.1.3.8</a> Time Duration ............................................<a href="#page-18">18</a>
+
+
+Dawson/Stenerson                   2                Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+    <a href="#section-3.1.3.9">3.1.3.9</a> Value Location ...........................................<a href="#page-19">19</a>
+    <a href="#section-3.1.3.10">3.1.3.10</a> Binary Property Values ..................................<a href="#page-19">19</a>
+    <a href="#section-3.1.3.11">3.1.3.11</a> Recurrence Rule Grammar .................................<a href="#page-19">19</a>
+  <a href="#section-3.1.4">3.1.4</a> Body Delimiter Properties ....................................<a href="#page-20">20</a>
+    <a href="#section-3.1.4.1">3.1.4.1</a> Calendar Object ..........................................<a href="#page-20">20</a>
+    <a href="#section-3.1.4.2">3.1.4.2</a> Event Component ..........................................<a href="#page-20">20</a>
+    <a href="#section-3.1.4.3">3.1.4.3</a> To-do Component ..........................................<a href="#page-21">21</a>
+  <a href="#section-3.1.5">3.1.5</a> Calendar Object Properties ...................................<a href="#page-21">21</a>
+    <a href="#section-3.1.5.1">3.1.5.1</a> Calendar Content Profile .................................<a href="#page-21">21</a>
+    <a href="#section-3.1.5.2">3.1.5.2</a> Calendar Scale ...........................................<a href="#page-24">24</a>
+    <a href="#section-3.1.5.3">3.1.5.3</a> Daylight Savings Rule ....................................<a href="#page-24">24</a>
+    <a href="#section-3.1.5.4">3.1.5.4</a> Geographic Position ......................................<a href="#page-25">25</a>
+    <a href="#section-3.1.5.5">3.1.5.5</a> Product Identifier .......................................<a href="#page-25">25</a>
+    <a href="#section-3.1.5.6">3.1.5.6</a> Time Zone ................................................<a href="#page-26">26</a>
+    <a href="#section-3.1.5.7">3.1.5.7</a> Version ..................................................<a href="#page-26">26</a>
+  <a href="#section-3.1.6">3.1.6</a> Event and To-do Component Properties .........................<a href="#page-26">26</a>
+    <a href="#section-3.1.6.1">3.1.6.1</a> Attachment ...............................................<a href="#page-26">26</a>
+    <a href="#section-3.1.6.2">3.1.6.2</a> Attendee .................................................<a href="#page-27">27</a>
+    <a href="#section-3.1.6.3">3.1.6.3</a> Audio Reminder ...........................................<a href="#page-32">32</a>
+    <a href="#section-3.1.6.4">3.1.6.4</a> Categories ...............................................<a href="#page-33">33</a>
+    <a href="#section-3.1.6.5">3.1.6.5</a> Classification ...........................................<a href="#page-34">34</a>
+    <a href="#section-3.1.6.6">3.1.6.6</a> Date/Time Created ........................................<a href="#page-35">35</a>
+    <a href="#section-3.1.6.7">3.1.6.7</a> Date/Time Completed ......................................<a href="#page-35">35</a>
+    <a href="#section-3.1.6.8">3.1.6.8</a> Description ..............................................<a href="#page-36">36</a>
+    <a href="#section-3.1.6.9">3.1.6.9</a> Display Reminder .........................................<a href="#page-36">36</a>
+    <a href="#section-3.1.6.10">3.1.6.10</a> Due Date/Time ...........................................<a href="#page-37">37</a>
+    <a href="#section-3.1.6.11">3.1.6.11</a> Duration ................................................<a href="#page-37">37</a>
+    <a href="#section-3.1.6.12">3.1.6.12</a> End Date/Time ...........................................<a href="#page-37">37</a>
+    <a href="#section-3.1.6.13">3.1.6.13</a> Exception Date/Times ....................................<a href="#page-38">38</a>
+    <a href="#section-3.1.6.14">3.1.6.14</a> Exception Rule ..........................................<a href="#page-38">38</a>
+    <a href="#section-3.1.6.15">3.1.6.15</a> Last Modified ...........................................<a href="#page-38">38</a>
+    <a href="#section-3.1.6.16">3.1.6.16</a> Location ................................................<a href="#page-39">39</a>
+    <a href="#section-3.1.6.17">3.1.6.17</a> Mail Reminder ...........................................<a href="#page-39">39</a>
+    <a href="#section-3.1.6.18">3.1.6.18</a> Number Recurrences ......................................<a href="#page-40">40</a>
+    <a href="#section-3.1.6.19">3.1.6.19</a> Priority ................................................<a href="#page-40">40</a>
+    <a href="#section-3.1.6.20">3.1.6.20</a> Procedure Reminder ......................................<a href="#page-40">40</a>
+    <a href="#section-3.1.6.21">3.1.6.21</a> Related To ..............................................<a href="#page-41">41</a>
+    <a href="#section-3.1.6.22">3.1.6.22</a> Recurrence Date/Times ...................................<a href="#page-41">41</a>
+    <a href="#section-3.1.6.23">3.1.6.23</a> Recurrence Rule .........................................<a href="#page-42">42</a>
+    <a href="#section-3.1.6.24">3.1.6.24</a> Resources ...............................................<a href="#page-42">42</a>
+    <a href="#section-3.1.6.25">3.1.6.25</a> Response Sequence Number ................................<a href="#page-43">43</a>
+    <a href="#section-3.1.6.26">3.1.6.26</a> Sequence Number .........................................<a href="#page-44">44</a>
+    <a href="#section-3.1.6.27">3.1.6.27</a> Start Date/Time .........................................<a href="#page-44">44</a>
+    <a href="#section-3.1.6.28">3.1.6.28</a> Status ..................................................<a href="#page-44">44</a>
+    <a href="#section-3.1.6.29">3.1.6.29</a> Summary .................................................<a href="#page-46">46</a>
+    <a href="#section-3.1.6.30">3.1.6.30</a> Time Transparency .......................................<a href="#page-46">46</a>
+    <a href="#section-3.1.6.31">3.1.6.31</a> Uniform Resource Locator ................................<a href="#page-46">46</a>
+    <a href="#section-3.1.6.32">3.1.6.32</a> Unique Identifier .......................................<a href="#page-46">46</a>
+    <a href="#section-3.1.6.33">3.1.6.33</a> Non-standard Properties .................................<a href="#page-47">47</a>
+ <a href="#section-3.2">3.2</a> Formal Definition ...............................................<a href="#page-47">47</a>
+ <a href="#section-3.3">3.3</a> Basic Recurrence Rule Grammar ...................................<a href="#page-53">53</a>
+  <a href="#section-3.3.1">3.3.1</a> Daily Rule ...................................................<a href="#page-53">53</a>
+  <a href="#section-3.3.2">3.3.2</a> Weekly Rule ..................................................<a href="#page-54">54</a>
+  <a href="#section-3.3.3">3.3.3</a> Monthly Rule .................................................<a href="#page-54">54</a>
+
+
+Dawson/Stenerson                   3                Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+  <a href="#section-3.3.4">3.3.4</a> Yearly Rule ..................................................<a href="#page-55">55</a>
+  <a href="#section-3.3.5">3.3.5</a> Grammar ......................................................<a href="#page-56">56</a>
+  <a href="#section-3.3.6">3.3.6</a> Grammar Glossary .............................................<a href="#page-57">57</a>
+  <a href="#section-3.3.7">3.3.7</a> Policies .....................................................<a href="#page-58">58</a>
+<a href="#section-4">4</a>. Registration of Content Type Profiles..............................<a href="#page-59">59</a>
+ <a href="#section-4.1">4.1</a> Define the profile ..............................................<a href="#page-59">59</a>
+ <a href="#section-4.2">4.2</a> Post the profile definition .....................................<a href="#page-60">60</a>
+ <a href="#section-4.3">4.3</a> Allow a comment period ..........................................<a href="#page-60">60</a>
+ <a href="#section-4.4">4.4</a> Submit the profile for approval .................................<a href="#page-60">60</a>
+ <a href="#section-4.5">4.5</a> Profile Change Control ..........................................<a href="#page-60">60</a>
+ <a href="#section-4.6">4.6</a> Registration of New Content Type Properties .....................<a href="#page-61">61</a>
+  <a href="#section-4.6.1">4.6.1</a> Define the property ..........................................<a href="#page-61">61</a>
+  <a href="#section-4.6.2">4.6.2</a> Post the Property definition .................................<a href="#page-62">62</a>
+  <a href="#section-4.6.3">4.6.3</a> Allow a comment period .......................................<a href="#page-62">62</a>
+  <a href="#section-4.6.4">4.6.4</a> Submit the property for approval .............................<a href="#page-62">62</a>
+ <a href="#section-4.7">4.7</a> Content Type Property Change Control ............................<a href="#page-62">62</a>
+<a href="#section-5">5</a>. File extension.....................................................<a href="#page-63">63</a>
+<a href="#section-6">6</a>. Macintosh File Type Code...........................................<a href="#page-63">63</a>
+<a href="#section-7">7</a>. Bibliography.......................................................<a href="#page-63">63</a>
+<a href="#section-8">8</a>. Acknowledgments....................................................<a href="#page-64">64</a>
+<a href="#section-9">9</a>. Author's Address...................................................<a href="#page-64">64</a>
+<a href="#section-10">10</a>. Examples..........................................................<a href="#page-65">65</a>
+
+<span level="2" class="header"><a name="section-1">1</a>.      Introduction</span>
+
+   The use of calendaring and scheduling has grown considerably in the
+   last decade. Enterprise and inter-enterprise business has become
+   dependent on rapid scheduling of events and actions using this
+   information technology. However, the longer term growth of
+   calendaring and scheduling, is currently limited by the lack of
+   Internet standards for the message content types that are central to
+   these groupware applications. This specification is intended to
+   progress the level of interoperability possible between dissimilar
+   calendaring and scheduling applications. This specification defines a
+   MIME content type for exchanging electronic calendaring and
+   scheduling information. The Internet Calendaring and Scheduling Core
+   Object Specification, or iCalendar Object, allows for the capture and
+   exchange of information normally stored within a calendaring and
+   scheduling application; such as a Personal Information Manager or a
+   Group Scheduling product.
+
+   The format is suitable as an exchange format between applications or
+   systems. The format is defined in terms of a MIME content type. This
+   will enable the object to be exchanged using several transports,
+   including but not limited to SMTP, HTTP, a file system, desktop
+   interactive protocols such as the use of a memory-based clipboard or
+   drag/drop interactions, point-to-point asynchronous communication,
+   wired-network transport, or some form of unwired transport such as
+   infrared might also be used.
+
+   The specification also provides for the definition of usage profiles
+   that will map this content type to a set of messages for supporting
+   calendaring and scheduling operations such as requesting, replying
+   to, modifying, and canceling meetings or appointments and to-dos. The
+
+
+Dawson/Stenerson                   4                Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+   usage profiles can be used to define other calendaring and scheduling
+   operations such a requesting for and replying with free/busy time
+   data.
+
+   The specification also includes a formal grammar for the content type
+   to aid in the implementation of parsers and to serve as the
+   definitive reference when ambiguities or questions arise in
+   interpreting the descriptive prose definition of the specification.
+
+<span level="3" class="header"><a name="section-1.1">1.1</a>     Definitions</span>
+
+   Date and time terminology is used in every day conversations.
+   However, there are precise definitions of many of these terms that
+   are used by this memo.
+
+<span level="4" class="header"><a name="section-1.1.1">1.1.1</a>   Calendar Scale</span>
+
+   The particular type of calendar in general use. For example,
+   Gregorian, Buddhist Era, Japanese Emperor Era, Chinese Lunar,
+   Islamic, and Jewish Calendars.
+
+<span level="4" class="header"><a name="section-1.1.2">1.1.2</a>   Coordinate Universal Time (UTC)</span>
+
+   The time scale maintained by the Bureau International de l'Heure
+   (International Time Bureau) that forms the basis of a coordinated
+   dissemination of standard frequencies and time signals. UTC is often
+   incorrectly referred to as GMT.
+
+<span level="4" class="header"><a name="section-1.1.3">1.1.3</a>   Daylight Saving Time (DST)</span>
+
+   An adjustment to local to accommodate annual changes in the number of
+   daylight hours. DST is also known as Advanced Time, Summer Time, or
+   Legal Time. Daylight saving time adjustments in the southern
+   hemisphere are opposite to those in the northern hemisphere.
+
+<span level="4" class="header"><a name="section-1.1.4">1.1.4</a>   Gregorian Calendar</span>
+
+   A calendar scale in general use beginning in 1582. It was introduced
+   to correct an error in the Julian Calendar scale. The Gregorian
+   Calendar scale is based on a solar calendar consisting of common
+   years made up of 365 days and leap years made up of 366 days; both
+   divided into 12 sequential months.
+
+   Initially, this memo addresses specification of calendar information
+   in terms of the Gregorian calendar scale.
+
+<span level="4" class="header"><a name="section-1.1.5">1.1.5</a>   Local Time</span>
+
+   The clock time in public use in a locale. Local time is often
+   referenced by the customary name for the time zone in which it is
+   located. The relationship between local time and UTC is based on the
+   offset(s) that are in use for a particular time zone. In general, the
+   formula is as follows:
+
+
+
+Dawson/Stenerson                   5                Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+        local time = UTC + (offset)
+
+<span level="4" class="header"><a name="section-1.1.6">1.1.6</a>   Standard Time</span>
+
+   Introduced by Sir Sanford Fleming and others around 1870, standard
+   time is a scheme for dividing the world into zones where the same
+   time would be kept. The original proposal was to divide the world
+   into 24 zones, each zone having a width of 15 degrees of longitude.
+   The center zone was originally the meridian passing through
+   Greenwich, England, called Greenwich Mean Time (GMT). The time in the
+   zones was decremented by one hour per zone going westwards and was
+   incremented by one hour per zone going eastwards from GMT. Changes
+   have been made to the original proposal to accommodate political
+   boundaries. In addition, some countries and regions specify 30 or 45
+   minute offsets, rather than the full 60 minute offset. Standard time
+   is also known as Winter Time in some regions.
+
+   GMT and UTC are generally equivalent. However, by international
+   agreement, the GMT term is discouraged in favor of the term UTC for
+   all general time keeping.
+
+<span level="4" class="header"><a name="section-1.1.7">1.1.7</a>   Time Zone</span>
+
+   The particular time zone that a location's time is expressed in. A
+   time zone is unambiguously defined by the set of time measurement
+   rules determined by the governing body for the given location. These
+   rules describe at a minimum the base offset from UTC, often referred
+   to as the Standard Time offset. Optionally, if Daylight time is
+   observed, the rules will specify the Daylight time offset and either
+   a set of rules describing the transition to and from Daylight time or
+   absolute dates describing the movement in and out of Daylight time.
+   It is important to note that these rules are not static. Time zones
+   may also have a local customary name. However, not all time zones
+   have a special name for their time. The customary names for time
+   zones are often abbreviated. However, not all time zone abbreviations
+   are unique. For example, AST may mean Atlantic Standard Time, Alaska
+   Standard Time, and event Aleutian Standard Time. Each of these are
+   different offsets from UTC. Nevertheless, customary names for time
+   zones are in use in various parts of the world.
+
+<span level="2" class="header"><a name="section-2">2</a>.      TEXT/CALENDAR Registration Information</span>
+
+        [Editor NOTE: This form will be changed to reflect the revision
+        to the MIME memos when the respective RFC becomes available.]
+
+     To: ietf-types@uninett.no
+
+     Subject: Registration of MIME content type text/calendar.
+
+     MIME media type name: text
+
+     MIME subtype name: calendar
+
+     Required parameters: PROFILE
+
+
+Dawson/Stenerson                   6                Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+     Optional parameters: CHARSET
+
+     Additional required content header fields: CONTENT-ID, MESSAGE-ID
+
+     Optional content header fields: CONTENT-LANGUAGE, TRANSFER-ENCODING
+
+     Encoding considerations: This MIME content type does not introduce
+     any new encoding considerations beyond those defined in [<a href="./rfc2045" title='"Multipurpose Internet Mail Extensions (MIME) Part One: Format of Internet Message Bodies"'>RFC 2045</a>].
+
+     Security considerations: The calendaring and scheduling information
+     based on this MIME content type may include references to Uniform
+     Resource Locators that may be programmed resources. In addition,
+     this information may contain direct references to executable
+     programs intended to be used as program-based alarms for an event
+     or to-do. Implementers and users of this specification should be
+     aware of the network security implications of accepting and parsing
+     such information.
+
+     Interoperability considerations: This MIME content type is intended
+     to provide interoperability between calendaring and scheduling
+     products. It is heavily based on the earlier [<a href="#ref-VCAL">VCAL</a>] industry
+     specification.
+
+     Intended Usage: COMMON
+
+     Published specification: This document.
+
+     Person &amp; email address to contact for further information:
+
+        Frank Dawson
+        6544 Battleford Drive
+        Raleigh, NC 27613-3502
+        919-676-9515 (Telephone)
+        919-676-9564 (Facsimile)
+        fdawson@earthlink.net (Internet Mail)
+
+
+        Derik Stenerson
+        One Microsoft Way
+        Redmond, WA  98052-6399
+        206-936-5522 (Telephone)
+        206-936-7329 (Facsimile)
+        deriks@microsoft.com (Internet Mail)
+
+<span level="2" class="header"><a name="section-3">3</a>.      Intended Use</span>
+
+        [Editor NOTE: The reference to [<a href="./rfc1521">RFC 1521</a>] and [<a href="#ref-MIME-REG" title='"Multipurpose Internet Mail Extensions (MIME) - Part Four: Registration Procedures"'>MIME-REG</a>] will be
+        changed to reflect the revision to the MIME memos when the
+        respective RFC becomes available.]
+
+   This memo is meant to serve as the basis for registration of a MIME
+   content type per [<a href="./rfc1521">RFC1521</a>]. It is defined using the MIME content type
+   registration from [<a href="#ref-MIME-REG" title='"Multipurpose Internet Mail Extensions (MIME) - Part Four: Registration Procedures"'>MIME-REG</a>]. The proposed content type value is
+   "TEXT/CALENDAR". This string would label a media type containing
+
+
+Dawson/Stenerson                   7                Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+   calendaring and scheduling information encoded primarily as text
+   characters formatted in a manner outlined below. The media type is
+   useful for conveying inter-personal calendaring and scheduling
+   information between systems and applications.
+
+   A subtype of the standard MIME _TEXT_ media type was chosen as the
+   form for this content type because it provides a known and reasonable
+   fallback for legacy systems that are required in an enterprise that
+   also includes MIME based user agents that support this content type.
+   Legacy systems that do not understand the _TEXT/CALENDAR_ content
+   type will render these MIME entities as they would _TEXT/PLAIN_
+   content type. This will provide a minimal level of support for
+   calendaring and scheduling information in legacy systems (i.e., the
+   ability to display the text tagged calendaring and scheduling content
+   information). This is a vital requirement for any mail enabled,
+   enterprise application; as there are still over 7 million existing
+   legacy electronic mail user agents at this time.
+
+   The calendaring and scheduling media type is specified as an
+   independent content type in order that it can be conveyed either as a
+   single MIME message entity or as one MIME entity in a multi-part MIME
+   message. Additionally, the calendaring and scheduling information may
+   be defined in a multi-part message containing references to other
+   MIME body parts holding additional data related to the event, to-do,
+   or free/busy time information.
+
+<span level="3" class="header"><a name="section-3.1">3.1</a>     Published specification</span>
+
+   The following characteristics are specific to this MIME content type.
+
+<span level="4" class="header"><a name="section-3.1.1">3.1.1</a>   Existing Message Header Fields</span>
+
+   The MIME Calendar Content Type may utilize any of the message header
+   fields defined by [<a href="./rfc822">RFC 822</a>], [<a href="./rfc2045" title='"Multipurpose Internet Mail Extensions (MIME) Part One: Format of Internet Message Bodies"'>RFC 2045</a>], and [<a href="./rfc1766" title='"./rfc1766"'>RFC 1766</a>]. A number of
+   these message header fields are especially useful to the iCalendar
+   Object. These include the following header fields defined in either
+   [<a href="./rfc822">RFC 822</a>], [<a href="./rfc2045" title='"Multipurpose Internet Mail Extensions (MIME) Part One: Format of Internet Message Bodies"'>RFC 2045</a>], and [<a href="./rfc1766" title='"./rfc1766"'>RFC 1766</a>].
+
+<span level="5" class="header"><a name="section-3.1.1.1">3.1.1.1</a> Content-Type Header Field</span>
+
+   The [<a href="./rfc2045" title='"Multipurpose Internet Mail Extensions (MIME) Part One: Format of Internet Message Bodies"'>RFC 2045</a>] Content-Type header field is used to identify the
+   iCalendar Object. The value of this property must be _text/calendar_
+   in order to correspond to the media type defined by this document.
+   This header field is required for MIME entities conforming to this
+   content type.
+
+<span level="6" class="header"><a name="section-3.1.1.1.1">3.1.1.1.1</a>       CHARSET Header Field Parameter</span>
+
+   The [<a href="./rfc2045" title='"Multipurpose Internet Mail Extensions (MIME) Part One: Format of Internet Message Bodies"'>RFC 2045</a>] CHARSET Content-Type header field parameter is used to
+   identify an alternate character set to the default US-ASCII used by
+   the iCalendar Object. This header field parameter is optional for
+   MIME entities conforming to this content type.
+
+
+
+
+Dawson/Stenerson                   8                Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+<span level="5" class="header"><a name="section-3.1.1.2">3.1.1.2</a> Content-ID Header Field</span>
+
+   The [<a href="./rfc2045" title='"Multipurpose Internet Mail Extensions (MIME) Part One: Format of Internet Message Bodies"'>RFC 2045</a>] Content-ID header field is used by the iCalendar
+   Object to provide a persistent, globally unique identifier for a MIME
+   Calendar Object within a MIME message entity. This header field is
+   required for multi-part MIME entities containing an iCalendar Object
+   that conforms to this content type. In the event that the iCalendar
+   Object is transported in a MIME message containing a single body,
+   then the Message-ID header field is required.
+
+<span level="5" class="header"><a name="section-3.1.1.3">3.1.1.3</a> Content-Language</span>
+
+   The [<a href="./rfc1766" title='"./rfc1766"'>RFC 1766</a>] Content-Language header field is used to provide an
+   alternate default language for the MIME Calendar Object. The default
+   language is _en-US_. This header field is optional for MIME entities
+   conforming to this content type.
+
+<span level="5" class="header"><a name="section-3.1.1.4">3.1.1.4</a> Message-ID Header Field</span>
+
+   The [<a href="./rfc2045" title='"Multipurpose Internet Mail Extensions (MIME) Part One: Format of Internet Message Bodies"'>RFC 2045</a>] Message-ID header field is used by the iCalendar
+   Object to provide a persistent, globally unique identifier for a MIME
+   message containing a single body part consisting of a iCalendar
+   Object. This header field is required for a single body part MIME
+   message conforming to this content type. In the event that the
+   iCalendar Object is transported as a body part within a multi-part
+   MIME message, the Content-ID header field must be specified. The
+   Message-ID header field is used to unambiguously refer to the
+   iCalendar Object within a MIME entity.
+
+<span level="5" class="header"><a name="section-3.1.1.5">3.1.1.5</a> Transfer-Encoding Header Field</span>
+
+   The [<a href="./rfc2045" title='"Multipurpose Internet Mail Extensions (MIME) Part One: Format of Internet Message Bodies"'>RFC 2045</a>] Transfer-Encoding header field is used to provide an
+   alternate transfer encoding for the iCalendar Object. The default
+   transfer encoding is _7BIT_. This header field is required for a MIME
+   entity conforming to this content type when any other encoding is
+   used in the iCalendar Object.
+
+<span level="4" class="header"><a name="section-3.1.2">3.1.2</a>   Additional Content Type Parameter</span>
+
+   In addition to the existing content type parameters defined by [RFC
+   2045] and [<a href="./rfc1766" title='"./rfc1766"'>RFC 1766</a>], this document defines an additional content
+   type parameter to be used by the iCalendar Object.
+
+<span level="5" class="header"><a name="section-3.1.2.1">3.1.2.1</a> Profile</span>
+
+   The MIME Calendar Object defines the Profile content type parameter.
+   This parameter is used to specify a usage profile for the iCalendar
+   Object. The value of this parameter consists of a type and a subtype
+   value pair. The type value is used to specify either a EVENT, TODO,
+   or FREE-BUSY type of MIME Calendar Object profile. The subtype value
+   is used to specify the scheduling operation being conveyed by the
+   profile type. For example, the EVENT and TODO type values might have
+   a subtype value of REQUEST, to convey an event or to-do request
+   message, REPLY, to convey an event or to-do reply message, MODIFY, to
+
+
+Dawson/Stenerson                   9                Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+   convey an event or to-do modification message, CANCEL, to convey an
+   event or to-do cancellation message, DELEGATE, to convey an event or
+   to-do delegation message; or the BUSYFREE type value might have a
+   subtype value of REQUEST, to convey a free-busy time request message
+   , or REPLY, to convey a free-busy time data message. The parameter
+   value is defined by the following BNF:
+
+     profile := ((_EVENT_ / _    _)
+                             TODO   _-_ type1) / (_FREEBUSY_ _-_ type2)
+
+     type1 :=   &lt;any IANA values defined by an iCalendar Object usage
+     profile or an _X-_ type of non-standard value&gt;
+
+     type2 :=   &lt;any IANA value defined by an iCalendar Object usage
+     profile or an _X-_ type of non-standard value&gt;
+
+   The following is an example of this content type parameter for a
+   profile that specifies an event request message, such as in a request
+   for a meeting or appointment:
+
+     CONTENT-TYPE:TEXT/CALENDAR;PROFILE=EVENT-REQUEST
+
+   The following is an example of this content type parameter for a
+   profile that specifies a to-do delegation message, such as delegating
+   a task to another individual:
+
+     CONTENT-TYPE:TEXT/CALENDAR;PROFILE=TODO-DELEGATE
+
+   The following is an example of this content type parameter for a
+   profile that specifies a free-busy time request, such as when
+   searching for a free time for a meeting:
+
+     CONTENT-TYPE:TEXT/CALENDAR;PROFILE=FREEBUSY-REQUEST
+
+   This content type parameter is required for MIME entities conforming
+   to this content type. Other memos are expected to address specific
+   usage profiles and define values for this property.
+
+<span level="4" class="header"><a name="section-3.1.3">3.1.3</a>   Content Syntax Considerations</span>
+
+   The following general considerations are specific to the syntax used
+   to format the text of the body information for this content type.
+
+<span level="5" class="header"><a name="section-3.1.3.1">3.1.3.1</a> Property</span>
+
+   A property is the definition of an individual attribute describing an
+   event or a to-do associated with the MIME Calendar Object. A property
+   takes the following form:
+
+     property :=        propname *(_;_ propparm) _:_ propvalue
+
+   as shown in the following example:
+
+     DTSTART:19960415T083000-05:00
+
+
+
+Dawson/Stenerson                   10               Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+   A property takes the form of one or more lines of text. The
+   specification of property names and property parameters is case
+   insensitive. The property name can be one of a set of pre-defined or
+   non-standard strings. The property name must appear as the first
+   characters on a line. In the previous example, _DTSTART_ is the name
+   of the Start Date/Time property. Property values are specified as
+   strings. In the previous example, _19960415T083000-05:00_ is the
+   formatted value for the Start Date/Time property.
+
+   The property parameter expressions are specified as either a
+   name=value or a value string. The parameter value string can be
+   specified alone in those cases where the value is unambiguous. For
+   example a complete property parameter specification might be:
+
+     DESCRIPTION;ENCODING=QUOTED-PRINTABLE:Don't forget to order Girl=
+      Scout cookies from Stacey today!
+
+   A valid short version of the same property parameter specification
+   might be:
+
+     DESCRIPTION;QUOTED-PRINTABLE:Don't forget to order Girl=
+      Scout cookies from Stacey today!
+
+<span level="5" class="header"><a name="section-3.1.3.2">3.1.3.2</a> Delimiters</span>
+
+   Individual lines within the iCalendar Object body are delimited by
+   the [<a href="./rfc822">RFC 822</a>] line break, which is a CRLF sequence (ASCII decimal 13,
+   followed by ASCII decimal 10). Long lines of text can be split into a
+   multiple-line representation using the <a href="./rfc822">RFC 822</a> _folding_ technique.
+   That is, wherever there may be linear white space (NOT simply LWSP-
+   chars), a CRLF immediately followed by at least one LWSP-char may
+   instead be inserted. For example the line:
+
+     DESCRIPTION:This is a long description that exists on a long line.
+
+   Can be represented as:
+
+     DESCRIPTION:This is a long description
+       that exists on a long line.
+
+   The process of moving from this folded multiple-line representation
+   of a property definition to its single line representation is called
+   _unfolding_. Unfolding is accomplished by regarding CRLF immediately
+   followed by a LWSP-char as equivalent to the LWSP-char.
+
+   It is recommended that folding be limited to higher-level syntactic
+   breaks in structured components of the property definition.
+
+   A formatted text line break in a property value, must also be
+   specified by a (<a href="./rfc822">RFC 822</a>) line break, which is a CRLF sequence.
+   However, since the CRLF sequence is used to delimit a line, property
+   values with formatted line breaks (i.e., multiple lines) must be
+   encoded using an alternate encoding of either Quoted-Printable or
+   Base64, as defined in [<a href="./rfc2045" title='"Multipurpose Internet Mail Extensions (MIME) Part One: Format of Internet Message Bodies"'>RFC 2045</a>].
+
+
+Dawson/Stenerson                   11               Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+   For example, in the Quoted-Printable encoding the multiple lines of
+   formatted text are separated with a Quoted-Printable CRLF sequence of
+   _=0D_ followed by _=0A_ followed by a Quoted-Printable soft line
+   break sequence of _=_. Quoted-Printable lines of text must also be
+   limited to less than 76 characters. The 76 characters does not
+   include the CRLF [<a href="./rfc822">RFC 822</a>] line break sequence. For example a
+   multiple line DESCRIPTION value of:
+
+     Project XYZ Final Review
+     Conference Room - 3B
+     Come Prepared.
+
+   Would be represented in a Quoted-Printable encoding as:
+
+     DESCRIPTION; QUOTED-PRINTABLE:Project XYZ Final Review=0D=0A=
+     Conference Room - 3B=0D=0A=
+     Come Prepared.
+
+   Property parameter sub-strings are delimited by a field delimiter,
+   specified by the Semi-colon character (ASCII decimal 59). A Semi-
+   colon character in a property parameter value must be escaped with a
+   Backslash character (ASCII decimal 92).
+
+   Compound property values are delimited by a field delimiter,
+   specified by the Semi-colon character (ASCII decimal 59). A Semi-
+   colon character in a component of a compound property value must be
+   escaped with a Backslash character (ASCII decimal 92).
+
+<span level="5" class="header"><a name="section-3.1.3.3">3.1.3.3</a> Property Value Transfer Encoding</span>
+
+   The default transfer encoding for the iCalendar Object is _7BIT_. The
+   default transfer encoding can be overridden for an individual
+   property value by using the _ENCODING_ property parameter. This
+   parameter value can be either _7BIT_, _BASE64_, _QUOTED-PRINTABLE_,
+   or _8BIT_. This parameter may be used on any property.
+
+   The MIME TRANSFER-ENCODING header field can be used to specify a
+   default transfer encoding other than 7BIT (e.g., 8BIT).
+
+<span level="5" class="header"><a name="section-3.1.3.4">3.1.3.4</a> Property Value Character Set</span>
+
+   The default character set for a iCalendar Object is ASCII. The
+   default character set can be overridden for an individual property
+   value by using the _CHARSET_ property parameter. This property
+   parameter may be used on any property. However, the use of this
+   parameter on some properties may not make sense.
+
+   Any character set registered with the Internet Assigned Numbers
+   Authority (IANA) can be specified by this property parameter. For
+   example, ISO 8859-8 or the Latin/Hebrew character set is specified
+   by:
+
+     DESCRIPTION;CHARSET=ISO-8859-8:...
+
+
+
+Dawson/Stenerson                   12               Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+   The MIME CHARSET parameter on the CONTENT-TYPE header field can be
+   used to specify a default character set other than ASCII (e.g., UTF-
+   8).
+
+<span level="5" class="header"><a name="section-3.1.3.5">3.1.3.5</a> Property Value Language</span>
+
+   The default language for a iCalendar Object is _en-US_ (US English).
+   The default language can be overridden for an individual property
+   value by using the _LANGUAGE_ property parameter. The values for this
+   property are a string consistent with <a href="./rfc1766">RFC 1766</a>, Tags for the
+   Identification of Languages. This property parameter may be used on
+   any property. However, the use of this parameter on some properties,
+   such as PHOTO, LOGO, SOUND, TEL, may not make sense. Canadian French
+   would be specified by this property parameter by the following:
+
+     SUMMARY;LANGUAGE=fr-CA:...
+
+   The MIME LANGUAGE parameter on the CONTENT-TYPE header field can be
+   used to specify a default language other than US English (e.g., fr-
+   CA).
+
+<span level="5" class="header"><a name="section-3.1.3.6">3.1.3.6</a> Property Value Data Type</span>
+
+   In order to more fully specify the semantics of this content type and
+   to facilitate its automated processing, the specification of each
+   property defined by the iCalendar Object identifies the valid data
+   types and the default data type for the property value. In addition,
+   within an instance of this content type a property may explicitly
+   convey the data type information through the DATATYPE property
+   parameter. The STRING data type for the DESCRIPTION property would be
+   specified by the following:
+
+     DESCRIPTION;DATATYPE=STRING:Weekly Staff Meeting
+
+   If the DATATYPE property parameter is not specified on a property,
+   then the default data type for that property is assumed. Usage
+   profiles for this content type that introduce new properties must
+   specify the default data type for each newly defined property. The
+   data types used within this content type definition include the
+   following:
+
+
+
+
+              Property Data       Description
+                   Type
+
+
+                  AALARM          Indicates an
+                                  audio alarm
+                                  value, as
+                                  specified by
+                                  this
+                                  document.
+
+
+Dawson/Stenerson                   13               Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+
+                 BOOLEAN          Indicates a
+                                  Boolean value
+                                  string of
+                                  either TRUE
+                                  or FALSE.
+
+                   CID            Indicates a
+                                  string
+                                  identifier
+                                  value for the
+                                  content
+                                  identifier of
+                                  another MIME
+                                  entity within
+                                  the current
+                                  message.
+
+                  DALARM          Indicates a
+                                  display alarm
+                                  value, as
+                                  specified by
+                                  this
+                                  document.
+
+                DATE-TIME         Indicates an
+                                  ISO 8601
+                                  formatted
+                                  date/time
+                                  string value.
+
+                 DST-RULE         Indicates a
+                                  daylight
+                                  saving time
+                                  rule value as
+                                  specified in
+                                  this
+                                  document.
+
+                 D-T-LIST         Indicates a
+                                  list of ISO
+                                  8601
+                                  formatted
+                                  date/time
+                                  string
+                                  values.
+
+                 DURATION         Indicates an
+                                  ISO 8601
+                                  formatted
+                                  duration or
+                                  period of
+                                  time value.
+
+
+
+Dawson/Stenerson                   14               Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+
+                  FLOAT           Indicates a
+                                  string
+                                  representatio
+                                  n of a
+                                  floating
+                                  point value.
+
+                FLOAT-LIST        Indicates a
+                                  list of
+                                  string
+                                  representatio
+                                  ns of
+                                  floating
+                                  point values.
+
+                 INTEGER          Indicates a
+                                  numeric
+                                  string
+                                  representatio
+                                  n of an
+                                  integer
+                                  value.
+
+               INTEGER-LIST       Indicates a
+                                  list of
+                                  numeric
+                                  string
+                                  representatio
+                                  ns of an
+                                  integer
+                                  value.
+
+                  MALARM          Indicates a
+                                  mail alarm
+                                  value, as
+                                  specified by
+                                  this
+                                  document.
+
+                   MID            Indicates a
+                                  string
+                                  identifier
+                                  value for an
+                                  external
+                                  message.
+
+                  PALARM          Indicates a
+                                  procedure
+                                  alarm value,
+                                  as specified
+                                  by this
+                                  document.
+
+
+
+Dawson/Stenerson                   15               Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+
+                 <a href="./rfc822">RFC822</a>-          Indicates a
+                 ADDRESS          <a href="./rfc822">RFC 822</a>
+                                  formatted
+                                  address
+                                  specification
+                                  string value.
+
+                  RRULE           Indicates a
+                                  recurrence
+                                  rule grammar
+                                  string value
+                                  as specified
+                                  in this
+                                  document.
+
+                  STRING          Indicates a
+                                  text string
+                                  value in the
+                                  current
+                                  character
+                                  set.
+
+               STRING-LIST        Indicates a
+                                  list of text
+                                  string values
+                                  in the
+                                  current
+                                  character
+                                  set.
+
+               TIME-OFFSET        Indicates an
+                                  ISO 8601
+                                  formatted
+                                  time offset
+                                  value
+
+                   URL            Indicates a
+                                  <a href="./rfc1738">RFC 1738</a>
+                                  formatted
+                                  Uniform
+                                  Resource
+                                  Locator
+                                  string.
+
+
+
+   The property values consisting of lists of a particular data type
+   (i.e., STRING-LIST) are semi-colon separated string of list items.
+
+<span level="5" class="header"><a name="section-3.1.3.7">3.1.3.7</a> Date and Time</span>
+
+   The date and time values for all iCalendar Object properties are
+   formatted as a string consistent with the ISO 8601 representation for
+
+
+Dawson/Stenerson                   16               Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+   combinations of dates and times. Either the basic or extended format
+   is allowed. The use of UTC, rather than local time, should be used
+   when ever possible in order to avoid time zone ambiguities. Where
+   local time is specified, the inclusion of the UTC offset should also
+   be included to avoid time zone ambiguities. The format for the
+   complete, representation of a date and time value is represented by
+   the following ABNF:
+
+     date-time =        (date / time / (date _T_ time))
+
+
+     date =     year month day
+     year =     &lt;four digits representing the century and year&gt;
+     month =    [<a href="#ref-_-_">_-_</a>] &lt;digits representing the month in the year&gt;
+     day =      [<a href="#ref-_-_">_-_</a>] &lt;digits representing the day of the month&gt;
+
+     time =     hour minute second [<a href="#ref-fraction">fraction</a>](utc-sign / utc-offset)
+     hour =     &lt;digits representing a period of time of 60 minutes&gt;
+     minute =   [_:_] &lt;digits representing a period of time of 60
+                seconds&gt;
+     second =   [_:_] &lt;digits representing a basic measurement unit
+                of time in the International System of Units as defined
+                in ISO 31-1&gt;
+     fraction = _,_ &lt;digits representing fraction of a second&gt;
+     utc-sign = _Z_
+     utc-offset = [_+_ / _-_] hour [_:_] minute
+        ;_+_ if offset is after UTC and _-_ if offset is before UTC
+
+   The basic complete representation does not include the _-_ date
+   separator nor the _:_ time separator. The extended complete
+   representation does include the separators.
+
+   For example, 8:30 AM on April 15, 1996 local time EST would be
+   written as:
+
+     19960415T083000-05:00
+
+   And the same time in UTC based time would be written as:
+
+     19960415T133000Z
+
+   The same date and time represented in the extended completed
+   representation would be written as:
+
+     1996-04-15T08:30:00-05:00
+
+   And the same time in UTC based time would be written as:
+
+     1996-04-15T13:30:00Z
+
+   Where a value needs to specify a sequence of date and time values,
+   then the property value is a string made up of a list of date and
+   time values, separated by the field separator, a Semi-Colon (ASCII
+   decimal 59). For example:
+
+
+Dawson/Stenerson                   17               Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+     19960101T090000Z;19960201T090000Z;19960301T090000Z;...
+
+<span level="5" class="header"><a name="section-3.1.3.8">3.1.3.8</a> Time Duration</span>
+
+   The values for time duration or periods of time for all iCalendar
+   Object properties are formatted as a string consistent with the ISO
+   8601 representation for duration of time. A given duration of a
+   period of time is represented by a character string consisting of the
+   designator _P_, optionally including the number of years followed by
+   the designator _Y_, optionally including the number of months
+   followed by the designator _M_, optionally including the number of
+   weeks followed by the designator _W_, optionally including the number
+   of days followed by the designator _D_. The sequence can also contain
+   a time component preceded by the designator _T_, optionally including
+   the number of hours followed by the designator _H_, optionally
+   including the number of minutes followed by the designator _M_,
+   optionally including the number of seconds followed by the designator
+   _S_. The following ABNF describes the representation of ISO 8601
+   periods of time:
+
+     duration = _P_ (yr-period / tm-period / (yr-period tm-period))
+        ;Duration needs to include at least one component of year or
+        ;time periods
+
+     yr-period =        [<a href="#ref-yr-parm">yr-parm</a>] [<a href="#ref-mo-parm">mo-parm</a>] / wk-parm
+     yr-parm =          _Y_ &lt;digits representing the number of years&gt;
+     mo-parm =          _M_ &lt;digits representing the number of months&gt;
+     wk-parm =          _W_ &lt;digits representing the number of weeks&gt;
+
+     tm-period =        _T_ [<a href="#ref-hr-parm">hr-parm</a>] [<a href="#ref-mn-parm">mn-parm</a>] [<a href="#ref-sc-parm">sc-parm</a>]
+     hr-parm =          _H_ &lt;digits representing the number of hours&gt;
+     mn-parm =          _M_ &lt;digits representing the number of minutes&gt;
+     sc-parm =          _S_ &lt;digits representing the number of seconds&gt;
+
+   For example:
+
+     P6W
+
+   represents a period of six weeks;
+
+     PT15M
+
+   represents a period of 15 minutes;
+
+     PT1H30M
+
+   represents a period of 1 hour and thirty minutes; or
+
+     P2Y10M15DT10H30M20S
+
+   represents a period of 2 years, 10 months, 15 days, 10 hours, 30
+   minutes, and 20 seconds.
+
+
+
+
+Dawson/Stenerson                   18               Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+<span level="5" class="header"><a name="section-3.1.3.9">3.1.3.9</a> Value Location</span>
+
+   The default location of the property values is inline with the
+   property. However, for some properties, such as those that specify
+   multimedia values, it is more efficient in a MIME message to organize
+   the property value as a separate MIME entity. The property parameter
+   _VALUE_ can be specified to override the _INLINE_ location of the
+   property value. In the case of the iCalendar Object being transported
+   within a MIME email message, the property value can be specified as
+   being located in a separate MIME entity with the _CONTENT-ID_ value;
+   or _CID_ for shorthand. In this case, the property value is the
+   Content-ID for the MIME entity within the multi-part message that
+   contains the property value. The value can also be specified as being
+   contained within an another, external message using the _MESSAGE-ID_
+   value, or _MID_ for shorthand. In addition, the property value can be
+   specified as being located out on the Internet using the _URL_ value.
+   In this case, the property value is the Uniform Resource Locator for
+   the Internet resource containing the property value. This property
+   parameter may be used on any property. However, the use of this
+   parameter on some properties may not make sense; for example the
+   Version, Time Zone, Status, Priority, Mail Reminder, etc. properties.
+
+   The following specifies a value located out on the Internet:
+
+     ATTACH;VALUE=URL:http://www.abc.com/dir_photos/my_photo.gif
+
+   The following specifies a value located out in the content of another
+   message:
+
+     ATTACH;VALUE=MID:&lt;960120.aaCB@host1.com&gt;
+
+<span level="5" class="header"><a name="section-3.1.3.10">3.1.3.10</a>        Binary Property Values</span>
+
+   The iCalendar Object supports inclusion of binary information, such
+   as computer graphic images (e.g., IMAGE/JPEG), digital audio (e.g.,
+   AUDIO/BASIC), or video graphic images (e.g., VIDEO/MPEG). As
+   specified above the binary information can be referenced with a
+   Uniform Reference Locator (URL), referenced within an external MIME
+   message, referenced within a particular MIME message body part, or
+   placed inline. Inline binary information is included as a property
+   value after being binary encoded using Base 64 (default) or Quoted-
+   Printable transfer encoding.
+
+<span level="5" class="header"><a name="section-3.1.3.11">3.1.3.11</a>        Recurrence Rule Grammar</span>
+
+   Recurring events within the iCalendar Object may be specified as
+   either a list of discrete date and time values or as a recurrence
+   rule using a grammar. The basic recurrence rule grammar used by this
+   specification is defined in a separate section of this specification.
+   The grammar defines a recurrence rule that that is based on the prior
+   work of the X.400 API Association's Calendaring and Scheduling
+   Subcommittee. It is also based on prior work of the IETF Chronos
+   Working Group. Refer to <a href="#section-3.3">section 3.3</a>.
+
+
+
+Dawson/Stenerson                   19               Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+<span level="4" class="header"><a name="section-3.1.4">3.1.4</a>   Body Delimiter Properties</span>
+
+   The body information of a iCalendar Object is defined by a series of
+   body fields or properties. This section defines the properties that
+   can be used in MIME entities conforming to this content type.
+
+<span level="5" class="header"><a name="section-3.1.4.1">3.1.4.1</a> Calendar Object</span>
+
+   The body of the iCalendar Object is identified within the body of a
+   MIME entity by the appearance of the Begin Calendar Object Delimiter:
+
+     BEGIN:VCALENDAR
+
+   The sentinel string must appear as the first characters in the body
+   of the MIME entity and as the first characters on a line.
+
+   The body information of the iCalendar Object is terminated by the
+   appearance of the End Calendar Object Delimiter as the first
+   characters on a line:
+
+     END:VCALENDAR
+
+   The iCalendar Object is a container for calendar components. These
+   can include either event or to-do components. The body of a iCalendar
+   Object will generally contain a single calendar event or to-do
+   component. However, the body may include multiple event or to-do
+   components. This is the case for free-busy time reply messages that
+   contain multiple free time intervals in individual calendar
+   components.
+
+   The Begin and End Calendar Object Delimiter properties are required
+   in a MIME entity conforming to this content type. The data type for
+   these properties is a STRING.
+
+<span level="5" class="header"><a name="section-3.1.4.2">3.1.4.2</a> Event Component</span>
+
+   An Event Component is a grouping of calendaring and scheduling
+   properties that defines a component that represents a scheduled
+   amount of time on a calendar. For example, it may be an activity;
+   such as a one-hour, department meeting from 8 AM to 9 AM, tomorrow or
+   a free/busy time interval.
+
+   An individual Event Component is identified within a MIME Calendaring
+   and Scheduling Content Type by the appearance of the delimiter:
+
+     BEGIN:VEVENT
+
+   The sentinel string must appear as the first characters on a line.
+
+   The Event Component is terminated with the appearance of the
+   following delimiter string as the first characters on a line
+
+     END:VEVENT
+
+
+
+Dawson/Stenerson                   20               Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+   The Event Component can not be nested within another Event or To-do
+   Component. If Event components need to be related to each other or to
+   a To-do Component, they can specify a relationship with the RELATED-
+   TO property.
+
+   The Begin and End Event Component Delimiter properties are required
+   for a MIME entity containing an event component and conforming to
+   this content type. The data type for these properties is a STRING.
+
+<span level="5" class="header"><a name="section-3.1.4.3">3.1.4.3</a> To-do Component</span>
+
+   A To-do Component is a grouping of calendaring and scheduling
+   properties that define a component that represents an action-item or
+   assignment. For example, it may be an item of work assigned to an
+   individual; such as _turn in travel expense today_.
+
+   An individual To-do Component is identified within a MIME Calendaring
+   and Scheduling Content Type by the appearance of the delimiter:
+
+     BEGIN:VTODO
+
+   The sentinel string must appear as the first characters on a line.
+
+   The To-do Component is terminated with the appearance of the
+   following delimiter string as the first characters on a line
+
+     END:VTODO
+
+   The To-do Component can not be nested within another To-do or Event
+   Component. If To-do components need to be related to each other or to
+   an Event Component, they can specify a relationship with the RELATED-
+   TO property.
+
+   The Begin and End To-do Component Delimiter properties are required
+   for a MIME entity containing a to-do component and conforming to this
+   content type. The data type for these properties is a STRING.
+
+<span level="4" class="header"><a name="section-3.1.5">3.1.5</a>   Calendar Object Properties</span>
+
+   The following properties may appear between the Begin Calendar Object
+   Delimiter and either the Begin Event Component Delimiter or the Begin
+   To-do Component Delimiter. These properties define body field values
+   that apply to the complete calendar object.
+
+<span level="5" class="header"><a name="section-3.1.5.1">3.1.5.1</a> Calendar Content Profile</span>
+
+   This property is identified by the property name PROFILE. This
+   property defines the usage profile associated with the calendar
+   object. When used in a MIME message entity, the value of this
+   property MUST be the same as the Content-Type profile parameter
+   value. This property can only appear once within the iCalendar
+   Object.
+
+
+
+
+Dawson/Stenerson                   21               Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+   The calendar property value might include the following usage profile
+   values:
+
+
+
+
+              Profile Parameter     Description
+              Type/Subtype Value
+
+
+              EVENT-REQUEST         Make a request for an
+                                    event
+
+
+              EVENT-REPLY           Reply to an event
+                                    request
+
+
+              EVENT-COUNTER         Make a counter proposal
+                                    to the event request
+
+
+              EVENT-DECLINECOUNTER  Decline the counter
+                                    proposal to the event
+                                    request
+
+
+              EVENT-MODIFY          Modify a subset of the
+                                    details of an existing
+                                    event request
+
+
+              EVENT-REPLACE         Replace the current
+                                    event request with a
+                                    complete set of
+                                    information
+
+
+              EVENT-CANCEL          Cancel an existing
+                                    event request
+
+
+              EVENT-DELEGATE        Delegate an existing
+                                    event request
+
+
+              EVENT-RESEND          Request a duplicate of
+                                    the current event
+                                    request information
+
+
+              TODO-REQUEST          Assign a to-do
+
+
+
+
+Dawson/Stenerson                   22               Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+
+
+              TODO-REPLY            Reply to a to-do
+                                    assignment
+
+
+              TODO-COUNTER          Make a counter proposal
+                                    for the to-do request
+
+
+              TODO-DECLINECOUNTER   Decline a counter
+                                    proposal for the to-do
+                                    request
+
+
+              TODO-MODIFY           Modify a subset of the
+                                    details of an existing
+                                    to-do assignment
+
+
+              TODO-REPLACE          Replace the current to-
+                                    do request with a
+                                    complete set of
+                                    information
+
+
+              TODO-CANCEL           Cancel an existing to-
+                                    do
+
+
+              TODO-DELEGATE         Delegate an existing
+                                    to-do
+
+
+              TODO-RESEND           Request a duplicate of
+                                    the current to-do
+                                    request information
+
+
+              FREEBUSY-REQUEST      Free/busy time request
+
+
+              FREEBUSY-REPLY        Reply to an existing
+                                    free/busy time request
+                                    with free/busy time
+                                    data
+
+
+
+
+   Other values may be defined by other usage profiles of this content
+   type.
+
+
+
+
+Dawson/Stenerson                   23               Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+   This property is optional for MIME entities conforming to this
+   content type. In the event that this property is not specified, the
+   recipient of a MIME Calendaring and Scheduling Content Type should
+   assume the calendar object is for an _event/request_. The data type
+   for this property is STRING.
+
+<span level="5" class="header"><a name="section-3.1.5.2">3.1.5.2</a> Calendar Scale</span>
+
+   This property is identified by the property name CALENDAR. This
+   property defines the calendar scale used for the calendar information
+   specified in the iCalendar Object. This specification is based on the
+   Gregorian calendar scale. The Gregorian calendar scale is assumed if
+   this property is not specified in the iCalendar Object. It is
+   expected that other calendar scales will be defined in other
+   specifications or by future versions of this specification.
+
+   The following is an example of this property:
+
+     CALENDAR:GREGORIAN
+
+   The data type for this property is STRING.
+
+<span level="5" class="header"><a name="section-3.1.5.3">3.1.5.3</a> Daylight Savings Rule</span>
+
+   This property is identified by the property name DAYLIGHT. This
+   property defines the effective daylight savings time rule for
+   calendar information specified in the iCalendar Object. More than one
+   DAYLIGHT properties can be specified for a series of future DST rules
+   for the time zone.
+
+   Many locations adjust their standard time forward or backward by one
+   hour, in order to accommodate seasonal changes in number of daylight
+   hours. Some locations adjust their time by a fraction of an hour.
+   Standard time is also known as Winter Time. Daylight savings time is
+   also known as Advanced Time, Summer Time, or Legal Time in certain
+   countries.
+
+   The property value consists of a sequence of components that define a
+   rule for the observance of daylight savings time. The value consists
+   of effective start date for the DST rule, followed by the daylight
+   savings time flag, followed by the daylight savings time offset from
+   UTC, followed by the date and time of the transition from standard
+   time to daylight savings time, followed by the date and time of the
+   transition from daylight savings time to standard time, followed by
+   the customary standard time designation, followed by the customary
+   daylight savings time designation. The effective start date for the
+   DST rule allows for the specification of a series of future DST rules
+   for a given time zone. The daylight savings time flag is TRUE if
+   daylight savings time is observed, otherwise it is FALSE and no other
+   components are specified. The daylight savings time offset value is
+   specified in a manner consistent with ISO 8601. The property value is
+   a signed numeric indicating the number of hours and possibly minutes
+   from UTC. The date and time that the daylight savings time begins and
+   ends is specified in a manner consistent with ISO 8601 date and time
+
+
+Dawson/Stenerson                   24               Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+   format. The standard time and daylight savings time designations
+   correspond to the customary character designations.
+
+   The following are examples of this property:
+
+     DAYLIGHT:19960407;TRUE;-06;19960407T025959;19961027T010000;EST;EDT
+
+     DAYLIGHT:FALSE
+
+     DAYLIGHT:19960407;TRUE;-09;19960407T115959;19961027T100000;PST;PDT
+
+   This property is optional for MIME entities conforming to this
+   content type. In the event that this property is not specified, the
+   recipient of a MIME Calendaring and Scheduling Content Type should
+   assume the same daylight savings time rule as the recipient location.
+   The data type for this property is DST-RULE.
+
+<span level="5" class="header"><a name="section-3.1.5.4">3.1.5.4</a> Geographic Position</span>
+
+   This property is identified by the property name GEO. This property
+   specifies information related to the global position of the _home_
+   system that created the MIME calendar object. The property value
+   specifies longitude and latitude. The longitude represents the
+   location east and west of the prime meridian as a positive or
+   negative real number, respectively. The latitude represents the
+   location north and south of the equator as a positive or negative
+   real number, respectively. The following is an example of this
+   property:
+
+     GEO:37.24,-17.87
+
+   This property is optional for MIME entities conforming to this
+   content type. The default data type for this property is FLOAT-LIST.
+   Optionally, the data type for this property may be URL. The URL is
+   the resource location for the geographical position value.
+
+<span level="5" class="header"><a name="section-3.1.5.5">3.1.5.5</a> Product Identifier</span>
+
+   This property is identified by the property name PRODID. This
+   property specifies the identifier for the product that created the
+   MIME calendar object. The vendor of the implementation should assure
+   that this is a globally unique identifier; using some technique such
+   as an ISO 9070 FPI value. The following is an example of this
+   property:
+
+     PRODID:-//ABC Corporation//NONSGML My Product//EN
+
+   This property is required for MIME entities conforming to this
+   content type. The default data type for this property is STRING.
+   Optionally, the data type may be URL. The URL is the resource
+   location for the product identifier value.
+
+
+
+
+
+Dawson/Stenerson                   25               Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+<span level="5" class="header"><a name="section-3.1.5.6">3.1.5.6</a> Time Zone</span>
+
+   This property is identified by the property name TZ. This property
+   specifies the standard time zone of the _home_ system that created
+   the MIME calendar object. The property value is specified in a manner
+   consistent with ISO 8601. The property value is a signed numeric
+   indicating the number of hours and possibly minutes from UTC. Time
+   zones east of UTC are positive numbers. Time zones west of UTC are
+   negative numbers. The following are examples of this property:
+
+     TZ:-0500
+
+     TZ:+05:30
+
+   This property is optional for MIME entities conforming to this
+   content type. If this property is missing, the recipient should
+   assume all local times are relative to the recipients time zone. The
+   data type for this property is TIME-OFFSET. Optionally, the data type
+   for this property may be STRING.
+
+<span level="5" class="header"><a name="section-3.1.5.7">3.1.5.7</a> Version</span>
+
+   This property specifies the identifier corresponding to the highest
+   version number of the MIME Calendaring and Scheduling Content Type
+   specification supported by the implementation that created the MIME
+   calendar object. The value of this property must be 2.0 to correspond
+   to this specification..
+
+   This property is identified by the property name VERSION. The
+   following is an example of this property:
+
+     VERSION:2.0
+
+   This property is required for MIME entities conforming to this
+   content type. This property must appear within the MIME calendar
+   object. The data type for this property is FLOAT.
+
+<span level="4" class="header"><a name="section-3.1.6">3.1.6</a>   Event and To-do Component Properties</span>
+
+   The following properties apply to either an event or to-do calendar
+   object component.
+
+<span level="5" class="header"><a name="section-3.1.6.1">3.1.6.1</a> Attachment</span>
+
+   This property is identified by the property name ATTACH. The property
+   defines an attached object to the MIME calendar object. For example,
+   a document to be reviewed at a scheduled event or the process steps
+   for a to-do. The property value can be a text string, a reference to
+   another message body part or a reference to a URL corresponding to a
+   document.
+
+   Multiple attachments may be specified by including multiple ATTACH
+   properties within the MIME calendaring entity.
+
+
+
+Dawson/Stenerson                   26               Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+   The following are examples of this property:
+
+     ATTACH;VALUE=CONTENT-ID:&lt;jsmith.part3.960817T083000.
+        xyzMail@host1.com&gt;
+
+     ATTACH;VALUE=URL:file://xyzCorp.com/pub/reports/r-960812.ps
+
+   This property is optional for MIME entities conforming to this
+   content type. The default data type for this property is MID. The
+   data type may alternatively be specified to be CID, URL, or STRING
+   value.
+
+<span level="5" class="header"><a name="section-3.1.6.2">3.1.6.2</a> Attendee</span>
+
+   This property is identified by the property name ATTENDEE. The
+   property defines an attendee to a group event or to-do. The default
+   property value is an (<a href="./rfc822">RFC 822</a>) address. The property may include
+   property parameters TYPE, for the type of attendee, ROLE, for the
+   role of the attendee in the event or to-do; STATUS, for the status of
+   the attendee's participation in the event or to-do, RSVP, for
+   indicating whether the favor of a reply is requested, EXPECT, to
+   indicate the expectation of the attendee's participation by the
+   originator, and MEMBER, to indicate the group that the attendee
+   belongs to.
+
+   Multiple attendees may be specified by including multiple ATTENDEE
+   properties within the MIME calendaring entity.
+
+   The property value may reference a vCard object. This provides a
+   useful mechanism to allow more than just the address of the attendee
+   to be referenced.
+
+   The TYPE property parameter for each attendee can have the following
+   values:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Dawson/Stenerson                   27               Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+
+
+              Property            Description
+              Value
+
+
+              INDIVIDUAL          Indicates
+                                  attendee is
+                                  an
+                                  individual.
+
+              GROUP               Indicates
+                                  attendee is a
+                                  group of
+                                  individuals.
+
+              RESOURCE            Indicates
+                                  attendee is a
+                                  resource.
+
+              UNKNOWN             Indicates
+                                  attendee type
+                                  is unknown.
+
+
+
+
+   The ROLE property parameter for each attendee can have the following
+   values:
+
+
+
+
+              Property            Description
+              Value
+
+
+              ATTENDEE            Indicates an
+                                  attendee at
+                                  the event or
+                                  to-do
+
+              ORGANIZER           Indicates
+                                  organizer of
+                                  the event,
+                                  but not owner
+
+              OWNER               Indicates
+                                  owner of the
+                                  event or to-
+                                  do.
+
+
+
+
+
+Dawson/Stenerson                   28               Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+
+
+              DELEGATE            Indicates a
+                                  delegate of
+                                  another
+                                  attendee.
+
+
+
+
+   The default value for this property parameter is ATTENDEE.
+
+   The STATUS property parameter for each attendee can have the
+   following values:
+
+
+
+
+              Property            Description
+              Value
+
+
+              ACCEPTED            Indicates to-
+                                  do was
+                                  accepted by
+                                  attendee
+
+              NEEDS ACTION        Indicates
+                                  event or to-
+                                  do requires
+                                  action by
+                                  attendee
+
+              SENT                Indicates
+                                  event or to-
+                                  do was sent
+                                  out to
+                                  attendee
+
+              TENTATIVE           Indicates
+                                  event is
+                                  tentatively
+                                  accepted by
+                                  attendee
+
+              CONFIRMED           Indicates
+                                  attendee has
+                                  confirmed
+                                  their
+                                  attendance at
+                                  the event
+
+              DECLINED            Indicates
+                                  event or to-
+
+
+Dawson/Stenerson                   29               Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+                                  do has been
+                                  rejected by
+                                  attendee
+
+              COMPLETED           Indicates to-
+                                  do has been
+                                  completed by
+                                  attendee
+
+              DELEGATED           Indicates
+                                  event or to-
+                                  do has been
+                                  delegated by
+                                  the attendee
+                                  to another
+
+              CANCELED            Indicates the
+                                  event or to-
+                                  do has been
+                                  canceled
+                                  and/or this
+                                  attendee has
+                                  been removed
+                                  from the list
+                                  of attendees.
+
+
+
+
+   The default value for this property parameter is NEEDS ACTION.
+
+   The RSVP property parameter for each attendee can have the following
+   values:
+
+
+
+
+              Property           Description
+              Value
+
+
+              YES                Indicates a
+                                 reply is
+                                 requested
+
+              NO                 Indicates a
+                                 reply is not
+                                 requested.
+
+
+
+
+   The default value for this property parameter is NO.
+
+
+
+Dawson/Stenerson                   30               Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+   The EXPECT property parameter for each attendee can have the
+   following values:
+
+
+
+
+              Property           Description
+              Value
+
+
+              FYI                Indicates
+                                 request is
+                                 for your
+                                 information.
+
+              REQUIRE            Indicates
+                                 presence is
+                                 definitely
+                                 required.
+
+              REQUEST            Indicates
+                                 presence is
+                                 being
+                                 requested
+
+              IMMEDIATE          Indicates an
+                                 immediate
+                                 response
+                                 needed.
+
+
+
+
+   The default value for this property parameter is FYI.
+
+   The MEMBER property parameter value is an (<a href="./rfc822">RFC 822</a>) address that
+   represents the group or distribution list.
+
+   The following is an example of this property's use for a to-do:
+
+     ATTENDEE;ROLE=OWNER;STATUS=COMPLETED:jsmith@host1.com
+
+   The following is an example of this property used for specifying
+   multiple attendees to an event:
+
+     ATTENDEE;ROLE=OWNER;STATUS=CONFIRMED:John Smith &lt;jsmith@host1.com&gt;
+     ATTENDEE;ROLE=ATTENDEE;STATUS=TENTATIVE:Henry Cabot
+     &lt;hcabot@host2.com&gt;
+     ATTENDEE;ROLE=DELEGATE;STATUS=CONFIRMED:Jane Doe &lt;jdoe@host1.com&gt;
+
+   The following is an example of this property with the value specified
+   as an URL reference to a vCard that contains the information about
+   the attendee:
+
+
+
+Dawson/Stenerson                   31               Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+     ATTENDEE;ROLE=ATTENDEE;STATUS=CONFIRMED;VALUE=URL:
+       <a href="http://www.xyz.com/~myvcard.vcf">http://www.xyz.com/~myvcard.vcf</a>
+
+   This property is optional for MIME entities conforming to this
+   content type. The default data type for this property is <a href="./rfc822">RFC822</a>-
+   ADDRESS. Optionally, the data type for this property may be URL, MID,
+   or CID; in which case the value is a location or message that
+   contains information that is to be used to specify the attendee.
+
+<span level="5" class="header"><a name="section-3.1.6.3">3.1.6.3</a> Audio Reminder</span>
+
+   This property is identified by the property name AALARM. The property
+   defines an audio reminder for the MIME calendar object. An audio
+   reminder is an alarm that is sounded for a calendar component..
+
+   The value for the audio reminder consists of the Run Time, or the
+   date and time that the reminder is to be executed; Snooze Time, or
+   the duration of time after the Run Time that the reminder is to be
+   dormant prior to being repeated; Repeat Count, or the number of times
+   that the reminder is to be repeated; and the Audio Content, or the
+   digital sound to be played when the reminder is executed.
+
+   The following are some examples of this property:
+
+     AALARM;TYPE=WAVE;VALUE=URL:19960415T235959; ; ;
+     file:///mmedia/taps.wav
+
+     AALARM;TYPE=WAVE;VALUE=CONTENT-
+     ID:19960903T060000;PT15M;4;&lt;jsmith.part2.=
+      960901T083000.xyzMail@host1.com&gt;
+
+   The property has the following additional property parameters:
+
+
+
+
+              Property           Description
+              Parameter
+              Values
+
+
+              TYPE
+
+              - - Any IANA       Indicates a
+              registered         MIME audio
+              audio              content
+              content type       type.
+              value - -
+
+              WAVE               Indicates
+                                 the WAVE
+                                 format for
+                                 audio
+                                 content.
+
+
+Dawson/Stenerson                   32               Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+
+              AIFF               Indicates
+                                 the AIFF
+                                 format for
+                                 audio
+                                 content.
+
+
+
+
+   The Reminder properties are primarily provided as a means for
+   allowing the capture of alarm information when accessing a calendar
+   system. It may not be an appropriate property to send in an event or
+   to-do request.
+
+   This property is optional for MIME entities conforming to this
+   content type. The default data type for this property is AALARM.
+   Optionally, the data type may be specified to be CID, MID, or URL.
+
+<span level="5" class="header"><a name="section-3.1.6.4">3.1.6.4</a> Categories</span>
+
+   This property is identified by the property name CATEGORIES. This
+   property defines the categories for the MIME calendar component. More
+   than one category may be specified as a list of categories separated
+   by the Semi-Colon character (ASCII decimal 59).
+
+   The following are some examples of this property:
+
+     CATEGORIES:APPOINTMENT;EDUCATION
+
+     CATEGORIES:MEETING
+
+   Some of the possible values for this property might include the
+   following:
+
+
+
+
+              Some Possible
+
+              Property Values
+
+
+              APPOINTMENT
+
+              BUSINESS
+
+              EDUCATION
+
+              HOLIDAY
+
+              MEETING
+
+              MISCELLANEOUS
+
+
+Dawson/Stenerson                   33               Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+
+              NON-WORKING-HOURS
+
+              NOT-IN-OFFICE
+
+              PERSONAL
+
+              PHONE CALL
+
+              SICK DAY
+
+              SPECIAL OCCASION
+
+              TRAVEL
+
+              VACATION
+
+
+
+
+   This property is optional for MIME entities conforming to this
+   content type. The data type for this property is STRING-LIST.
+
+<span level="5" class="header"><a name="section-3.1.6.5">3.1.6.5</a> Classification</span>
+
+   This property is identified by the property name CLASS. This property
+   defines the access classification for the MIME calendar component.
+
+   A calendar event/to-do access classification is only one component of
+   the general security system within a calendar application. It
+   provides a method of capturing the scope of the access the calendar
+   owner intends for information within an individual calendar entry.
+   The access classification of an individual MIME calendaring entity is
+   useful when measured along with the other security components of a
+   calendar system (e.g., user authorization, access rights, access
+   role, etc.). Hence, the semantics of the individual access
+   classifications can not be completely defined by this specification.
+   Additionally, due to the _blind_ nature of most exchange processes
+   using this specification, these entity classifications can not serve
+   as an enforcement statement for a system receiving a MIME calendar
+   object . Rather, they provide a method for capturing the intention of
+   the calendar owner for the access to the MIME calendar object
+   component.
+
+   The following is an example of this property:
+
+     CLASS:PUBLIC
+
+   The property can have the following values:
+
+
+
+
+
+
+
+Dawson/Stenerson                   34               Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+
+
+                Property         Description
+                  Value
+
+
+                 PUBLIC          Indicates
+                                 general,
+                                 public
+                                 access.
+
+                 PRIVATE         Indicates
+                                 restricted,
+                                 private
+                                 access.
+
+              CONFIDENTIAL       Indicates
+                                 very
+                                 restricted,
+                                 confidential
+                                 access.
+
+
+
+
+   The default value for this property is PUBLIC.
+
+   This property is optional for MIME entities conforming to this
+   content type. The data type for this property is STRING.
+
+<span level="5" class="header"><a name="section-3.1.6.6">3.1.6.6</a> Date/Time Created</span>
+
+   This property is identified by the property name DCREATED. This
+   property specifies the date and time that the MIME calendar component
+   was created within the originating calendar system. This is not
+   necessarily the same date and time that the MIME calendar object was
+   created. The date and time value is the local or UTC based time
+   expressed in the complete representation, basic or extended format as
+   specified in ISO 8601. The following is an example of this property:
+
+     DCREATED:19960329T083000-0500
+
+   This property is optional for MIME entities conforming to this
+   content type. The data type for this property is DATE-TIME.
+
+<span level="5" class="header"><a name="section-3.1.6.7">3.1.6.7</a> Date/Time Completed</span>
+
+   This property is identified by the property name COMPLETED. This
+   property defines the date and time that the to-do was actually
+   completed. The date and time value is expressed in the complete
+   representation, basic or extended format as specified in ISO 8601.
+   The time can either be in local or UTC based time. The following is
+   an example of this property:
+
+
+
+Dawson/Stenerson                   35               Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+     COMPLETED:19960401T235959Z
+
+   This property is optional for MIME entities conforming to this
+   content type. The data type for this property is DATE-TIME.
+
+<span level="5" class="header"><a name="section-3.1.6.8">3.1.6.8</a> Description</span>
+
+   This property is identified by the property name DESCRIPTION. This
+   property provides a more complete description of the MIME calendar
+   component, than that provided by the SUMMARY property. The following
+   is an examples of the property with formatted line breaks in the
+   property value:
+
+     DESCRIPTION;ENCODING=QUOTED-PRINTABLE:Meeting to provide technical=
+      review for _Phoenix_ design.=0D=0A=
+     Happy Face Conference Room. Phoenix design team=
+      must attend this meeting. RSVP to team leader.
+
+   The following is an examples of the property with folding of long
+   lines:
+
+     DESCRIPTION:Last draft of the new novel is to be completed
+       for the editor's proof today.
+
+   This property is required for MIME entities conforming to this
+   content type. The data type for this property is STRING. Optionally,
+   the data type may be URL, MID, or CID.
+
+<span level="5" class="header"><a name="section-3.1.6.9">3.1.6.9</a> Display Reminder</span>
+
+   This property is identified by the property name DALARM. The property
+   defines a display reminder for the MIME calendar component. A display
+   reminder is an alarm that is popped up into the user interface or
+   otherwise visually displayed for a calendar component.
+
+   The value for the display reminder consists of the Run Time, or the
+   date and time that the reminder is to be executed; Snooze Time, or
+   the duration of time after the Run Time that the reminder is to be
+   dormant prior to being repeated; Repeat Count, or the number of times
+   that the reminder is to be repeated; and the Display String, or the
+   text to be displayed when the reminder is executed.
+
+   The following is an example of this property:
+
+     DALARM:19960415T235000-0800;PT5M;2;Your Taxes Are Due !!!
+
+   The Reminder properties are primarily provided as a means for
+   allowing the capture of alarm information when accessing a calendar
+   system. It may not be an appropriate property to send in an event or
+   to-do request.
+
+   This property is optional for MIME entities conforming to this
+   content type. The default data type for this property is DALARM.
+   Optionally, the data type may be specified to be CID, MID, or URL.
+
+
+Dawson/Stenerson                   36               Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+<span level="5" class="header"><a name="section-3.1.6.10">3.1.6.10</a>        Due Date/Time</span>
+
+   This property is identified by the property name DUE. This property
+   defines the date and time that the to-do is due to be completed. The
+   date and time value is expressed in the complete representation,
+   basic or extended format as specified in ISO 8601. The time can
+   either be in local or UTC based time. Alternatively, the value may be
+   a duration of time, expressed in the ISO 8601 format as specified in
+   <a href="#section-3.1.3.8">section 3.1.3.8</a>. In this case, the end is relative to the start of
+   the MIME calendar component. The following is an example of this
+   property:
+
+     DUE:19960401T235959Z
+
+   This property is required for MIME entities consisting of a to-do
+   calendar component that conforms to this content type. The default
+   data type for this property is DATE-TIME. Optionally, the data type
+   may be specified as a DURATION.
+
+<span level="5" class="header"><a name="section-3.1.6.11">3.1.6.11</a>        Duration</span>
+
+   This property is identified by the property name DURATION. The
+   property specifies an interval or duration of time. This property can
+   be used with the DTSTART property to specify a relative duration for
+   an event (e.g., event starts at 8:00 am and lasts for one hour). The
+   property can also be used in constructing a free-busy time request
+   (e.g., find free time periods of 15 minute duration, or longer). The
+   following is an example of this property that specifies an interval
+   of time of 1 hour and zero minutes and zero seconds:
+
+     DURATION:PT1H0M0S
+
+   The following is an example of this property that specifies an
+   interval of time of 15 minutes.
+
+     DURATION:PT15M
+
+   This property is optional for MIME entities conforming to this
+   content type. The data type for this property is DURATION.
+
+<span level="5" class="header"><a name="section-3.1.6.12">3.1.6.12</a>        End Date/Time</span>
+
+   This property is identified by the property name DTEND. This property
+   defines the date and time that the event component will end. The date
+   and time value is expressed in the complete representation, basic or
+   extended format as specified in ISO 8601. The time can either be in
+   local or UTC based time. Alternatively, the value may be a duration
+   of time, expressed in the ISO 8601 format as specified in section
+   3.1.3.8. In this case, the end is relative to the start of the MIME
+   calendar component. Events may have an end date/time but no start
+   date/time. In that case, the event does not take up any time. The
+   following is an example of this property:
+
+     DTEND:19960401T235959Z
+
+
+Dawson/Stenerson                   37               Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+   This property is required for MIME entities conforming to this
+   content type. The default data type for this property is DATE-TIME.
+   The data type may alternatively be specified as a DURATION.
+
+<span level="5" class="header"><a name="section-3.1.6.13">3.1.6.13</a>        Exception Date/Times</span>
+
+   This property is identified by the property name EXDATE. This
+   property defines the list of date/time exceptions for a recurring
+   MIME calendar component. The date and time values is expressed in the
+   complete representation, basic format as specified in ISO 8601. The
+   times can either be in local or UTC based time. The following is an
+   example of this property:
+
+     EXDATE:19960402T010000Z;19960403T010000Z;19960404T010000Z
+
+   This property is optional for MIME entities conforming to this
+   content type. The data type for this property is D-T-LIST.
+   Optionally, the data type may be URL; in which case the value is the
+   location where a list of exception dates can be found. This latter
+   case is a useful method for conveying dynamic exceptions dates, such
+   as holidays, for a recurring event or to-do.
+
+<span level="5" class="header"><a name="section-3.1.6.14">3.1.6.14</a>        Exception Rule</span>
+
+   This property is identified by the property name EXRULE. This
+   property defines a rule or repeating pattern for an exception to a
+   recurring MIME calendaring entity, based on the Basic Recurrence Rule
+   Grammar of the [<a href="#ref-XAPIA">XAPIA</a>]. The value for the property is a pattern
+   specification for the recurrence exception. The following are some
+   examples of this property:
+
+     EXRULE:W2 TU TH #2         // Except every other week, on Tuesday
+                                // and Thursday for 4 occurrences
+
+     EXRULE:D1 #10              // Except daily for 10 occurrences
+
+     EXRULE:YM1 6 7 #8          // Except yearly in June and July for 8
+                                // occurrences
+
+   This property is optional for MIME entities conforming to this
+   content type. The data type for this property is RRULE.
+
+<span level="5" class="header"><a name="section-3.1.6.15">3.1.6.15</a>        Last Modified</span>
+
+   This property is identified by the property name LAST-MODIFIED. The
+   property specifies the date and time that the MIME calendar component
+   was last revised. The following is an example of this property:
+
+     LAST-MODIFIED:19960817T133000Z
+
+   This property is optional for MIME entities conforming to this
+   content type. The data type for this property is DATE-TIME.
+
+
+
+
+Dawson/Stenerson                   38               Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+<span level="5" class="header"><a name="section-3.1.6.16">3.1.6.16</a>        Location</span>
+
+   This property is identified by the property name LOCATION. The
+   property defines the intended location for the MIME calendar
+   component.
+
+   The property value may reference a vCard object. This provides a
+   useful mechanism to specify a location in terms of its electronic
+   business card.
+
+   The following are some examples of this property:
+
+     LOCATION:Conference Room - F123, Bldg. 002         // or
+
+     LOCATION;VALUE=URL:http://www.xyzcorp.com/~jsmith.vcf
+
+   This property is optional for MIME entities conforming to this
+   content type. The default data type for this property is STRING.
+   Optionally the data type may URL, MID, or CID.
+
+<span level="5" class="header"><a name="section-3.1.6.17">3.1.6.17</a>        Mail Reminder</span>
+
+   This property is identified by the property name MALARM. The property
+   defines an email address that is to be sent a reminder for the MIME
+   calendar component. A mail reminder is an electronic mail address
+   that will be sent a display string as an alarm for a calendar
+   component.
+
+   The value for the procedure reminder consists of the Run Time, or the
+   date and time that the reminder is to be executed; Snooze Time, or
+   the duration of time after the Run Time that the reminder is to be
+   dormant prior to being repeated; Repeat Count, or the number of times
+   that the reminder is to be repeated; Email Address, or the (<a href="./rfc822">RFC 822</a>)
+   email address that is to be sent the reminder, Subject, or the
+   textual subject of the note, and the Note, or the textual reminder
+   string that is to be sent to the email address.
+
+   The following is an example of this property:
+
+     MALARM:19960416T000000-0500;PT1H;24;IRS@us.gov;My Payment;
+        The Check Is In The Mail!
+
+   The Reminder properties are primarily provided as a means for
+   allowing the capture of alarm information when accessing a calendar
+   system. It may not be an appropriate property to send in an event or
+   to-do request.
+
+   This property is optional for MIME entities conforming to this
+   content type. The default data type for this property is MALARM.
+   Optionally, the data type may be URL, MID, or CID.
+
+
+
+
+
+
+Dawson/Stenerson                   39               Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+<span level="5" class="header"><a name="section-3.1.6.18">3.1.6.18</a>        Number Recurrences</span>
+
+   This property is identified by the property name RNUM. The property
+   defines the number of times the calendar entry will reoccur. The
+   value is equal to the number of recurrences that are specified by the
+   union of the Recurrence Dates, Recurrence Rule, Exception Dates, and
+   Exception Rule property values. The following is an example of this
+   property:
+
+     RNUM:3
+
+   In the event that this value does not match the computed number of
+   recurrences, it will be ignored and the computed number of
+   recurrences will be used.
+
+   This property is optional for MIME entities conforming to this
+   content type. The data type for this property is INTEGER.
+
+<span level="5" class="header"><a name="section-3.1.6.19">3.1.6.19</a>        Priority</span>
+
+   This property is identified by the property name PRIORITY. The
+   property defines the priority for the MIME calendar component. The
+   value is an alphanumeric. A value of zero (ASCII decimal 48)
+   specifies an undefined priority. A value of one (ASCII decimal 49) is
+   the highest priority. A value of two (ASCII decimal 50) is the second
+   highest priority. Subsequent numbers specify a decreasing ordinal
+   priority. The following is an example of this property:
+
+     PRIORITY:2
+
+   This property is optional for MIME entities conforming to this
+   content type. The default data type for this property is STRING.
+   Optionally the data type may be specified to be INTEGER.
+
+<span level="5" class="header"><a name="section-3.1.6.20">3.1.6.20</a>        Procedure Reminder</span>
+
+   This property is identified by the property name PALARM. The property
+   defines a procedure reminder for the MIME calendar component. A
+   procedure reminder is a procedure, or application executable that
+   will be run as an alarm for a calendar component.
+
+   While this property has many useful purposes, implementers should be
+   aware of the security implications of sending a MIME calendaring
+   entity containing this property. The security implications are
+   similar to those associated with active messages within electronic
+   mail.
+
+   The value for the procedure reminder consists of the Run Time, or the
+   date and time that the reminder is to be executed; Snooze Time, or
+   the duration of time after the Run Time that the reminder is to be
+   dormant prior to being repeated; Repeat Count, or the number of times
+   that the reminder is to be repeated; and the Procedure Name, or the
+   path to the procedure to be run when the reminder is executed.
+   Parameters are passed to the procedure by concatenating to the
+
+
+Dawson/Stenerson                   40               Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+   Procedure Name value a Question-Mark (ASCII decimal 63) followed by a
+   string representation of the parameters.
+
+   The following is an example of this property:
+
+     PALARM;VALUE=URL:19960415T235000-0500;PT5M;2;file:///myapps/
+        shockme.exe?HARD
+
+   The Reminder properties are primarily provided as a means for
+   allowing the capture of alarm information when accessing a calendar
+   system. It may not be an appropriate property to send in an event or
+   to-do request.
+
+   This property is optional for MIME entities conforming to this
+   content type. The default data type for this property is PALARM.
+   Optionally, the data type may be URL, MID, or CID.
+
+<span level="5" class="header"><a name="section-3.1.6.21">3.1.6.21</a>        Related To</span>
+
+   This property is identified by the property name RELATED-TO. The
+   property is used to represent relationships or references between
+   this MIME calendar component and another. The property value consists
+   of the persistent, globally unique identifier of another MIME
+   calendar component. This value would be represented in a MIME
+   calendar component by the UID property.
+
+   A linked relationship can be specified by a series of components that
+   each, in turn, refer to their parent component. A group relationship
+   can be specified by a number of components that all refer to one
+   common parent component.
+
+   Changes to a calendar component referenced by this property may
+   impact the related calendar component. For example, if a group event
+   changes its start or end date or time, then the related, dependent
+   events will need to have their start and end dates changed in a
+   corresponding way. This property is intended only to provide
+   information on the relationship of calendar components. It is up to
+   the target calendar system to maintain this relationship.
+
+   The following is an example of this property:
+
+     RELATED-TO:&lt;jsmith.part7.19960817T083000.xyzMail@host3.com&gt;
+
+     RELATED-TO:19960401-080045-4000F192713-0052
+
+   This property is optional for MIME entities conforming to this
+   content type. The default data type for this property is STRING.
+   Optionally, the data type may be URL, MID, or CID.
+
+<span level="5" class="header"><a name="section-3.1.6.22">3.1.6.22</a>        Recurrence Date/Times</span>
+
+   This property is identified by the property name RDATE. This property
+   defines the list of date/times for a recurring MIME calendar
+   component. This property may appear along with the RRULE property to
+
+
+Dawson/Stenerson                   41               Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+   define an aggregate set of repeating occurrences. When they both
+   appear in an iCalendar Object, the recurring events are defined by
+   the union of occurrences defined by both the RDATE and RRULE. The
+   date and time values is expressed in the complete representation,
+   basic format as specified in ISO 8601. The times can either be in
+   local or UTC based time. The number of recurring date/times is
+   specified by the Number Recurrences property. The following is an
+   example of this property:
+
+     RDATE:19960402T010000Z;19960403T010000Z;19960404T010000Z
+
+   This property is optional for MIME entities conforming to this
+   content type. The default data type for this property is D-T-LIST.
+   Optionally, the data type may be URL; in which case the value is the
+   location where a list of recurring dates can be found. This latter
+   case is a useful method for conveying dynamic recurring dates, such
+   as schedules, for a recurring event or to-do.
+
+<span level="5" class="header"><a name="section-3.1.6.23">3.1.6.23</a>        Recurrence Rule</span>
+
+   This property is identified by the property name RRULE. This property
+   defines a rule or repeating pattern for a recurring MIME calendar
+   component, based on the Basic Recurrence Rule Grammar of [<a href="#ref-XAPIA">XAPIA</a>]. The
+   value for the property is a pattern specification for the recurrence.
+   This property may appear along with the RDATE property to define an
+   aggregate set of repeating occurrences. When they both appear in an
+   iCalendar Object, the recurring events are defined by the union of
+   occurrences defined by both the RDATE and RRULE. The following are
+   examples of this property:
+
+     RRULE:W2 TU TH                     // Every other week, on Tuesday
+                                        // and Thursday
+
+     RRULE:D1 #10                       // Daily for 10 occurrences
+
+     RRULE:YM1 6 7 #8                   // Yearly in June and July for 8
+                                        // occurrences
+
+   This property is optional for MIME entities conforming to this
+   content type. The data type for this property is RRULE.
+
+<span level="5" class="header"><a name="section-3.1.6.24">3.1.6.24</a>        Resources</span>
+
+   This property is identified by the property name RESOURCES. This
+   property defines the equipment or resources needed in the MIME
+   calendar component.
+
+   Some of the values that the property may have include the following:
+
+
+
+
+              Some Possible
+
+
+
+Dawson/Stenerson                   42               Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+
+
+              Property Values
+
+
+              CATERING
+
+              CHAIRS
+
+              COMPUTER PROJECTOR
+
+              EASEL
+
+              OVERHEAD PROJECTOR
+
+              SPEAKER PHONE
+
+              TABLE
+
+              TV
+
+              VCR
+
+              VIDEO PHONE
+
+              VEHICLE
+
+
+
+
+   The following is an example of this property:
+
+     RESOURCES:EASEL;PROJECTOR;VCR
+
+   This property is optional for MIME entities conforming to this
+   content type. The default data type for this property is STRING-LIST.
+   The data type may alternatively be specified to be STRING.
+
+<span level="5" class="header"><a name="section-3.1.6.25">3.1.6.25</a>        Response Sequence Number</span>
+
+   This property is identified by the property name RESPONSE-SEQUENCE.
+   This property defines the instance of the MIME calendar component in
+   a revision sequence of responses. This property is needed to properly
+   handle the receipt and processing of a sequence of MIME calendar
+   components that have been delivered out of order. Such is the case
+   for store-and-forward based transports. When a response to an
+   original MIME calendaring entity is created its sequence number is
+   zero (ASCII decimal 48). It is incremented each time it is revised.
+   The following is an example of this property:
+
+     RESPONSE-SEQUENCE:1
+
+   This property is optional for MIME entities conforming to this
+   content type. The data type for this property is INTEGER.
+
+
+Dawson/Stenerson                   43               Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+<span level="5" class="header"><a name="section-3.1.6.26">3.1.6.26</a>        Sequence Number</span>
+
+   This property is identified by the property name SEQUENCE. This
+   property defines the instance of the MIME calendar component in a
+   sequence of revisions. This property is needed to properly handle the
+   receipt and processing of a sequence of MIME calendar components that
+   have been delivered out of order. Such is the case for store-and-
+   forward based transports. When a MIME calendaring entity is created
+   its sequence number is zero (ASCII decimal 48). It is incremented
+   each time it is revised by the OWNER and/or ORGANIZER. The following
+   is an example of this property:
+
+     SEQUENCE:1
+
+   This property is optional for MIME entities conforming to this
+   content type. The data type for this property is INTEGER.
+
+<span level="5" class="header"><a name="section-3.1.6.27">3.1.6.27</a>        Start Date/Time</span>
+
+   This property is identified by the property name DTSTART. This
+   property defines the date and time that the calendar component will
+   start. The date and time value is expressed in the complete
+   representation, basic format as specified in ISO 8601. The time can
+   either be in local or UTC based time. Alternatively, the value may be
+   a duration of time, expressed in the ISO 8601 format as specified in
+   <a href="#section-3.1.3.8">section 3.1.3.8</a>. In this case, the start is relative to another MIME
+   calendar component specified by the RELATED-TO property. Events may
+   have a start date/time but no end date/time. In that case, the event
+   does not take up any time. The following is an example of this
+   property:
+
+     DTSTART:19960401T235959-0600
+
+   This property is optional for MIME entities conforming to this
+   content type. The default data type for this property is DATE-TIME.
+   Optionally, the data type may be DURATION.
+
+<span level="5" class="header"><a name="section-3.1.6.28">3.1.6.28</a>        Status</span>
+
+   This property is identified by the property name STATUS. This
+   property defines the status associated with the MIME calendar
+   component. This property can only be used when the ATTENDEE property
+   is either not supported or not needed. The following is an example of
+   this property:
+
+     STATUS:TENTATIVE
+
+   The property can have the following values:
+
+
+
+
+              Description           Property
+
+
+
+Dawson/Stenerson                   44               Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+
+                                    Value
+
+
+              Indicates to-do       ACCEPTED
+              was accepted
+
+              Indicates event       NEEDS ACTION
+              or to-do
+              requires action
+
+              Indicates event       SENT
+              or to-do was
+              sent out.
+
+              Indicates event       TENTATIVE
+              is tentatively
+              accepted
+
+              Indicates event       CONFIRMED
+              is confirmed
+
+              Indicates event       DECLINED
+              or to-do has
+              been declined
+
+              Indicates to-do       COMPLETED
+              has been
+              completed
+
+              Indicates event       DELEGATED
+              or to-do has
+              been delegated
+
+              Indicates the         CANCELED
+              event or to-do
+              has been
+              canceled and/or
+              this attendee
+              has been
+              removed from
+              the list of
+              attendees.
+
+
+
+
+   The default value for this property is NEEDS ACTION.
+
+   This property is required for MIME entities containing a to-do
+   calendar component conforming to this content type. This property is
+   optional for MIME entities containing an event calendar component
+   conforming to this content type. The data type for this property is
+   STRING.
+
+
+Dawson/Stenerson                   45               Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+<span level="5" class="header"><a name="section-3.1.6.29">3.1.6.29</a>        Summary</span>
+
+   This property is identified by the property name SUMMARY. This
+   property defines a short summary or subject of the MIME calendar
+   component. The following is an example of this property:
+
+     SUMMARY:Department Party
+
+   This property is required for MIME entities conforming to this
+   content type. The data type for this property is STRING.
+
+<span level="5" class="header"><a name="section-3.1.6.30">3.1.6.30</a>        Time Transparency</span>
+
+   This property is identified by the property name TRANSP. This
+   property defines whether the event is transparent to free time
+   searches. The value of this property is a number. A value of zero
+   (ASCII decimal 48) guarantees that the entry will blocks time and
+   will be factored into a free time search. A value of one (ASCII
+   decimal 49) specifies that the entry will not block time and will not
+   be factored into a free time search. Any values greater than _1_ will
+   provide implementation specific transparency semantics. Some
+   implementations may treat values greater than one as non-blocking or
+   transparent events. Other implementations may use the numeric value
+   to provide a layering of levels of transparency. The default value is
+   zero (ASCII decimal 48), the event is not transparent and will block
+   free time searches. The following is an example of this property:
+
+     TRANSP:0
+
+   This property is optional for MIME entities conforming to this
+   content type. The data type for this property is INTEGER.
+
+<span level="5" class="header"><a name="section-3.1.6.31">3.1.6.31</a>        Uniform Resource Locator</span>
+
+   This property is identified by the property name URL. This property
+   defines a Uniform Resource Locator for an Internet location that can
+   be used to obtain real-time information associated with the MIME
+   calendar component. Valid values for this property are a string
+   conforming to [<a href="./rfc1738" title='"./rfc1738"'>RFC 1738</a>]. The following is an example of this
+   property:
+
+     URL:http://abc.com/pub/calendars/jsmith/mytime.or3
+
+   This property is optional for MIME entities conforming to this
+   content type. The data type for this property is URL.
+
+<span level="5" class="header"><a name="section-3.1.6.32">3.1.6.32</a>        Unique Identifier</span>
+
+   This property is identified by the property name UID. This property
+   defines a persistent, globally unique identifier associated with the
+   MIME calendar component. Some examples of forms of unique identifiers
+   would include ISO 9070 formal public identifiers (FPI), X.500
+   distinguished names, machine-generated _random_ numbers with a
+   statistically high likelihood of being globally unique and Uniform
+
+
+Dawson/Stenerson                   46               Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+   Resource Locators (URL). If an URL is specified, it is suggested that
+   the URL reference a service which can provide an updated version of
+   the MIME calendar component. The following is an example of this
+   property:
+
+     UID:19960401-080045-4000F192713-0052
+
+   This property is an important method for group scheduling
+   applications to match calendar entities with later modification or
+   deletion requests. Calendaring and scheduling applications that do
+   not generate this property in MIME calendar components may be
+   limiting their interoperability with other group scheduling
+   applications.
+
+   This property is optional for MIME entities conforming to this
+   content type. The default data type for this property is STRING.
+   Optionally, the data type may be URL, MID, or CID.
+
+<span level="5" class="header"><a name="section-3.1.6.33">3.1.6.33</a>        Non-standard Properties</span>
+
+   The MIME Calendaring and Scheduling Content Type provides a _standard
+   mechanism for doing non-standard things_. This extension support is
+   provided for implementers to _push the envelope_ on the existing
+   version of the specification. Extension properties are specified by
+   property and/or property parameter names that have the initial sub-
+   string of X- (the two character sequence: Capital X character
+   followed by the Dash character). It is recommended that vendors
+   concatenate onto this sentinel an added short sub-string to identify
+   the vendor. This will facilitate readability of the extensions and
+   minimize possible collision of names between different vendors. User
+   agents that support this content type are expected to be able to
+   parse the extension properties and property parameters but may ignore
+   them. The following might be the ABC vendor's extension for an audio-
+   clip form of subject property:
+
+     X-ABC-MMSUBJ;TYPE=WAVE; VALUE=URL: <a href="http://load.noise.org/mysubj.wav">http://load.noise.org/mysubj.wav</a>
+
+   At present, there is no registration authority for names of extension
+   properties and property parameters. The data type for this property
+   is STRING. Optionally, the data type may be any of the other valid
+   data types.
+
+<span level="3" class="header"><a name="section-3.2">3.2</a>     Formal Definition</span>
+
+   The following modified Backus-Naur Notation (BNF) is provided to
+   assist developers in building parsers for the properties of this MIME
+   content type..
+
+     This syntax is written according to the form described in <a href="./rfc822">RFC</a>
+     <a href="./rfc822">822</a>,but it references just this small subset of <a href="./rfc822">RFC 822</a> literals:
+
+     CR         = &lt;ASCII CR, carriage return&gt;  ; (     15,      13.)
+
+     LF         = &lt;ASCII LF, linefeed&gt;         ; (     12,      10.)
+
+
+Dawson/Stenerson                   47               Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+     CRLF       = CR LF
+
+     SPACE      = &lt;ASCII SP, space&gt;            ; (     40,      32.)
+
+     HTAB       = &lt;ASCII HT, horizontal-tab&gt;   ; (     11,       9.)
+
+     All literal property names are valid as upper, lower, or mixed
+     case.
+
+     ws         = 1*(SPACE / HTAB)
+
+        ; _whitespace,_ one or more spaces or tabs
+
+     wsls       = 1*(SPACE / HTAB / CRLF)
+
+        ; whitespace with line separators
+
+     value      = 7bit / 8bit / quoted-printable / base64
+
+        ; The value must be in the encoding type specified for the
+        ; property value.
+
+     7bit       = &lt;7bit us-ascii printable chars, excluding CR LF&gt;
+
+     8bit       = &lt;MIME <a href="./rfc2045">RFC 2045</a> 8-bit text&gt;
+
+     quoted-printable = &lt;MIME <a href="./rfc2045">RFC 2045</a> quoted-printable text&gt;
+
+     base64     = &lt;MIME <a href="./rfc2045">RFC 2045</a> base64 text&gt;
+
+        ; the end of the text is marked with two CRLF sequences
+
+        ; this results in one blank line before the start of the next
+
+        ; property
+
+     word       = &lt;any printable 7bit us-ascii except []=:., &gt;
+
+     vcal_file  = [<a href="#ref-wsls">wsls</a>] vcal [<a href="#ref-wsls">wsls</a>]
+
+     vcal       = _BEGIN_ [<a href="#ref-ws">ws</a>] _:_ [<a href="#ref-ws">ws</a>] _VCALENDAR_ [<a href="#ref-ws">ws</a>]
+                1*CRLF
+
+                calprop calentities [<a href="#ref-ws">ws</a>] *CRLF
+
+                _END_ [<a href="#ref-ws">ws</a>] _:_ [<a href="#ref-ws">ws</a>] _VCALENDAR_ [<a href="#ref-ws">ws</a>] 1*CRLF
+
+     calentities = calentities *CRLF calentity
+
+                / calentity
+
+     calentity  = evententity
+
+                / todoentity
+
+
+Dawson/Stenerson                   48               Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+     evententity = _BEGIN_ [<a href="#ref-ws">ws</a>] _:_ [<a href="#ref-ws">ws</a>] _VEVENT_ [<a href="#ref-ws">ws</a>] 1*CRLF
+
+                entprops [<a href="#ref-ws">ws</a>] *CRLF
+
+                _END_ [<a href="#ref-ws">ws</a>] _:_ [<a href="#ref-ws">ws</a>] _VEVENT_ [<a href="#ref-ws">ws</a>] 1*CRLF
+
+     todoentity = _     _
+                   BEGIN  [<a href="#ref-ws">ws</a>] _:_ [<a href="#ref-ws">ws</a>] _VTODO_ [<a href="#ref-ws">ws</a>] 1*CRLF
+
+                entprops [<a href="#ref-ws">ws</a>] *CRLF
+
+                _END_ [<a href="#ref-ws">ws</a>] _:_ [<a href="#ref-ws">ws</a>] _VTODO_ [<a href="#ref-ws">ws</a>] 1*CRLF
+
+     calprops   = calprops *CRLF calprop
+
+                / calprop
+
+     calprop    = _PROFILE_
+
+                  [<a name="ref-parms" id="ref-parms">parms</a>] _:_ value CRLF
+
+                / _DAYLIGHT_
+
+                  [<a name="ref-params" id="ref-params">params</a>] _:_ value CRLF
+
+                / _CALENDAR_
+
+                  [<a name="ref-params" id="ref-params">params</a>] _:_ _GREGORIAN_ CRLF
+
+                / _GEO_
+
+                  [<a name="ref-params" id="ref-params">params</a>] _:_ value CRLF
+
+                / _PRODID_
+
+                  [<a name="ref-params" id="ref-params">params</a>] _:_ value CRLF
+
+                / _TZ_
+
+                  [<a name="ref-params" id="ref-params">params</a>] _:_ value CRLF
+
+                / _VERSION_ _:_ _1.0_ CRLF
+
+        ; The VERSION calendar property MUST appear in the MIME Calendar
+        ; Object.
+
+     entprops   = entprops *CRLF entprop
+
+                / entprop
+
+     entprop    = [<a href="#ref-ws">ws</a>] simprop
+
+                  [<a name="ref-params" id="ref-params">params</a>] _:_ value CRLF
+
+                / [<a href="#ref-ws">ws</a>] _AALARM_
+
+
+Dawson/Stenerson                   49               Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+                  [<a name="ref-params" id="ref-params">params</a>] _:_ aalarmparts CRLF
+
+                / [<a href="#ref-ws">ws</a>] _CATEGORIES_
+
+                  [<a name="ref-params" id="ref-params">params</a>] _:_ 1*catvals CRLF
+
+                / [<a href="#ref-ws">ws</a>] _CLASS_
+
+                  [<a name="ref-params" id="ref-params">params</a>] _:_ classvals CRLF
+
+                / [<a href="#ref-ws">ws</a>] _DALARM_
+
+                  [<a name="ref-params" id="ref-params">params</a>] _:_ dalarmparts CRLF
+
+                / [<a href="#ref-ws">ws</a>] _EXDATE_
+
+                  [<a name="ref-params" id="ref-params">params</a>] _:_ xdatevals CRLF
+
+                / [<a href="#ref-ws">ws</a>] _MALARM_
+
+                  [<a name="ref-params" id="ref-params">params</a>] _:_ malarmparts CRLF
+
+                / [<a href="#ref-ws">ws</a>] _PALARM_
+
+                  [<a name="ref-params" id="ref-params">params</a>] _:_ palarmparts CRLF
+
+                / [<a href="#ref-ws">ws</a>] _RDATE_
+
+                  [<a name="ref-params" id="ref-params">params</a>] _:_ rdatevals CRLF
+
+                / [<a href="#ref-ws">ws</a>] _RESOURCES_
+
+                  [<a name="ref-params" id="ref-params">params</a>] _:_ 1*resvals CRLF
+
+                / [<a href="#ref-ws">ws</a>] _STATUS_
+
+                  [<a name="ref-params" id="ref-params">params</a>] _:_ statvals CRLF
+
+     simprop    = _ATTACH_ / _ATTENDEE_ / _DCREATED_ / _COMPLETED_
+
+                / _DESCRIPTION  /
+                              _   _DTSTART_ / _DUE_ / _DTEND_ / _EXRULE_
+
+                / _LAST-MODIFIED_ / _LOCATION_ / _RNUM_ / _PRIORITY_
+
+                / _RELATED-TO_ / _RESPONSE-SEQUENCE_ / _RRULE_
+
+                / _SEQUENCE_ / _SUMMARY_ / _TRANSP_ / _URL_ / _UID_
+
+                / _X-_ word
+
+     aalarmparts        = 0*3(strnosemi _;_) strnosemi
+
+        ; runTime, snoozeTime, repeatCount, audioContent
+
+
+
+Dawson/Stenerson                   50               Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+     catvals    = _APPOINTMENT_ / _BUSINESS_ / _EDUCATION_ / _HOLIDAY_
+
+                / _MEETING_ / _MISCELLANEOUS_ / _NOT-IN-OFFICE_
+
+                / _NON-WORKING-HOURS_ / _PERSONAL_ / _PHONE CALL_
+
+                / _SICK DAY_ / _SPECIAL OCCASION_ / _TRAVEL_
+
+                / _VACATION_ / _X-_ word / value
+
+     classvals  = _PUBLIC_ / _PRIVATE_ / _CONFIDENTIAL_ / _X-_ word
+
+                 / value
+
+     dalarmparts        = 0*3(strnosemi _;_) strnosemi
+
+        ; runTime, snoozeTime, repeatCount, displayString
+
+     malarmparts        = 0*5(strnosemi _;_) strnosemi
+
+        ; runTime, snoozeTime, repeatCount, addressString,
+        ; subjectstring, noteString
+
+     palarmparts        = 0*3(strnosemi _;_) strnosemi
+
+        ; runTime, snoozeTime, repeatCount, procedureName
+
+     rdatevals  = 1*value
+
+        ; One or more date/time values
+
+     resvals    = _CATERING_ / _CHAIRS_ / _EASEL_ / _PROJECTOR_ / _VCR_
+
+                / _VEHICLE_ / _X-_ word / value
+
+     statvals   = _ACCEPTED_ / _NEEDS ACTION_ / _SENT_ / _TENTATIVE_
+
+                / _CONFIRMED_ / _DECLINED_ / _COMPLETED_ / _DELEGATED_
+
+                / _X-_ word / value
+
+     params     = _;_ [<a href="#ref-ws">ws</a>] paramlist
+
+     paramlist  = paramlist [<a href="#ref-ws">ws</a>] _;_ [<a href="#ref-ws">ws</a>] param
+
+                / param
+
+     param      = _TYPE_ [<a href="#ref-ws">ws</a>] _=_ [<a href="#ref-ws">ws</a>] ptypeval
+
+                / [_VALUE_ [<a href="#ref-ws">ws</a>] _=_ [<a href="#ref-ws">ws</a>]] pvalueval
+
+                / [_ENCODING_ [<a href="#ref-ws">ws</a>] _=_ [<a href="#ref-ws">ws</a>]] pencodingval
+
+                / _CHARSET_ [<a href="#ref-ws">ws</a>] _=_ [<a href="#ref-ws">ws</a>] charsetval
+
+
+Dawson/Stenerson                   51               Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+                / _DATATYPE_ [<a href="#ref-ws">ws</a>] _=_ [<a href="#ref-ws">ws</a>] dtypeval
+
+                / _LANGUAGE_ [<a href="#ref-ws">ws</a>] _=_ [<a href="#ref-ws">ws</a>] langval
+
+                / _MEMBER_ [<a href="#ref-ws">ws</a>] _=_ [<a href="#ref-ws">ws</a>] &lt;<a href="./rfc822">RFC 822</a> address specification&gt;
+
+                / _ROLE_ [<a href="#ref-ws">ws</a>] _=_ [<a href="#ref-ws">ws</a>] roleval
+
+                / _STATUS_ [<a href="#ref-ws">ws</a>] _=_ [<a href="#ref-ws">ws</a>] statuval
+
+                / _X-_ word [<a href="#ref-ws">ws</a>] _=_ [<a href="#ref-ws">ws</a>] word
+
+                / knowntype
+
+     ptypeval   = knowntype / attendtype / _X-_ word
+
+     knowntype  = _     _
+                   BASIC  / _WAVE_ / _X-_ word / value
+
+     attendtype = _INDIVIDUAL_ / _GROUP_ / _RESOURCE_ / _UNKNOWN_
+
+     pvalueval  = _INLINE_ / _URL_ / _CONTENT-ID_ / _CID_ /
+
+                / _MESSAGE-ID_ / _MID_ / _X-_ word
+
+     pencodingval = _7BIT_ /  8BIT
+                             _    _ / _QUOTED-PRINTABLE_ / _BASE64_
+
+                / _X-_ word
+
+     charsetval = &lt;a character set string as defined in <a href="./rfc2046">RFC 2046</a>&gt;
+
+     dtypeval   = _AALARM_ / _BOOLEAN_ / _CID_ / _DALARM_ / _DATE-TIME_
+
+                / _DST-RULE_ / _D-T-LIST_ / _DURATION_ / _FLOAT_
+
+                / _FLOAT-LIST_   _
+                               /  INTEGER_ / _INTEGER-LIST_ / _MALARM_
+
+                / _MID  / _
+                      _    PALARM_ /  <a href="./rfc822">RFC822</a>-ADDRESS
+                                     _              _ / _RRULE_
+
+                / _STRING_ / _STRING-LIST_ / _TIME-OFFSET_ / _URL_
+
+                / _X-_ word
+
+     langval    = &lt;a language string as defined in <a href="./rfc1766">RFC 1766</a>&gt;
+
+     roleval    = _ATTENDEE_ / _ORGANIZER_ / _OWNER_ / _X-_ word
+
+     statusval  = _ACCEPTED_ / _            _ /
+                                NEEDS ACTION    _SENT_ / _TENTATIVE_
+
+                / _CONFIRMED_ / _DECLINED_ / _COMPLETED_ / _DELEGATED_
+
+                / _X-_ word
+
+     strnosemi  = *(*nonsemi (_\;_ / _\_ CRLF)) *nonsemi
+
+
+
+Dawson/Stenerson                   52               Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+        ; To include a semicolon in this string, it must be escaped
+
+        ; with a _\_ character.
+
+     nonsemi    = &lt;any non-control ASCII except _;_&gt;
+
+<span level="3" class="header"><a name="section-3.3">3.3</a>     Basic Recurrence Rule Grammar</span>
+
+   The specification of recurring events can be simplified by the use of
+   a grammar or rule notation. This specification makes use of the Base
+   Recurrence Rule Grammar from the [<a href="#ref-XAPIA">XAPIA</a>].
+
+   A recurrence rule is a string or clear-text encoding of a recurrence
+   specification. A recurrence rule is composed of several components. A
+   rule begins with a frequency which describes the type of repeating
+   event (e.g., daily, weekly, etc.). This is followed by an interval
+   which indicates how often the frequency repeats (i.e., daily, every
+   third day, etc.). This can be followed by optional frequency modifier
+   information and either an end date or a duration.
+
+   Below is the form of a typical rule. This example causes events to be
+   generated every other week on Tuesday and Thursday, for 8
+   occurrences:
+
+     W2 TU TH #4
+
+   Where, W is the Frequency, 2 is the Interval, TU and TH are the
+   optional Frequency Modifiers, and #4 is the Duration.
+
+   The basic recurrence rule grammar supports six types of repetition.
+   The six types follow the same form with only the frequency name and
+   optional modifier information changing from one type of frequency to
+   the next.
+
+<span level="4" class="header"><a name="section-3.3.1">3.3.1</a>   Daily Rule</span>
+
+   The daily rule is used for specifying repeating events based on an
+   interval of a day or more. These can range from every day to every
+   200th day and beyond. The daily rule begins with the letter D
+   followed by an interval (representing days) and an optional duration
+   or end date.
+
+   Some examples follow:
+
+     Daily for 10 occurrences:
+        D1 #10
+
+     Daily until 12/24/94:
+        D1 19941224T000000Z
+
+     Every other day - forever:
+        D2 #0
+
+
+
+
+Dawson/Stenerson                   53               Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+     Every 10 days, 5 occurrences:
+        D10 #5
+
+<span level="4" class="header"><a name="section-3.3.2">3.3.2</a>   Weekly Rule</span>
+
+   The weekly rule is used for specifying repeating events based on an
+   interval of a week or more. The basic weekly rule has the same form
+   as the daily rule except that the rule begins with a W and can
+   contain an optional list of weekdays the events are generated on. For
+   weekly rules, the interval represents weeks. Some examples follow:
+
+     Weekly for 10 occurrences:
+        W1 #10
+
+     Weekly until 12/24/94:
+        W1 19941224T000000Z
+
+     Every other week - forever:
+        W2 #0
+
+     Weekly on Tuesday and
+     Thursday for 5 weeks:
+        W1 TU TH #5
+
+     Every other week on Monday Wednesday and Friday until 12/24/94:
+        W2 MO WE FR 19941224T000000Z
+
+<span level="4" class="header"><a name="section-3.3.3">3.3.3</a>   Monthly Rule</span>
+
+   The monthly rule is used for specifying repeating events base on an
+   interval of a month or more. There are two types of monthly
+   recurrence rules. One for by-position and one for by-day. The by-
+   position rule allows weekdays in the month to be specified in
+   relation to their occurrence in the month. An example would be to
+   specify the third Sunday of the month or the last Friday of the
+   month. An occurrence specifier may be used in monthly by-position
+   rules. The occurrence specifiers control which occurrence of a
+   weekday in a month an event occurs on:
+
+     1+, 2+, ... 5+ for the first occurrence, second, ...fifth
+     occurrence of the month.
+
+     1-, 2-, ... 5- for the last occurrence, second to last occurrence,
+     etc.
+
+   A 2+ FR SA would indicate the second occurrence of Friday and
+   Saturday in the month. A 1- MO would indicate the first occurrence of
+   Monday working from the end of the month backwards (i.e., the last
+   occurrence). A 2- MO would be the second to the last Monday of the
+   month.
+
+   A by-day rule allows actual day numbers to be specified such as the
+   12th day or 29th day.
+
+
+
+Dawson/Stenerson                   54               Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+   The by-position rule begins with a MP and the by-day rule begins with
+   a MD. The interval in monthly rules represents months. Some examples
+   follow:
+
+     Monthly on the 1st Friday for ten occurrences:
+        MP1 1+ FR #10
+
+     Monthly on the 1st Friday until 12/24/94:
+        MP1 1+ FR 19941224T000000Z
+
+     Every other month on the 1st and last
+     Sunday of the month for 10 occurrences:
+        MP2 1+ SU 1- SU #10
+
+     Every six months on the 2nd Monday
+     through Friday for 10 occurrences:
+        MP6 2+ MO TU WE TH FR #10
+
+     Monthly on the second last Monday of the month for 6 months:
+
+        MP1 2- MO #6
+
+     Monthly on the third to the last day of the month, forever:
+
+        MD1 3- #0
+
+     Monthly on the 2nd and 15th of the month for 10 occurrences:
+        MD1 2 15 #10
+
+     In the next example LD refers to _LastDay_ in a monthly recurrence
+     rule. Monthly on the 1st and last day of the month for 10
+     occurrences:
+        MD1 1 LD #10 or MD1 1 1- #10
+
+     Every 18 months on the 10th through 15th of the month for 10
+     occurrences:
+        MD18 10 11 12 13 14 15 #10
+
+     Monthly on the second to the last day for 5 months. So, if the
+     start date is August 1996, the event would repeat on 8/30/96,
+     9/29/96, 10/30/96, 11/29/96, and 12/30/96:
+        MD1 2- #5
+
+<span level="4" class="header"><a name="section-3.3.4">3.3.4</a>   Yearly Rule</span>
+
+   The yearly rule is used for specifying repeating events based on an
+   interval of a year or more. There are two types of yearly recurrence
+   rules. One for by-month and one for by-day. The by-month rule allows
+   specific months out of the year to be specified. The by-day allows
+   specific days to be specified. In the by-month rule, the day in the
+   month the rule is to occur on is determined from the initial
+   appointment.
+
+
+
+
+Dawson/Stenerson                   55               Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+   The by-month rule begins with a YM and the by-day rule begins with a
+   YD. The interval in yearly rules represents years. Some examples
+   follow:
+
+     Yearly in June and July for 10 occurrences:
+        YM1 6 7 #10
+
+     Every other year on January, Feb, and March for 10 occurrences:
+        YM2 1 2 3 #10
+
+     Every 3rd year on the 1st, 100th and 200th day for 10 occurrences:
+        YD3 1 100 200 #10
+
+<span level="4" class="header"><a name="section-3.3.5">3.3.5</a>   Grammar</span>
+
+        [Editor's Note: The format of this BNF will be changed to the
+        <a href="./rfc822">RFC 822</a> ABNF in the next version of the draft.]
+
+     {}         0 or more
+
+     []         0 or 1
+
+     start      ::= &lt;daily&gt; [&lt;enddate&gt;] |
+
+                 &lt;weekly&gt; [&lt;enddate&gt;] |
+
+                 &lt;monthlybypos&gt; [&lt;enddate&gt;] |
+
+                 &lt;monthlybyday&gt; [&lt;enddate&gt;] |
+
+                 &lt;yearlybymonth&gt; [&lt;enddate&gt;] |
+
+                 &lt;yearlybyday&gt; [&lt;enddate&gt;]
+
+     digit ::= &lt;0|1|2|3|4|5|6|7|8|9&gt;
+
+     digits ::= &lt;digit&gt; {&lt;digits&gt;}
+
+     enddate    ::= ISO 8601_date_time value(e.g., 19940712T101530Z)
+
+     interval   ::= &lt;digits&gt;
+
+     duration   ::= #&lt;digits&gt;
+
+     lastday    ::= LD
+
+     plus               ::= +
+
+     minus              ::= -
+
+     daynumber          ::= &lt;1-31&gt; [&lt;plus&gt;|&lt;minus&gt;]| &lt;lastday&gt;
+
+     daynumberlist      ::= daynumber {&lt;daynumberlist&gt;}
+
+
+
+Dawson/Stenerson                   56               Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+     month              ::= &lt;1-12&gt;
+
+     monthlist  ::= &lt;month&gt; {&lt;monthlist&gt;}
+
+     day                ::= &lt;1-366&gt;
+
+     daylist            ::= &lt;day&gt; {&lt;daylist&gt;}
+
+     occurrence ::= &lt;1-5&gt;&lt;plus&gt; | &lt;1-5&gt;&lt;minus&gt;
+
+     weekday    ::= &lt;SU|MO|TU|WE|TH|FR|SA&gt;
+
+     weekdaylist        ::= &lt;weekday&gt; {&lt;weekdaylist&gt;}
+
+     occurrenceweekday  ::= [&lt;occurrence&gt;] &lt;weekday&gt;
+
+     occurenceweekdaylist       ::= &lt;occurenceweekday&gt;
+
+        {&lt;occurenceweekdaylist&gt;}
+
+     daily              ::= D&lt;interval&gt; [&lt;duration&gt;]
+
+     weekly             ::= W&lt;interval&gt; [&lt;weekdaylist&gt;] [&lt;duration&gt;]
+
+     monthlybypos       ::= MP&lt;interval&gt; [&lt;occurrenceweekdaylist&gt;]
+
+        [&lt;duration&gt;]
+
+     monthlybyday       ::= MD&lt;interval&gt; [&lt;daynumberlist&gt;] [&lt;duration&gt;]
+
+     yearlybymonth      ::= YM&lt;interval&gt; [&lt;monthlist&gt;] [&lt;duration&gt;]
+
+     yearlybyday        ::= YD&lt;interval&gt; [&lt;daylist&gt;] [&lt;duration&gt;]
+
+<span level="4" class="header"><a name="section-3.3.6">3.3.6</a>   Grammar Glossary</span>
+
+   enddate      Controls when a repeating event terminates. The enddate
+                is the last time an event can occur.
+
+   Interval     Defines the frequency in which a rule repeats.
+
+   duration     Controls the number of events a rule generates.
+
+   Lastday      Can be used as a replacement to daynumber to indicate
+   the last day of the month.
+
+   daynumber    A number representing a day of the month.
+
+   month                A number representing a month of the year.
+
+   day          A number representing a day of the year.
+
+   occurrence   Controls which week of the month a particular weekday
+   event occurs.
+
+
+Dawson/Stenerson                   57               Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+   weekday      A symbol representing a day of the week.
+
+   daily                Defines a rule that repeats on a daily basis.
+
+   weekly               Defines a rule that repeats on a weekly basis.
+
+   monthlybypos Defines a rule that repeats on a monthly basis on a
+   relative day and week.
+
+   monthlybyday Defines a rule that repeats on a monthly basis on an
+   absolute day.
+
+   yearlybymonth        Defines a rule that repeats on specific months
+   of the year.
+
+   yearlybyday  Defines a rule that repeats on specific days of the
+   year.
+
+<span level="4" class="header"><a name="section-3.3.7">3.3.7</a>   Policies</span>
+
+   1.
+     The duration portion of a rule defines the total number of events
+     the rule generates, including the first event.
+
+   2.
+     Information, not contained in the rule, necessary to determine the
+     next event time and date is derived from the Start Time entry
+     attribute.
+
+   3.
+     If an end date and a duration is specified in the rule, the
+     recurring event ceases when the end date is reached or the number
+     of events indicated in the duration occur; whichever comes first.
+
+   4.
+     If the duration or an end date is not established in the rule
+     (e.g., D4) the event occurs twice. That is D4 is equivalent to D4
+     #2.
+
+   5.
+     A duration of #0 means repeat this event forever.
+
+   6.
+     Using the occurrence specifier 5+ (e.g. 5th Friday) or 5- (e.g.
+     5th from last Friday) in a month that does not contain 5 weeks
+     does not generate an event and thus does not count against the
+     duration. The same applies to providing a day of the month that
+     does not occur in the month. For example the 30th or 31st .
+
+   7.
+     The start time and date of an entry must be synchronized with one
+     of the repeating events defined by its recurrence rule. The
+     following is not allowed:
+
+        Initial Appointment Date:       7/1/94 (Friday)
+        Recurrence Rule:                W1 MO TH #5
+
+     The following is acceptable:
+
+        Initial Appt Date:      7/1/94 (Friday)
+        Recurrence Rule:                W1 MO FR #5 or W1 #5
+
+
+Dawson/Stenerson                   58               Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+   8.
+     If the optional &lt;occurrencelist&gt; and &lt;weekdaylist&gt; information is
+     missing from a &lt;monthlybypos&gt; occurrence the information is
+     derived from the entry attributes. The &lt;occurrence&gt; used in the
+     recurring event is a count from the beginning of the month to the
+     entry date and the &lt;weekday&gt; used is the day of the week the entry
+     is scheduled to occur on.
+
+   9.
+     If the &lt;monthlybypos&gt; occurrence or &lt;monthlybyday&gt; occurrence does
+     not list a week day (e.g., SU or day 10) in the rule, the week day
+     is established from the entry attribute information. As an example
+     the rule MP1 #3 used in an entry with a start date of 7/20/94
+     (which is the third Wednesday of the month) repeats on 8/17/94
+     which is the third Wednesday of the month.
+
+<span level="2" class="header"><a name="section-4">4</a>.      Registration of Content Type Profiles</span>
+
+   This section defines procedures by which usage profiles for the MIME
+   Calendaring and Scheduling Content Type are registered with the IANA
+   and made available to the Internet community. Note that non-IANA
+   profiles may be used by bilateral agreement, provided the associated
+   profile names follow the "X-" convention defined above in section
+   3.1.6.33.
+
+   The procedures defined here are designed to allow public comment and
+   review of new profiles, while posing only a small impediment to the
+   definition of new profiles.
+
+   Registration of a new profile is accomplished by the following steps.
+
+<span level="3" class="header"><a name="section-4.1">4.1</a>     Define the profile</span>
+
+   A profile is defined by completing the following template.
+
+     To: ietf-calendar@imc.org
+
+     Subject: Registration of text/calendar MIME profile XXX
+
+     Profile name:
+
+     Profile purpose:
+
+     Profile type-subtype:
+
+     Profile special notes (optional):
+
+     Intended usage: (one of COMMON, LIMITED USE or OBSOLETE)
+
+   The explanation of what goes in each field in the template follows.
+
+   Profile name: The name of the profile as it will be generally
+   referred to in public. This name is required in the profile.
+
+
+
+
+
+Dawson/Stenerson                   59               Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+   Profile purpose: The purpose of the profile (e.g., to schedule
+   document management updates, etc.). Give a short but clear
+   description. This description is required in the profile.
+
+   Profile type-subtype: The type-subtypes of the profile as they will
+   appear in the text/calendar MIME Content-Type Profile parameter. This
+   list of type-subtype values is required in the profile.
+
+   Profile properties: The list of MIME Calendaring and Scheduling
+   Content Type properties associated with the profile. This list of
+   properties that are included in the profile. If a property is
+   required by the profile, it should noted in this section. Other types
+   not mentioned in the profile definition may also be present. Note
+   that any new properties referenced by the profile must be defined
+   separately as described in section .
+
+   Profile special notes: Any special notes about the profile, how it is
+   to be used, etc. This section is not required in the profile.
+
+<span level="3" class="header"><a name="section-4.2">4.2</a>     Post the profile definition</span>
+
+   The profile description must be posted to the IETF Calendaring and
+   Scheduling Working Group discussion list, ietf-calendar@imc.org.
+
+<span level="3" class="header"><a name="section-4.3">4.3</a>     Allow a comment period</span>
+
+   Discussion on the new profile must be allowed to take place on the
+   list for a minimum of two weeks. Consensus must be reached on the
+   profile before submitting the profile for approval.
+
+<span level="3" class="header"><a name="section-4.4">4.4</a>     Submit the profile for approval</span>
+
+   Once the two-week comment period has elapsed, and the proposer is
+   convinced consensus has been reached on the profile, the registration
+   application should be submitted to the Profile Reviewer for approval.
+
+   The Profile Reviewer is appointed to the Application Area Directors
+   and may either accept or reject the profile registration. An accepted
+   registration should be passed on by the Profile Reviewer to the IANA
+   for inclusion in the official IANA profile registry. The registration
+   may be rejected for any of the following reasons. 1) Insufficient
+   comment period; 2) Consensus not reached; 3) Technical deficiencies
+   raised on the list or elsewhere have not been addressed. The Profile
+   Reviewer's decision to reject a profile may be appealed by the
+   proposer to the IESG, or the objections raised can be addressed by
+   the proposer and the profile resubmitted.
+
+<span level="3" class="header"><a name="section-4.5">4.5</a>     Profile Change Control</span>
+
+   Existing profiles may be changed using the same process by which they
+   were registered.
+
+   1.
+     Define the change
+
+
+
+Dawson/Stenerson                   60               Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+   2.
+     Post the change
+
+   3.
+     Allow a comment period
+
+   4.
+     Submit the profile for approval
+
+   Note that the original author or any other interested party may
+   propose a change to an existing profile, but that such changes should
+   only be proposed when there are serious omissions or errors in the
+   published specification. The Profile Reviewer may object to a change
+   if it is not backwards compatible, but is not required to do so.
+
+   Profile definitions can never be deleted from the IANA registry, but
+   profiles which are no longer believed to be useful can be declared
+   OBSOLETE by a change to their "intended use" field.
+
+<span level="3" class="header"><a name="section-4.6">4.6</a>     Registration of New Content Type Properties</span>
+
+   This section defines procedures by which new properties for the MIME
+   Calendaring and Scheduling Content Type are registered with the IANA.
+   Note that non-IANA properties may be used by bilateral agreement,
+   provided the associated properties names follow the "X-" convention
+   defined above in <a href="#section-3.1.6.33">section 3.1.6.33</a>.
+
+   The procedures defined here are designed to allow public comment and
+   review of new properties, while posing only a small impediment to the
+   definition of new properties.
+
+   Registration of a new property is accomplished by the following
+   steps.
+
+<span level="4" class="header"><a name="section-4.6.1">4.6.1</a>   Define the property</span>
+
+   A property is defined by completing the following template.
+
+     To: ietf-calendar@imc.org
+
+     Subject: Registration of text/calendar MIME property XXX
+
+     Property name:
+
+     Property purpose:
+
+     Property data type(s):
+
+     Property encoding:
+
+     Property special notes (optional):
+
+     Intended usage: (one of COMMON, LIMITED USE or OBSOLETE)
+
+   The meaning of each field in the template is as follows.
+
+
+
+
+Dawson/Stenerson                   61               Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+   Property name: The name of the property, as it will appear in the
+   body of an text/calendar MIME Content-Type "property: value" line to
+   the left of the colon ":".
+
+   Property purpose: The purpose of the property (e.g., to indicate a
+   delegate for the event or to-do, etc.). Give a short but clear
+   description.
+
+   Property data type(s): Any of the valid data types for the property
+   value needs to be specified. The default data type also needs to be
+   specified. If a new data type is specified, it needs to be declared
+   in this section.
+
+   Property encoding: The encodings permitted for the property value.
+   This description must be precise and must not violate the general
+   encoding rules defined in this document.
+
+   Property special notes: Any special notes about the property, how it
+   is to be used, etc.
+
+<span level="4" class="header"><a name="section-4.6.2">4.6.2</a>   Post the Property definition</span>
+
+   The property description must be posted to the new property
+   discussion list, ietf-calendar@imc.org.
+
+<span level="4" class="header"><a name="section-4.6.3">4.6.3</a>   Allow a comment period</span>
+
+   Discussion on the new property must be allowed to take place on the
+   list for a minimum of two weeks. Consensus must be reached on the
+   property before proceeding to the next step.
+
+<span level="4" class="header"><a name="section-4.6.4">4.6.4</a>   Submit the property for approval</span>
+
+   Once the two-week comment period has elapsed, and the proposer is
+   convinced consensus has been reached on the property, the
+   registration application should be submitted to the Profile Reviewer
+   for approval. The Profile Reviewer is appointed to the Application
+   Area Directors and may either accept or reject the property
+   registration. An accepted registration should be passed on by the
+   Profile Reviewer to the IANA for inclusion in the official IANA
+   profile registry. The registration may be rejected for any of the
+   following reasons. 1) Insufficient comment period; 2) Consensus not
+   reached; 3) Technical deficiencies raised on the list or elsewhere
+   have not been addressed. The Profile Reviewer's decision to
+
+   reject a property may be appealed by the proposer to the IESG, or the
+   objections raised can be addressed by the proposer and the property
+   resubmitted.
+
+<span level="3" class="header"><a name="section-4.7">4.7</a>     Content Type Property Change Control</span>
+
+   Existing properties may be changed using the same process by which
+   they were registered.
+
+
+
+Dawson/Stenerson                   62               Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+        1.
+          Define the change
+
+        2.
+          Post the change
+
+        3.
+          Allow a comment period
+
+        4.
+          Submit the property for approval
+
+   Note that the original author or any other interested party may
+   propose a change to an existing property, but that such changes
+   should only be proposed when there are serious omissions or errors in
+   the published specification. The Profile Reviewer may object to a
+   change if it is not backwards compatible, but is not required to do
+   so.
+
+   Property definitions can never be deleted from the IANA registry, but
+   properties which are no longer believed to be useful can be declared
+   OBSOLETE by a change to their "intended use" field.
+
+<span level="2" class="header"><a name="section-5">5</a>.      File extension</span>
+
+   The file extension of _vcs_ is to be used to designate a file
+   containing calendaring and scheduling information consistent with
+   this MIME content type.
+
+<span level="2" class="header"><a name="section-6">6</a>.      Macintosh File Type Code</span>
+
+   The file type code of _vcal_ is to be used in Apple MacIntosh
+   operating system environments to designate a file containing
+   calendaring and scheduling information consistent with this MIME
+   media type.
+
+<span level="2" class="header"><a name="section-7">7</a>.      Bibliography</span>
+
+   The following document are referred to within this document.
+
+   [ISO 8601] ISO 8601, Data elements and interchange formats_
+   Information interchange_Representation of dates and times,
+   International Organization for Standardization, June, 1988. This
+   standard is also addressed by the Internet Draft document
+   <a href="ftp://ds.internic.net/internet-drafts/draft-newman-datetime-00.txt">ftp://ds.internic.net/internet-drafts/draft-newman-datetime-00.txt</a>.
+
+   [ISO 9070] ISO/IEC 9070, Information Technology_SGML Support
+   Facilities_Registration Procedures for Public Text Owner Identifiers,
+   Second Edition, International Organization for Standardization,
+   April, 1991.
+
+   [<a name="ref-MIME-REG" id="ref-MIME-REG">MIME-REG</a>] Freed, N.,  Postel,  J.,  "Multipurpose  Internet  Mail
+   Extensions (MIME) - Part Four: Registration Procedures", Internet-
+   Draft <a href="./draft-ietf-822ext-mime-reg-02.txt">draft-ietf-822ext-mime-reg-02.txt</a>, December 1995.
+
+   [<a name="ref-RFC 1738" id="ref-RFC 1738">RFC 1738</a>] T. Berners-Lee and L. Masinter , _Universal Resource
+   Locator_, <a href="./rfc1738">RFC 1738</a>, Xerox Corporation, University of Minnesota,
+   December 1994.
+
+
+Dawson/Stenerson                   63               Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+   [<a name="ref-RFC 1766" id="ref-RFC 1766">RFC 1766</a>] H. Alvestrand, _Tags for the Identification of Languages_,
+   UNINETT, <a href="./rfc1766">RFC 1766</a>, March 1995.
+
+   [<a name="ref-RFC 2045" id="ref-RFC 2045">RFC 2045</a>] Borenstein, N., and N. Freed, "Multipurpose Internet Mail
+   Extensions (MIME) Part One: Format of Internet Message Bodies", <a href="./rfc2045">RFC</a>
+   <a href="./rfc2045">2045</a>, November 1996.
+
+   [<a name="ref-RFC 2046" id="ref-RFC 2046">RFC 2046</a>] Borenstein N., and N. Freed, "Multipurpose Internet Mail
+   Extensions (MIME) Part Two: Media Types", <a href="./rfc2046">RFC 2046</a>, November 1996.
+
+   [<a name="ref-US-ASCII" id="ref-US-ASCII">US-ASCII</a>] Coded Character Set--7-bit American Standard Code for
+   Information Interchange, ANSI X3.4-1986.
+
+   [<a name="ref-VCAL" id="ref-VCAL">VCAL</a>] MIME calendaring entity - Calendaring and Scheduling Exchange
+   Format, Versit Consortium, September 18, 1996.
+
+   [<a name="ref-XAPIA" id="ref-XAPIA">XAPIA</a>] XAPIA CSA, Calendaring and Scheduling Application Programming
+   Interface (CSA) Version 1.0, X.400 API Association, November 15,
+   1994.
+
+<span level="2" class="header"><a name="section-8">8</a>.      Acknowledgments</span>
+
+   A hearty thanks to the IETF Calendaring and Scheduling Working Group
+   and also the following individuals who have participated in the
+   drafting, review and discussion of this memo:
+
+   Roland Alden, Harald T. Alvestrand, Denis Bigorgne, John Binici, Bill
+   Bliss, Andre Courtemanche, Dave Crocker, Alec Dun, Ross Finlayson,
+   Randell Flink, Ned Freed, Patrik Falstrom, Chuck Grandgent, Mark
+   Handley, Steve Hanna, Paul B. Hill, Mark Horton, Bruce Kahn, C.
+   Harald Koch, Theodore Lorek, Keith Moore, Cecil Murray, Chris Newman,
+   Ralph Patterson, Pete Resnick, Keith Rhodes, Robert Ripberger, Andras
+   Salamar, Vinod Seraphin, Ken Shan, Andrew Shuman, William P. Spencer,
+   Mark Towfiq, Robert Visnov, James L. Weiner, Mike Weston, William
+   Wyatt.
+
+<span level="2" class="header"><a name="section-9">9</a>.      Author's Address</span>
+
+   The following address information is provided in a MIME-VCARD,
+   Electronic Business Card, format.
+
+   The authors of this draft are:
+
+     BEGIN:VCARD
+     FN:Frank Dawson
+     ORG:Lotus Development Corporation
+     ADR;WORK;POSTAL;PARCEL:;;6544 Battleford Drive;
+        Raleigh;NC;27613-3502;USA
+     TEL;WORK;MSG:+1-919-676-9515
+     TEL;WORK;FAX:+1-919-676-9564
+     EMAIL;INTERNET:fdawson@earthlink.net
+     URL:http://home.earthlink.net/~fdawson
+     END:VCARD
+
+
+
+Dawson/Stenerson                   64               Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+
+
+     BEGIN:VCARD
+     FN:Derik Stenerson
+     ORG:Microsoft Corporation
+     ADR;WORK;POSTAL;PARCEL:;;One Microsoft Way;
+        Redmond;WA;98052-6399;USA
+     TEL;WORK;MSG:+1-206-936-5522
+     TEL;WORK;FAX:+1-206-936-7329
+     EMAIL;INTERNET:deriks@Exchange.Microsoft.com
+     END:VCARD
+
+   The iCalendar Object is a result of the work of the Internet
+   Engineering Task Force Calendaring and Scheduling Working Group. The
+   chairman of that working group is:
+
+     BEGIN:VCARD
+     FN:Anik Ganguly
+     ORG:OnTime, Inc.
+     ADR;WORK;POSTAL;PARCEL:10 Floor;;21700 Northwestern Highway;
+        Southfield;MI;48075;USA
+     TEL;WORK;MSG:+1-810-559-5955
+     TEL;WORK;FAX:+1-810-559-5034
+     EMAIL;INTERNET:anik@ontime.com
+     END:VCARD
+
+<span level="2" class="header"><a name="section-10">10</a>.     Examples</span>
+
+   The following examples are provided as an informational source of
+   illustrative MIME entities containing data consistent with this MIME
+   content type.
+
+   The following is an example of a MIME message with a single body part
+   consisting of a text/calendar content type. The message specifies a
+   meeting request between the originator and recipient of the message.
+
+     TO:jsmith@host1.com
+     FROM:jdoe@host1.com
+     MIME-VERSION:2.0
+     MESSAGE-ID:&lt;19960704 08:30:00 EDT xyz@host1.com&gt;
+     CONTENT-TYPE:text/calendar;PROFILE=request,event
+
+     BEGIN:VCALENDAR
+     PROFILE:event-request
+     VERSION:2.0
+     BEGIN:VEVENT
+     DTSTART:19960918T143000Z
+     DTEND:19960920T220000Z
+     CATEGORIES:CONFERENCE;PROJECT
+     SUMMARY:Networld+Interop Conference
+     DESCRIPTION;ENCODING=QUOTED-PRINTABLE:Networld+Interop Conference=
+      and Exhibit=0D=0A=
+     Atlanta World Congress Center=0D=0A=
+     Atlanta, Georgia
+
+
+Dawson/Stenerson                   65               Expires August 1997
+
+
+Internet Draft       C&amp;S Core Object Specification     February 3, 1997
+
+
+     END:VEVENT
+     END:VCALENDAR
+
+   The following example message issues a meeting request that does not
+   require any reply. The message is sent as a singular _text/calendar_
+   content type, body part.
+
+     From: jsmith@host1.com
+     To: ietf-calendar@imc.org
+     Subject: First IETF-Calendar Working Group Meeting
+     MIME-Version: 2.0
+     Message-ID: &lt;id1@host1.com&gt;
+     Content-Type: text/calendar;Profile=event,request
+
+     BEGIN:VCALENDAR
+     PROFILE:event-request
+     DAYLIGHT:TRUE;-06:00;19960407T025959;19961027T010000;EST;EDT
+     PRODID:-//RDU Software//NONSGML HandCal//EN
+     TZ:-05:00
+     VERSION:2.0
+     BEGIN:VEVENT
+     ATTENDEE;EXPECT=REQUEST:ietf-calendar@imc.org
+     DESCRIPTION:First IETF-Calendaring and Scheduling Working Group
+        Meeting
+     CATEGORIES:MEETING
+     CLASS:PUBLIC
+     DCREATED:19961022T083000
+     SUMMARY:IETF Calendaring Working Group Meeting
+     DTSTART:19961210T210000Z
+     DTEND:19961210T220000Z
+     LOCATION:San Jose, CA - Fairmont Hotel
+     UID:guid-1.host1.com
+     END:VEVENT
+     END:VCALENDAR
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Dawson/Stenerson                   66               Expires August 1997
+
+</pre><br />
+<span class="noprint"><small><small>Html markup produced by rfcmarkup 1.43, available from
+<a href="http://tools.ietf.org/tools/rfcmarkup/">http://tools.ietf.org/tools/rfcmarkup/</a>
+</small></small></span>
+</body></html>

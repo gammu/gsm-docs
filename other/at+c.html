@@ -1,0 +1,1690 @@
+<html><head><title>AT+C commands</title></head>
+<body>
+
+Last change: May 13, 1999
+<hr>
+<p>
+</p><h3 align="center">GSM devices AT+C command set comparison chart</h3>
+
+This page is intended to show the differences of AT+C command set
+implementation of a few GSM devices.
+These are
+<ul>
+<li>
+NC - <a href="http://www.nokia.com/">Nokia</a> 
+<a href="http://www.forum.nokia.com/products/cardphone/cpinfo.html">
+	Card Phone</a> (tested version is <code>SW4.02</code>)</li>
+<li>ND - Some of <a href="http://www.nokia.com/">Nokia</a> 
+<a href="http://www.forum.nokia.com/support/datacards/dcsupport.html">
+	Data Cards</a> (according to manuals)</li>
+<li>FA1 - <a href="http://www.falcom.de/">Falcom</a> 
+<a href="http://www.falcom.de/eng/produkte/falcoma1.htm">
+        A1</a> (according to manuals)</li>
+<li>FA2 - <a href="http://www.falcom.de/">Falcom</a> 
+<a href="http://www.falcom.de/eng/produkte/falcoma2.htm">
+        A2</a> (according to manuals)</li>
+<li>S - <a href="http://www.siemens.de/">Siemens</a> 
+<a href="http://www.siemens.de/ic/products/cd/english/index/products/cellular/m1.html">
+        M1</a> (tested version is <code>Ver.04.003 01.04.97</code>)<br>
+<a name="S1note">Note: two different devices with the same version number
+	and date produced different results.</a></li>
+</ul>
+
+<a name="+CGMI">
+</a><h3><a name="+CGMI">ME manufacturer identification</a></h3>
+<table border="1">
+<tbody><tr>
+<td>+CGMI
+</td></tr><tr>
+<td>NC,ND,FA1,FA2,S
+</td></tr></tbody></table>
+
+<a name="+CGMM">
+</a><h3><a name="+CGMM">ME model identification</a></h3>
+<table border="1">
+<tbody><tr>
+<td>+CGMM
+</td></tr><tr>
+<td>NC,ND,FA1,FA2,S
+</td></tr></tbody></table>
+
+<a name="+CGMR">
+</a><h3><a name="+CGMR">ME revision identification</a></h3>
+<table border="1">
+<tbody><tr>
+<td>+CGMR
+</td></tr><tr>
+<td>NC,ND,FA1,FA2,S
+</td></tr></tbody></table>
+
+<a name="+CGSN">
+</a><h3><a name="+CGSN">ME serial number identification</a></h3>
+<table border="1">
+<tbody><tr>
+<td>+CGSN
+</td></tr><tr>
+<td>NC,ND,FA1,FA2,S
+</td></tr></tbody></table>
+
+<a name="+CSTA">
+</a><h3><a name="+CSTA">Select type of address</a></h3>
+<table border="1">
+<tbody><tr>
+<td>+CSTA=
+</td><td><i>addr</i>
+</td></tr><tr>
+<td>
+</td><td>129: national<br>
+145: international
+</td></tr><tr>
+<td>NC,ND
+</td><td>129 145
+</td></tr></tbody></table>
+<a name="+CSTA">Related command: D
+
+</a><a name="+CMOD">
+</a><h3><a name="+CMOD">Call mode</a></h3>
+<table border="1">
+<tbody><tr>
+<td>+CMOD=
+</td><td><i>mode</i>
+</td></tr><tr>
+<td>
+</td><td>0: single mode<br>
+1: alternating voice/fax (TS61)<br>
+2: alternating voice/data (BS61)<br>
+3: voice followed data (BS81)
+</td></tr><tr>
+<td>NC,ND
+</td><td>0-3
+</td></tr><tr>
+<td rowspan="2">S<a href="#S1note"><sup>*</sup></a>
+</td><td>0
+</td></tr><tr>
+<td>0 1
+</td></tr></tbody></table>
+<a name="+CMOD">Related commands: D, A
+
+</a><a name="+CHUP">
+</a><h3><a name="+CHUP">Hangup call</a></h3>
+<table border="1">
+<tbody><tr>
+<td>+CHUP
+</td></tr><tr>
+<td>ND,FA1,S
+</td></tr></tbody></table>
+<a name="+CHUP">(Document states that NC has this command but tested device
+refused <code>AT+CHUP=?</code>)
+
+</a><a name="+CBST">
+</a><h3><a name="+CBST">Bearer service type</a></h3>
+<table border="1">
+<tbody><tr>
+<td>+CBST=
+</td><td align="center">[<i>mode</i>
+</td><td align="center">[,<i>name</i>
+</td><td align="center">[,<i>ce</i>]]]
+</td></tr><tr>
+<td>
+</td><td>0: auto<br>
+1: 300 bps V.21<br>
+2: 1200 bps V.22<br>
+3: 1200/75 bps V.23<br>
+4: 2400 bps V.22bis<br>
+5: 2400 bps V.26ter<br>
+6: 4800 bps V.32<br>
+7: 9600 bps V.32<br>
+12: 9600 bps V.34<br>
+14: 14400 bps V.34<br>
+15: 19200 bps V.34<br>
+16: 28800 bps V.34<br>
+34: 1200 bps V.120<br>
+36: 2400 bps V.120<br>
+38: 4800 bps V.120<br>
+39: 9600 bps V.120<br>
+43: 14400 bps V.120<br>
+47: 19200 bps V.120<br>
+48: 28800 bps V.120<br>
+49: 38400 bps V.120<br>
+50: 48000 bps V.120<br>
+51: 56000 bps V.120<br>
+65: 300 bps V.110<br>
+66: 1200 bps V.110<br>
+68: 2400 bps V.110<br>
+70: 4800 bps V.110<br>
+71: 9600 bps V.110<br>
+75: 14400 bps V.110<br>
+79: 19200 bps V.110<br>
+80: 28800 bps V.110<br>
+81: 38400 bps V.110<br>
+82: 48000 bps V.110<br>
+83: 56000 bps V.110<br>
+115: 56000 bps bit transparent<br>
+116: 64000 bps bit transparent
+</td><td valign="top">0: data circiut async (UDI or 3.1 kHz modem)<br>
+1: data circiut sync (UDI or 3.1 kHz modem)<br>
+2: PAD access (async) (UDI)<br>
+3: packet access (async) (UDI)<br>
+4: data circiut async (RDI)<br>
+5: data circiut sync (RDI)<br>
+6: PAD access (async) (RDI)<br>
+7: packet access (sync) (RDI)
+</td><td valign="top">0: transparent only<br>
+1: non transparent only<br>
+2: transparent preferred<br>
+3: non transparent preferred<br>
+100: transparent preferred<br>
+101: non transparent preferred<br>
+</td></tr><tr>
+<td>NC
+</td><td>0 2 4-7 65 66 68 70 71
+</td><td>0 2
+</td><td>1
+</td></tr><tr>
+<td>ND
+</td><td>0-7 65 66 68 70 71
+</td><td>0 2
+</td><td>0-3
+</td></tr><tr>
+<td>FA1
+</td><td>4 6 7 68 70 71
+</td><td>0
+</td><td>0 1 100 101
+</td></tr><tr>
+<td>FA2
+</td><td>0-2 4 6 7 65 66 68 70 71
+</td><td>0
+</td><td>0 1
+</td></tr><tr>
+<td rowspan="2">S<a href="#S1note"><sup>*</sup></a>
+</td><td>4 6 7 68 70 71
+</td><td>0
+</td><td>0 1
+</td></tr><tr>
+<td>4 6 7 68 70 71
+</td><td>0 2
+</td><td>0 1
+</td></tr></tbody></table>
+
+<a name="+CRLP">
+</a><h3><a name="+CRLP">Radio link protocol</a></h3>
+<table border="1">
+<tbody><tr>
+<td>+CRLP=
+</td><td align="center"><i>iws</i>
+</td><td align="center">,<i>mws</i>
+</td><td align="center">,<i>T1</i>
+</td><td align="center">,<i>N2</i>
+</td><td align="center">,<i>reset allowed</i>
+</td></tr><tr>
+<td>
+</td><td>IFW to MS<br> window size
+</td><td>MS to IWF<br> window size
+</td><td>ack timer<br> in 10ms units
+</td><td>retransmission<br> attempts
+</td><td align="center">?
+</td></tr><tr>
+<td>NC,ND
+</td><td>0-61
+</td><td>0-61
+</td><td>39-255
+</td><td>1-255
+</td></tr><tr>
+<td rowspan="2">S<a href="#S1note"><sup>*</sup></a>
+</td><td>0-61
+</td><td>0-61
+</td><td>39-255
+</td><td>1-255
+</td></tr><tr>
+<td>0-61
+</td><td>0-61
+</td><td>48-255
+</td><td>1-255
+</td></tr><tr>
+<td>FA1
+</td><td>?
+</td><td>?
+</td><td>?
+</td><td>?
+</td><td>0 1
+</td></tr></tbody></table>
+
+<a name="+CR">
+</a><h3><a name="+CR">Service reporting control</a></h3>
+<table border="1">
+<tbody><tr>
+<td>+CR=
+</td><td align="center">[<i>mode</i>]
+</td></tr><tr>
+<td>
+</td><td>0: disable report<br>
+1: enable report
+</td></tr><tr>
+<td>NC,ND,FA1,S
+</td><td>0 1
+</td></tr></tbody></table>
+<a name="+CR">Note: Some M1-s does not know this command.</a><a href="#S1note"><sup>*</sup></a>
+
+<a name="+CEER">
+</a><h3><a name="+CEER">Extended error report</a></h3>
+<table border="1">
+<tbody><tr>
+<td>+CEER
+</td></tr><tr>
+<td>NC,ND,FA1,FA2,S
+</td></tr></tbody></table>
+
+<a name="+CRC">
+</a><h3><a name="+CRC">Cellular result code</a></h3>
+<table border="1">
+<tbody><tr>
+<td>+CRC=
+</td><td align="center">[<i>mode</i>]
+</td></tr><tr>
+<td>
+</td><td><b>0: disable...</b><br>
+1: enable...<br>
+... extended format
+</td></tr><tr>
+<td>NC,ND,FA1,FA2,S
+</td><td>0 1
+</td></tr></tbody></table>
+
+<a name="+CSNS">
+</a><h3><a name="+CSNS">Single numbering scheme</a></h3>
+<table border="1">
+<tbody><tr>
+<td>+CSNS=
+</td><td align="center"><i>mode</i>
+</td></tr><tr>
+<td>
+</td><td>0: voice<br>
+1: alternating voice/fax (TS61)<br>
+2: fax (TS62)<br>
+3: alternating voice/data (BS61)<br>
+4: data<br>
+5: alternating fax/voice (TS61)<br>
+6: alternating data/voice (BS61)<br>
+7: voice followed by data (BS81)<br>
+</td></tr><tr>
+<td>NC,ND
+</td><td>0-7
+</td></tr></tbody></table>
+
+<a name="+CXXSN">
+</a><h3><a name="+CXXSN">Single numbering parametrization</a></h3>
+<table border="1">
+<tbody><tr>
+<td>+CXXSN=
+</td><td align="center"><i>mode</i>
+</td></tr><tr>
+<td>
+</td><td>0: voice (TS11)<br>
+1: alternating voice/fax (TS61)<br>
+2: fax or data<br>
+</td></tr><tr>
+<td rowspan="2">S<a href="#S1note"><sup>*</sup></a>
+</td><td>0-2
+</td></tr><tr>
+<td>1 2
+</td></tr></tbody></table>
+
+<a name="+CXXMOC">
+</a><h3><a name="+CXXMOC">Outgoing call parametrization</a></h3>
+<table border="1">
+<tbody><tr>
+<td>+CXXMOC=
+</td><td align="center"><i>mode</i>
+</td></tr><tr>
+<td>
+</td><td>0: fax (TS62)<br>
+1: alternating voice/fax (TS61)<br>
+</td></tr><tr>
+<td>S
+</td><td>0 1
+</td></tr></tbody></table>
+
+<a name="+CNUM">
+</a><h3><a name="+CNUM">Subscriber number</a></h3>
+<table border="1">
+<tbody><tr>
+<td>+CNUM
+</td></tr><tr>
+<td>NC
+</td></tr></tbody></table>
+<a name="+CNUM">Related commands: </a><a href="#+CPBS">+CPBS</a>, <a href="#+CPBR">+CPBR</a>
+
+<a name="+CREG">
+</a><h3><a name="+CREG">Network registration</a></h3>
+<table border="1">
+<tbody><tr>
+<td>+CREG=
+</td><td align="center"><i>mode</i>
+</td></tr><tr>
+<td>
+</td><td>0: disable network registration...<br>
+1: enable network registration...<br>
+2: enable network registration and location information...<br>
+... unsolicited result code
+</td></tr><tr>
+<td>NC
+</td><td>0-2
+</td></tr><tr>
+<td>FA1,FA2,S
+</td><td>0 1
+</td></tr></tbody></table>
+<a name="+CREG">Related command: </a><a href="#+COPS">+COPS</a>
+<br>Note: ND probably has also this command but not documented.
+
+<a name="+COPS">
+</a><h3><a name="+COPS">Operator selection</a></h3>
+<table border="1">
+<tbody><tr>
+<td>+COPS=
+</td><td align="center"><i>mode</i>
+</td><td align="center">[,<i>format</i>
+</td><td align="center">[,<i>oper</i>]]
+</td></tr><tr>
+<td>
+</td><td>0: automatic (<i>oper</i> ignored)<br>
+1: manual (<i>oper</i> required)<br>
+2: sign off network<br>
+3: set <i>format</i> only<br>
+4: manual/automatic (<i>oper</i> required)
+</td><td valign="top">0: long alphanumeric<br>
+1: short alphanumeric<br>
+<b>2: numeric</b>
+</td><td><i>Name/number returned<br> by AT+COPS?</i>
+</td></tr><tr>
+<td>NC,FA1,FA2
+</td><td>0 1
+</td><td>2
+</td><td><i>operator number</i>
+</td></tr><tr>
+<td>S
+</td><td>0-3
+</td><td>0 2
+</td><td><i>operator name/number</i>
+</td></tr></tbody></table>
+<a name="+COPS">Related command: </a><a href="#+CREG">+CREG</a>
+<br>Note: ND probably has also this command but not documented.
+
+<a name="+CLC">
+</a><h3><a name="+CLC">Facility lock</a></h3>
+<table border="1">
+<tbody><tr>
+<td>+CLCK=
+</td><td align="center"><i>fac</i>
+</td><td align="center">,<i>mode</i>
+</td><td align="center">,<i>passwd</i>
+</td><td align="center">,<i>class</i>
+</td></tr><tr>
+<td>
+</td><td>"PS": lock phone to SIM<br>
+"SC": lock SIM card<br>
+"AO": barr all outgoing calls<br>
+"OI": barr all outgoing int'l calls<br>
+"OX": barr all outgoing int'l call except to home<br>
+"AI": barr all incoming calls<br>
+"NT": barr all incoming calls from numbers not stored in TA memory<br>
+"NM": barr all incoming calls from numbers not stored in ME memory<br>
+"NS": barr all incoming calls from numbers not stored in SIM memory<br>
+"NA": barr all incoming calls from numbers not stored in any memory<br>
+"IR": barr all incoming calls when roaming abroad<br>
+"AB": all barring services<br>
+"AG": all outgoing barring services<br>
+"AC": all incoming barring services<br>
+"FD": SIM fixed dialing memory<br>
+"WNL": network lock<br>
+"CS": lock control surface (e.g. keyboard)
+</td><td valign="top">0: unlock<br>
+1: lock<br>
+2: query
+</td><td><i>password<br>
+specified<br>
+for the<br>
+facility by<br>
++CPWD<br>
+command</i>
+</td><td valign="top">Sum of<br>
+1: voice<br>
+2: data<br>
+4: fax<br>
+</td></tr><tr>
+<td>NC
+</td><td>PS SC AO OI OX AI IR AB AG AC FD
+</td><td>0-2
+</td><td><i>string</i>
+</td><td>0-7
+</td></tr><tr>
+<td>ND
+</td><td>NT
+</td><td>0-2
+</td></tr><tr>
+<td>FA1
+</td><td>PS SC AO OI OX AI IR AB AG AC WNL
+</td><td>0 1
+</td><td><i>string</i>
+</td></tr><tr>
+<td>FA2
+</td><td>SC AO OI OX AI IR AB AG AC
+</td><td>0-2
+</td><td><i>string</i>
+</td><td>0-7
+</td></tr><tr>
+<td>S
+</td><td>PS SC FD
+</td><td>0 1
+</td><td><i>string</i>
+</td></tr></tbody></table>
+<a name="+CLC">Related command: </a><a href="#+CPWD">+CPWD</a>
+
+<a name="+CPWD">
+</a><h3><a name="+CPWD">Change password</a></h3>
+<table border="1">
+<tbody><tr>
+<td>+CPWD=
+</td><td align="center"><i>fac</i>
+</td><td align="center">,<i>oldpwd</i>
+</td><td align="center">,<i>newpwd</i>
+</td></tr><tr>
+<td>
+</td><td>"PS": lock phone to SIM<br>
+"SC": lock SIM card<br>
+"AO": barr all outgoing calls<br>
+"OI": barr all outgoing int'l calls<br>
+"OX": barr all outgoing int'l call except to home<br>
+"AI": barr all incoming calls<br>
+"NT": barr all incoming calls from numbers not stored in TA memory<br>
+"NM": barr all incoming calls from numbers not stored in ME memory<br>
+"NS": barr all incoming calls from numbers not stored in SIM memory<br>
+"NA": barr all incoming calls from numbers not stored in any memory<br>
+"IR": barr all incoming calls when roaming abroad<br>
+"AB": all barring services<br>
+"AG": all outgoing barring services<br>
+"AC": all incoming barring services<br>
+"FD": SIM fixed dialing memory<br>
+"WNL": network lock<br>
+"CS": lock control surface (e.g. keyboard)<br>
+"P2": SIM PIN2
+</td><td><i>old password</i>
+</td><td><i>new password</i>
+</td></tr><tr>
+<td>NC
+</td><td>PS SC AB P2
+</td><td><i>string</i>
+</td><td><i>string</i>
+</td></tr><tr>
+<td>FA1
+</td><td>PS SC AO OI OX AI IR AB AG AC WNL
+</td><td><i>string</i>
+</td><td><i>string</i>
+</td></tr><tr>
+<td>FA2
+</td><td>SC AO OI OX AI IR AB AG AC
+</td><td><i>string</i>
+</td><td><i>string</i>
+</td></tr><tr>
+<td rowspan="2">S<a href="#S1note"><sup>*</sup></a>
+</td><td>PS SC P2
+</td><td><i>string</i>
+</td><td><i>string</i>
+</td></tr><tr>
+<td>PS SC FD
+</td><td><i>string</i>
+</td><td><i>string</i>
+</td></tr></tbody></table>
+<a name="+CPWD">Note: ND probably has also this command but not documented.<br>
+Related command: </a><a href="#+CLCK">+CLCK</a>
+
+<a name="+CLIP">
+</a><h3><a name="+CLIP">Calling line identification presentation</a></h3>
+<table border="1">
+<tbody><tr>
+<td>+CLIP=
+</td><td align="center">[<i>mode</i>]
+</td></tr><tr>
+<td>
+</td><td>0: disable...<br>
+1: enable...<br>
+... extended format
+</td></tr><tr>
+<td>NC,ND,FA1,FA2,S
+</td><td>0 1
+</td></tr></tbody></table>
+<a name="+CLIP">Related commands: </a><a href="#+CLIR">+CLIR</a>, <a href="#+COLP">+COLP</a>
+
+<a name="+CLIR">
+</a><h3><a name="+CLIR">Calling line identification restriction</a></h3>
+<table border="1">
+<tbody><tr>
+<td>+CLIR=
+</td><td align="center"><i>mode</i>
+</td></tr><tr>
+<td>
+</td><td>0: set presentation indicator according to the subscription
+of the CLIR service<br>
+1: CLIR invocation<br>
+2: CLIR supression
+</td></tr><tr>
+<td>NC,FA1,FA2
+</td><td>0-2
+</td></tr></tbody></table>
+<a name="+CLIR">Related commands: </a><a href="#+CLIP">+CLIP</a>, <a href="#+COLP">+COLP</a>
+
+<a name="+COLP">
+</a><h3><a name="+COLP">Connected line identification presentation</a></h3>
+<table border="1">
+<tbody><tr>
+<td>+COLP=
+</td><td align="center">[<i>mode</i>]
+</td></tr><tr>
+<td>
+</td><td>0: disable...<br>
+1: enable...<br>
+... result code presentation
+</td></tr><tr>
+<td>NC,ND,FA1,FA2
+</td><td>0 1
+</td></tr></tbody></table>
+<a name="+COLP">Related commands: </a><a href="#+CLIR">+CLIR</a>, <a href="#+CLIP">+CLIP</a>
+
+<a name="+CCFC">
+</a><h3><a name="+CCFC">Call forwarding</a></h3>
+<table border="1">
+<tbody><tr>
+<td>+CCFC=
+</td><td align="center"><i>reason</i>
+</td><td align="center">,<i>mode</i>
+</td><td align="center">[,<i>number</i>]
+</td></tr><tr>
+<td>
+</td><td>0: unconditional<br>
+1: mobile busy<br>
+2: no reply<br>
+3: not reachable<br>
+4: all call forwarding<br>
+5: all conditional call forwarding
+</td><td valign="top">0:disable<br>
+1:enable<br>
+2: query<br>
+3: registration<br>
+4: erasure
+</td><td><i>number</i>
+</td></tr><tr>
+<td>FA1
+</td><td>0-5
+</td><td>2-4
+</td><td><i>number</i>
+</td></tr><tr>
+<td>FA2
+</td><td>0-5
+</td><td>0-4
+</td><td><i>number</i>
+</td></tr></tbody></table>
+
+<a name="+CCWA">
+</a><h3><a name="+CCWA">Call waiting</a></h3>
+<table border="1">
+<tbody><tr>
+<td>+CCWA=
+</td><td align="center"><i>n</i>
+</td><td align="center">,<i>mode</i>
+</td><td align="center">[,<i>class</i>]
+</td></tr><tr>
+<td>
+</td><td valign="top">0: disable...<br>
+1: enable...<br>
+... unsolicited result code
+</td><td valign="top">0: disable<br>
+1: enable<br>
+2: query
+</td><td>Sum of<br>
+1: voice<br>
+2: data<br>
+4: fax<br>
+</td></tr><tr>
+<td>NC,FA1,FA2
+</td><td>0 1
+</td><td>0-2
+</td><td>0-7
+</td></tr></tbody></table>
+
+<a name="+CUSD">
+</a><h3><a name="+CUSD">Unstructured supplementary service data</a></h3>
+<table border="1">
+<tbody><tr>
+<td>+CUSD=
+</td><td align="center"><i>n</i>
+</td><td align="center">,<i>str</i>
+</td><td align="center">,<i>dcs</i>
+</td></tr><tr>
+<td>
+</td><td valign="top">0: disable...<br>
+1: enable...<br>
+... unsolicited result code
+</td><td><i>USSD string</i>
+</td><td><i>data coding scheme
+</i></td></tr><tr>
+<td>NC
+</td><td>0 1
+</td><td><i>string</i>
+</td><td>0 ?
+</td></tr></tbody></table>
+<a name="+CUSD">Related command: </a><a href="#+CSSN">+CSSN</a>
+
+<a name="+CSSN">
+</a><h3><a name="+CSSN">Supplementary service notifications</a></h3>
+<table border="1">
+<tbody><tr>
+<td>+CSSN=
+</td><td align="center"><i>n</i>
+</td><td align="center">,<i>m</i>
+</td></tr><tr>
+<td>
+</td><td>0: disable...<br>
+1: enable...<br>
+... +CSSI intermediate result code
+</td><td>0: disable...<br>
+1: enable...<br>
+... +CSSU unsolicited result code
+</td></tr><tr>
+<td>NC
+</td><td>0 1
+</td><td>0 1
+</td></tr></tbody></table>
+<a name="+CSSN">Related command: </a><a href="#+CUSD">+CUSD</a>
+
+<a name="+CLCC">
+</a><h3><a name="+CLCC">List current calls</a></h3>
+<table border="1">
+<tbody><tr>
+<td>+CLCC
+</td></tr><tr>
+<td>NC
+</td></tr></tbody></table>
+
+<a name="+CKPD">
+</a><h3><a name="+CKPD">Keypad control</a></h3>
+<table border="1">
+<tbody><tr>
+<td>+CKPD=
+</td><td align="center"><i>keys</i>
+</td><td align="center">[,<i>time</i>
+</td><td align="center">[,<i>pause</i>]]
+</td></tr><tr>
+<td>
+</td><td>0-9,*,#: themselves<br>
++: ?<br>
+C,c: Clear display<br>
+D,d: Volume down<br>
+E,e: End key<br>
+I,i: Info key<br>
+S,s: Start key<br>
+U,u: Volume up<br>
+X,x: Phonebook key<br>
+Y,y: Delete last char<br>
+Z,z: Exit menu<br>
+[: Left softkey<br>
+]: Right softkey<br>
+<i>and others</i>
+</td><td><i>duration of<br>
+simulated keypresses<br>
+in tenth of seconds</i>
+</td><td><i>pause between<br>
+keypresses<br>
+in tenth of seconds</i>
+<!--
+<tr>
+<td>NC
+<td>0-9 * # D E P S U V ^ [ ]
+<td align=center>?
+<td align=center>?
+-->
+</td></tr><tr>
+<td>S
+</td><td>0-9 * # + C D E I S U X Y Z [ ]
+</td></tr></tbody></table>
+
+<a name="+CXXID">
+</a><h3><a name="+CXXID">SIM number</a></h3>
+<table border="1">
+<tbody><tr>
+<td>+CXXID
+</td></tr><tr>
+<td>S
+</td></tr></tbody></table>
+
+<a name="+CPAS">
+</a><h3><a name="+CPAS">Phone activity status</a></h3>
+<table border="1">
+<tbody><tr>
+<td>+CPAS
+</td></tr><tr>
+<td>NC,ND,FA1,FA2,S
+</td></tr></tbody></table>
+
+<a name="+CFUN">
+</a><h3><a name="+CFUN">Set phone functionality</a></h3>
+<table border="1">
+<tbody><tr>
+<td>+CFUN=
+</td><td align="center"><i>fun</i>
+</td><td align="center">[,<i>reset</i>]
+</td></tr><tr>
+<td>
+</td><td>0: minimum functionality (transceiver off)<br>
+1: full functionality
+</td><td><b>0: do not reset...</b><br>
+1: reset...<br>
+...ME before changing to <i>fun</i> power level
+</td></tr><tr>
+<td>NC
+</td><td>0 1
+</td><td>0
+</td></tr><tr>
+<td>FA1,FA2
+</td><td>0 1
+</td><td>0 1
+</td></tr></tbody></table>
+
+<a name="+CPOF">
+</a><h3><a name="+CPOF">Power off</a></h3>
+<table border="1">
+<tbody><tr>
+<td>+CPOF
+</td></tr><tr>
+<td>FA1
+</td></tr></tbody></table>
+
+<a name="+CBC">
+</a><h3><a name="+CBC">Battery charge</a></h3>
+<table border="1">
+<tbody><tr>
+<td>+CBC
+</td></tr><tr>
+<td>ND
+</td></tr></tbody></table>
+
+<a name="+CPIN">
+</a><h3><a name="+CPIN">Enter PIN</a></h3>
+<table border="1">
+<tbody><tr>
+<td>+CPIN=
+</td><td align="center"><i>PIN</i>
+</td><td align="center">[,<i>new PIN</i>]
+</td></tr><tr>
+<td>NC,FA1,FA2,S
+</td><td><i>current PIN</i>
+</td><td><i>new PIN</i>
+</td></tr></tbody></table>
+<a name="+CPIN">Related command: </a><a href="#+CPIN2">+CPIN2</a>
+
+<a name="+CPIN2">
+</a><h3><a name="+CPIN2">Enter PIN2</a></h3>
+<table border="1">
+<tbody><tr>
+<td>+CPIN2=
+</td><td align="center"><i>PIN2</i>
+</td><td align="center">[,<i>new PIN2</i>]
+</td></tr><tr>
+<td>S
+</td><td><i>current PIN2</i>
+</td><td><i>new PIN2</i>
+</td></tr></tbody></table>
+<a name="+CPIN2">Related command: </a><a href="#+CPIN">+CPIN</a>
+
+<a name="+CSQ">
+</a><h3><a name="+CSQ">Signal quality</a></h3>
+<table border="1">
+<tbody><tr>
+<td>+CSQ
+</td></tr><tr>
+<td>NC,ND,FA1,FA2,S
+</td></tr></tbody></table>
+
+<a name="+CPBS">
+</a><h3><a name="+CPBS">Select phonebook memory storage</a></h3>
+<table border="1">
+<tbody><tr>
+<td>+CPBS=
+</td><td align="center"><i>storage</i>
+</td></tr><tr>
+<td>
+</td><td>"DC": ME dialed calls list<br>
+"EN": SIM (or ME) emergency number<br>
+"FD": SIM fixed dialing number phonebook<br>
+"MC": ME missed (unanswered received) calls list<br>
+"ME": ME phonebook<br>
+"ON": SIM (or ME) own numbers (MSISDNs) list<br>
+"OW": own telephone numbers<br>
+"RC": ME received calls list<br>
+"SM": SIM phonebook<br>
+"TA": TA (data card) phone book<br>
+"MD": last number redial memory<br>
+"LD": SIM last-dialing phonebook<br>
+"MT": combined ME and SIM phonebook<br>
+"DC": dialed calls list<br>
+"RC": received calls list
+</td></tr><tr>
+<td>NC
+</td><td>EN FD MC ME ON RC SM SC
+</td></tr><tr>
+<td>ND
+</td><td>ME SM TA
+</td></tr><tr>
+<td>FA1,FA2
+</td><td>SM
+</td></tr><tr>
+<td>S
+</td><td>MD SM OW FD
+</td></tr></tbody></table>
+<a name="+CPBS">NC manual says nothing about <code>DC</code> but device knows it.<br>
+Related commands: </a><a href="#+CPBR">+CPBR</a>,
+	<a href="#+CPBF">+CPBF</a>,
+	<a href="#+CPBW">+CPBW</a>,
+	<a href="#+CNUM">+CNUM</a>
+
+<a name="+CPBR">
+</a><h3><a name="+CPBR">Read phonebook entries</a></h3>
+<table border="1">
+<tbody><tr>
+<td>+CPBR=
+</td><td align="center"><i>index1</i>
+</td><td align="center">[,<i>index2</i>]
+</td></tr><tr>
+<td>
+</td><td><i>start of range</i>
+</td><td><i>end of range</i>
+</td></tr><tr>
+<td>NC,ND,FA1,FA2,S
+</td><td><i>index</i>
+</td><td><i>index</i>
+</td></tr></tbody></table>
+<a name="+CPBR">Related commands: </a><a href="#+CPBS">+CPBS</a>,
+	<a href="#+CPBF">+CPBF</a>,
+	<a href="#+CPBW">+CPBW</a>,
+	<a href="#+CNUM">+CNUM</a>
+
+<a name="+CPBF">
+</a><h3><a name="+CPBF">Find phonebook entries</a></h3>
+<table border="1">
+<tbody><tr>
+<td>+CPBF=
+</td><td align="center"><i>findtext</i>
+</td></tr><tr>
+<td>
+</td><td><i>text to find</i>
+</td></tr><tr>
+<td>NC,ND,FA1,FA2
+</td><td><i>string</i>
+</td></tr></tbody></table>
+<a name="+CPBF">Related commands: </a><a href="#+CPBS">+CPBS</a>,
+	<a href="#+CPBR">+CPBR</a>,
+	<a href="#+CPBW">+CPBW</a>
+
+<a name="+CPBW">
+</a><h3><a name="+CPBW">Write/delete phonebook entry</a></h3>
+<table border="1">
+<tbody><tr>
+<td>+CPBW=
+</td><td align="center">[<i>index</i>]
+</td><td align="center">[,<i>number</i>
+</td><td align="center">[,<i>type</i>
+</td><td align="center">[,<i>text</i>]]]
+</td></tr><tr>
+<td>
+</td><td><i>memory index</i>
+</td><td><i>phone number</i>
+</td><td>129: national<br>
+145: international
+</td><td><i>name to store</i>
+</td></tr><tr>
+<td>NC,ND,FA1,FA2,S
+</td><td><i>index</i>
+</td><td><i>number</i>
+</td><td><i>129 145</i>
+</td><td><i>string</i>
+</td></tr></tbody></table>
+<a name="+CPBW">Related commands: </a><a href="#+CPBS">+CPBS</a>,
+	<a href="#+CPBR">+CPBR</a>,
+	<a href="#+CPBF">+CPBF</a>
+
+<a name="+CMEE">
+</a><h3><a name="+CMEE">Report ME error</a></h3>
+<table border="1">
+<tbody><tr>
+<td>+CMEE=
+</td><td align="center">[<i>mode</i>]
+</td></tr><tr>
+<td>
+</td><td><b>0: disable +CME ERROR: <i>err</i> result code</b><br>
+1: enable +CME ERROR: <i>err</i> result code (numeric <i>err</i>)<br>
+2: enable +CME ERROR: <i>err</i> result code (text <i>err</i>)
+</td></tr><tr>
+<td>NC,ND,S
+</td><td>0-2
+</td></tr><tr>
+<td>FA1,FA2
+</td><td>0 1
+</td></tr></tbody></table>
+
+<a name="+CSMS">
+</a><h3><a name="+CSMS">Select message service</a></h3>
+<table border="1">
+<tbody><tr>
+<td>+CSMS=
+</td><td align="center"><i>service</i>
+</td></tr><tr>
+<td>
+</td><td>0: GSM 03.40 and 03.41 with GSM 07.05 Phase 2 syntax<br>
+1: GSM 03.40 and 03.41 with GSM 07.05 Phase 2+ syntax
+</td></tr><tr>
+<td>NC
+</td><td>0 1
+</td></tr><tr>
+<td>ND,FA1,FA2,S
+</td><td>0
+</td></tr></tbody></table>
+<a name="+CSMS">Related commands: </a><a href="#+CMGR">+CMGR</a>,
+	<a href="#+CMSS">+CMSS</a>,
+	<a href="#+CMGC">+CMGC</a>
+
+<a name="+CPMS">
+</a><h3><a name="+CPMS">Preferred message store</a></h3>
+<table border="1">
+<tbody><tr>
+<td>+CPMS=
+</td><td align="center">[<i>mem1</i>
+</td><td align="center">[,<i>mem2</i>
+</td><td align="center">[,<i>mem3</i>]]]
+</td></tr><tr>
+<td>
+</td><td><i>for read/delete</i>
+</td><td><i>for write/send</i>
+</td><td><i>for receive</i>
+</td></tr><tr>
+<td>
+</td><td colspan="3">
+"ME": ME message store<br>
+"SM": SIM message store<br>
+"MT": any of the storages associated with ME
+</td></tr><tr>
+<td>NC
+</td><td>ME SM
+</td><td>ME SM
+</td><td>SM
+</td></tr><tr>
+<td>ND
+</td><td>ME SM
+</td><td>ME SM
+</td><td>MT
+</td></tr><tr>
+<td>FA1
+</td><td>SM
+</td></tr><tr>
+<td>FA2
+</td><td>SM
+</td><td>SM
+</td><td>SM
+</td></tr><tr>
+<td>S
+</td><td>SM
+</td><td>SM
+</td></tr></tbody></table>
+<a name="+CPMS">Related commands: </a><a href="#+CMGR">+CMGR</a>,
+	<a href="#+CMGD">+CMGD</a>,
+	<a href="#+CMSS">+CMSS</a>,
+	<a href="#+CMGW">+CMGW</a>,
+	<a href="#+CNMI">+CNMI</a>
+
+<a name="+CMGF">
+</a><h3><a name="+CMGF">Message format</a></h3>
+<table border="1">
+<tbody><tr>
+<td>+CMGF=
+</td><td align="center">[<i>mode</i>]
+</td></tr><tr>
+<td>
+</td><td><b>0: PDU mode</b><br>
+1: text mode
+</td></tr><tr>
+<td>NC,ND,FA1,FA2
+</td><td>0 1
+</td></tr><tr>
+<td>S
+</td><td>0
+</td></tr></tbody></table>
+<a name="+CMGF">Related commands: </a><a href="#+CSMP">+CSMP</a>,
+	<a href="#+CSDH">+CSDH</a>,
+	<a href="#+CMSS">+CMSS</a>,
+	<a href="#+CMGL">+CMGL</a>,
+	<a href="#+CMGR">+CMGR</a>,
+	<a href="#+CNMA">+CNMA</a>,
+	<a href="#+CMGS">+CMGS</a>,
+	<a href="#+CMSS">+CMSS</a>,
+	<a href="#+CMGW">+CMGW</a>,
+	<a href="#+CMGC">+CMGC</a>
+
+<a name="+CSCS">
+</a><h3><a name="+CSCS">TE character set</a></h3>
+<table border="1">
+<tbody><tr>
+<td>+CSCS=
+</td><td align="center"><i>charset</i>
+</td></tr><tr>
+<td>
+</td><td>GSM: GSM default alphabet (GSM 03.38 6.2.1)<br>
+HEX: hexadecimal encoding<br>
+IRA: international reference alphabet (ITU-T T.50)<br>
+PCCP437: PC character set Code Page 437<br>
+PCDN: PC Danish/Norwegian character set<br>
+8859-1: ISO 8859 Latin1 character set
+</td></tr><tr>
+<td>NC,ND
+</td><td>GSM HEX IRA PCCP437 PCDN 8859-1
+</td></tr><tr>
+<td>FA1
+</td><td>GSM PCCP437
+</td></tr><tr>
+<td>FA2
+</td><td>PCCP437
+</td></tr></tbody></table>
+<a name="+CSCS">Related commands: </a><a href="#+CMGL">+CMGL</a>,
+	<a href="#+CMGR">+CMGR</a>,
+	<a href="#+CMGS">+CMGS</a>,
+	<a href="#+CMGW">+CMGW</a>
+
+<a name="+CSCA">
+</a><h3><a name="+CSCA">Service center address</a></h3>
+<table border="1">
+<tbody><tr>
+<td>+CSCA=
+</td><td align="center"><i>sca</i>
+</td><td align="center">[,<i>tosca</i>]
+</td></tr><tr>
+<td>
+</td><td><i>number of service center</i>
+</td><td>129: national<br>
+145: international
+</td></tr><tr>
+<td>NC,ND,FA1,FA2,S
+</td><td><i>number</i>
+</td><td>129 145
+</td></tr></tbody></table>
+
+<a name="+CSMP">
+</a><h3><a name="+CSMP">Set text mode parameters</a></h3>
+<table border="1">
+<tbody><tr>
+<td>+CSMP=
+</td><td align="center">[<i>first octet</i>
+</td><td align="center">[,<i>validity period</i>
+</td><td align="center">[,<i>protocol id</i>
+</td><td align="center">[,<i>data coding scheme</i>]]]]
+</td></tr><tr>
+<td> 
+</td><td colspan="4" rowspan="2" align="center">Not documented here
+</td></tr><tr>
+<td>NC,ND,FA1,FA2
+</td></tr></tbody></table>
+<a name="+CSMP">Related commands: </a><a href="#+CSDH">+CSDH</a>,
+	<a href="#+CMGF">+CMGF</a>,
+
+<a name="+CSDH">
+</a><h3><a name="+CSDH">Show text mode parameters</a></h3>
+<table border="1">
+<tbody><tr>
+<td>+CSDH=
+</td><td align="center">[<i>show</i>]
+</td></tr><tr>
+<td>
+</td><td><b>0: do not show...</b><br>
+1: show...<br>
+...header values in text mode
+</td></tr><tr>
+<td>NC,ND,FA1,FA2
+</td><td>0 1
+</td></tr></tbody></table>
+<a name="+CSDH">Related commands: </a><a href="#+CSMP">+CSMP</a>,
+	<a href="#+CMGF">+CMGF</a>,
+
+<a name="+CSCB">
+</a><h3><a name="+CSCB">Select cell broadcast message types</a></h3>
+<table border="1">
+<tbody><tr>
+<td>+CSCB=
+</td><td align="center">[<i>mode</i>
+</td><td align="center">[,<i>mids</i>
+</td><td align="center">[,<i>dcss</i>]]]
+</td></tr><tr>
+<td>
+</td><td>message types specified in <i>mids</i> and <i>dcss</i> are...<br>
+<b>0: ...accepted</b><br>
+1: ...not accepted
+</td><td><i>all different combinations of GSM 03.41 CBM message IDs</i>
+</td><td><i>all different combinations of GSM 03.38 CBM data coding schemes</i>
+</td></tr><tr>
+<td>NC,ND,FA2
+</td><td>0 1
+</td><td><i>list of ranges<i>
+</i></i></td><td><i>list of ranges<i>
+</i></i></td></tr></tbody></table>
+
+<a name="+CSAS">
+</a><h3><a name="+CSAS">Save settings</a></h3>
+<table border="1">
+<tbody><tr>
+<td>+CSAS
+</td><td>[=<i>profile</i>]
+</td></tr><tr>
+<td>NC,ND
+</td><td><b>0</b> 1
+</td></tr><tr>
+<td>FA1,FA2
+</td></tr></tbody></table>
+
+<a name="+CRES">
+</a><h3><a name="+CRES">Restore settings</a></h3>
+<table border="1">
+<tbody><tr>
+<td>+CRES
+</td><td>[=<i>profile</i>]
+</td></tr><tr>
+<td>NC,ND
+</td><td><b>0</b> 1
+</td></tr><tr>
+<td>FA1,FA2
+</td></tr></tbody></table>
+
+<a name="+CNMI">
+</a><h3><a name="+CNMI">New message indications to TE</a></h3>
+<table border="1">
+<tbody><tr>
+<td>+CNMI=
+</td><td align="center">[<i><a href="#mode">mode</a></i>
+</td><td align="center">[,<i><a href="#mt">mt</a></i>
+</td><td align="center">[,<i><a href="#bm">bm</a></i>
+</td><td align="center">[,<i><a href="#ds">ds</a></i>
+</td><td align="center">[,<i><a href="#bfr">bfr</a></i>]]]]]
+</td></tr><tr>
+<td>
+</td><td colspan="5" align="center">see below
+</td></tr><tr>
+<td>NC
+</td><td>0-2 
+</td><td>0-3
+</td><td>0 2 3
+</td><td>0-2
+</td><td>0 1
+</td></tr><tr>
+<td>ND
+</td><td>0-2 
+</td><td>0-3
+</td><td>0 2
+</td><td>0 1
+</td><td>0 1
+</td></tr><tr>
+<td>FA1
+</td><td>0-3 
+</td><td>0-3
+</td><td>0-3
+</td><td>0 1
+</td><td>0 1
+</td></tr><tr>
+<td>FA2
+</td><td>?
+</td><td>?
+</td><td>?
+</td><td>?
+</td><td>?
+</td></tr><tr>
+<td>S
+</td><td>0-2<a href="http://nms.ise.pw.edu.pl/loboda/incompatibilities.html#M1-CNMI"><sup>+</sup></a>
+</td><td>0-2
+</td><td>0
+</td><td>0
+</td><td>0
+</td></tr></tbody></table>
+
+<dl><a name="mode">
+<dt><i>mode:</i> processing of unsolicited result codes
+</dt><dd>
+<table border="0">
+<tbody><tr>
+<td valign="top"><b>0</b>
+</td><td><b>Buffer unsolicited result codes int the TA. If TA result code buffer
+is full, indications can be buffered in some other place or the oldest
+indications may be discarded and replaced with the new received indications</b>
+</td></tr><tr>
+<td valign="top">1
+</td><td>Discard indications and reject new received message unsolicited result
+codes when TA-TE link is reserved. Otherwise forward them directly to the TE.
+</td></tr><tr>
+<td valign="top">2
+</td><td>Buffer unsolicited result codes in the TA when TA-TE link is reserved
+and flush them to the TE after reservation. Otherwise forward them directly
+to the TE.
+</td></tr><tr>
+<td valign="top">3
+</td><td>Forward unsolicited result codes directly to the TE. TA-TE link specific
+inband used to embed result codes in data when TA is on-line mode.
+</td></tr></tbody></table>
+
+</dd></a><a name="mt">
+<dt><i>mt:</i> result code indication routing for SMS-DELIVERs
+</dt><dd>
+<table border="0">
+<tbody><tr>
+<td valign="top"><b>0</b>
+</td><td><b>No SMS-DELIVER indications are routed to the TE.</b>
+</td></tr><tr>
+<td valign="top">1
+</td><td>SMS-DELIVERs are routed using unsolicited code:<br>
++CMTI: <i>mem index</i>
+</td></tr><tr>
+<td valign="top">2
+</td><td>SMS-DELIVERs (except class 2 messages) are routed directly to the TE
+using unsolicited result code:<br>
++CMT: <i>length</i>&lt;CR&gt;&lt;LF&gt;<i>pdu</i> (PDU mode)<br>
+or<br>
++CMT: <i>oa,scts</i>[,<i>tooa,fo,pid,dcs,sca,tosca,length</i>]&lt;CR&gt;&lt;LF&gt;<i>data</i> (text mode)<br>
+Class 2 messages result in indication as defined in <i>mt</i>=1.
+</td></tr><tr>
+<td valign="top">3
+</td><td>Class 3 SMS-DELIVERs are routed directly to the TE using unsolicited
+result codes defined in <i>mt</i>=2. Messages of other classes result in
+indication as defined in <i>mt</i>=1.
+</td></tr></tbody></table>
+</dd>
+
+</a><a name="bm">
+<dt><i>bm:</i> rules for storing received CBMs
+</dt><dd>
+<table border="0">
+<tbody><tr>
+<td valign="top"><b>0</b>
+</td><td><b>No CBM indications are routed to the TE.</b>
+</td></tr><tr>
+<td valign="top">1
+</td><td>If CBM is stored into ME/TA, indication of the memory location is routed
+to the TE  using unsolicited result code:<br>
++CBMI: <i>mem index</i>
+</td></tr><tr>
+<td valign="top">2
+</td><td>New CBMs are routed directly to the TE using unsolicited result code:<br>
++CBM: <i>length</i>&lt;CR&gt;&lt;LF&gt;<i>pdu</i> (PDU mode)<br>
+or<br>
++CBM: <i>sn,mid,dcs,page,pages,length</i>&lt;CR&gt;&lt;LF&gt;<i>data</i>
+(text mode)
+</td></tr><tr>
+<td valign="top">3
+</td><td>Class 3 CBMs are routed directly to the TE using unsolicited
+result codes defined in <i>bm</i>=2. If CBM storege is supported, messages of
+other classes result in indication as defined in <i>bm</i>=1.
+</td></tr></tbody></table>
+</dd>
+
+</a><a name="ds">
+<dt><i>ds:</i> for SMS-STATUS-REPORTs
+</dt><dd>
+<table border="0">
+<tbody><tr>
+<td valign="top"><b>0</b>
+</td><td><b>No SMS-STATUS-REPORTs are routed to the TE.</b>
+</td></tr><tr>
+<td valign="top">1
+</td><td>SMS-STATUS-REPORTs are routed to the TE using unsolicited result code:<br>
++CDS: <i>length</i>&lt;CR&gt;&lt;LF&gt;<i>pdu</i> (PDU mode)<br>
+or<br>
++CDS: <i>fo,mr,</i>[<i>ra,tora</i>],<i>scts,dt,st</i>
+(text mode)
+</td></tr><tr>
+<td valign="top">2
+</td><td>If SMS-STATUS-REPORT is stored into ME/TA, indication of the memory
+location is routed to the TE  using unsolicited result code:<br>
++CDSI: <i>mem index</i><br>
+</td></tr></tbody></table>
+</dd>
+
+</a><a name="bfr">
+<dt><i>bfr</i>
+</dt><dd>
+<table border="0">
+<tbody><tr>
+<td valign="top"><b>0</b>
+</td><td><b>TA buffer of unsolicited result codes defined within this command is
+flushed to the TE when <i>mode</i> 1..3 is entered. (OK response shall be
+given before flushing the codes.)</b>
+</td></tr><tr>
+<td valign="top">1
+</td><td>TA buffer of unsolicited result codes defined within this command is
+cleared when <i>mode</i> 1..3 is entered.
+</td></tr></tbody></table>
+</dd>
+</a></dl>
+<a name="bfr">Related commands: </a><a href="#+CPMS">+CPMS</a>,
+	<a href="#+CMGL">+CMGL</a>,
+	<a href="#+CMGR">+CMGR</a>,
+	<a href="#+CMGD">+CMGD</a>
+
+<a name="+CMGL">
+</a><h3><a name="+CMGL">List messages</a></h3>
+<a name="+CMGL">Text mode
+</a><table border="1">
+<tbody><tr>
+<td>+CMGL
+</td><td align="center">[=<i>stat</i>]
+</td></tr><tr>
+<td>
+</td><td>"REC UNREAD": received unread<br>
+"REC READ": received read<br>
+"STO UNSENT": stored unsent<br>
+"STO SENT": stored sent<br>
+"ALL": all
+</td></tr><tr>
+<td>NC
+</td><td>"REC UNREAD" "ALL"
+</td></tr><tr>
+<td>ND
+</td><td>?
+</td></tr><tr>
+<td>FA1,FA2
+</td><td>"REC UNREAD" "REC READ" "STO UNSENT" "STO SENT" "ALL"
+</td></tr></tbody></table>
+
+<p>
+<a name="+CMGL">PDU mode
+</a><table border="1">
+<tbody><tr>
+<td>+CMGL
+</td><td align="center">[=<i>stat</i>]
+</td></tr><tr>
+<td>
+</td><td>0: received unread<br>
+1: received read<br>
+2: stored unsent<br>
+3: stored sent<br>
+4: all
+</td></tr><tr>
+<td>NC
+</td><td>0 4
+</td></tr><tr>
+<td>ND
+</td><td>?
+</td></tr><tr>
+<td>FA1,FA2,S
+</td><td>0-4
+</td></tr></tbody></table>
+<a name="+CMGL">Related commands: </a><a href="#+CMGF">+CMGF</a>,
+	<a href="#+CMGR">+CMGR</a>,
+	<a href="#+CMGW">+CMGW</a>,
+	<a href="#+CMGD">+CMGD</a>
+
+<a name="+CMGR">
+</a></p><h3><a name="+CMGR">Read message</a></h3>
+<table border="1">
+<tbody><tr>
+<td>+CMGR=
+</td><td align="center"><i>index</i>
+</td></tr><tr>
+<td>NC,ND,FA1,FA2,S
+</td><td><i>memory index</i>
+</td></tr></tbody></table>
+<a name="+CMGR">Related commands: </a><a href="#+CMGF">+CMGF</a>,
+	<a href="#+CMGL">+CMGL</a>,
+	<a href="#+CMGW">+CMGW</a>,
+	<a href="#+CMGD">+CMGD</a>
+
+<a name="+CNMA">
+</a><h3><a name="+CNMA">New message acknowledgement to ME/TA</a></h3>
+<a name="+CNMA">Text mode
+</a><table border="1">
+<tbody><tr>
+<td>+CNMA
+</td></tr><tr>
+<td>NC
+</td></tr></tbody></table>
+
+<p>
+<a name="+CNMA">PDU mode
+</a><table border="1">
+<tbody><tr>
+<td>+CNMA=
+</td><td align="center"><i>n</i>
+</td><td align="center">,<i>length</i>
+</td><td align="center">&lt;CR&gt;<i>pdu</i>&lt;ctrl-Z/ESC&gt;
+</td></tr><tr>
+<td>
+</td><td>0: like text mode<br>
+1: send RP-ACK<br>
+2: send RP-ERROR
+</td><td><i>length of TP data</i>
+</td><td><i>RP-ACK/RP-ERROR pdu</i>
+</td></tr><tr>
+<td>NC
+</td><td>0-2
+</td><td><i>length</i>
+</td><td><i>pdu</i>
+</td></tr></tbody></table>
+
+<a name="+CMGS">
+</a></p><h3><a name="+CMGS">Send message</a></h3>
+<a name="+CMGS">Text mode
+</a><table border="1">
+<tbody><tr>
+<td>+CMGS=
+</td><td align="center"><i>da</i>
+</td><td align="center">[,<i>toda</i>]
+</td><td align="center">&lt;CR&gt;<i>text of message</i>&lt;ctrl-Z/ESC&gt;
+</td></tr><tr>
+<td>
+</td><td><i>destination address</i>
+</td><td>129: national<br>
+145: international
+</td><td><i>message</i>
+</td></tr><tr>
+<td>NC,ND,FA1,FA2
+</td><td><i>phone number</i>
+</td><td><i>129 145</i>
+</td><td><i>string</i>
+</td></tr></tbody></table>
+
+<p>
+<a name="+CMGS">PDU mode
+</a><table border="1">
+<tbody><tr>
+<td>+CMGS=
+</td><td align="center"><i>length</i>
+</td><td align="center">&lt;CR&gt;<i>pdu</i>&lt;ctrl-Z/ESC&gt;
+</td></tr><tr>
+<td>NC,ND,FA1,FA2,S
+</td><td><i>length of TP data</i>
+</td><td><i>pdu</i>
+</td></tr></tbody></table>
+<a name="+CMGS">Related commands: </a><a href="#+CMGF">+CMGF</a>,
+	<a href="#+CMSS">+CMSS</a>,
+	<a href="#+CMGW">+CMGW</a>,
+	<a href="#+CMGC">+CMGC</a>
+
+<a name="+CMSS">
+</a></p><h3><a name="+CMSS">Send message from storage</a></h3>
+<table border="1">
+<tbody><tr>
+<td>+CMSS=
+</td><td align="center"><i>index</i>
+</td><td align="center">[,<i>da</i>
+</td><td align="center">[,<i>toda</i>]]
+</td></tr><tr>
+<td>
+</td><td><i>memory index</i>
+</td><td><i>destination address</i>
+</td><td>129: national<br>
+145: international
+</td></tr><tr>
+<td>NC,ND,FA1,FA2,S
+</td><td><i>index</i>
+</td><td><i>phone number</i>
+</td><td><i>129 145</i>
+</td></tr></tbody></table>
+<a name="+CMSS">Related commands: </a><a href="#+CMGD">+CMGD</a>,
+	<a href="#+CMGS">+CMGS</a>,
+	<a href="#+CMGR">+CMGR</a>,
+	<a href="#+CMGL">+CMGL</a>,
+	<a href="#+CMGW">+CMGW</a>
+
+<a name="+CMGW">
+</a><h3><a name="+CMGW">Write message to memory</a></h3>
+<a name="+CMGW">Text mode
+</a><table border="1">
+<tbody><tr>
+<td>+CMGW=
+</td><td align="center"><i>oa/da</i>
+</td><td align="center">[[,<i>tooa/toda</i>]
+</td><td align="center">[,<i>stat</i>]]
+</td><td align="center">&lt;CR&gt;<br><i>text of
+	message</i><br>&lt;ctrl-Z/ESC&gt;
+</td></tr><tr>
+<td>
+</td><td><i>originating/<br>destination address</i>
+</td><td valign="top">129: national<br>
+145: international
+</td><td>"REC UNREAD": received unread<br>
+"REC READ": received read<br>
+<b>"STO UNSENT": stored unsent</b><br>
+"STO SENT": stored sent
+</td><td><i>message</i>
+</td></tr><tr>
+<td>NC,ND,FA1,FA2
+</td><td><i>phone number</i>
+</td><td>129 145
+</td><td>"REC UNREAD" "REC READ" "STO UNSENT" "STO SENT"
+</td><td><i>string</i>
+</td></tr></tbody></table>
+
+<p>
+<a name="+CMGW">PDU mode
+</a><table border="1">
+<tbody><tr>
+<td>+CMGW=
+</td><td align="center"><i>length</i>
+</td><td align="center">[,<i>stat</i>]
+</td><td align="center">&lt;CR&gt;<i>pdu</i>&lt;ctrl-Z/ESC&gt;
+</td></tr><tr>
+<td>
+</td><td>
+</td><td>0: received unread<br>
+1: received read<br>
+<b>2: stored unsent</b><br>
+3: stored sent
+</td></tr><tr>
+<td>NC,ND,FA1,FA2,S
+</td><td><i>length of TP data</i>
+</td><td>0-3
+</td><td><i>pdu</i>
+</td></tr></tbody></table>
+<a name="+CMGW">Related commands: </a><a href="#+CMGD">+CMGD</a>,
+	<a href="#+CMGS">+CMGS</a>,
+	<a href="#+CMGR">+CMGR</a>,
+	<a href="#+CMGL">+CMGL</a>,
+	<a href="#+CMSS">+CMSS</a>
+
+<a name="+CMGD">
+</a></p><h3><a name="+CMGD">Delete message</a></h3>
+<table border="1">
+<tbody><tr>
+<td>+CMGD=
+</td><td align="center"><i>index</i>
+</td></tr><tr>
+<td>NC,ND,FA1,FA2,S
+</td><td><i>memory index</i>
+</td></tr></tbody></table>
+<a name="+CMGD">Related commands: </a><a href="#+CMSS">+CMSS</a>,
+	<a href="#+CMGW">+CMGW</a>,
+	<a href="#+CMGR">+CMGR</a>,
+	<a href="#+CMGL">+CMGL</a>
+
+<a name="+CMGC">
+</a><h3><a name="+CMGC">Send command</a></h3>
+<a name="+CMGC">Text mode
+</a><table border="1">
+<tbody><tr>
+<td>+CMGC=
+</td><td align="center"><i>first octet</i>
+</td><td align="center">,<i>command type</i>
+</td><td align="center">,<i>protocol id</i>
+</td><td align="center">,<i>message number</i>
+</td><td align="center">,<i>da</i>
+</td><td align="center">[,<i>toda</i>]
+</td><td align="center">&lt;CR&gt;<i>2 char command</i>&lt;ctrl-Z/ESC&gt;
+</td></tr><tr>
+<td>
+</td><td colspan="4" rowspan="2" align="center">Not documented here
+</td><td><i>destination address</i>
+</td><td>129: national<br>
+145: international
+</td></tr><tr>
+<td>NC
+</td><td><i>phone number</i>
+</td><td><i>129 145</i>
+</td><td><i>command</i>
+</td></tr></tbody></table>
+
+<p>
+<a name="+CMGC">PDU mode
+</a><table border="1">
+<tbody><tr>
+<td>+CMGC=
+</td><td align="center"><i>length</i>
+</td><td align="center">&lt;CR&gt;<i>pdu</i>&lt;ctrl-Z/ESC&gt;
+</td></tr><tr>
+<td>NC
+</td><td><i>length of TP data</i>
+</td><td><i>pdu</i>
+</td></tr></tbody></table>
+<a name="+CMGC">Related commands: </a><a href="#+CMGF">+CMGF</a>,
+	<a href="#+CMSS">+CMSS</a>,
+	<a href="#+CMGW">+CMGW</a>
+
+<a name="+CESP">
+</a></p><h3><a name="+CESP">Enter SMS block mode protocol</a></h3>
+<a name="+CESP">Text mode
+</a><table border="1">
+<tbody><tr>
+<td>+CESP
+</td></tr><tr>
+<td>ND
+</td></tr></tbody></table>
+
+<p>
+</p><hr width="20%">
+<p>
+</p><blockquote>
+<a name="+CESP">Any contributions, corrections and suggestions are welcome. Write to:
+&lt;kissg@sztaki.hu&gt;.</a><p>
+
+<a name="+CESP">Gábor
+</a></p></blockquote>
+<p>
+</p><hr>
+<h4 align="center"><a name="+CESP">Limitation of Warranties</a></h4>
+
+<a name="+CESP">THIS INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
+   EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE
+   IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+   PARTICULAR PURPOSE, OR NON-INFRINGEMENT. 
+</a><p>
+<a name="+CESP">REFERENCES TO CORPORATIONS, THEIR SERVICES AND PRODUCTS, ARE
+   PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR
+   IMPLIED. IN NO EVENT SHALL I BE LIABLE FOR ANY SPECIAL, INCIDENTAL,
+   INDIRECT OR CONSEQUENTIAL DAMAGES OF ANY KIND, OR ANY DAMAGES
+   WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER OR
+   NOT ADVISED OF THE POSSIBILITY OF DAMAGE, AND ON ANY THEORY OF
+   LIABILITY, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+   PERFORMANCE OF THIS INFORMATION. 
+</a></p><p>
+<a name="+CESP">THIS PUBLICATION COULD INCLUDE TECHNICAL INACCURACIES OR
+   TYPOGRAPHICAL ERRORS. CHANGES MAY BE MADE AT ANY TIME TO THE
+   INFORMATION HEREIN WITHOUT PRIOR NOTICE. 
+
+</a></p></body></html>

@@ -1,0 +1,1928 @@
+<html>
+
+	<head>
+		<title>EXTENDED GSM COMMANDS</title>
+	</head>
+
+	<body bgcolor="#FFFFFF">
+		<table bgcolor="ffc246" width="100%" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td align="center"><a name="AT_Commands"><font color="53849d" size="5"><b>EXTENDED GSM COMMANDS</b></font></a></td>
+			</table>
+			<br>
+			This chapter describes the GSM commands supported by the GSM/PSTN cards and their operation. All commands can be written in upper or lower case or a combination of both.<br>
+			<br>
+			<table width="100%" bgcolor="e0e0e0" cellpadding="10" cellspacing="0" border="0">
+				<tr valign="top">
+					<td align="CENTER"><font color="red"><b>NOTE:</b></font></td>
+					<td>The supported and selected options of each GSM command vary depending on the type of handset used. You can ask the modem to indicate the parameters which are:<br>
+						- selected for each GSM command with <font color="red">&lt;command&gt;?</font><br>
+						- supported by each GSM command with <font color="red">&lt;command&gt; =?</font></td>
+				</tr>
+			</table>
+			<br>
+			<br>
+			<table bgcolor="ffc246" width="100%" cellpadding="3" border="0" cellspacing="0">
+				<tr>
+					<td align="center"><font color="53849d" size="5"><b><a name="general">General commands</a></b></font></td>
+				</table>
+				<br>
+				<center>
+					<font size="4"><b>Request manufacturer identification +CGMI</b></font><br>
+					(supported by most of GSM versions)</center>
+				<br>
+				<br>
+				<b>Action command syntax</b><br>
+				<table border="1" width="100%">
+					<tr>
+						<th>Command</th>
+						<th>Possible response(s)</th>
+					</tr>
+					<tr valign="top">
+						<td>+CGMI</td>
+						<td>&lt;manufacturer&gt;<br>
+							+CME ERROR: &lt;err&gt;</td>
+					</tr>
+					<tr valign="top">
+						<td>+CGMI=?</td>
+						<td>&nbsp;</td>
+					</tr>
+				</table>
+				<br>
+				<b>Defined values</b><br>
+				<table border="1" width="100%">
+					<tr valign="top">
+						<td>&lt;manufacturer&gt;</td>
+						<td>Request the manufacturer identification</td>
+					</tr>
+				</table>
+				<br>
+				<table width="100%" bgcolor="e0e0e0" cellpadding="10" cellspacing="0" border="0">
+					<tr valign="top">
+						<td align="CENTER"><font color="red"><b>NOTE:</b></font></td>
+						<td>Text shall not contain the sequence 0&lt;CR&gt; or OK&lt;CR&gt;.</td>
+					</tr>
+				</table>
+				<br>
+				<hr noshade>
+				<center>
+					<font size="4"><b>Request model identification +CGMM</b></font><br>
+					(supported by most of GSM versions)</center>
+				<br>
+				<br>
+				<b>Action command syntax</b><br>
+				<table border="1" width="100%">
+					<tr valign="top">
+						<th>Command</th>
+						<th>Possible response(s)</th>
+					</tr>
+					<tr valign="top">
+						<td>+CGMM</td>
+						<td>&lt;model&gt;<br>
+							+CME ERROR: &lt;err&gt;</td>
+					</tr>
+					<tr valign="top">
+						<td>+CGMM=?</td>
+						<td>&nbsp;</td>
+					</tr>
+				</table>
+				<br>
+				<b>Defined values</b><br>
+				<table border="1" width="100%">
+					<tr valign="top">
+						<td>&lt;model&gt;</td>
+						<td>Request the model identification</td>
+					</tr>
+				</table>
+				<br>
+				<table width="100%" bgcolor="e0e0e0" cellpadding="10" cellspacing="0" border="0">
+					<tr valign="top">
+						<td align="CENTER"><font color="red"><b>NOTE:</b></font></td>
+						<td>Text shall not contain the sequence 0&lt;CR&gt; or OK&lt;CR&gt;.</td>
+					</tr>
+				</table>
+				<br>
+				<hr noshade>
+				<center>
+					<font size="4"><b>Request revision identification +CGMR</b></font><br>
+					(supported by most of GSM versions)</center>
+				<br>
+				<br>
+				<b>Action command syntax</b><br>
+				<table border="1" width="100%">
+					<tr>
+						<th>Command</th>
+						<th>Possible response(s)</th>
+					</tr>
+					<tr valign="top">
+						<td>+CGMR</td>
+						<td>&lt;revision&gt;<br>
+							+CME ERROR: &lt;err&gt;</td>
+					</tr>
+					<tr valign="top">
+						<td>+CGMR=?</td>
+						<td>&nbsp;</td>
+					</tr>
+				</table>
+				<br>
+				<b>Defined values</b><br>
+				<table border="1" width="100%">
+					<tr valign="top">
+						<td>&lt;revision&gt;</td>
+						<td>Request the revision identification</td>
+					</tr>
+				</table>
+				<br>
+				<table width="100%" bgcolor="e0e0e0" cellpadding="10" cellspacing="0" border="0">
+					<tr valign="top">
+						<td align="CENTER"><font color="red"><b>NOTE:</b></font></td>
+						<td>Text shall not contain the sequence 0&lt;CR&gt; or OK&lt;CR&gt;.</td>
+					</tr>
+				</table>
+				<br>
+				<hr noshade>
+				<center>
+					<font size="4"><b>Select TE character set +CSCS</b></font><br>
+					(only supported by 8110/3110/2110 NOKIA versions)</center>
+				<br>
+				<br>
+				<b>Parameter command syntax</b><br>
+				<table border="1" width="100%">
+					<tr>
+						<th>Command</th>
+						<th>Possible response(s)</th>
+					</tr>
+					<tr valign="top">
+						<td>+CSCS=[&lt;chset&gt;]</td>
+						<td>OK</td>
+					</tr>
+					<tr valign="top">
+						<td>+CSCS?</td>
+						<td>+CSCS: &lt;chset&gt;</td>
+					</tr>
+					<tr valign="top">
+						<td>+CSCS=?</td>
+						<td>+CSCS: (list of supported &lt;chset&gt;s)</td>
+					</tr>
+				</table>
+				<br>
+				<b>Description</b><br>
+				Set command informs TA which character set &lt;chset&gt; is used by the TE. TA is then able to convert character strings correctly between TE and ME character sets.<br>
+				<br>
+				<b>Defined values</b><br>
+				<table border="1" width="100%">
+					<tr valign="top">
+						<td>&lt;chset&gt;</td>
+						<td>Select option</td>
+					</tr>
+					<tr valign="top">
+						<td>&quot;PCCPxxx&quot;</td>
+						<td>PC character set Code Page xxx</td>
+					</tr>
+				</table>
+				<br>
+				<br>
+				<hr noshade>
+				<center>
+					<font size="4"><b>Generic TA control commands</b></font><br>
+					(supported by all GSM versions)</center>
+				<br>
+				<br>
+				<b>Generic TA control commands</b><br>
+				<table border="1" width="100%">
+					<tr>
+						<th>Command</th>
+						<th>Possible response(s)</th>
+					</tr>
+					<tr valign="top">
+						<td>+GMI</td>
+						<td>Request TA manufacturer identification (may equal to +CGMI)</td>
+					</tr>
+					<tr valign="top">
+						<td>+GMM</td>
+						<td>Request TA model identification (may equal to +CGMM)</td>
+					</tr>
+					<tr valign="top">
+						<td>+GMR</td>
+						<td>Request TA revision identification (may equal to +CGMR)</td>
+					</tr>
+				</table>
+				<br>
+				<table bgcolor="ffc246" width="100%" cellpadding="3" border="0" cellspacing="0">
+					<tr>
+						<td align="center"><font color="53849d" size="5"><b><a name="control">Call control commands</a></b></font></td>
+					</table>
+					<br>
+					<center>
+						<font size="4"><b>Selecting GSM communication parameters +CBST</b></font><br>
+						(supported by all GSM versions)</center>
+					<br>
+					<br>
+					<b>Parameter command syntax</b><br>
+					<table border="1" width="100%">
+						<tr>
+							<th>Command</th>
+							<th>Possible response(s)</th>
+						</tr>
+						<tr valign="top">
+							<td>+CBST=[&lt;speed&gt;[,&lt;name&gt;[,&lt;ce&gt;]]]</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr valign="top">
+							<td>+CBST?</td>
+							<td>+CBST: &lt;speed&gt;[,&lt;name&gt;,&lt;ce&gt;]</td>
+						</tr>
+						<tr valign="top">
+							<td>+CBST=?</td>
+							<td>+CBST: (list of supported &lt;speed&gt;s),(list of supported &lt;name&gt;s),(list of supported &lt;ce&gt;s)</td>
+						</tr>
+					</table>
+					<br>
+					<b>Description</b><br>
+					This extended command uses 3 parameters to select : the speed, communication mode and transparent mode or RLP (Radio Link Protocol) error correction. Its syntax is as follows:<br>
+					<br>
+					<b>+CBST=[&lt;speed&gt;[,&lt;name&gt;[,&lt;ce&gt;]]]</b><br>
+					<br>
+					<table width="100%" bgcolor="e0e0e0" cellpadding="10" cellspacing="0" border="0">
+						<tr valign="top">
+							<td align="CENTER"><font color="red"><b>NOTE:</b></font></td>
+							<td>Parameters that are not filled in (enter simply a comma or a &lt;CR&gt;) retain their previous value.</td>
+						</tr>
+					</table>
+					<br>
+					<b>Selected parameters</b><br>
+					Use the following command to find out the values of the selected parameters:<br>
+					<br>
+					<b>+CBST?</b><br>
+					Response: +CBST: &lt;speed&gt;[,&lt;name&gt;,&lt;ce&gt;]<br>
+					Example: +CBST:7,0,1 (speed : 9600 bps, communication type : asynchronous, RLP error correction activated).<br>
+					<br>
+					<b>Supported parameters</b><br>
+					Use the following command to find out the values of the supported parameters:<br>
+					<br>
+					<b>+CBST=?</b><br>
+					Response: +CBST: (list of supported &lt;speed&gt;s),(list of supported &lt;name&gt;s),(list of supported &lt;ce&gt;s)<br>
+					<br>
+					Example: +CBST:(0,1,2,3,4,5,6,7,9,65,66,68,70,71),(0),(0,1)<br>
+					<br>
+					<b>Definition of the 3 parameters of the +CBST command</b>
+					<ol>
+						<li><b>&lt;speed&gt;</b> Decimal number which specifies the chosen speed for a connection in call or answer mode. The possible values are:
+					</ol>
+					<table border="1" width="100%">
+						<tr valign="top">
+							<th>&lt;speed&gt;</th>
+							<th>Modulation</th>
+							<th>Authorised speed (bps)</th>
+							<th>Note(s)</th>
+						</tr>
+						<tr valign="top">
+							<td>0</td>
+							<td>Automode</td>
+							<td>Automatic speed selection</td>
+							<td>The modem changes the modulation depending on environmental restrictions and range capacities (default value).</td>
+							<tr valign="top">
+								<td>1</td>
+								<td>V.21</td>
+								<td>300</td>
+								<td>&nbsp;</td>
+								<tr valign="top">
+									<td>2</td>
+									<td>V.22</td>
+									<td>1200</td>
+									<td>&nbsp;</td>
+									<tr valign="top">
+										<td>3</td>
+										<td>V.23</td>
+										<td>1200/75</td>
+										<td>&nbsp;</td>
+										<tr valign="top">
+											<td>4</td>
+											<td>V.22bis</td>
+											<td>2400</td>
+											<td>&nbsp;</td>
+											<tr valign="top">
+												<td>5</td>
+												<td>V.26ter</td>
+												<td>2400</td>
+												<td>&nbsp;</td>
+												<tr valign="top">
+													<td>6</td>
+													<td>V.32</td>
+													<td>4800</td>
+													<td>&nbsp;</td>
+													<tr valign="top">
+														<td>7</td>
+														<td>V.32</td>
+														<td>9600</td>
+														<td>&nbsp;</td>
+														<tr valign="top">
+															<td>8</td>
+															<td>-</td>
+															<td>No speed specification</td>
+															<td>Relates to specific networks</td>
+															<tr valign="top">
+																<td>9</td>
+																<td>V.32bis</td>
+																<td>7800</td>
+																<td>&nbsp;</td>
+																<tr valign="top">
+																	<td>10</td>
+																	<td>V.32bis</td>
+																	<td>12000</td>
+																	<td>&nbsp;</td>
+																	<tr valign="top">
+																		<td>11</td>
+																		<td>V.32bis</td>
+																		<td>14400</td>
+																		<td>&nbsp;</td>
+																		<tr valign="top">
+																			<td>12</td>
+																			<td>V.34</td>
+																			<td>9600</td>
+																			<td>&nbsp;</td>
+																			<tr valign="top">
+																				<td>13</td>
+																				<td>V.34</td>
+																				<td>12000</td>
+																				<td>&nbsp;</td>
+																				<tr valign="top">
+																					<td>14</td>
+																					<td>V.34</td>
+																					<td>14400</td>
+																					<td>&nbsp;</td>
+																					<tr valign="top">
+																						<td>15</td>
+																						<td>V.34</td>
+																						<td>19200</td>
+																						<td>&nbsp;</td>
+																						<tr valign="top">
+																							<td>16</td>
+																							<td>V.34</td>
+																							<td>28800</td>
+																							<td>&nbsp;</td>
+																							<tr valign="top">
+																								<td>65</td>
+																								<td>V.110</td>
+																								<td>300</td>
+																								<td>&nbsp;</td>
+																								<tr valign="top">
+																									<td>66</td>
+																									<td>V.110</td>
+																									<td>1200</td>
+																									<td>&nbsp;</td>
+																									<tr valign="top">
+																										<td>68</td>
+																										<td>V.110</td>
+																										<td>2400</td>
+																										<td>&nbsp;</td>
+																										<tr valign="top">
+																											<td>70</td>
+																											<td>V.110</td>
+																											<td>4800</td>
+																											<td>&nbsp;</td>
+																											<tr valign="top">
+																												<td>71</td>
+																												<td>V.110</td>
+																												<td>9600</td>
+																												<td>&nbsp;</td>
+																												<tr valign="top">
+																													<td>74</td>
+																													<td>V.110</td>
+																													<td>12000</td>
+																													<td>&nbsp;</td>
+																													<tr valign="top">
+																														<td>75</td>
+																														<td>V.110</td>
+																														<td>14400</td>
+																														<td>&nbsp;</td>
+																														<tr valign="top">
+																															<td>79</td>
+																															<td>V.110</td>
+																															<td>19800</td>
+																															<td>&nbsp;</td>
+																															<tr valign="top">
+																																<td>81</td>
+																																<td>V.110</td>
+																																<td>38400</td>
+																																<td>&nbsp;</td>
+																															</table>
+																															<br>
+																															For example, if you wish to establish a connection at 2400 bps, &lt;speed&gt; will take the value of 4.
+																															<ol start="2">
+																																<li><b>&lt;name&gt;</b> Numerical value which defines the communication mode to be used. The available options are:
+																															</ol>
+																															<table border="1" width="100%">
+																																<tr valign="top">
+																																	<th>&lt;name&gt;</th>
+																																	<th>Selected option</th>
+																																	<th>Note(s)</th>
+																																</tr>
+																																<tr valign="top">
+																																	<td>0</td>
+																																	<td>Asynchronous</td>
+																																	<td>Default value</td>
+																																	<tr valign="top">
+																																		<td>1</td>
+																																		<td>Synchronous</td>
+																																		<td>&nbsp;</td>
+																																		<tr valign="top">
+																																			<td>2</td>
+																																			<td>PAD Access (asynchronous)</td>
+																																			<td>&nbsp;</td>
+																																			<tr valign="top">
+																																				<td>3</td>
+																																				<td>PAD Access (synchronous)</td>
+																																				<td>&nbsp;</td>
+																																			</table>
+																																			<br>
+																																			The default value is 0, which enables asynchronous communication mode.<br>
+																																			<br>
+																																			However, for a connection in synchronous mode, &lt;name&gt; will be set to 1.
+																																			<ol start="3">
+																																				<li><b>&lt;ce&gt;</b> Decimal value which selects RLP (Radio Link Protocol) error correction or Transparent mode. The authorised values are:
+																																			</ol>
+																																			<table border="1" width="100%">
+																																				<tr valign="top">
+																																					<th>&lt;ce&gt;</th>
+																																					<th>Selected option</th>
+																																					<th>Note(s)</th>
+																																				</tr>
+																																				<tr valign="top">
+																																					<td>0</td>
+																																					<td>Transparent</td>
+																																					<td>&nbsp;</td>
+																																					<tr valign="top">
+																																						<td>1</td>
+																																						<td>RLP</td>
+																																						<td>Default value</td>
+																																					</table>
+																																					<br>
+																																					RLP mode is selected by default. If you want to activate transparent mode, the 1 must be replaced by 0 (&lt;ce&gt;=0).<br>
+																																					<br>
+																																					Configuration example for V.32 modulation, asynchronous mode and RLP mode: AT+CBST=7,0,1<br>
+																																					<br>
+																																					<br>
+																																					<b>Interaction between Modem and GSM AT Commands</b><br>
+																																					<br>
+																																					AT\Nx also enforces the &lt;ce&gt; element of the +CBST command. AT\Nx updates automatically the +CBST settings but +CBST does not update the \Nx settings !<br>
+																																					<br>
+																																					<table>
+																																						<tr valign="top">
+																																							<td><i>\Nn</i></td>
+																																							<td><i>Selecting the GSM error correction</i><br>
+																																								&nbsp;</td>
+																																							<tr valign="top">
+																																								<td>\N0</td>
+																																								<td>Transparent Mode<br>
+																																									Connection without error correction handled by the GSM network</td>
+																																								<tr valign="top">
+																																									<td>\N2</td>
+																																									<td>RLP Mode<br>
+																																										The modem waits for a RLP connection.</td>
+																																									<tr valign="top">
+																																										<td>\N3</td>
+																																										<td>RLP or transparent Mode<br>
+																																											The RLP or transparent modes are authorised.</td>
+																																									</table>
+																																									<br>
+																																									<hr noshade>
+																																									<center>
+																																										<font size="4"><b>Radio link protocol +CRLP</b></font><br>
+																																										(only supported by 8110/3110/2110 NOKIA versions)</center>
+																																									<br>
+																																									<br>
+																																									<b>Parameter command syntax</b><br>
+																																									<table border="1" width="100%">
+																																										<tr>
+																																											<th>Command</th>
+																																											<th>Possible response(s)</th>
+																																										</tr>
+																																										<tr valign="top">
+																																											<td>+CRLP=[&lt;iws&gt;[,&lt;mws&gt;[,&lt;T1&gt;[,&lt;N2&gt;]]]]</td>
+																																											<td>OK</td>
+																																										</tr>
+																																										<tr valign="top">
+																																											<td>+CRLP?</td>
+																																											<td>+CRLP: &lt;iws&gt;,&lt;mws&gt;,&lt;T1&gt;,&lt;N2&gt;</td>
+																																										</tr>
+																																										<tr valign="top">
+																																											<td>+CRLP=?</td>
+																																											<td>+CRLP: (list of supported &lt;iws&gt;s),(list of supported &lt;mws&gt;s),(list of supported &lt;T1&gt;s),(list of supported &lt;N2&gt;s)</td>
+																																										</tr>
+																																									</table>
+																																									<br>
+																																									<b>Description</b><br>
+																																									Radio link protocol parameters may be altered with set command.<br>
+																																									<br>
+																																									Test command returns values supported by the TA as a compound value.<br>
+																																									<br>
+																																									<b>Defined values</b><br>
+																																									<table border="1" width="100%">
+																																										<tr>
+																																											<th>Option</th>
+																																											<th>Note</th>
+																																										</tr>
+																																										<tr valign="top">
+																																											<td>&lt;iws&gt;</td>
+																																											<td>IWF to MS window size.</td>
+																																										</tr>
+																																										<tr valign="top">
+																																											<td>&lt;mws&gt;</td>
+																																											<td>MS to IWF window size.</td>
+																																										</tr>
+																																										<tr valign="top">
+																																											<td>&lt;T1&gt;</td>
+																																											<td>Acknowledgement timer T1 (default 48).</td>
+																																										</tr>
+																																										<tr valign="top">
+																																											<td>&lt;N2&gt;</td>
+																																											<td>Retransmission attempts N2 (default 6) in integer format.</td>
+																																										</tr>
+																																									</table>
+																																									<br>
+																																									<table bgcolor="ffc246" width="100%" cellpadding="3" border="0" cellspacing="0">
+																																										<tr>
+																																											<td align="center"><font color="53849d" size="5"><b><a name="mobile_control">Mobile Equipment control and status commands</a></b></font></td>
+																																										</table>
+																																										<br>
+																																										<center>
+																																											<font size="4"><b>Phone activity status +CPAS</b></font><br>
+																																											(only supported by 8110/3110/2110 NOKIA versions)</center>
+																																										<br>
+																																										<br>
+																																										<b>Action command syntax</b><br>
+																																										<table border="1" width="100%">
+																																											<tr>
+																																												<th>Command</th>
+																																												<th>Possible response(s)</th>
+																																											</tr>
+																																											<tr valign="top">
+																																												<td>+CPAS</td>
+																																												<td>+CPAS: &lt;pas&gt;<br>
+																																													+CME ERROR: &lt;err&gt;</td>
+																																											</tr>
+																																											<tr valign="top">
+																																												<td>+CPAS=?</td>
+																																												<td>+CPAS: (list of supported &lt;pas&gt;s)<br>
+																																													+CME ERROR: &lt;err&gt;</td>
+																																											</tr>
+																																										</table>
+																																										<br>
+																																										<b>Description</b><br>
+																																										Execution command returns the activity status &lt;pas&gt; of the ME. It can be used to interrogate the ME before requesting action from the phone.<br>
+																																										<br>
+																																										Test command returns values supported by the ME as a compound value.<br>
+																																										<br>
+																																										<b>Defined values</b> (Following the GSM card version, the supported values change)<br>
+																																										<br>
+																																										<table border="1" width="100%">
+																																											<tr>
+																																												<th>&lt;pas&gt;</th>
+																																												<th>Selected option</th>
+																																											</tr>
+																																											<tr valign="top">
+																																												<td>0</td>
+																																												<td>Ready (ME allows commands from TA/TE).</td>
+																																											</tr>
+																																											<tr valign="top">
+																																												<td>1</td>
+																																												<td>Unavailable (ME does not allow commands from TA/TE).</td>
+																																											</tr>
+																																											<tr valign="top">
+																																												<td>2</td>
+																																												<td>Unknown (ME is not guaranteed to respond to instructions).</td>
+																																											</tr>
+																																											<tr valign="top">
+																																												<td>3</td>
+																																												<td>Ringing (ME is ready for commands from TA/TE, but the ringer is active).</td>
+																																											</tr>
+																																											<tr valign="top">
+																																												<td>4</td>
+																																												<td>Call in progress (ME is ready for commands from TA/TE, but a call is in progress).</td>
+																																											</tr>
+																																											<tr valign="top">
+																																												<td>5</td>
+																																												<td>Asleep (ME is unable to process commands from TA/TE because it is in a low functionality state).</td>
+																																											</tr>
+																																										</table>
+																																										<br>
+																																										<br>
+																																										<hr noshade>
+																																										<center>
+																																											<font size="4"><b>Signal quality +CSQ</b></font><br>
+																																											(only supported by CMDZ1 SONY version)</center>
+																																										<br>
+																																										<br>
+																																										<b>Action command syntax</b><br>
+																																										<table border="1" width="100%">
+																																											<tr>
+																																												<th>Command</th>
+																																												<th>Possible response(s)</th>
+																																											</tr>
+																																											<tr valign="top">
+																																												<td>+CSQ</td>
+																																												<td>+CSQ: &lt;rssi&gt;, &lt;ber&gt;<br>
+																																													+CME ERROR: &lt;err&gt;</td>
+																																											</tr>
+																																											<tr valign="top">
+																																												<td>+CSQ=?</td>
+																																												<td>+CSQ: (list of supported &lt;rssi&gt;s), (list of supported &lt;ber&gt;s)<br>
+																																													+CME ERROR: &lt;err&gt;</td>
+																																											</tr>
+																																										</table>
+																																										<br>
+																																										<b>Description</b><br>
+																																										Execution command returns received signal strength indication &lt;rssi&gt; and channel bit error rate &lt;ber&gt; from the ME. Test command returns values supported by the TA as compound values.<br>
+																																										<br>
+																																										<b>Defined values</b><br>
+																																										<table border="1" width="100%">
+																																											<tr>
+																																												<th>&lt;rssi&gt;</th>
+																																												<th>Selected option</th>
+																																											</tr>
+																																											<tr valign="top">
+																																												<td>0</td>
+																																												<td>-113 dBm or less</td>
+																																											</tr>
+																																											<tr valign="top">
+																																												<td>1</td>
+																																												<td>-111 dBm</td>
+																																											</tr>
+																																											<tr valign="top">
+																																												<td>2..30</td>
+																																												<td>-109... -53 dBm</td>
+																																											</tr>
+																																											<tr valign="top">
+																																												<td>31</td>
+																																												<td>-51 dBm or greater</td>
+																																											</tr>
+																																											<tr valign="top">
+																																												<td>99</td>
+																																												<td>Not known or not detectable</td>
+																																											</tr>
+																																										</table>
+																																										<br>
+																																										<table border="1" width="100%">
+																																											<tr>
+																																												<th>&lt;ber&gt; (in percent)</th>
+																																												<th>Selected option</th>
+																																											</tr>
+																																											<tr valign="top">
+																																												<td>0..7</td>
+																																												<td>RXQUAL values</td>
+																																											</tr>
+																																											<tr valign="top">
+																																												<td>99</td>
+																																												<td>Not known or not detectable</td>
+																																											</tr>
+																																										</table>
+																																										<br>
+																																										<br>
+																																										<hr noshade>
+																																										<center>
+																																											<font size="4"><b>Select phonebook memory storage +CPBS</b></font><br>
+																																											(supported by CMDZ1 SONY, 8110/3110/2110 NOKIA versions)</center>
+																																										<br>
+																																										<br>
+																																										<b>Parameter command syntax</b><br>
+																																										<table border="1" width="100%">
+																																											<tr>
+																																												<th>Command</th>
+																																												<th>Possible response(s)</th>
+																																											</tr>
+																																											<tr valign="top">
+																																												<td>+CPBS=&lt;storage&gt;</td>
+																																												<td>+CME ERROR: &lt;err&gt;</td>
+																																											</tr>
+																																											<tr valign="top">
+																																												<td>+CPBS?</td>
+																																												<td>+CPBS: &lt;storage&gt;</td>
+																																											</tr>
+																																											<tr valign="top">
+																																												<td>+CPBS=?</td>
+																																												<td>+CPBS: (list of supported &lt;storage&gt;s)</td>
+																																											</tr>
+																																										</table>
+																																										<br>
+																																										<b>Description</b><br>
+																																										Set command selects phonebook memory storage &lt;storage&gt;, which is used by other phonebook commands. If setting fails in an ME error, +CME ERROR: &lt;err&gt; is returned. Test command returns supported storages as compound value.<br>
+																																										<br>
+																																										<b>Defined values for CMDZ1 SONY version</b><br>
+																																										<table border="1" width="100%">
+																																											<tr>
+																																												<th>&lt;storage&gt; value reserved by this ETS</th>
+																																												<th>Selected option</th>
+																																											</tr>
+																																											<tr valign="top">
+																																												<td>&quot;SM&quot;</td>
+																																												<td>SIM phonebook</td>
+																																											</tr>
+																																										</table>
+																																										<br>
+																																										<b>Defined values for NOKIA versions</b><br>
+																																										<table border="1" width="100%">
+																																											<tr>
+																																												<th>&lt;storage&gt; value reserved by this ETS</th>
+																																												<th>Selected option</th>
+																																											</tr>
+																																											<tr valign="top">
+																																												<td>&quot;SM&quot;</td>
+																																												<td>SIM phonebook</td>
+																																											</tr>
+																																											<tr valign="top">
+																																												<td>&quot;ME&quot;</td>
+																																												<td>ME phonebook (depending on the NOKIA model)</td>
+																																											</tr>
+																																										</table>
+																																										<br>
+																																										<br>
+																																										<hr noshade>
+																																										<center>
+																																											<font size="4"><b>Read phonebook entries +CPBR</b></font><br>
+																																											(supported by CMDZ1 SONY, 8110/3110/2110 NOKIA versions)</center>
+																																										<br>
+																																										<br>
+																																										<b>Action command syntax</b><br>
+																																										<table border="1" width="100%">
+																																											<tr>
+																																												<th>Command</th>
+																																												<th>Possible response(s)</th>
+																																											</tr>
+																																											<tr valign="top">
+																																												<td>+CPBR=&lt;index1&gt;[,&lt;index2&gt;]</td>
+																																												<td>+CPBR: &lt;index1&gt;, &lt;number&gt;, &lt;type&gt;,&lt;text&gt;[[...]<br>
+																																													&lt;CR&gt;&lt;LF&gt;+CPBR: &lt;index2&gt;,&lt;number&gt;,&lt;type&gt;,&lt;text&gt;] +CME ERROR: &lt;err&gt;</td>
+																																											</tr>
+																																											<tr valign="top">
+																																												<td>+CPBR=?</td>
+																																												<td>+CPBR: (list of supported &lt;index&gt;s),&lt;nlength&gt;,&lt;tlength&gt;<br>
+																																													+CME ERROR: &lt;err&gt;</td>
+																																											</tr>
+																																										</table>
+																																										<br>
+																																										<b>Description</b><br>
+																																										Execution command returns phonebook entries in location number range &lt;index1&gt;... &lt;index2&gt; from the current phonebook memory storage selected with +CPBS. If &lt;index2&gt; is left out, only location &lt;index1&gt; is returned. Entry fields returned are location number &lt;indexn&gt;, phone number stored there &lt;number&gt; (of format &lt;type&gt;) and text &lt;text&gt; associated with the number. If listing fails in an ME error,<br>
+																																										+CME ERROR: &lt;err&gt; is returned.<br>
+																																										Test command returns location range supported by the current storage as a compound value and the maximum lengths of &lt;number&gt; and &lt;text&gt; fields. If ME is not currently reachable,<br>
+																																										+CME ERROR: &lt;err&gt; is returned.<br>
+																																										<br>
+																																										<b>Defined values</b><br>
+																																										<table border="1" width="100%">
+																																											<tr>
+																																												<th>Option</th>
+																																												<th>Note</th>
+																																											</tr>
+																																											<tr valign="top">
+																																												<td>&lt;index1&gt;, &lt;index2&gt;, &lt;index&gt;</td>
+																																												<td>Integer type values in the range of location numbers of phonebook memory from 1 to n</td>
+																																											</tr>
+																																											<tr valign="top">
+																																												<td>&lt;number&gt;</td>
+																																												<td>String type phone number of format &lt;type&gt;</td>
+																																											</tr>
+																																											<tr valign="top">
+																																												<td>&lt;type&gt;</td>
+																																												<td>Type of address octet in integer format; 145 (international) otherwise 129</td>
+																																											</tr>
+																																											<tr valign="top">
+																																												<td>&lt;text&gt;</td>
+																																												<td>String type field of maximum length &lt;tlength&gt;</td>
+																																											</tr>
+																																											<tr valign="top">
+																																												<td>&lt;nlength&gt;</td>
+																																												<td>Integer type value indicating the maximum length of field &lt;number&gt;</td>
+																																											</tr>
+																																											<tr valign="top">
+																																												<td>&lt;tlength&gt;</td>
+																																												<td>Integer type value indicating the maximum length of field &lt;text&gt;</td>
+																																											</tr>
+																																										</table>
+																																										<br>
+																																										<br>
+																																										<hr noshade>
+																																										<center>
+																																											<font size="4"><b>Write phonebook entry +CPBW</b></font><br>
+																																											(supported by CMDZ1 SONY, 8110/3110/2110 NOKIA versions)</center>
+																																										<br>
+																																										<br>
+																																										<b>Action command syntax</b><br>
+																																										<table border="1" width="100%">
+																																											<tr>
+																																												<th>Command</th>
+																																												<th>Possible response(s)</th>
+																																											</tr>
+																																											<tr valign="top">
+																																												<td>+CPBW=[&lt;index&gt;][,&lt;number&gt; [,&lt;type&gt;[,&lt;text&gt;]]]</td>
+																																												<td>+CME ERROR: &lt;err&gt;</td>
+																																											</tr>
+																																											<tr valign="top">
+																																												<td>+CPBW=?</td>
+																																												<td>+CPBW:(list of supported &lt;index&gt;s),&lt;nlength&gt;, (list of supported &lt;type&gt;s),&lt;tlength&gt;<br>
+																																													+CME ERROR: &lt;err&gt;</td>
+																																											</tr>
+																																										</table>
+																																										<br>
+																																										<b>Description</b><br>
+																																										Execution command writes a phonebook entry in location number &lt;index&gt; in the current phonebook memory storage selected with +CPBS. Entry fields written are phone number &lt;number&gt; (in the format &lt;type&gt;) and text &lt;text&gt; associated with the number. If those fields are omitted, phonebook entry is deleted. If writing fails in an ME error, +CME ERROR: &lt;err&gt; is returned.<br>
+																																										Test command returns location range supported by the current storage as a compound value, the maximum length of &lt;number&gt; field, supported number formats of the storage, and the maximum length of &lt;text&gt; field. If ME is not currently reachable, +CME ERROR: &lt;err&gt; is returned. If storage does not offer format information, the format list should be empty parenthesis.<br>
+																																										<br>
+																																										<b>Defined values</b><br>
+																																										<table border="1" width="100%">
+																																											<tr>
+																																												<th>Option</th>
+																																												<th>Note</th>
+																																											</tr>
+																																											<tr valign="top">
+																																												<td>&lt;index&gt;</td>
+																																												<td>Integer type values in the range of location numbers of phonebook memory</td>
+																																											</tr>
+																																											<tr valign="top">
+																																												<td>&lt;number&gt;</td>
+																																												<td>String type phone number of format &lt;type&gt;</td>
+																																											</tr>
+																																											<tr valign="top">
+																																												<td>&lt;type&gt;</td>
+																																												<td>Type of address octet in integer format; default 145 when dialling string includes international access code character '+', otherwise 129</td>
+																																											</tr>
+																																											<tr valign="top">
+																																												<td>&lt;text&gt;</td>
+																																												<td>String type field of maximum length &lt;tlength&gt; (1)</td>
+																																											</tr>
+																																											<tr valign="top">
+																																												<td>&lt;nlength&gt;</td>
+																																												<td>Integer type value indicating the maximum length of field &lt;number&gt;</td>
+																																											</tr>
+																																											<tr valign="top">
+																																												<td>&lt;tlength&gt;</td>
+																																												<td>Integer type value indicating the maximum length of field &lt;text&gt;</td>
+																																											</tr>
+																																										</table>
+																																										<br>
+																																										(1): The 2110 mobile does not manage the &lt;text&gt; field, if you try to write a text on the SIM card, the text will be replaced by a blank.<br>
+																																										<br>
+																																										<hr noshade>
+																																										<center>
+																																											<font size="4"><b>Clock +CCLK</b></font><br>
+																																											(only supported by CMDZ1 SONY version)</center>
+																																										<br>
+																																										<br>
+																																										<b>Parameter command syntax</b><br>
+																																										<table border="1" width="100%">
+																																											<tr>
+																																												<th>Command</th>
+																																												<th>Possible response(s)</th>
+																																											</tr>
+																																											<tr valign="top">
+																																												<td>+CCLK=&lt;time&gt;</td>
+																																												<td>+CME ERROR: &lt;err&gt;</td>
+																																											</tr>
+																																											<tr valign="top">
+																																												<td>+CCLK?</td>
+																																												<td>+CCLK: &lt;time&gt;<br>
+																																													+CME ERROR: &lt;err&gt;</td>
+																																											</tr>
+																																											<tr valign="top">
+																																												<td>+CCLK=?</td>
+																																												<td>&nbsp;</td>
+																																											</tr>
+																																										</table>
+																																										<br>
+																																										<b>Description</b><br>
+																																										Set command sets the real-time clock of the ME. If setting fails in an ME error, +CME ERROR: &lt;err&gt; is returned. Read command returns the current setting of the clock.<br>
+																																										<br>
+																																										<b>Defined values</b><br>
+																																										<table border="1" width="100%">
+																																											<tr>
+																																												<th>Option</th>
+																																												<th>Note</th>
+																																											</tr>
+																																											<tr valign="top">
+																																												<td>&lt;time&gt;</td>
+																																												<td>String type value; format is &quot;yy/MM/dd,hh:mm:ss&quot;, where characters indicate year, month, day, hour, minutes, and seconds.</td>
+																																											</tr>
+																																										</table>
+																																										<br>
+																																										<table bgcolor="ffc246" width="100%" cellpadding="3" border="0" cellspacing="0">
+																																											<tr>
+																																												<td align="center"><font color="53849d" size="5"><b><a name="mobile_errors">Mobile Equipment errors</a></b></font></td>
+																																											</table>
+																																											<br>
+																																											<center>
+																																												<font size="4"><b>Report Mobile Equipment error +CMEE</b></font><br>
+																																												(supported by CMDZ1 SONY, 8110/3110/2110 NOKIA versions)</center>
+																																											<br>
+																																											<br>
+																																											<b>Parameter command syntax</b><br>
+																																											<table border="1" width="100%">
+																																												<tr>
+																																													<th>Command</th>
+																																													<th>Possible response(s)</th>
+																																												</tr>
+																																												<tr valign="top">
+																																													<td>+CMEE=[&lt;n&gt;]</td>
+																																													<td>OK</td>
+																																												</tr>
+																																												<tr valign="top">
+																																													<td>+CMEE?</td>
+																																													<td>+CMEE: &lt;n&gt;</td>
+																																												</tr>
+																																												<tr valign="top">
+																																													<td>+CMEE=?</td>
+																																													<td>+CMEE: (list of supported &lt;n&gt;s)</td>
+																																												</tr>
+																																											</table>
+																																											<br>
+																																											<b>Description</b><br>
+																																											Set command disables or enables the use of result code +CME ERROR: &lt;err&gt; as an indication of an error relating to the functionality of the ME. When enabled, ME related errors cause<br>
+																																											+CME ERROR: &lt;err&gt; final result code instead of the regular ERROR final result code. ERROR is returned normally when error is related to syntax, invalid parameters, or TA functionality.<br>
+																																											<br>
+																																											Test command returns values supported by the TA as a compound value.<br>
+																																											<br>
+																																											<b>Defined values</b><br>
+																																											<table border="1" width="100%">
+																																												<tr>
+																																													<th>&lt;n&gt;</th>
+																																													<th>Selected option</th>
+																																												</tr>
+																																												<tr valign="top">
+																																													<td><b>0</b></td>
+																																													<td>Disable +CME ERROR: &lt;err&gt; result code and use ERROR instead</td>
+																																												</tr>
+																																												<tr valign="top">
+																																													<td>1</td>
+																																													<td>Enable +CME ERROR: &lt;err&gt; result code and use numeric &lt;err&gt; values<br>
+																																														(refer next subclause)</td>
+																																												</tr>
+																																												<tr valign="top">
+																																													<td>2</td>
+																																													<td>Enable +CME ERROR: &lt;err&gt; result code and use verbose &lt;err&gt; values<br>
+																																														(refer next subclause)</td>
+																																												</tr>
+																																											</table>
+																																											<br>
+																																											<table border="1" width="100%">
+																																												<tr>
+																																													<th>&lt;err&gt;</th>
+																																													<th>Values (numeric format followed by verbose format)</th>
+																																												</tr>
+																																												<tr valign="top">
+																																													<td>0</td>
+																																													<td>Phone failure</td>
+																																												</tr>
+																																												<tr valign="top">
+																																													<td>1</td>
+																																													<td>No connection to phone</td>
+																																												</tr>
+																																												<tr valign="top">
+																																													<td>2</td>
+																																													<td>Phone-adaptor link reserved</td>
+																																												</tr>
+																																												<tr valign="top">
+																																													<td>3</td>
+																																													<td>Operation not allowed</td>
+																																												</tr>
+																																												<tr valign="top">
+																																													<td>4</td>
+																																													<td>Operation not supported</td>
+																																												</tr>
+																																												<tr valign="top">
+																																													<td>5</td>
+																																													<td>PH-SIM PIN required</td>
+																																												</tr>
+																																												<tr valign="top">
+																																													<td>10</td>
+																																													<td>SIM not inserted</td>
+																																												</tr>
+																																												<tr valign="top">
+																																													<td>11</td>
+																																													<td>SIM PIN required</td>
+																																												</tr>
+																																												<tr valign="top">
+																																													<td>12</td>
+																																													<td>SIM PUK required</td>
+																																												</tr>
+																																												<tr valign="top">
+																																													<td>13</td>
+																																													<td>SIM failure</td>
+																																												</tr>
+																																												<tr valign="top">
+																																													<td>14</td>
+																																													<td>SIM busy</td>
+																																												</tr>
+																																												<tr valign="top">
+																																													<td>15</td>
+																																													<td>SIM wrong</td>
+																																												</tr>
+																																												<tr valign="top">
+																																													<td>16</td>
+																																													<td>Incorrect password</td>
+																																												</tr>
+																																												<tr valign="top">
+																																													<td>20</td>
+																																													<td>Memory full</td>
+																																												</tr>
+																																												<tr valign="top">
+																																													<td>21</td>
+																																													<td>Invalid index</td>
+																																												</tr>
+																																												<tr valign="top">
+																																													<td>22</td>
+																																													<td>Not found</td>
+																																												</tr>
+																																												<tr valign="top">
+																																													<td>23</td>
+																																													<td>Memory failure</td>
+																																												</tr>
+																																												<tr valign="top">
+																																													<td>24</td>
+																																													<td>Text string too long</td>
+																																												</tr>
+																																												<tr valign="top">
+																																													<td>25</td>
+																																													<td>Invalid characters in text string</td>
+																																												</tr>
+																																												<tr valign="top">
+																																													<td>26</td>
+																																													<td>Dial string too long</td>
+																																												</tr>
+																																												<tr valign="top">
+																																													<td>27</td>
+																																													<td>Invalid characters in dial string</td>
+																																												</tr>
+																																												<tr valign="top">
+																																													<td>30</td>
+																																													<td>No network service</td>
+																																												</tr>
+																																												<tr valign="top">
+																																													<td>31</td>
+																																													<td>Network time-out</td>
+																																												</tr>
+																																												<tr valign="top">
+																																													<td>100</td>
+																																													<td>Unknown</td>
+																																												</tr>
+																																											</table>
+																																											<br>
+																																											<b>Informative examples</b> An example of TA responses with all three +CMEE values when ME manufacturer identification is requested but ME is not connected to the TA: 
+																																											<xmp>AT+CMEE=0	(+CME ERROR will not be used)
+OK
+AT+CGMI
+ERROR
+AT+CMEE=1	(use numeric <err>)
+OK
+AT+CGMI
++CME ERROR: 1
+AT+CMEE=2	(use verbose <err>)
+OK
+AT+CGMI
++CME ERROR: no connection to phone
+																																											
+																																											</xmp>
+																																											<br>
+																																											<table bgcolor="ffc246" width="100%" cellpadding="3" border="0" cellspacing="0">
+																																												<tr>
+																																													<td align="center"><font color="53849d" size="5"><b><a name="configuration">General Configuration Commands (SMS)</a></b></font></td>
+																																												</table>
+																																												<br>
+																																												<center>
+																																													<font size="4"><b>Select Message Service +CSMS</b></font><br>
+																																													(supported by CMDZ1 SONY, 8110/3110/2110 NOKIA versions)</center>
+																																												<br>
+																																												<br>
+																																												<b>Parameter command syntax</b><br>
+																																												<table border="1" width="100%">
+																																													<tr>
+																																														<th>Command</th>
+																																														<th>Possible response(s)</th>
+																																													</tr>
+																																													<tr valign="top">
+																																														<td>+CSMS=&lt;service&gt;</td>
+																																														<td>+CSMS: &lt;mt&gt;,&lt;mo&gt;,&lt;bm&gt;<br>
+																																															+CMS ERROR: &lt;err&gt;</td>
+																																													</tr>
+																																													<tr valign="top">
+																																														<td>+CSMS?</td>
+																																														<td>+CSMS: &lt;service&gt;,&lt;mt&gt;,&lt;mo&gt;,&lt;bm&gt;</td>
+																																													</tr>
+																																													<tr valign="top">
+																																														<td>+CSMS=?</td>
+																																														<td>+CSMS: (list of supported &lt;service&gt;s)</td>
+																																													</tr>
+																																												</table>
+																																												<br>
+																																												<b>Description</b><br>
+																																												Set command selects messaging service &lt;service&gt;. It returns the types of messages supported by the ME: &lt;mt&gt; for mobile terminated messages, &lt;mo&gt; for mobile originated messages and &lt;bm&gt; for broadcast type messages. If chosen service is not supported by the ME (but is supported by the TA), final result code +CMS ERROR: &lt;err&gt; will be returned. Also read command returns supported message types along the current service setting.<br>
+																																												<br>
+																																												Test command returns a list of all services supported by the TA.<br>
+																																												<br>
+																																												<b>Defined values</b><br>
+																																												<table border="1" width="100%">
+																																													<tr>
+																																														<th>&lt;service&gt;</th>
+																																														<th>Selected option</th>
+																																													</tr>
+																																													<tr valign="top">
+																																														<td>0</td>
+																																														<td>GSM 03.40 and 03.41</td>
+																																													</tr>
+																																												</table>
+																																												<br>
+																																												<table border="1" width="100%">
+																																													<tr>
+																																														<th>&lt;mt&gt;, &lt;mo&gt;, &lt;bm&gt;</th>
+																																														<th>Selected option</th>
+																																													</tr>
+																																													<tr valign="top">
+																																														<td>1</td>
+																																														<td>Type supported</td>
+																																													</tr>
+																																												</table>
+																																												<br>
+																																												<hr noshade>
+																																												<center>
+																																													<font size="4"><b>Preferred Message Storage +CPMS</b></font><br>
+																																													(only supported by 8110/3110/2110 NOKIA versions)</center>
+																																												<br>
+																																												<br>
+																																												<b>Parameter command syntax</b><br>
+																																												<table border="1" width="100%">
+																																													<tr>
+																																														<th>Command</th>
+																																														<th>Possible response(s)</th>
+																																													</tr>
+																																													<tr valign="top">
+																																														<td>+CPMS=&lt;mem1&gt;[,&lt;mem2&gt;]</td>
+																																														<td>+CPMS: &lt;used1&gt;,&lt;total1&gt;,&lt;used2&gt;,&lt;total2&gt;<br>
+																																															+CMS ERROR: &lt;err&gt;</td>
+																																													</tr>
+																																													<tr valign="top">
+																																														<td>+CPMS?</td>
+																																														<td>+CPMS: &lt;mem1&gt;,&lt;used1&gt;,&lt;total1&gt;,&lt;mem2&gt;,&lt;used2&gt;,&lt;total2&gt;<br>
+																																															+CMS ERROR: &lt;err&gt;</td>
+																																													</tr>
+																																													<tr valign="top">
+																																														<td>+CPMS=?</td>
+																																														<td>+CPMS: (list of supported &lt;mem1&gt;s),(list of supported &lt;mem2&gt;s)</td>
+																																													</tr>
+																																												</table>
+																																												<br>
+																																												<b>Description (For all parameters undescribed, please <a href="glossary.htm">refer to the GSM Glossary</a>)</b><br>
+																																												Set command selects memory storages &lt;mem1&gt; and &lt;mem2&gt; to be used for reading, writing, etc. If chosen storage is not appropriate for the ME (but is supported by the TA), final result code<br>
+																																												+CMS ERROR: &lt;err&gt; will be returned.<br>
+																																												Test command returns lists of memory storages supported by the TA.<br>
+																																												<br>
+																																												<hr noshade>
+																																												<center>
+																																													<font size="4"><b>Message Format +CMGF</b></font><br>
+																																													(supported by CMDZ1 SONY, 8110/3110/2110 NOKIA versions)</center>
+																																												<br>
+																																												<br>
+																																												<b>Parameter command syntax</b><br>
+																																												<table border="1" width="100%">
+																																													<tr>
+																																														<th>Command</th>
+																																														<th>Possible response(s)</th>
+																																													</tr>
+																																													<tr valign="top">
+																																														<td>+CMGF=[&lt;mode&gt;]</td>
+																																														<td>OK</td>
+																																													</tr>
+																																													<tr valign="top">
+																																														<td>+CMGF?</td>
+																																														<td>+CMGF: &lt;mode&gt;</td>
+																																													</tr>
+																																													<tr valign="top">
+																																														<td>+CMGF=?</td>
+																																														<td>+CMGF: (list of supported &lt;mode&gt;s)</td>
+																																													</tr>
+																																												</table>
+																																												<br>
+																																												<b>Description</b><br>
+																																												Set command tells the TA, which input and output format of messages to use. &lt;mode&gt; indicates the format of messages used with send, list, read and write commands and unsolicited result codes resulting from received messages. Following the GSM card version, mode can be either PDU mode (entire TP data units used) or text mode (headers and body of the messages given as separate parameters). The CMDZ1 SONY version does not support PDU mode.<br>
+																																												<br>
+																																												Test command returns supported modes as a compound value.<br>
+																																												<br>
+																																												<b>Defined Values for CMDZ1 SONY version</b><br>
+																																												<table border="1" width="100%">
+																																													<tr>
+																																														<th>&lt;mode&gt;</th>
+																																														<th>Selected option</th>
+																																													</tr>
+																																													<tr valign="top">
+																																														<td>1</td>
+																																														<td>Text mode</td>
+																																													</tr>
+																																												</table>
+																																												<br>
+																																												<b>Defined Values for NOKIA versions</b><br>
+																																												<table border="1" width="100%">
+																																													<tr>
+																																														<th>&lt;mode&gt;</th>
+																																														<th>Selected option</th>
+																																													</tr>
+																																													<tr valign="top">
+																																														<td><b>0</b></td>
+																																														<td>PDU mode</td>
+																																													</tr>
+																																													<tr valign="top">
+																																														<td>1</td>
+																																														<td>Text mode</td>
+																																													</tr>
+																																												</table>
+																																												<br>
+																																												<br>
+																																												<table bgcolor="ffc246" width="100%" cellpadding="3" border="0" cellspacing="0">
+																																													<tr>
+																																														<td align="center"><font color="53849d" size="5"><b><a name="message_cc">Message Configuration Commands (SMS)</a></b></font></td>
+																																													</table>
+																																													<br>
+																																													<center>
+																																														<font size="4"><b>Service Centre Address +CSCA</b></font><br>
+																																														(only supported by 8110/3110/2110 NOKIA versions)</center>
+																																													<br>
+																																													<br>
+																																													<b>Parameter command syntax</b><br>
+																																													<table border="1" width="100%">
+																																														<tr>
+																																															<th>Command</th>
+																																															<th>Possible response(s)</th>
+																																														</tr>
+																																														<tr valign="top">
+																																															<td>+CSCA=&lt;sca&gt;[,&lt;tosca&gt;]</td>
+																																															<td>OK</td>
+																																														</tr>
+																																														<tr valign="top">
+																																															<td>+CSCA?</td>
+																																															<td>+CSCA: &lt;sca&gt;,&lt;tosca&gt;</td>
+																																														</tr>
+																																														<tr valign="top">
+																																															<td>+CSCA=?</td>
+																																															<td>OK</td>
+																																														</tr>
+																																													</table>
+																																													<br>
+																																													<b>Description (For all parameters undescribed, please <a href="glossary.htm">refer to the GSM Glossary</a>)</b><br>
+																																													Set command updates the SMSC address, through which mobile originated SMs are transmitted from the card. Setting is used in both PDU and text mode.<br>
+																																													<br>
+																																													<hr noshade>
+																																													<center>
+																																														<font size="4"><b>Set Text Mode Parameters +CSMP</b></font><br>
+																																														(only supported by 8110/3110/2110 NOKIA versions)</center>
+																																													<br>
+																																													<br>
+																																													<b>Parameter command syntax</b><br>
+																																													<table border="1" width="100%">
+																																														<tr>
+																																															<th>Command</th>
+																																															<th>Possible response(s)</th>
+																																														</tr>
+																																														<tr valign="top">
+																																															<td>+CSMP=[&lt;fo&gt;[,&lt;vp&gt;[,&lt;pid&gt;[,&lt;dcs&gt;]]]]</td>
+																																															<td>OK</td>
+																																														</tr>
+																																														<tr valign="top">
+																																															<td>+CSMP?</td>
+																																															<td>+CSMP: &lt;fo&gt;,&lt;vp&gt;,&lt;pid&gt;,&lt;dcs&gt;</td>
+																																														</tr>
+																																														<tr valign="top">
+																																															<td>+CSMP=?</td>
+																																															<td>OK</td>
+																																														</tr>
+																																													</table>
+																																													<br>
+																																													<b>Description (For all parameters undescribed, please <a href="glossary.htm">refer to the GSM Glossary</a>)</b><br>
+																																													This command must be used by SMS well-informed users. Set command is used to select values for additional parameters needed when SM is sent to the network or placed in a storage when text format message mode is selected. It is possible to set the validity period starting from when the SM is received by the SMSC (&lt;vp&gt; is in range 0... 255) or define the absolute time of the validity period termination (&lt;vp&gt; is a string). The format of &lt;vp&gt; is given by &lt;fo&gt;.<br>
+																																													<br>
+																																													<table width="100%" bgcolor="e0e0e0" cellpadding="10" cellspacing="0" border="0">
+																																														<tr valign="top">
+																																															<td align="CENTER"><font color="red"><b>NOTE:</b></font></td>
+																																															<td>When storing a SMS-DELIVER from the TE to the preferred memory storage in text mode (refer command Write Message to Memory +CMGW), &lt;vp&gt; field can be used for &lt;scts&gt;.</td>
+																																														</tr>
+																																													</table>
+																																													<br>
+																																													<hr noshade>
+																																													<center>
+																																														<font size="4"><b>Show Text Mode Parameters +CSDH</b></font><br>
+																																														(supported by CMDZ1 SONY, 8110/3110/2110 NOKIA versions)</center>
+																																													<br>
+																																													<br>
+																																													<b>Parameter command syntax</b><br>
+																																													<table border="1" width="100%">
+																																														<tr>
+																																															<th>Command</th>
+																																															<th>Possible response(s)</th>
+																																														</tr>
+																																														<tr valign="top">
+																																															<td>+CSDH=[&lt;show&gt;]</td>
+																																															<td>&nbsp;</td>
+																																														</tr>
+																																														<tr valign="top">
+																																															<td>+CSDH?</td>
+																																															<td>+CSDH: &lt;show&gt;</td>
+																																														</tr>
+																																														<tr valign="top">
+																																															<td>+CSDH=?</td>
+																																															<td>+CSDH: (list of supported &lt;show&gt;s)</td>
+																																														</tr>
+																																													</table>
+																																													<br>
+																																													<b>Description</b><br>
+																																													Set command controls whether detailed header information is shown in text mode result codes.<br>
+																																													Test command returns supported values as a compound value.<br>
+																																													<br>
+																																													<b>Defined Values for CMDZ1 SONY version (For all parameters undescribed, please <a href="glossary.htm">refer to the GSM Glossary</a>)</b><br>
+																																													<table border="1" width="100%">
+																																														<tr>
+																																															<th>&lt;show&gt;</th>
+																																															<th>Selected option</th>
+																																														</tr>
+																																														<tr valign="top">
+																																															<td><b>0</b></td>
+																																															<td>Do not show responses with optional parameters</td>
+																																														</tr>
+																																														<tr valign="top">
+																																															<td>1</td>
+																																															<td>Show the values in result codes</td>
+																																														</tr>
+																																													</table>
+																																													<br>
+																																													<b>Defined Values for NOKIA versions (For all parameters undescribed, please <a href="glossary.htm">refer to the GSM Glossary</a>)</b><br>
+																																													<table border="1" width="100%">
+																																														<tr>
+																																															<th>&lt;show&gt;</th>
+																																															<th>Selected option</th>
+																																														</tr>
+																																														<tr valign="top">
+																																															<td><b>0</b></td>
+																																															<td>Do not show header values defined in commands +CSCA and +CSMP (&lt;sca&gt;, &lt;tosca&gt;, &lt;fo&gt;, &lt;vp&gt;, &lt;pid&gt; and &lt;dcs&gt;) nor &lt;length&gt;, &lt;toda&gt; or &lt;tooa&gt; in +CMT, +CMGL, +CMGR result codes for SMSPP text mode</td>
+																																														</tr>
+																																														<tr valign="top">
+																																															<td>1</td>
+																																															<td>Show the values in result codes</td>
+																																														</tr>
+																																													</table>
+																																													<br>
+																																													<br>
+																																													<table bgcolor="ffc246" width="100%" cellpadding="3" border="0" cellspacing="0">
+																																														<tr>
+																																															<td align="center"><font color="53849d" size="5"><b><a name="message_rrc">Message Receiving and Reading Commands (SMS)</a></b></font></td>
+																																														</table>
+																																														<br>
+																																														<center>
+																																															<font size="4"><b>New Message Indications to TE +CNMI</b></font><br>
+																																															(supported by CMDZ1 SONY, 8110/3110/2110 NOKIA versions)</center>
+																																														<br>
+																																														<br>
+																																														<b>Parameter command syntax</b><br>
+																																														<table border="1" width="100%">
+																																															<tr>
+																																																<th>Command</th>
+																																																<th>Possible response(s)</th>
+																																															</tr>
+																																															<tr valign="top">
+																																																<td>+CNMI=[&lt;mode&gt;[,&lt;mt&gt;[,&lt;bm&gt;[,&lt;ds&gt;[,&lt;bfr&gt;]]]]]</td>
+																																																<td>+CMS ERROR: &lt;err&gt;</td>
+																																															</tr>
+																																															<tr valign="top">
+																																																<td>+CNMI?</td>
+																																																<td>+CNMI: &lt;mode&gt;,&lt;mt&gt;,&lt;bm&gt;,&lt;ds&gt;,&lt;bfr&gt;<br>
+																																																	Default value: 1,0,0,0,0</td>
+																																															</tr>
+																																															<tr valign="top">
+																																																<td>+CNMI=?</td>
+																																																<td>+CNMI: (list of supported &lt;mode&gt;s),(list of supported &lt;mt&gt;s),(list of supported &lt;bm&gt;s),(list of supported &lt;ds&gt;s),(list of supported &lt;bfr&gt;s)</td>
+																																															</tr>
+																																														</table>
+																																														<br>
+																																														<b>Description</b><br>
+																																														Set command selects the procedure, how receiving of new messages from the network is indicated to the TE when TE is active, e.g. DTR signal is ON. &lt;mode&gt; controls the processing of unsolicited result codes specified within this command, &lt;mt&gt; sets the result code indication routing for SMS-DELIVERs, &lt;bm&gt; for CBMs and &lt;ds&gt; for SMS-STATUS-REPORTs. &lt;bfr&gt; defines the handling method for buffered result codes when &lt;mode&gt; 1 is enabled. If ME does not support requested item (although TA does), final result code +CMS ERROR: &lt;err&gt; is returned. The 2110 card can not receive SMS from the mobile.<br>
+																																														<br>
+																																														Test command gives the settings supported by the TA as compound values.<br>
+																																														<br>
+																																														<b>Defined Values for CMDZ1 SONY and 8110/3110 NOKIA versions (For all parameters undescribed, please <a href="glossary.htm">refer to the GSM Glossary</a>)</b><br>
+																																														<table border="1" width="100%">
+																																															<tr>
+																																																<th>&lt;mode&gt;</th>
+																																																<th>Selected option</th>
+																																															</tr>
+																																															<tr valign="top">
+																																																<td>1</td>
+																																																<td>Discard indication and reject new received message unsolicited result codes when TA-TE link is reserved (e.g. in on-line data mode); otherwise forward them directly to the TE</td>
+																																															</tr>
+																																														</table>
+																																														<br>
+																																														<table border="1" width="100%">
+																																															<tr>
+																																																<th>&lt;mt&gt;</th>
+																																																<th>Selected option</th>
+																																															</tr>
+																																															<tr valign="top">
+																																																<td><b>0</b></td>
+																																																<td>No SMS-DELIVER indications are routed to the TE</td>
+																																															</tr>
+																																															<tr valign="top">
+																																																<td>1</td>
+																																																<td>Indication of SMS-DELIVER is routed to the TE using unsolicited result code +CMTI: &lt;mem1&gt;,&lt;index&gt; (only for 8110/3110 NOKIA versions)</td>
+																																															</tr>
+																																															<tr valign="top">
+																																																<td>2</td>
+																																																<td>SMS-DELIVERs<br>
+																																																	+CMT: [&lt;alpha&gt;],&lt;length&gt;&lt;CR&gt;&lt;LF&gt;&lt;pdu&gt; (PDU mode enabled following the GSM card version) or<br>
+																																																	+CMT: &lt;oa&gt;,[&lt;alpha&gt;],&lt;scts&gt;[,&lt;tooa&gt;,&lt;fo&gt;,&lt;pid&gt;,&lt;dcs&gt;, &lt;sca&gt;,&lt;tosca&gt;,&lt;length&gt;]&lt;CR&gt;&lt;LF&gt;&lt;data&gt; (about parameters in italics, refer command Show Text Mode Parameters +CSDH)</td>
+																																															</tr>
+																																														</table>
+																																														<br>
+																																														<table border="1" width="100%">
+																																															<tr>
+																																																<th>&lt;bm&gt;</th>
+																																																<th>Selected option</th>
+																																															</tr>
+																																															<tr valign="top">
+																																																<td><b>0</b></td>
+																																																<td>No CBM indications are routed to the TE</td>
+																																															</tr>
+																																															<tr valign="top">
+																																																<td>2</td>
+																																																<td>New CBMs are routed directly to the TE using unsolicited result code<br>
+																																																	+CBM: &lt;length&gt;&lt;CR&gt;&lt;LF&gt;&lt;pdu&gt; (PDU mode enabled following the GSM card version) or<br>
+																																																	+CBM: &lt;sn&gt;,&lt;mid&gt;,&lt;dcs&gt;,&lt;page&gt;,&lt;pages&gt;&lt;CR&gt;&lt;LF&gt;&lt;data&gt; (text mode enabled)</td>
+																																															</tr>
+																																														</table>
+																																														<br>
+																																														<b>&lt;bm&gt; parameter</b><br>
+																																														<table border="1" width="100%">
+																																															<tr>
+																																																<th>&lt;bm&gt;</th>
+																																																<th>Receiving procedure for different message classes</th>
+																																															</tr>
+																																															<tr valign="top">
+																																																<td>0</td>
+																																																<td>Store message to &quot;BM&quot;</td>
+																																															</tr>
+																																														</table>
+																																														<br>
+																																														<table border="1" width="100%">
+																																															<tr>
+																																																<th>&lt;ds&gt;</th>
+																																																<th>Selected option</th>
+																																															</tr>
+																																															<tr valign="top">
+																																																<td>0</td>
+																																																<td>No SMS-STATUS-REPORTs are routed to the TE</td>
+																																															</tr>
+																																														</table>
+																																														<br>
+																																														<table border="1" width="100%">
+																																															<tr>
+																																																<th>&lt;bfr&gt;</th>
+																																																<th>Selected option</th>
+																																															</tr>
+																																															<tr valign="top">
+																																																<td>0</td>
+																																																<td>TA buffer of unsolicited result codes defined within this command is flushed to the TE when &lt;mode&gt; 1 is entered (OK response will be given before flushing the codes)</td>
+																																															</tr>
+																																														</table>
+																																														<br>
+																																														<b>Defined Values for 2110 NOKIA version</b><br>
+																																														<table border="1" width="100%">
+																																															<tr>
+																																																<th>&lt;mode&gt;</th>
+																																																<th>&lt;mt&gt;</th>
+																																																<th>&lt;bm&gt;</th>
+																																																<th>&lt;ds&gt;</th>
+																																																<th>&lt;bfr&gt;</th>
+																																															</tr>
+																																															<tr valign="top">
+																																																<td>1</td>
+																																																<td>0</td>
+																																																<td>0</td>
+																																																<td>0</td>
+																																																<td>0</td>
+																																															</tr>
+																																														</table>
+																																														<br>
+																																														<hr noshade>
+																																														<center>
+																																															<font size="4"><b>List Messages +CMGL</b></font><br>
+																																															(only supported by 8110/3110/2110 NOKIA versions)</center>
+																																														<br>
+																																														<br>
+																																														<ul>
+																																															<li><b>Text mode</b>
+																																														</ul>
+																																														<b>Action command syntax</b><br>
+																																														<table border="1" width="100%">
+																																															<tr>
+																																																<th>Command</th>
+																																																<th>Possible response(s)</th>
+																																															</tr>
+																																															<tr valign="top">
+																																																<td>CMGL[=&lt;stat&gt;]</td>
+																																																<td><b>if text mode (+CMGF=1), command successful and SM storage:</b><br>
+																																																	+CMGL: &lt;index&gt;,&lt;stat&gt;,&lt;oa/da&gt;,[&lt;alpha&gt;],[&lt;scts&gt;][,&lt;tooa/toda&gt;, &lt;length&gt;]&lt;CR&gt;&lt;LF&gt;&lt;data&gt;[&lt;CR&gt;&lt;LF&gt;<br>
+																																																	+CMGL: &lt;index&gt;,&lt;stat&gt;,&lt;da/oa&gt;,[&lt;alpha&gt;],[&lt;scts&gt;][,&lt;tooa/toda&gt;, &lt;length&gt;]&lt;CR&gt;&lt;LF&gt;&lt;data&gt;[...]]<br>
+																																																	<b>otherwise:</b><br>
+																																																	+CMS ERROR: &lt;err&gt;</td>
+																																															</tr>
+																																															<tr valign="top">
+																																																<td>+CMGL=?</td>
+																																																<td>+CMGL: (list of supported &lt;stat&gt;s)</td>
+																																															</tr>
+																																														</table>
+																																														<br>
+																																														<b>Description (For all parameters undescribed, please <a href="glossary.htm">refer to the GSM Glossary</a>)</b><br>
+																																														Execution command returns messages with status value &lt;stat&gt; from preferred message storage &lt;mem1&gt; to the TE. About text mode parameters in italics, refer command Show Text Mode Parameters +CSDH. If status of the message is 'received unread', status in the storage changes to 'received read'. If listing fails, final result code +CMS ERROR: &lt;err&gt; is returned.<br>
+																																														Test command shall give a list of all status values supported by the TA.<br>
+																																														<br>
+																																														<table width="100%" bgcolor="e0e0e0" cellpadding="10" cellspacing="0" border="0">
+																																															<tr valign="top">
+																																																<td align="CENTER"><font color="red"><b>NOTE:</b></font></td>
+																																																<td>The parameters between square brackets are optional. You can see all parameters with the command AT+CSDH=1.</td>
+																																															</tr>
+																																														</table>
+																																														<br>
+																																														<b>Defined Values</b><br>
+																																														<br>
+																																														&lt;stat&gt;: Integer type in PDU mode (default 0), or string type in text mode (default &quot;REC UNREAD&quot;); indicates the status of message in memory.<br>
+																																														<br>
+																																														<table border="1" width="100%">
+																																															<tr>
+																																																<th>&lt;stat&gt; in PDU mode</th>
+																																																<th>&lt;stat&gt; in text mode</th>
+																																																<th>Selected option</th>
+																																															</tr>
+																																															<tr valign="top">
+																																																<td>0</td>
+																																																<td>&quot;REC UNREAD&quot;</td>
+																																																<td>Received unread message (i.e. new message)</td>
+																																															</tr>
+																																															<tr valign="top">
+																																																<td>1</td>
+																																																<td>&quot;REC READ&quot;</td>
+																																																<td>Received read message</td>
+																																															</tr>
+																																															<tr valign="top">
+																																																<td>2</td>
+																																																<td>&quot;STO UNSENT&quot;</td>
+																																																<td>Stored unsent message</td>
+																																															</tr>
+																																															<tr valign="top">
+																																																<td>3</td>
+																																																<td>&quot;STO SENT&quot;</td>
+																																																<td>Stored sent message</td>
+																																															</tr>
+																																															<tr valign="top">
+																																																<td>4</td>
+																																																<td>&quot;ALL&quot;</td>
+																																																<td>All messages (only applicable to +CMGLIST command)</td>
+																																															</tr>
+																																														</table>
+																																														<br>
+																																														<br>
+																																														<ul>
+																																															<li><b>PDU mode</b> (not supported by CMDZ1 Sony version)
+																																														</ul>
+																																														The PDU mode uses the same commands and responses as the Text Mode.However, the following commands and responses have a different format. In the PDU mode, a complete SMS Message including all header information is passed as a binary string.<br>
+																																														<br>
+																																														<b>Action command syntax</b><br>
+																																														<table border="1" width="100%">
+																																															<tr>
+																																																<th>Command</th>
+																																																<th>Possible response(s)</th>
+																																															</tr>
+																																															<tr valign="top">
+																																																<td>+CMGL[=&lt;stat&gt;]</td>
+																																																<td><b>if PDU mode (+CMGF=0) and command successful:</b><br>
+																																																	+CMGL: &lt;index&gt;,&lt;stat&gt;,[&lt;alpha&gt;],&lt;length&gt;&lt;CR&gt;&lt;LF&gt;&lt;pdu&gt; [&lt;CR&gt;&lt;LF&gt;+CMGL:&lt;index&gt;,&lt;stat&gt;,[&lt;alpha&gt;],&lt;length&gt;&lt;CR&gt;&lt;LF&gt;&lt;pdu&gt;<br>
+																																																	[...]]<br>
+																																																	<b>otherwise:</b><br>
+																																																	+CMS ERROR: &lt;err&gt;</td>
+																																															</tr>
+																																															<tr valign="top">
+																																																<td>+CMGL=?</td>
+																																																<td>+CMGL: (list of supported &lt;stat&gt;s)</td>
+																																															</tr>
+																																														</table>
+																																														<br>
+																																														<b>Description (For all parameters undescribed, please <a href="glossary.htm">refer to the GSM Glossary</a>)</b><br>
+																																														Execution command returns messages with status value &lt;stat&gt; from preferred message storage &lt;mem1&gt; to the TE. Entire data units &lt;pdu&gt; are returned. If status of the message is 'received unread', status in the storage changes to 'received read'. If listing fails, final result code +CMS ERROR: &lt;err&gt; is returned.<br>
+																																														<br>
+																																														Test command will give a list of all status values supported by the TA.<br>
+																																														<br>
+																																														<hr noshade>
+																																														<center>
+																																															<font size="4"><b>List Messages +CMGLIST</b></font><br>
+																																															(only supported by CMDZ1 SONY version)</center>
+																																														<br>
+																																														<br>
+																																														<b>Action command syntax</b><br>
+																																														<table border="1" width="100%">
+																																															<tr>
+																																																<th>Command</th>
+																																																<th>Possible response(s)</th>
+																																															</tr>
+																																															<tr valign="top">
+																																																<td>+CMGLIST[=&lt;stat&gt;]</td>
+																																																<td><b>if text mode (+CMGF=1), command successful and SM storage:</b><br>
+																																																	+CMGLIST: &lt;index&gt;,&lt;stat&gt;,&lt;oa/da&gt;,[&lt;alpha&gt;],[&lt;scts&gt;][,&lt;tooa/toda&gt;, &lt;length&gt;]&lt;CR&gt;&lt;LF&gt;<br>
+																																																	<br>
+																																																	+CMGLIST: &lt;index&gt;,&lt;stat&gt;,&lt;da/oa&gt;,[&lt;alpha&gt;],[&lt;scts&gt;][,&lt;tooa/toda&gt;, &lt;length&gt;]&lt;CR&gt;&lt;LF&gt;<br>
+																																																	<b>otherwise:</b><br>
+																																																	+CMS ERROR: &lt;err&gt;</td>
+																																															</tr>
+																																															<tr valign="top">
+																																																<td>+CMGLIST=?</td>
+																																																<td>+CMGLIST: (list of supported &lt;stat&gt;s)</td>
+																																															</tr>
+																																														</table>
+																																														<br>
+																																														<b>Description (For all parameters undescribed, please <a href="glossary.htm">refer to the GSM Glossary</a>)</b><br>
+																																														Execution command returns messages with status value &lt;stat&gt; from preferred message storage &lt;mem1&gt; to the TE. About text mode parameters in italics, refer command Show Text Mode Parameters +CSDH. If listing fails, final result code +CMS ERROR: &lt;err&gt; is returned.<br>
+																																														<br>
+																																														Test command will give a list of all status values supported by the TA.<br>
+																																														<br>
+																																														<table width="100%" bgcolor="e0e0e0" cellpadding="10" cellspacing="0" border="0">
+																																															<tr valign="top">
+																																																<td align="CENTER"><font color="red"><b>NOTE:</b></font></td>
+																																																<td>The parameters between square brackets are optional. You can see all parameters with the command AT+CSDH=1.</td>
+																																															</tr>
+																																														</table>
+																																														<br>
+																																														<b>Defined Values</b><br>
+																																														<br>
+																																														&lt;stat&gt;: String type in text mode indicates the status of message in memory.<br>
+																																														<br>
+																																														<table border="1" width="100%">
+																																															<tr>
+																																																<th>&lt;stat&gt;</th>
+																																																<th>Selected option</th>
+																																															</tr>
+																																															<tr valign="top">
+																																																<td>&quot;REC UNREAD&quot;</td>
+																																																<td>Received unread message (i.e. new message); default value</td>
+																																															</tr>
+																																															<tr valign="top">
+																																																<td>&quot;REC READ&quot;</td>
+																																																<td>Received read message</td>
+																																															</tr>
+																																															<tr valign="top">
+																																																<td>&quot;STO UNSENT&quot;</td>
+																																																<td>Stored unsent message</td>
+																																															</tr>
+																																															<tr valign="top">
+																																																<td>&quot;STO SENT&quot;</td>
+																																																<td>Stored sent message</td>
+																																															</tr>
+																																															<tr valign="top">
+																																																<td>&quot;ALL&quot;</td>
+																																																<td>All messages (only applicable to +CMGLIST command)</td>
+																																															</tr>
+																																														</table>
+																																														<br>
+																																														Example
+																																														<table border="1" width="100%">
+																																															<tr>
+																																																<th>Command</th>
+																																																<th>Possible response</th>
+																																															</tr>
+																																															<tr valign="top">
+																																																<td>+CMGLIST[=&quot;ALL&quot;]</td>
+																																																<td><b>if text mode (+CMGF=1),</b><br>
+																																																	+CMGLIST: 14,&quot;REC UNREAD&quot;,&quot;&quot;,,&quot;97\06\02,10:00:50+04&quot;,128,42&lt;CR&gt;&lt;LF&gt;</td>
+																																															</tr>
+																																														</table>
+																																														<br>
+																																														<br>
+																																														<hr noshade>
+																																														<center>
+																																															<font size="4"><b>Read Message +CMGR</b></font><br>
+																																															(supported by CMDZ1 SONY, 8110/3110/2110 NOKIA versions)</center>
+																																														<br>
+																																														<br>
+																																														<ul>
+																																															<li><b>Text mode</b>
+																																														</ul>
+																																														<b>Action command syntax</b><br>
+																																														<table border="1" width="100%">
+																																															<tr>
+																																																<th>Command</th>
+																																																<th>Possible response(s)</th>
+																																															</tr>
+																																															<tr valign="top">
+																																																<td>+CMGR=&lt;index&gt;</td>
+																																																<td><b>if text mode (+CMGF=1), command successful</b><br>
+																																																	+CMGR: &lt;stat&gt;,&lt;oa&gt;,[&lt;alpha&gt;],&lt;scts&gt;[,&lt;tooa&gt;,&lt;fo&gt;,&lt;pid&gt;,&lt;dcs&gt;, &lt;sca&gt;,&lt;tosca&gt;,&lt;length&gt;]&lt;CR&gt;&lt;LF&gt;&lt;data&gt;<br>
+																																																	<b>otherwise:</b><br>
+																																																	+CMS ERROR: &lt;err&gt;</td>
+																																															</tr>
+																																															<tr valign="top">
+																																																<td>+CMGR=?</td>
+																																																<td>OK</td>
+																																															</tr>
+																																														</table>
+																																														<br>
+																																														<b>Description (For all parameters undescribed, please <a href="glossary.htm">refer to the GSM Glossary</a>)</b><br>
+																																														Execution command returns message with location value &lt;index&gt; from mobile message storage &lt;mem1&gt; to the TE. About text mode parameters in italics, refer command Show Text Mode Parameters +CSDH. If status of the message is 'received unread', status in the storage changes to 'received read' (except for CMDZ1 SONY version). If reading fails, final result code +CMS ERROR: &lt;err&gt; is returned.<br>
+																																														<br>
+																																														<ul>
+																																															<li><b>PDU mode</b> (not supported by CMDZ1 Sony version)
+																																														</ul>
+																																														<b>Action command syntax</b><br>
+																																														<table border="1" width="100%">
+																																															<tr>
+																																																<th>Command</th>
+																																																<th>Possible response(s)</th>
+																																															</tr>
+																																															<tr valign="top">
+																																																<td>+CMGR=&lt;index&gt;</td>
+																																																<td>if PDU mode (+CMGF=0) and command successful: +CMGR: &lt;stat&gt;,[&lt;alpha&gt;],&lt;length&gt;&lt;CR&gt;&lt;LF&gt;&lt;pdu&gt; otherwise: +CMS ERROR: &lt;err&gt;</td>
+																																															</tr>
+																																															<tr valign="top">
+																																																<td>+CMGR=?</td>
+																																																<td>&nbsp;</td>
+																																															</tr>
+																																														</table>
+																																														<br>
+																																														<b>Description (For all parameters undescribed, please <a href="glossary.htm">refer to the GSM Glossary</a>)</b><br>
+																																														Execution command returns message with location value &lt;index&gt; from preferred message storage &lt;mem1&gt; to the TE. Status of the message and entire message data unit &lt;pdu&gt; is returned. If status of the message is 'received unread', status in the storage changes to 'received read'. If reading fails, final result code +CMS ERROR: &lt;err&gt; is returned.<br>
+																																														<br>
+																																														<table bgcolor="ffc246" width="100%" cellpadding="3" border="0" cellspacing="0">
+																																															<tr>
+																																																<td align="center"><font color="53849d" size="5"><b><a name="message_swc">Message Sending and Writing Commands (SMS)</a></b></font></td>
+																																															</table>
+																																															<br>
+																																															<center>
+																																																<font size="4"><b>Send Message +CMGS</b></font><br>
+																																																(supported by CMDZ1 SONY, 8110/3110/2110 NOKIA versions)</center>
+																																															<br>
+																																															<br>
+																																															<ul>
+																																																<li><b>Text mode</b>
+																																															</ul>
+																																															<b>Action command syntax</b><br>
+																																															<table border="1" width="100%">
+																																																<tr>
+																																																	<th>Command</th>
+																																																	<th>Possible response(s)</th>
+																																																</tr>
+																																																<tr valign="top">
+																																																	<td><b>if text mode (+CMGF=1):</b><br>
+																																																		+CMGS=&lt;da&gt;[,&lt;toda&gt;]&lt;CR&gt;<b>text is entered</b>&lt;ctrl-Z/ESC&gt;</td>
+																																																	<td><b>if sending successful:</b><br>
+																																																		+CMGS: &lt;mr&gt; <b>if sending fails:</b><br>
+																																																		+CMS ERROR: &lt;err&gt;</td>
+																																																</tr>
+																																																<tr valign="top">
+																																																	<td>+CMGS=?</td>
+																																																	<td>OK</td>
+																																																</tr>
+																																															</table>
+																																															<br>
+																																															<b>Description (For all parameters undescribed, please <a href="glossary.htm">refer to the GSM Glossary</a>)</b><br>
+																																															Execution command sends message from a TE to the network (SMS-SUBMIT). Message reference value &lt;mr&gt; is returned to the TE on successful message delivery. Value can be used to identify message upon unsolicited delivery status report result code. If sending fails in a network or an ME error, final result code +CMS ERROR: &lt;err&gt; is returned. This command should be abortable.<br>
+																																															<br>
+																																															-&nbsp; &nbsp;entered is sent to address &lt;da&gt;<br>
+																																															-&nbsp; &nbsp;text can be typed after the character &quot;&gt;&quot; has been displayed.<br>
+																																															-&nbsp; &nbsp;sending can be cancelled by giving &lt;ESC&gt; character (IRA 27)<br>
+																																															-&nbsp; &nbsp;&lt;ctrl-Z&gt; (IRA 26) must be used to indicate the ending of the message body
+																																															<ul>
+																																																<li><b>PDU mode</b> (not supported by CMDZ1 SONY version)
+																																															</ul>
+																																															<b>Action command syntax</b><br>
+																																															<table border="1" width="100%">
+																																																<tr>
+																																																	<th>Command</th>
+																																																	<th>Possible response(s)</th>
+																																																</tr>
+																																																<tr valign="top">
+																																																	<td><b>if PDU mode (+CMGF=0):</b><br>
+																																																		+CMGS=&lt;length&gt;&lt;CR&gt;<b>PDU is given</b>&lt;ctrl-Z/ESC&gt;</td>
+																																																	<td><b>if sending successful:</b><br>
+																																																		+CMGS: &lt;mr&gt;<br>
+																																																		<b>if sending fails:</b><br>
+																																																		+CMS ERROR: &lt;err&gt;</td>
+																																																</tr>
+																																																<tr valign="top">
+																																																	<td>+CMGS=?</td>
+																																																	<td>OK</td>
+																																																</tr>
+																																															</table>
+																																															<br>
+																																															<b>Description (For all parameters undescribed, please <a href="glossary.htm">refer to the GSM Glossary</a>)</b><br>
+																																															Execution command sends message from a TE to the network (SMS-SUBMIT). Message reference value &lt;mr&gt; is returned to the TE on successful message delivery. If sending fails in a network or an ME error, final result code +CMS ERROR: &lt;err&gt; is returned. This command should be abortable.<br>
+																																															<br>
+																																															-&nbsp; &nbsp;&lt;length&gt; must indicate the number of octets coded in the TP layer data unit to be given (i.e. SMSC address octets are excluded)<br>
+																																															-&nbsp; &nbsp;When the card will be ready to accept the PDU, the &quot;&gt;&quot; will be displayed<br>
+																																															-&nbsp; &nbsp;The PDU will be hexadecimal format (similarly as specified for &lt;pdu&gt;) and given in one line; ME/TA converts this coding into the actual octets of PDU<br>
+																																															-&nbsp; &nbsp;When the length octet of the SMSC address (given in the &lt;pdu&gt;) equals zero, the SMSC address set with command Service Centre Address +CSCA is used<br>
+																																															-&nbsp; &nbsp;Sending can be cancelled by giving &lt;ESC&gt; character (IRA 27)<br>
+																																															-&nbsp; &nbsp;&lt;ctrl-Z&gt; (IRA 26) must be used to indicate the ending of PDU<br>
+																																															<br>
+																																															<hr noshade>
+																																															<center>
+																																																<font size="4"><b>Send Message from Storage +CMSS</b></font><br>
+																																																(only supported by 8110/3110 NOKIA versions)</center>
+																																															<br>
+																																															<br>
+																																															<b>Action command syntax</b><br>
+																																															<table border="1" width="100%">
+																																																<tr>
+																																																	<th>Command</th>
+																																																	<th>Possible response(s)</th>
+																																																</tr>
+																																																<tr valign="top">
+																																																	<td>+CMSS=&lt;index&gt;[,&lt;da&gt;[,&lt;toda&gt;]]</td>
+																																																	<td>if sending successful: +CMSS: &lt;mr&gt;<br>
+																																																		if sending fails: +CMS ERROR: &lt;err&gt;</td>
+																																																</tr>
+																																																<tr valign="top">
+																																																	<td>+CMSS=?</td>
+																																																	<td>OK</td>
+																																																</tr>
+																																															</table>
+																																															<br>
+																																															<b>Description (For all parameters undescribed, please <a href="glossary.htm">refer to the GSM Glossary</a>)</b><br>
+																																															Execution command sends message with location value &lt;index&gt; from preferred message storage &lt;mem2&gt; to the network (SMS-SUBMIT). If new recipient address &lt;da&gt; is given, it will be used instead of the one stored with the message. Reference value &lt;mr&gt; is returned to the TE on successful message delivery. If sending fails in a network or an ME error, final result code +CMS ERROR: &lt;err&gt; is returned.<br>
+																																															<br>
+																																															<hr noshade>
+																																															<center>
+																																																<font size="4"><b>Write Message to Memory +CMGW</b></font><br>
+																																																(only supported by 8110/3110/2110 NOKIA versions)</center>
+																																															<br>
+																																															<br>
+																																															<ul>
+																																																<li><b>Text mode</b>
+																																															</ul>
+																																															<b>Action command syntax</b><br>
+																																															<table border="1" width="100%">
+																																																<tr>
+																																																	<th>Command</th>
+																																																	<th>Possible response(s)</th>
+																																																</tr>
+																																																<tr valign="top">
+																																																	<td><b>if text mode (+CMGF=1):</b><br>
+																																																		+CMGW=&lt;oa/da&gt;[,&lt;tooa/toda&gt;[,&lt;stat&gt;]]&lt;CR&gt;<br>
+																																																		<b>text is entered</b>&lt;ctrl-Z/ESC&gt;</td>
+																																																	<td>+CMGW: &lt;index&gt;<br>
+																																																		+CMS ERROR: &lt;err&gt;</td>
+																																																</tr>
+																																																<tr valign="top">
+																																																	<td>+CMGW=?</td>
+																																																	<td>OK</td>
+																																																</tr>
+																																															</table>
+																																															<br>
+																																															<b>Description (For all parameters undescribed, please <a href="glossary.htm">refer to the GSM Glossary</a>)</b><br>
+																																															Execution command stores message (either SMS-DELIVER or SMS-SUBMIT) to preferred memory storage &lt;mem2&gt;. Memory location &lt;index&gt; of the stored message is returned. By default message status will be set to 'stored unsent', but parameter &lt;stat&gt; allows also other status values to be given. The entering of text is done similarly as specified in command Send Message +CMGS. If writing fails, final result code +CMS ERROR: &lt;err&gt; is returned.
+																																															<ul>
+																																																<li><b>PDU mode</b>
+																																															</ul>
+																																															<b>Action command syntax</b><br>
+																																															<table border="1" width="100%">
+																																																<tr>
+																																																	<th>Command</th>
+																																																	<th>Possible response(s)</th>
+																																																</tr>
+																																																<tr valign="top">
+																																																	<td><b>if PDU mode (+CMGF=0):</b><br>
+																																																		+CMGW=&lt;length&gt;[,&lt;stat&gt;]&lt;CR&gt;<b>PDU is given</b>&lt;ctrl-Z/ESC&gt;</td>
+																																																	<td>+CMGW: &lt;index&gt;<br>
+																																																		+CMS ERROR: &lt;err&gt;</td>
+																																																</tr>
+																																																<tr valign="top">
+																																																	<td>+CMGW=?</td>
+																																																	<td>OK</td>
+																																																</tr>
+																																															</table>
+																																															<br>
+																																															<b>Description (For all parameters undescribed, please <a href="glossary.htm">refer to the GSM Glossary</a>)</b><br>
+																																															Execution command stores message (either SMS-DELIVER or SMS-SUBMIT) to preferred memory storage &lt;mem2&gt;. Memory location &lt;index&gt; of the stored message is returned. By default message status will be set to 'stored unsent', but parameter &lt;stat&gt; allows also other status values to be given. The entering of PDU is done similarly as specified in command Send Message +CMGS. If writing fails, final result code +CMS ERROR: &lt;err&gt; is returned.<br>
+																																															<br>
+																																															<hr noshade>
+																																															<center>
+																																																<font size="4"><b>Delete Message +CMGD</b></font><br>
+																																																(supported by CMDZ1 SONY, 8110/3110/2110 NOKIA versions)</center>
+																																															<br>
+																																															<br>
+																																															<b>Action command syntax</b><br>
+																																															<table border="1" width="100%">
+																																																<tr>
+																																																	<th>Command</th>
+																																																	<th>Possible response(s)</th>
+																																																</tr>
+																																																<tr valign="top">
+																																																	<td>+CMGD=&lt;index&gt;</td>
+																																																	<td>+CMS ERROR: &lt;err&gt;</td>
+																																																</tr>
+																																																<tr valign="top">
+																																																	<td>+CMGD=?</td>
+																																																	<td>OK</td>
+																																																</tr>
+																																															</table>
+																																															<br>
+																																															<b>Description (For all parameters undescribed, please <a href="glossary.htm">refer to the GSM Glossary</a>)</b><br>
+																																															Execution command deletes message from mobile message storage &lt;mem1&gt; location &lt;index&gt;. If deleting fails, final result code +CMS ERROR: &lt;err&gt; is returned.
+																																														</body>
+
+																																													</html>
