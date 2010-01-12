@@ -1,0 +1,243 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<link rel="icon" href="http://ab.id.au/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="http://ab.id.au/favicon.ico" type="image/x-icon">
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="noindex,nofollow">
+
+<title>MotorolaATCommands - AB's Wiki</title>
+<script type="text/javascript" src="/_moin/common/js/common.js"></script>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="/_moin/mentalwealth/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="/_moin/mentalwealth/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="/_moin/mentalwealth/css/local.css">
+
+<!-- css only for MS IE6/IE7 browsers -->
+<!--[if lt IE 8]>
+   <link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="/_moin/mentalwealth/css/msie.css">
+<![endif]-->
+
+
+
+
+
+<link rel="Start" href="/FrontPage">
+<link rel="Alternate" title="Wiki Markup" href="/MotorolaATCommands?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/MotorolaATCommands?action=print">
+<link rel="Appendix" title="Motorola_g20_AT_Commands.pdf" href="/MotorolaATCommands?action=AttachFile&amp;do=view&amp;target=Motorola_g20_AT_Commands.pdf">
+<link rel="Search" href="/FindPage">
+<link rel="Index" href="/TitleIndex">
+<link rel="Glossary" href="/WordIndex">
+<link rel="Help" href="/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+<div id="page" lang="en" dir="ltr">
+
+<ul id="pagelocation">
+<li><a class="backlink" href="/MotorolaATCommands?action=fullsearch&amp;context=180&amp;value=linkto%3A%22MotorolaATCommands%22" rel="nofollow" title="Click to do a full-text search for this title">MotorolaATCommands</a></li>
+</ul>
+<div dir="ltr" id="content" lang="en"><span class="anchor" id="top"></span>
+<span class="anchor" id="line-1"></span><p class="line867">
+<h1 id="Motorola_extended_AT_commands_for_calendar_and_phone_book">Motorola extended AT commands for calendar and phone book</h1>
+<span class="anchor" id="line-2"></span><span class="anchor" id="line-3"></span><p class="line874">Most Motorola GSM phones support an extended AT command set for accessing their calendar and phonebook data. <span class="anchor" id="line-4"></span><span class="anchor" id="line-5"></span><p class="line874">This page is incomplete. <span class="anchor" id="line-6"></span><span class="anchor" id="line-7"></span><p class="line867">
+<h2 id="General">General</h2>
+<span class="anchor" id="line-8"></span><span class="anchor" id="line-9"></span><p class="line867"><span class="anchor" id="line-10"></span><span class="anchor" id="line-11"></span><span class="anchor" id="line-12"></span><span class="anchor" id="line-13"></span><span class="anchor" id="line-14"></span><span class="anchor" id="line-15"></span><span class="anchor" id="line-16"></span><span class="anchor" id="line-17"></span><span class="anchor" id="line-18"></span><span class="anchor" id="line-19"></span><span class="anchor" id="line-20"></span><span class="anchor" id="line-21"></span><pre>general:
+AT+CSCS=? (show possible encodings)
++CSCS: ("8859-1","ASCII","GSM","UCS2","UTF8")
+AT+CSCS="ASCII" (set encoding to ascii)
+
+AT+CSCA? (read SMS service centre number)
+AT+CGMI;+CGMM;+CGMR;+CGSN (read OS, caps, version, IMEI)
+AT+CSQ;+CBC (read signal level, read battery level)
+reply:
++CSQ: 21,99 (signal level, max level)
++CBC: 1,90 (charging/not charging, battery level/100)</pre><span class="anchor" id="line-22"></span><span class="anchor" id="line-23"></span><p class="line867">
+<h2 id="Calendar">Calendar</h2>
+<span class="anchor" id="line-24"></span><span class="anchor" id="line-25"></span><p class="line867">
+<h3 id="Simple_Format">Simple Format</h3>
+<span class="anchor" id="line-26"></span><span class="anchor" id="line-27"></span><p class="line867"><span class="anchor" id="line-28"></span><span class="anchor" id="line-29"></span><span class="anchor" id="line-30"></span><span class="anchor" id="line-31"></span><span class="anchor" id="line-32"></span><span class="anchor" id="line-33"></span><span class="anchor" id="line-34"></span><span class="anchor" id="line-35"></span><span class="anchor" id="line-36"></span><span class="anchor" id="line-37"></span><span class="anchor" id="line-38"></span><span class="anchor" id="line-39"></span><span class="anchor" id="line-40"></span><span class="anchor" id="line-41"></span><span class="anchor" id="line-42"></span><span class="anchor" id="line-43"></span><span class="anchor" id="line-44"></span><span class="anchor" id="line-45"></span><span class="anchor" id="line-46"></span><span class="anchor" id="line-47"></span><span class="anchor" id="line-48"></span><span class="anchor" id="line-49"></span><span class="anchor" id="line-50"></span><span class="anchor" id="line-51"></span><span class="anchor" id="line-52"></span><span class="anchor" id="line-53"></span><span class="anchor" id="line-54"></span><span class="anchor" id="line-55"></span><span class="anchor" id="line-56"></span><span class="anchor" id="line-57"></span><span class="anchor" id="line-58"></span><span class="anchor" id="line-59"></span><span class="anchor" id="line-60"></span><span class="anchor" id="line-61"></span><span class="anchor" id="line-62"></span><span class="anchor" id="line-63"></span><span class="anchor" id="line-64"></span><span class="anchor" id="line-65"></span><span class="anchor" id="line-66"></span><span class="anchor" id="line-67"></span><span class="anchor" id="line-68"></span><span class="anchor" id="line-69"></span><span class="anchor" id="line-70"></span><span class="anchor" id="line-71"></span><span class="anchor" id="line-72"></span><pre>reading events:
+AT+MDBL=1     -- required, blocks access to calendar in phone
+AT+MDBR=0,14  -- read events 0-14 in calendar
+AT+MDBL=0     -- unblock calendar access
+
+output:
++MDBR: 0,"Meeting",1,0,"17:00","02-24-2006",60,"00:00","00-00-2000",0
++MDBR: 1,"Breakfast",1,1,"10:00","02-25-2006",60,"09:30","02-25-2006",2
+event num, description, time flag (if 0, start time is meaningless), alarm enabl
+ed flag (if 0, alarm time is meaningless), time, date, duration (mins), alarm ti
+me, alarm date, repeat type
+
+repeat type:
+1 = daily
+2 = weekly
+3 = monthly on date
+4 = monthly on day
+5 = yearly
+
+
+reading events "mobile parameters"
+AT+MDBR=?
++MDBR: 500,1,64,8,2
+(max events that can be stored, number of stored events, ?, ?, ?)
+
+
+writing events:
+AT+MDBL=1 (as above)
+AT+MDBWE=1,0,0 (write enable entry 1?)
+AT+MDBW=1,"Test Entry",1,1,"10:00","02-28-2006",60,"09:30","02-28-2006",2
+AT+MDBWE=2,0,0
+AT+MDBW=2,"Foo",1,0,"10:00","02-26-2006",60,"00:00","00-00-2000",0
+AT+MDBWE=3,0,0
+AT+MDBW=3,"Bar",1,0,"10:00","02-26-2006",60,"00:00","00-00-2000",0
+AT+MDBL=0 (as above)
+
+
+how to delete?
+just do +MDBWE=n,0,0 (as above) but don't follow with a write
+
+on positions:
+events don't seem to change position once stored (even when modified)
+however, a new event will get the lowest available position
+so it's hard to tell between a delete-and-add and a big modify</pre><span class="anchor" id="line-73"></span><span class="anchor" id="line-74"></span><p class="line867">
+<h3 id="Extended_Format">Extended Format</h3>
+<span class="anchor" id="line-75"></span><span class="anchor" id="line-76"></span><p class="line867"><a class="http" href="http://www.opensync.org/ticket/425">The source</a> for this information. <span class="anchor" id="line-77"></span><span class="anchor" id="line-78"></span><p class="line867"><span class="anchor" id="line-79"></span><span class="anchor" id="line-80"></span><span class="anchor" id="line-81"></span><span class="anchor" id="line-82"></span><span class="anchor" id="line-83"></span><span class="anchor" id="line-84"></span><span class="anchor" id="line-85"></span><span class="anchor" id="line-86"></span><span class="anchor" id="line-87"></span><span class="anchor" id="line-88"></span><span class="anchor" id="line-89"></span><span class="anchor" id="line-90"></span><span class="anchor" id="line-91"></span><span class="anchor" id="line-92"></span><span class="anchor" id="line-93"></span><span class="anchor" id="line-94"></span><span class="anchor" id="line-95"></span><span class="anchor" id="line-96"></span><span class="anchor" id="line-97"></span><span class="anchor" id="line-98"></span><span class="anchor" id="line-99"></span><span class="anchor" id="line-100"></span><span class="anchor" id="line-101"></span><span class="anchor" id="line-102"></span><span class="anchor" id="line-103"></span><span class="anchor" id="line-104"></span><span class="anchor" id="line-105"></span><span class="anchor" id="line-106"></span><span class="anchor" id="line-107"></span><span class="anchor" id="line-108"></span><span class="anchor" id="line-109"></span><span class="anchor" id="line-110"></span><span class="anchor" id="line-111"></span><span class="anchor" id="line-112"></span><span class="anchor" id="line-113"></span><span class="anchor" id="line-114"></span><span class="anchor" id="line-115"></span><span class="anchor" id="line-116"></span><span class="anchor" id="line-117"></span><span class="anchor" id="line-118"></span><span class="anchor" id="line-119"></span><span class="anchor" id="line-120"></span><span class="anchor" id="line-121"></span><span class="anchor" id="line-122"></span><span class="anchor" id="line-123"></span><span class="anchor" id="line-124"></span><span class="anchor" id="line-125"></span><span class="anchor" id="line-126"></span><span class="anchor" id="line-127"></span><span class="anchor" id="line-128"></span><span class="anchor" id="line-129"></span><span class="anchor" id="line-130"></span><span class="anchor" id="line-131"></span><span class="anchor" id="line-132"></span><span class="anchor" id="line-133"></span><span class="anchor" id="line-134"></span><span class="anchor" id="line-135"></span><span class="anchor" id="line-136"></span><span class="anchor" id="line-137"></span><span class="anchor" id="line-138"></span><span class="anchor" id="line-139"></span><span class="anchor" id="line-140"></span><span class="anchor" id="line-141"></span><span class="anchor" id="line-142"></span><span class="anchor" id="line-143"></span><span class="anchor" id="line-144"></span><span class="anchor" id="line-145"></span><span class="anchor" id="line-146"></span><span class="anchor" id="line-147"></span><span class="anchor" id="line-148"></span><span class="anchor" id="line-149"></span><span class="anchor" id="line-150"></span><span class="anchor" id="line-151"></span><span class="anchor" id="line-152"></span><span class="anchor" id="line-153"></span><span class="anchor" id="line-154"></span><span class="anchor" id="line-155"></span><span class="anchor" id="line-156"></span><span class="anchor" id="line-157"></span><span class="anchor" id="line-158"></span><span class="anchor" id="line-159"></span><span class="anchor" id="line-160"></span><span class="anchor" id="line-161"></span><span class="anchor" id="line-162"></span><span class="anchor" id="line-163"></span><span class="anchor" id="line-164"></span><span class="anchor" id="line-165"></span><span class="anchor" id="line-166"></span><span class="anchor" id="line-167"></span><span class="anchor" id="line-168"></span><span class="anchor" id="line-169"></span><span class="anchor" id="line-170"></span><span class="anchor" id="line-171"></span><span class="anchor" id="line-172"></span><span class="anchor" id="line-173"></span><span class="anchor" id="line-174"></span><span class="anchor" id="line-175"></span><span class="anchor" id="line-176"></span><span class="anchor" id="line-177"></span><span class="anchor" id="line-178"></span><span class="anchor" id="line-179"></span><span class="anchor" id="line-180"></span><span class="anchor" id="line-181"></span><span class="anchor" id="line-182"></span><span class="anchor" id="line-183"></span><span class="anchor" id="line-184"></span><span class="anchor" id="line-185"></span><span class="anchor" id="line-186"></span><span class="anchor" id="line-187"></span><span class="anchor" id="line-188"></span><span class="anchor" id="line-189"></span><span class="anchor" id="line-190"></span><span class="anchor" id="line-191"></span><span class="anchor" id="line-192"></span><span class="anchor" id="line-193"></span><span class="anchor" id="line-194"></span><span class="anchor" id="line-195"></span><span class="anchor" id="line-196"></span><span class="anchor" id="line-197"></span><span class="anchor" id="line-198"></span><span class="anchor" id="line-199"></span><span class="anchor" id="line-200"></span><span class="anchor" id="line-201"></span><span class="anchor" id="line-202"></span><span class="anchor" id="line-203"></span><pre>21 comma sperated fields, value types are integer, string (WITH QUOTES), and empty (really empty, as in nothing in there, NOT like empty strings)
+Field#  Meaning                            Value type
+1  ID of the Entry                         integer
+2  Subject                                 string
+3  Whole Day Event (see below)             integer (0 or 1)
+4  Alarm                                   integer (0 or 1)
+5  Start time                              string (format HH:MM)
+6  Start date                              string (format MM-DD-YYYY)
+7  Unused                                  always empty
+8  Alarm time (see below)                  string
+9  Alarm date (see below)                  string
+10 Repeat (see below)                      integer
+11 End time                                string
+12 End date                                string
+13 Alarm sound (see below)                 string
+14 Type of Entry (see below)               integer
+15 Location of Event                       string
+16 Note                                    string
+17 Unused (propably max ID for events???)  integer (always 501)
+18 Repeat every X                          integer
+19 Repeat on day X                         integer
+20 Unused                                  always empty
+21 End date of Repetition                  string
+
+Explanation of Field sets:
+_________________________
+------------------------------
+
+Field 3 = Whole Day Event
+---------------------------------
+Beware of the semantics off this field:
+Value = Meaning
+0 = whole day event
+1  = NO whole day event!!!
+
+
+Field 14 = Type of Event
+-------------------------------
+Value = Meaning
+0 = None
+1 = Private
+2 = Discussion
+3 = Meeting
+4 = Birthday
+5 = Anniversary
+6 = Telephone Call
+7 = Vacation
+8 = Holyday
+9 = Entertainment
+10 = Breakfast
+11 = Lunch
+12 = Dinner
+13 = education
+14 = Travel
+15 = Party
+
+Fields 4,8,9,13 = Alarm related
+--------------------------------------
+Field 4 is the Alarm master switch:
+Value = Meaning
+0 = Alarm off
+1 = Alarm on
+
+If Alarm is off fields 8,9,13 contain their default values:
+field 8 = "06:28"
+field 9 = "02-06-2088"
+field 13 = ""
+Beware of the quotes, they belog to the value!!!
+But those fields can savely be ignred if alarm is off
+
+if Alarm is on field 8 and 9 are self explaining, field 13 can contain 2 different kinds of values:
+a) either "" , which means that the default alarm sound for the current sound theme will be chosen, or
+b) a path to a music file, which will then be chosen as alarm sound.
+
+Fields 10, 18, 19, 21 = Event Repetition
+-------------------------------------------------
+This one is a little complicated.
+Field 10 is the repetition master switch it has the following value - meaning pairs:
+0 = no repeating
+1 = daily repeat
+2 = weekly repeat
+3 = monthly repeat based on the weekday, e.g. Event is on 04-12-2007, which is also the second thursday in april we want to repeat the event on every second thursday of every month
+4 = monthly repeat based on the correct date, e.g. Event is on 04-12-2007, we want to repeat the event on every 12. day of every month
+5 = yearly repeat based on the weekday, e.g. Event is on 04-12-2007, which is also the second thursday in april we want to repeat the event on every second thursday of april of every year
+6 = yearly repeat based on the correct date, e.g. Event is on 04-12-2007, we want to repeat the event on every 12. april of every year
+
+field 21 always contains the end date of the repetition. If the repetition is endless field 21 contains the value "00-00-2000" (with quotes). The date format is as always: MM-DD-YYYY.
+
+field 18 is only relevant if field 10 contains one of the following values : 1, 2, 3, 4. It is therefore not used for yearly repetition., only for daily weekly and monthly repetition. Field 18 contains an integer value. Its defauls value is 0 and indicates that the field is unset. For all other values its semantic can be interpreted as "repeat every VALUE day/week/month", e.g.:
+Event date 1-1-2007, field 10=1, field 18=3
+Repetetion on 1-4-2007, 1-7-2007, ...
+
+
+The meaning off field 19 is dependant on the value of field 10.
+Its default value is 0, and indicates that the field is unused, which is the case if field 10 contains one of the following values: 0, 1, 4, 6
+
+For weekly repeat (field 10= 2) follows the following binary encoding of weekdays:
+The weekday of the event (the one that gets repeated of course) gets the value 2^6 = 64,
+the following weekday gets the value 2^5, the after that one gets 2^4, etc.
+Field 19 contains the sum of the binary encoded weekdays.
+For example:
+lets assume we have an event on Thursday, 04-12-2007
+As the starting weekday is the day of the first event (Thursday), this day gets encoded with 2^6, so the encoding for the whole week is as follows:
+thursday 2^6 (1000000) - friday 2^5 (0100000) - saturday 2^4 (0010000) - sunday 2^3 (0001000) - monday 2^2 (0000100) - tuesday 2^1 (0000010) - wednesday 2^0 (0000001)
+lets say we want to repeat that event every thursday and monday on a weekly basis.
+Field 19 would then contain 2^6 + 2^2 = 68 or in binary form 1000100
+As one can see it is quite easy to resolve this field using binary shifting operations.
+
+for monthly repeat on weekday basis and yearly repeat on wekkday basis (field 10 = 3 or 5) the following holds:
+The weekdays get the following basis encodings :
+sunday = 0
+monday = 8
+tuesday = 16
+wednesday = 24
+thursday = 32
+friday = 40
+saturday = 48
+Again it is quite easy to see the binary encodings.
+The above values are NEVER the value of field 19. Instead the field contains a value computed as follows:
+WEEKDAYCODE + 1 = first WEEKDAY of month
+WEEKDAYCODE + 2 = second WEEKDAY of month
+WEEKDAYCODE + 3 = third WEEKDAY of month
+WEEKDAYCODE + 4 = fourth WEEKDAY of month
+WEEKDAYCODE + 5 = last WEEKDAY of month</pre><span class="anchor" id="line-204"></span><span class="anchor" id="line-205"></span><p class="line867">
+<h2 id="Phone_Book">Phone Book</h2>
+<span class="anchor" id="line-206"></span><span class="anchor" id="line-207"></span><p class="line867"><span class="anchor" id="line-208"></span><span class="anchor" id="line-209"></span><span class="anchor" id="line-210"></span><span class="anchor" id="line-211"></span><span class="anchor" id="line-212"></span><span class="anchor" id="line-213"></span><span class="anchor" id="line-214"></span><span class="anchor" id="line-215"></span><span class="anchor" id="line-216"></span><pre>reading group IDs:
+AT+MPGR=?
++MPGR: (1-30),24,(0-2,4-55,255),(0),(0),0
+AT+MPGR=1,15 (read IDs 1-15)
++MPGR: 1,"General",255,0,0,""
++MPGR: 2,"Business",255,0,0,""
++MPGR: 3,"Personal",255,0,0,""
++MPGR: 4,"VIPs",255,0,0,""</pre><span class="anchor" id="line-217"></span><span class="anchor" id="line-218"></span><p class="line874">field 7's purpose is unknown. one document says it is a "backlight flag" <span class="anchor" id="line-219"></span>I've had reports of one device where some entries had it set to 1, <span class="anchor" id="line-220"></span>however trying to write a 1 there always failed <span class="anchor" id="line-221"></span><span class="anchor" id="bottom"></span></div><p id="pageinfo" class="info" lang="en" dir="ltr">MotorolaATCommands  (last edited 2008-04-10 08:56:58 by <span title="??? @ localhost[127.0.0.1]">localhost</span>)</p>
+<div id="pagebottom"></div>
+</div>
+</body>
+</html>
+
