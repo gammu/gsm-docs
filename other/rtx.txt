@@ -1,0 +1,42 @@
+The RTX Ringtone SpecificationThe RTX Ringtone Specification
+An RTX file is a text file, containing the ringtone name, a control section and 
+a section containing a comma separated sequence of ring tone commands. The RTX 
+ringtone description format is designed to be backward compatible with RTTTL, 
+but offers extensions in line with the Nokia Smart Messaging standard. White 
+space must be ignored by any reader application.
+Example: 
+AxelF:d=4,o=5,b=125:32p,8g,8p,16a#.,8p,16g,16p,16g,8c6, 
+8g,8f,8g,8p,16d.6,8p,16g,16p,16g,8d#6,8d6,8a#,8g,8d6,8g6, 
+16g,16f,16p,16f,8d,8a#,2g,p,SS,16f6,8d6,8c6,8a#,g,8a#.,16g, 
+16p,16g,8c6,8g,8f,g,8d.6,16g,16p,16g,8d#6,8d6,8a#,8g,8d6, 
+8g6,16g,16f,16p,16f,8d,8a#,2g
+This file describes a ringtone whose name is 'AxelF'. The control section sets 
+the beats per second at 125, the default note length at 4, and the default scale 
+on Octave 5.
+<RTX file> := <name> ":" [<control section>] ":" <tone-commands>
+  <name> := <char>+ ; maximum name length 10 characters
+  <control-section> := <control-pair> ["," <control-section>]
+    <control-pair> := <control-name> ["="] <control-value>
+    <control-name> := "o" | "d" | "b" | "s"
+    ; Valid in control section: o=default scale, d=default duration, b=default 
+    beats per minute, s=style
+    ; Valid in tone section: o, b, s
+    <control-value> := <char>+ ; dependent on control-name
+        ; if not specified, defaults are 4=duration, 6=scale, 
+63=beats-per-minute
+        ; styles are S=Staccato, N=Natural, C=Continuous
+        ; any unknown control-names must be ignored
+  <tone-commands> := <tone-command> ["," <tone-commands>]
+  <tone-command> :=<note> | <control-pair>
+    <note> := [<duration>] <note> [<scale>] [<special-duration>] <delimiter>
+      <duration> := "1" | "2" | "4" | "8" | "16" | "32" ; duration is divider of 
+      full note duration, eg. 4 represents a quarter note
+      <note> := "P" | "C" | "C#" | "D" | "D#" | "E" | "F" | "F#" | "G" | "G#" | 
+      "A" | "A#" | "H" 
+      <scale> :="4" | "5" | "6" | "7"
+      ; Note that octave 4: A=440Hz, 5: A=880Hz, 6: A=1.76 kHz, 7: A=3.52 kHz
+      ; The lowest note on the Nokia 61xx is A4, the highest is B7
+      <special-duration> := "." ; Dotted note
+; End of specification
+What do you want to know more about? 
+R

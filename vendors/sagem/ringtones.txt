@@ -1,0 +1,172 @@
+Format of Sagem SMS melodies 1.0 Monotone
+
+Format of a SMS melody 
+----------------------
+A Sagem SMS melody 1.0 is a standard SMS, all stave information
+being transmitted in the TP-User Data, without TP-User Data Header.
+The encoding of the text used is the default one (compacted 7bit alphabet).
+The internal format of text (TP-UD) is the following :
+
+N ° Description     Content                 Length of characters
+1   Label version   $MUS$1.0$               8
+2   Copyrights      $  : free of rights
+                    @  : copyright          1
+3   Separator       LF                      1
+4   Label title     Titre :                 6
+5   Data title      AAAAAAAAAAAA            0 to 20
+6   Separator       LF                      1
+7   Label data      Data :                  5
+8   Notes number    999                     1 to 3
+9   Separator       -                       1
+10  Separation time 99999                   1 to 5
+11  Separator       -                       1
+12  Tempo           999                     1 to 3
+13  Separator       LF                      1
+14  Note 1 (length) X                       1
+15  Note 1 (pitch)  X                       ....
+... ...             ...                     1
+N-1 Note M (length) X                       1
+N   Note M (pitch)  X                       1
+
+
+It must be highlighted that the characters of the title must be part
+of the alphabet GSM 7bit (refers to the spec
+3GPP 23.038 v.4.0.0 Rel 2000-07 §6.2.1).
+
+Each note is coded by 2 septets (GSM default alphabet) : the 1st
+contains information on its length, the 2nd on its pitch,
+as detailed as follows.
+
+The maximum number notes that can be coded in an SMS varies,
+according to the size of header data,
+between 52 to 65 (the maximum number of characters being 160
+and the header varying between 29 and 55 septets).
+
+If the individual wants to send a melody which is being edited
+and that the number of notes of that melody exceeds the sending capacity,
+it is necessary to carry out an individual truncation of
+the notes at the end of the stave
+(complete information for the last coded note), however,
+no warning is displayed to inform the user that the individual sends only
+a part of what is seen.
+
+Length of notes
+---------------
+The value of notes are expressed in whole note/semibreve
+fractions that may be completed by a dot or a double dot.
+The double dot is generally not supported and therefore replaced
+by a dot when stored.
+
+
+Length                                               Can be store Code hexa (SMS 7 bits)  Characters
+1/16th note / whole rest / semiquaver                X            0x21                    !
+1/16th note / whole rest, semiquaver /dot            X            0x22                    "
+1/16th note / whole rest / semiquaver /, double dot               0x23                    #
+1/8th note / 1/8th rest, quaver /                    X            0x24                    $
+1/8th note / 1/8th rest, quaver /dot                 X            0x25                    %
+1/8th note / 1/8th rest, quaver / double dot                      0x26                    &
+quarter note / crotchet / quarter rest               X            0x27                    '
+quarter note / crotchet / quarter rest, dot          X            0x28                    (
+quarter note / crotchet / quarter rest, double dot                0x29                    )
+half note / minim / half-pause                       X            0x2a                    *
+half note / minim / half-pause, dot                  X            0x2b                    +
+half note / minim / half-pause, double dot                        0x2c                    ,
+whole note / semibreve / pause                       X            0x2d                    -
+whole note / semibreve / pause, dot                  X            0x2e                    .
+whole note / semibreve / pause, double dot                        0x2f                    /
+
+
+Pitch of note
+-------------
+The pitch describes the octave (1-4), the note (C to B) and the alteration (natural, sharp, flat).
+Some pitches cannot be displayed on the editor stave (limitations for octaves 1 and 4).
+
+Moreover, while reading an SMS melody, the editor brings back all the alterations to natural and sharp (B sharp becomes C and B flat becomes A sharp).
+
+
+Pitch              Displayable     Hexa code (SMS 7 bits)  Characters
+space (silence)    X               0x20                    " "
+octave 1, C                        0x21                    !
+octave 1, C sharp                  0x22                    "
+octave 1, C flat                   0x23                    #
+octave 1, D                        0x24                    $
+octave 1, D sharp                  0x25                    %
+octave 1, D flat                   0x26                    &
+octave 1, E                        0x27                    '
+octave 1, E sharp                  0x28                    (
+octave 1, E flat                   0x29                    )
+octave 1, F                        0x2a                    *
+octave 1, F sharp                  0x2b                    +
+octave 1, F flat                   0x2c                    ,
+octave 1, G                        0x2d                    -
+octave 1, G sharp                  0x2e                    .
+octave 1, G flat                   0x2f                    /
+octave 1, A        X               0x30                    0
+octave 1, A sharp  X               0x31                    1
+octave 1, A flat                   0x32                    2
+octave 1, B        X               0x33                    3
+octave 1, B sharp  X               0x34                    4
+octave 1, B flat   X               0x35                    5
+octave 2, C        X               0x36                    6
+octave 2, C sharp  X               0x37                    7
+octave 2, C flat   X               0x38                    8
+octave 2, D        X               0x39                    9
+octave 2, D sharp  X               0x3a                    :
+octave 2, D flat   X               0x3b                    ;
+octave 2, E        X               0x3c                    <
+octave 2, E sharp  X               0x3d                    =
+octave 2, E flat   X               0x3e                    >
+octave 2, F        X               0x3f                    ?
+octave 2, F sharp  X               0x40                    !
+octave 2, F flat   X               0x41                    A
+octave 2, G        X               0x42                    B
+octave 2, G sharp  X               0x43                    C
+octave 2, G flat   X               0x44                    D
+octave 2, A        X               0x45                    E
+octave 2, A sharp  X               0x46                    F
+octave 2, A flat   X               0x47                    G
+octave 2, B        X               0x48                    H
+octave 2, B sharp  X               0x49                    I
+octave 2, B flat   X               0x4a                    J
+octave 3, C        X               0x4b                    K
+octave 3, C sharp  X               0x4c                    L
+octave 3, C flat   X               0x4d                    M
+octave 3, D        X               0x4e                    N
+octave 3, D sharp  X               0x4f                    O
+octave 3, D flat   X               0x50                    P
+octave 3, E        X               0x51                    Q
+octave 3, E sharp  X               0x52                    R
+octave 3, E flat   X               0x53                    S
+octave 3, F        X               0x54                    T
+octave 3, F sharp  X               0x55                    U
+octave 3, F flat   X               0x56                    V
+octave 3, G        X               0x57                    W
+octave 3, G sharp  X               0x58                    X
+octave 3, G flat   X               0x59                    Y
+octave 3, A        X               0x5a                    Z
+octave 3, A sharp  X               0x61                    a
+octave 3, A flat   X               0x62                    b
+octave 3, B        X               0x63                    c
+octave 3, B sharp  X               0x64                    d
+octave 3, B flat   X               0x65                    e
+octave 4, C        X               0x66                    f
+octave 4, C sharp  X               0x67                    g
+octave 4, C flat   X               0x68                    h
+octave 4, D                        0x69                    i
+octave 4, D sharp                  0x6a                    j
+octave 4, D flat                   0x6b                    k
+octave 4, E                        0x6c                    l
+octave 4, E sharp                  0x6d                    m
+octave 4, E flat                   0x6e                    n
+octave 4, F                        0x6f                    o
+octave 4, F sharp                  0x70                    p
+octave 4, F flat                   0x71                    q
+octave 4, G                        0x72                    r
+octave 4, G sharp                  0x73                    s
+octave 4, G flat                   0x74                    t
+octave 4, A                        0x75                    u
+octave 4, A sharp                  0x76                    v
+octave 4, A flat                   0x77                    w
+octave 4, B                        0x78                    x
+octave 4, B sharp                  0x79                    y
+octave 4, B flat                   0x7a                    z

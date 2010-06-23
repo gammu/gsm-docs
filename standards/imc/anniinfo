@@ -1,0 +1,44 @@
+Annivarsary info from 9210
+
+Message: SMS Message Received
+   UDH header available (length 12, UNKNOWN)
+0b |05 |04 |23#|f5õ|00 |00 |00 |03 |04 |03 |01              00c ...#õ.......
+   8 bit SMS, body is (length 128)
+42B|45E|47G|49I|4eN|3a:|56V|43C|41A|4cL|45E|4eN|44D|41A|52R 00f BEGIN:VCALENDAR
+0d |0a |56V|45E|52R|53S|49I|4fO|4eN|3a:|311|2e.|300|0d |0a  01e ..VERSION:1.0..
+42B|45E|47G|49I|4eN|3a:|56V|45E|56V|45E|4eN|54T|0d |0a |55U 02d BEGIN:VEVENT..U
+49I|44D|3a:|388|0d |0a |44D|45E|53S|43C|52R|49I|50P|54T|49I 03c ID:8..DESCRIPTI
+4fO|4eN|3a:|61a|6en|6en|69i|76v|65e|72r|73s|61a|72r|79y|0d  04b ON:anniversary.
+0a |44D|54T|53S|54T|41A|52R|54T|3a:|311|399|399|300|300|322 05a .DTSTART:199002
+311|355|54T|300|300|300|300|300|300|0d |0a |44D|54T|45E|4eN 069 15T000000..DTEN
+44D|3a:|311|399|399|300|300|322|311|355|54T|300|300|300|300 078 D:19900215T0000
+300|300|0d |0a |58X|2d-|45E|50P                             080 00..X-EP
+                                                   0b6 :Y
+Message: SMS Message Received
+   UDH header available (length 12, UNKNOWN)
+0b |05 |04 |23#|f5õ|00 |00 |00 |03 |04 |03 |02              00c ...#õ.......
+   8 bit SMS, body is (length 128)
+4fO|43C|41A|47G|45E|4eN|44D|41A|45E|4eN|54T|52R|59Y|54T|59Y 00f OCAGENDAENTRYTY
+50P|45E|3a:|41A|4eN|4eN|49I|56V|45E|52R|53S|41A|52R|59Y|0d  01e PE:ANNIVERSARY.
+0a |41A|41A|4cL|41A|52R|4dM|3b;|54T|59Y|50P|45E|3d=|58X|2d- 02d .AALARM;TYPE=X-
+45E|50P|4fO|43C|53S|4fO|55U|4eN|44D|3a:|322|300|300|322|300 03c EPOCSOUND:20020
+322|311|344|54T|300|388|344|355|300|300|3b;|3b;|300|3b;|64d 04b 214T084500;;0;d
+75u|6dm|6dm|79y|0d |0a |43C|4cL|41A|53S|53S|3a:|50P|55U|42B 05a ummy..CLASS:PUB
+4cL|49I|43C|0d |0a |44D|43C|52R|45E|41A|54T|45E|44D|3a:|322 069 LIC..DCREATED:2
+300|300|322|300|311|322|377|54T|300|300|300|300|300|300|0d  078 0020127T000000.
+0a |52R|52R|55U|4cL|45E|3a:|59Y                             080 .RRULE:Y
+
+Message: SMS Message Received
+   UDH header available (length 12, UNKNOWN)
+0b |05 |04 |23#|f5õ|00 |00 |00 |03 |04 |03 |03              00c ...#õ.......
+   8 bit SMS, body is (length 67)
+4dM|311|20 |322|20 |23#|300|0d |0a |4cL|41A|53S|54T|2d-|4dM 00f M1 2 #0..LAST-M
+4fO|44D|49I|46F|49I|45E|44D|3a:|322|300|300|322|300|311|322 01e ODIFIED:2002012
+377|54T|311|322|344|344|300|300|0d |0a |45E|4eN|44D|3a:|56V 02d 7T124400..END:V
+45E|56V|45E|4eN|54T|0d |0a |45E|4eN|44D|3a:|56V|43C|41A|4cL 03c EVENT..END:VCAL
+45E|4eN|44D|41A|52R|0d |0a                                  043 ENDAR..
+
+description:anniversary
+date:15/02/1990
+display year:in number of years
+alarm: 8:45 1 day before

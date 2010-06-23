@@ -1,0 +1,65 @@
+Task calendar noter from 9210
+
+Message: SMS Message Received
+   UDH header available (length 12, UNKNOWN)
+0b |05 |04 |23#|f5õ|00 |00 |00 |03 |05 |04 |01              00c ...#õ.......
+   8 bit SMS, body is (length 128)
+42B|45E|47G|49I|4eN|3a:|56V|43C|41A|4cL|45E|4eN|44D|41A|52R 00f BEGIN:VCALENDAR
+0d |0a |56V|45E|52R|53S|49I|4fO|4eN|3a:|311|2e.|300|0d |0a  01e ..VERSION:1.0..
+42B|45E|47G|49I|4eN|3a:|56V|54T|4fO|44D|4fO|0d |0a |55U|49I 02d BEGIN:VTODO..UI
+44D|3a:|399|0d |0a |44D|45E|53S|43C|52R|49I|50P|54T|49I|4fO 03c D:9..DESCRIPTIO
+4eN|3a:|74t|61a|73s|6bk|0d |0a |44D|55U|45E|3a:|322|300|300 04b N:task..DUE:200
+322|300|322|311|355|54T|300|300|300|300|300|300|0d |0a |50P 05a 20215T000000..P
+52R|49I|4fO|52R|49I|54T|59Y|3a:|311|0d |0a |58X|2d-|45E|50P 069 RIORITY:1..X-EP
+4fO|43C|54T|4fO|44D|4fO|4cL|49I|53S|54T|3a:|54T|61a|73s|6bk 078 OCTODOLIST:Task
+20 |6cl|69i|73s|74t|0d |0a |44D                             080  list..D
+
+Message: SMS Message Received
+   UDH header available (length 12, UNKNOWN)
+0b |05 |04 |23#|f5õ|00 |00 |00 |03 |05 |04 |02              00c ...#õ.......
+   8 bit SMS, body is (length 128)
+54T|53S|54T|41A|52R|54T|3a:|322|300|300|322|300|322|311|355 00f TSTART:20020215
+54T|300|300|300|300|300|300|0d |0a |44D|54T|45E|4eN|44D|3a: 01e T000000..DTEND:
+322|300|300|322|300|355|311|355|54T|300|300|300|300|300|300 02d 20020515T000000
+0d |0a |58X|2d-|45E|50P|4fO|43C|41A|47G|45E|4eN|44D|41A|45E 03c ..X-EPOCAGENDAE
+4eN|54T|52R|59Y|54T|59Y|50P|45E|3a:|54T|4fO|44D|4fO|0d |0a  04b NTRYTYPE:TODO..
+41A|41A|4cL|41A|52R|4dM|3b;|54T|59Y|50P|45E|3d=|58X|2d-|45E 05a AALARM;TYPE=X-E
+50P|4fO|43C|53S|4fO|55U|4eN|44D|3a:|322|300|300|322|300|322 069 POCSOUND:200202
+311|300|54T|300|388|344|355|300|300|3b;|3b;|300|3b;|64d|75u 078 10T084500;;0;du
+6dm|6dm|79y|0d |0a |43C|4cL|41A                             080 mmy..CLA
+
+
+Message: SMS Message Received
+   UDH header available (length 12, UNKNOWN)
+0b |05 |04 |23#|f5õ|00 |00 |00 |03 |05 |04 |03              00c ...#õ.......
+   8 bit SMS, body is (length 128)
+53S|53S|3a:|50P|55U|42B|4cL|49I|43C|0d |0a |44D|43C|52R|45E 00f SS:PUBLIC..DCRE
+41A|54T|45E|44D|3a:|322|300|300|322|300|311|322|377|54T|300 01e ATED:20020127T0
+300|300|300|300|300|0d |0a |52R|52R|55U|4cL|45E|3a:|57W|311 02d 00000..RRULE:W1
+20 |4dM|4fO|20 |54T|55U|20 |57W|45E|20 |54T|48H|20 |46F|52R 03c  MO TU WE TH FR
+20 |322|300|300|322|300|355|311|355|54T|300|300|300|300|300 04b  20020515T00000
+300|5aZ|0d |0a |4cL|41A|53S|54T|2d-|4dM|4fO|44D|49I|46F|49I 05a 0Z..LAST-MODIFI
+45E|44D|3a:|322|300|300|322|300|311|322|377|54T|311|322|355 069 ED:20020127T125
+300|300|300|0d |0a |45E|4eN|44D|3a:|56V|54T|4fO|44D|4fO|0d  078 000..END:VTODO.
+0a |45E|4eN|44D|3a:|56V|43C|41A                             080 .END:VCA
+
+
+Message: SMS Message Received
+   UDH header available (length 12, UNKNOWN)
+0b |05 |04 |23#|f5õ|00 |00 |00 |03 |05 |04 |04              00c ...#õ.......
+   8 bit SMS, body is (length 8)
+4cL|45E|4eN|44D|41A|52R|0d |0a                              008 LENDAR..
+
+description:task
+task list:task list
+priority:high
+due date: yes
+start warning: 0 days before
+alarm: 8:45 5 days before
+repeat
+weeklt (mon, tue, wed, thur, fri)
+repeat interval: 1 week
+repeat indefinitely: no
+start:15/02/2002
+end:15/02/2002
+occurences:64

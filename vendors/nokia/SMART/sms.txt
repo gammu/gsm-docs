@@ -1,0 +1,281 @@
+
+1.Calendar notes
+
+   You can send them two ways (both like 7 bit SMS): with UDH (in 1 or 2 SMS)
+   or without UDH (1 SMS).
+   
+   In both DTSTART can't be from the past (for example, for 3310)
+   and each line must end with #13#10 chars (not only #10)
+   
+   In second must add "//SCKE4 " before text
+     
+---------------------
+//SCKE4 BEGIN:VCALENDAR
+VERSION:1.0
+BEGIN:VEVENT
+CATEGORIES:MISCELLANEOUS
+SUMMARY:ALA
+DTSTART:20010505T235959
+END:VEVENT
+END:VCALENDAR
+
+---------------------
+
+Calendar from 6210
+
+0b |05 |04 |23#|f5ı|00 |00 |00 |03 |01 |03 |01              00c ...#ı.......
+   8 bit SMS, body is (length 128)
+42B|45E|47G|49I|4eN|3a:|56V|43C|41A|4cL|45E|4eN|44D|41A|52R 00f BEGIN:VCALENDAR
+0d |0a |56V|45E|52R|53S|49I|4fO|4eN|3a:|311|2e.|300|0d |0a  01e ..VERSION:1.0..
+42B|45E|47G|49I|4eN|3a:|56V|45E|56V|45E|4eN|54T|0d |0a |43C 02d BEGIN:VEVENT..C
+41A|54T|45E|47G|4fO|52R|49I|45E|53S|3a:|4dM|45E|45E|54T|49I 03c ATEGORIES:MEETI
+4eN|47G|0d |0a |44D|54T|53S|54T|41A|52R|54T|3a:|322|300|300 04b NG..DTSTART:200
+322|300|322|300|344|54T|322|322|300|300|300|300|0d |0a |52R 05a 20204T220000..R
+52R|55U|4cL|45E|3a:|44D|311|20 |23#|300|0d |0a |44D|41A|4cL 069 RULE:D1 #0..DAL
+41A|52R|4dM|3a:|322|300|300|322|300|322|300|344|54T|322|311 078 ARM:20020204T21
+355|355|300|300|3b;|3b;|3b;|0d                              080 5500;;;.
+
+0b |05 |04 |23#|f5ı|00 |00 |00 |03 |01 |03 |02              00c ...#ı.......
+   8 bit SMS, body is (length 128)
+0a |41A|41A|4cL|41A|52R|4dM|3a:|322|300|300|322|300|322|300 00f .AALARM:2002020
+344|54T|322|311|355|355|300|300|3b;|3b;|3b;|0d |0a |53S|55U 01e 4T215500;;;..SU
+4dM|4dM|41A|52R|59Y|3b;|43C|48H|41A|52R|53S|45E|54T|3d=|55U 02d MMARY;CHARSET=U
+54T|46F|2d-|388|3b;|45E|4eN|43C|4fO|44D|49I|4eN|47G|3d=|51Q 03c TF-8;ENCODING=Q
+55U|4fO|54T|45E|44D|2d-|50P|52R|49I|4eN|54T|41A|42B|4cL|45E 04b UOTED-PRINTABLE
+3a:|3d=|43C|355|3d=|388|311|3d=|43C|344|3d=|388|355|6bk|61a 05a :=C5=81=C4=85ka
+0d |0a |44D|45E|53S|43C|52R|49I|50P|54T|49I|4fO|4eN|3b;|43C 069 ..DESCRIPTION;C
+48H|41A|52R|53S|45E|54T|3d=|55U|54T|46F|2d-|388|3b;|45E|4eN 078 HARSET=UTF-8;EN
+43C|4fO|44D|49I|4eN|47G|3d=|51Q                             080 CODING=Q
+
+0b |05 |04 |23#|f5ı|00 |00 |00 |03 |01 |03 |03              00c ...#ı.......
+   8 bit SMS, body is (length 59)
+55U|4fO|54T|45E|44D|2d-|50P|52R|49I|4eN|54T|41A|42B|4cL|45E 00f UOTED-PRINTABLE
+3a:|3d=|43C|355|3d=|388|311|3d=|43C|344|3d=|388|355|6bk|61a 01e :=C5=81=C4=85ka
+0d |0a |45E|4eN|44D|3a:|56V|45E|56V|45E|4eN|54T|0d |0a |45E 02d ..END:VEVENT..E
+4eN|44D|3a:|56V|43C|41A|4cL|45E|4eN|44D|41A|52R|0d |0a      03b ND:VCALENDAR..
+
+Calendar from 6210
+
+0b |05 |04 |23#|f5ı|00 |00 |00 |03 |02 |02 |01              00c ...#ı.......
+   8 bit SMS, body is (length 128)
+42B|45E|47G|49I|4eN|3a:|56V|43C|41A|4cL|45E|4eN|44D|41A|52R 00f BEGIN:VCALENDAR
+0d |0a |56V|45E|52R|53S|49I|4fO|4eN|3a:|311|2e.|300|0d |0a  01e ..VERSION:1.0..
+42B|45E|47G|49I|4eN|3a:|56V|45E|56V|45E|4eN|54T|0d |0a |43C 02d BEGIN:VEVENT..C
+41A|54T|45E|47G|4fO|52R|49I|45E|53S|3a:|53S|50P|45E|43C|49I 03c ATEGORIES:SPECI
+41A|4cL|20 |4fO|43C|43C|41A|53S|49I|4fO|4eN|0d |0a |44D|54T 04b AL OCCASION..DT
+53S|54T|41A|52R|54T|3a:|322|300|300|322|300|355|311|377|54T 05a START:20020517T
+300|300|300|300|300|300|0d |0a |52R|52R|55U|4cL|45E|3a:|59Y 069 000000..RRULE:Y
+44D|311|20 |23#|300|0d |0a |44D|41A|4cL|41A|52R|4dM|3a:|322 078 D1 #0..DALARM:2
+300|300|322|300|355|311|366|54T                             080 0020516T
+
+0b |05 |04 |23#|f5ı|00 |00 |00 |03 |02 |02 |02              00c ...#ı.......
+   8 bit SMS, body is (length 100)
+300|300|300|300|300|300|3b;|3b;|3b;|0d |0a |53S|55U|4dM|4dM 00f 000000;;;..SUMM
+41A|52R|59Y|3a:|311|399|366|399|20 |55U|72r|6fo|64d|7az|69i 01e ARY:1969 Urodzi
+6en|79y|20 |49I|77w|6fo|6en|79y|0d |0a |44D|45E|53S|43C|52R 02d ny Iwony..DESCR
+49I|50P|54T|49I|4fO|4eN|3a:|311|399|366|399|20 |55U|72r|6fo 03c IPTION:1969 Uro
+64d|7az|69i|6en|79y|20 |49I|77w|6fo|6en|79y|0d |0a |45E|4eN 04b dziny Iwony..EN
+44D|3a:|56V|45E|56V|45E|4eN|54T|0d |0a |45E|4eN|44D|3a:|56V 05a D:VEVENT..END:V
+43C|41A|4cL|45E|4eN|44D|41A|52R|0d |0a                      064 CALENDAR..
+
+Calendar from 6210
+
+0b |05 |04 |23#|f5ı|00 |00 |00 |03 |03 |02 |01              00c ...#ı.......
+   8 bit SMS, body is (length 128)
+42B|45E|47G|49I|4eN|3a:|56V|43C|41A|4cL|45E|4eN|44D|41A|52R 00f BEGIN:VCALENDAR
+0d |0a |56V|45E|52R|53S|49I|4fO|4eN|3a:|311|2e.|300|0d |0a  01e ..VERSION:1.0..
+42B|45E|47G|49I|4eN|3a:|56V|45E|56V|45E|4eN|54T|0d |0a |43C 02d BEGIN:VEVENT..C
+41A|54T|45E|47G|4fO|52R|49I|45E|53S|3a:|4dM|45E|45E|54T|49I 03c ATEGORIES:MEETI
+4eN|47G|0d |0a |44D|54T|53S|54T|41A|52R|54T|3a:|322|300|300 04b NG..DTSTART:200
+322|300|322|300|344|54T|322|322|300|300|300|300|0d |0a |52R 05a 20204T220000..R
+52R|55U|4cL|45E|3a:|57W|322|20 |23#|300|0d |0a |53S|55U|4dM 069 RULE:W2 #0..SUM
+4dM|41A|52R|59Y|3a:|41A|0d |0a |44D|45E|53S|43C|52R|49I|50P 078 MARY:A..DESCRIP
+54T|49I|4fO|4eN|3a:|41A|0d |0a                              080 TION:A..
+
+0b |05 |04 |23#|f5ı|00 |00 |00 |03 |03 |02 |02              00c ...#ı.......
+   8 bit SMS, body is (length 27)
+45E|4eN|44D|3a:|56V|45E|56V|45E|4eN|54T|0d |0a |45E|4eN|44D 00f END:VEVENT..END
+3a:|56V|43C|41A|4cL|45E|4eN|44D|41A|52R|0d |0a              01b :VCALENDAR..
+
+Calendar from 6210
+
+0b |05 |04 |23#|f5ı|00 |00 |00 |03 |04 |02 |01              00c ...#ı.......
+   8 bit SMS, body is (length 128)
+42B|45E|47G|49I|4eN|3a:|56V|43C|41A|4cL|45E|4eN|44D|41A|52R 00f BEGIN:VCALENDAR
+0d |0a |56V|45E|52R|53S|49I|4fO|4eN|3a:|311|2e.|300|0d |0a  01e ..VERSION:1.0..
+42B|45E|47G|49I|4eN|3a:|56V|45E|56V|45E|4eN|54T|0d |0a |43C 02d BEGIN:VEVENT..C
+41A|54T|45E|47G|4fO|52R|49I|45E|53S|3a:|4dM|45E|45E|54T|49I 03c ATEGORIES:MEETI
+4eN|47G|0d |0a |44D|54T|53S|54T|41A|52R|54T|3a:|322|300|300 04b NG..DTSTART:200
+322|300|322|300|355|54T|300|399|300|300|300|300|0d |0a |52R 05a 20205T090000..R
+52R|55U|4cL|45E|3a:|57W|311|20 |23#|300|0d |0a |53S|55U|4dM 069 RULE:W1 #0..SUM
+4dM|41A|52R|59Y|3a:|41A|0d |0a |44D|45E|53S|43C|52R|49I|50P 078 MARY:A..DESCRIP
+54T|49I|4fO|4eN|3a:|41A|0d |0a                              080 TION:A..
+
+0b |05 |04 |23#|f5ı|00 |00 |00 |03 |04 |02 |02              00c ...#ı.......
+   8 bit SMS, body is (length 27)
+45E|4eN|44D|3a:|56V|45E|56V|45E|4eN|54T|0d |0a |45E|4eN|44D 00f END:VEVENT..END
+3a:|56V|43C|41A|4cL|45E|4eN|44D|41A|52R|0d |0a              01b :VCALENDAR..
+
+2.Business card are sent in 7 bit SMS. There are two standards of them
+  (in both each line must end with #13#10 chars (not only #10))
+
+  1.Business card from 7110 (6210 probably too). Older phones (like 6110 V5.31)
+  don't recognize them (3310 recognize them). Here is one example:
+
+---------------------
+//SCKL23F4 BEGIN:VCARD
+VERSION:2.1
+N:name
+TEL;HOME;VOICE:number
+END:VCARD
+
+---------------------
+
+From 6210
+
+   8 bit SMS, body is (length 128)
+42B|45E|47G|49I|4eN|3a:|56V|43C|41A|52R|44D|0d |0a |56V|45E 00f BEGIN:VCARD..VE
+52R|53S|49I|4fO|4eN|3a:|322|2e.|311|0d |0a |4eN|3b;|43C|48H 01e RSION:2.1..N;CH
+41A|52R|53S|45E|54T|3d=|55U|54T|46F|2d-|388|3b;|45E|4eN|43C 02d ARSET=UTF-8;ENC
+4fO|44D|49I|4eN|47G|3d=|51Q|55U|4fO|54T|45E|44D|2d-|50P|52R 03c ODING=QUOTED-PR
+49I|4eN|54T|41A|42B|4cL|45E|3a:|54T|65e|73s|74t|20 |3d=|43C 04b INTABLE:Test =C
+355|3d=|388|311|3d=|43C|344|3d=|388|355|6bk|61a|61a|6cl|61a 05a 5=81=C4=85kaala
+20 |4dM|61a|20 |4bK|3d=|43C|355|3d=|388|344|3d=|43C|333|3d= 069  Ma K=C5=84=C3=
+42B|43C|61a|74t|0d |0a |54T|45E|4cL|3b;|50P|52R|45E|46F|3a: 078 BCat..TEL;PREF:
+311|322|333|344|355|366|377|388                             080 12345678
+
+   8 bit SMS, body is (length 128)
+399|300|311|322|333|344|355|366|377|388|399|300|0d |0a |54T 00f 901234567890..T
+45E|4cL|3b;|46F|41A|58X|3a:|333|344|355|366|377|388|399|300 01e EL;FAX:34567890
+0d |0a |54T|45E|4cL|3b;|43C|45E|4cL|4cL|3a:|355|366|311|311 02d ..TEL;CELL:5611
+311|311|311|311|311|311|311|311|0d |0a |54T|45E|4cL|3b;|48H 03c 11111111..TEL;H
+4fO|4dM|45E|3b;|56V|4fO|49I|43C|45E|3a:|377|388|300|300|300 04b OME;VOICE:78000
+300|300|300|300|300|300|300|300|300|300|300|300|300|300|300 05a 000000000000000
+300|300|300|300|300|300|300|300|300|300|300|300|300|0d |0a  069 0000000000000..
+54T|45E|4cL|3b;|57W|4fO|52R|4bK|3b;|56V|4fO|49I|43C|45E|3a: 078 TEL;WORK;VOICE:
+399|300|0d |0a |45E|4dM|41A|49I                             080 90..EMAI
+
+0b |05 |04 |23#|f4 |00 |00 |00 |03 |01 |03 |03              00c ...#........
+   8 bit SMS, body is (length 74)
+4cL|3a:|65e|6dm|61a|0d |0a |4cL|41A|42B|45E|4cL|3a:|61a|64d 00f L:ema..LABEL:ad
+72r|65e|73s|20 |70p|6dm|63c|7az|74t|6fo|77w|79y|20 |6en|75u 01e res pmcztowy nu
+6dm|65e|72r|311|0d |0a |41A|44D|52R|3a:|61a|64d|72r|65e|73s 02d mer1..ADR:adres
+20 |70p|6dm|63c|7az|74t|6fo|77w|79y|20 |6en|75u|6dm|65e|72r 03c  pmcztowy numer
+311|0d |0a |45E|4eN|44D|3a:|56V|43C|41A|52R|44D|0d |0a      04a 1..END:VCARD..
+
+From 9210
+
+0b |05 |04 |23#|f4 |00 |00 |00 |03 |01 |05 |01              00c ...#........
+   8 bit SMS, body is (length 128)
+42B|45E|47G|49I|4eN|3a:|56V|43C|41A|52R|44D|0d |0a |56V|45E 00f BEGIN:VCARD..VE
+52R|53S|49I|4fO|4eN|3a:|322|2e.|311|0d |0a |52R|45E|56V|3a: 01e RSION:2.1..REV:
+322|300|300|322|300|311|322|377|54T|311|333|300|344|300|300 02d 20020127T130400
+5aZ|0d |0a |4eN|3b;|43C|48H|41A|52R|53S|45E|54T|3d=|55U|54T 03c Z..N;CHARSET=UT
+46F|2d-|388|3a:|6en|61a|7az|77w|69i|73s|6bk|6fo|c4 |85Ö|3b; 04b F-8:nazwisko.Ö;
+69i|6dm|69i|65e|c4 |85Ö|3b;|6dm|69i|64d|64d|6cl|c4 |85Ö|65e 05a imie.Ö;middl.Öe
+3b;|74t|69i|74t|6cl|c4 |85Ö|65e|3b;|73s|75u|66f|66f|69i|78x 069 ;titl.Öe;suffix
+c4 |85Ö|0d |0a |41A|44D|52R|3b;|48H|4fO|4dM|45E|3b;|43C|48H 078 .Ö..ADR;HOME;CH
+41A|52R|53S|45E|54T|3d=|55U|54T                             080 ARSET=UT
+
+0b |05 |04 |23#|f4 |00 |00 |00 |03 |01 |05 |02              00c ...#........
+   8 bit SMS, body is (length 128)
+46F|2d-|388|3a:|70p|72r|69i|76v|70p|6fo|c4 |85Ö|3b;|65e|78x 00f F-8:privpo.Ö;ex
+74t|65e|6en|73s|69i|6fo|6en|c4 |85Ö|3b;|70p|72r|69i|76v|73s 01e tension.Ö;privs
+74t|72r|65e|65e|74t|c4 |85Ö|3b;|70p|72r|69i|76v|63c|69i|74t 02d treet.Ö;privcit
+79y|c4 |85Ö|3b;|70p|72r|69i|76v|73s|74t|61a|74t|c4 |85Ö|65e 03c y.Ö;privstat.Öe
+3b;|70p|72r|69i|76v|7az|69i|70p|c4 |85Ö|3b;|70p|72r|69i|76v 04b ;privzip.Ö;priv
+63c|6fo|75u|6en|74t|72r|79y|c4 |85Ö|0d |0a |41A|44D|52R|3b; 05a country.Ö..ADR;
+57W|4fO|52R|4bK|3b;|43C|48H|41A|52R|53S|45E|54T|3d=|55U|54T 069 WORK;CHARSET=UT
+46F|2d-|388|3a:|70p|6fo|62b|6fo|78x|c4 |85Ö|3b;|65e|78x|74t 078 F-8:pobox.Ö;ext
+c4 |85Ö|3b;|73s|74t|72r|65e|65e                             080 .Ö;stree
+
+0b |05 |04 |23#|f4 |00 |00 |00 |03 |01 |05 |03              00c ...#........
+   8 bit SMS, body is (length 128)
+74t|c4 |85Ö|3b;|63c|69i|74t|79y|c4 |85Ö|3b;|73s|74t|61a|74t 00f t.Ö;city.Ö;stat
+65e|c4 |85Ö|3b;|7az|69i|70p|c4 |85Ö|3b;|63c|6fo|75u|6en|74t 01e e.Ö;zip.Ö;count
+72r|c4 |85Ö|79y|0d |0a |41A|44D|52R|3b;|50P|52R|45E|46F|3b; 02d r.Öy..ADR;PREF;
+43C|48H|41A|52R|53S|45E|54T|3d=|55U|54T|46F|2d-|388|3a:|311 03c CHARSET=UTF-8:1
+70p|6fo|62b|6fo|78x|c4 |85Ö|3b;|3b;|311|73s|74t|72r|65e|65e 04b pobox.Ö;;1stree
+74t|c4 |85Ö|c4 |85Ö|3b;|311|63c|69i|74t|79y|c4 |85Ö|3b;|311 05a t.Ö.Ö;1city.Ö;1
+73s|74t|61a|74t|c4 |85Ö|65e|3b;|311|7az|69i|70p|c4 |85Ö|3b; 069 stat.Öe;1zip.Ö;
+311|63c|6fo|75u|6en|74t|72r|79y|c4 |85Ö|0d |0a |4fO|52R|47G 078 1country.Ö..ORG
+3b;|43C|48H|41A|52R|53S|45E|54T                             080 ;CHARSET
+
+0b |05 |04 |23#|f4 |00 |00 |00 |03 |01 |05 |04              00c ...#........
+   8 bit SMS, body is (length 128)
+3d=|55U|54T|46F|2d-|388|3a:|66f|69i|72r|6dm|61a|c4 |85Ö|3b; 00f =UTF-8:firma.Ö;
+0d |0a |54T|49I|54T|4cL|45E|3b;|43C|48H|41A|52R|53S|45E|54T 01e ..TITLE;CHARSET
+3d=|55U|54T|46F|2d-|388|3a:|6aj|6fo|62b|20 |74t|69i|74t|6cl 02d =UTF-8:job titl
+65e|c4 |85Ö|0d |0a |54T|45E|4cL|3b;|56V|4fO|49I|43C|45E|3a: 03c e.Ö..TEL;VOICE:
+311|322|333|0d |0a |54T|45E|4cL|3b;|56V|4fO|49I|43C|45E|3b; 04b 123..TEL;VOICE;
+43C|45E|4cL|4cL|3a:|344|355|366|0d |0a |54T|45E|4cL|3b;|46F 05a CELL:456..TEL;F
+41A|58X|3a:|377|388|399|0d |0a |45E|4dM|41A|49I|4cL|3b;|49I 069 AX:789..EMAIL;I
+4eN|54T|45E|52R|4eN|45E|54T|3b;|43C|48H|41A|52R|53S|45E|54T 078 NTERNET;CHARSET
+3d=|55U|54T|46F|2d-|388|3a:|65e                             080 =UTF-8:e
+
+0b |05 |04 |23#|f4 |00 |00 |00 |03 |01 |05 |05              00c ...#........
+   8 bit SMS, body is (length 81)
+6dm|61a|69i|6cl|c4 |85Ö|0d |0a |42B|44D|41A|59Y|3a:|311|399 00f mail.Ö..BDAY:19
+399|300|300|311|322|377|0d |0a |54T|45E|4cL|3b;|56V|4fO|49I 01e 900127..TEL;VOI
+43C|45E|3b;|50P|41A|47G|45E|52R|3a:|311|311|311|311|0d |0a  02d CE;PAGER:1111..
+55U|52R|4cL|3b;|43C|48H|41A|52R|53S|45E|54T|3d=|55U|54T|46F 03c URL;CHARSET=UTF
+2d-|388|3a:|77w|77w|77w|c4 |85Ö|0d |0a |45E|4eN|44D|3a:|56V 04b -8:www.Ö..END:V
+43C|41A|52R|44D|0d |0a                                      051 CARD..
+
+From 6210
+
+0b |05 |04 |23#|f4 |00 |00 |00 |03 |02 |02 |01              00c ...#........
+   8 bit SMS, body is (length 128)
+42B|45E|47G|49I|4eN|3a:|56V|43C|41A|52R|44D|0d |0a |56V|45E 00f BEGIN:VCARD..VE
+52R|53S|49I|4fO|4eN|3a:|322|2e.|311|0d |0a |4eN|3a:|54T|65e 01e RSION:2.1..N:Te
+73s|74t|322|0d |0a |54T|45E|4cL|3b;|50P|52R|45E|46F|3a:|311 02d st2..TEL;PREF:1
+322|333|0d |0a |54T|45E|4cL|3a:|344|355|366|0d |0a |4eN|4fO 03c 23..TEL:456..NO
+54T|45E|3b;|43C|48H|41A|52R|53S|45E|54T|3d=|55U|54T|46F|2d- 04b TE;CHARSET=UTF-
+388|3b;|45E|4eN|43C|4fO|44D|49I|4eN|47G|3d=|51Q|55U|4fO|54T 05a 8;ENCODING=QUOT
+45E|44D|2d-|50P|52R|49I|4eN|54T|41A|42B|4cL|45E|3a:|6en|6fo 069 ED-PRINTABLE:no
+74t|61a|74t|6bk|61a|20 |3d=|43C|344|3d=|388|355|3d=|43C|344 078 tatka =C4=85=C4
+3d=|388|377|3d=|43C|344|3d=|399                             080 =87=C4=9
+
+0b |05 |04 |23#|f4 |00 |00 |00 |03 |02 |02 |02              00c ...#........
+   8 bit SMS, body is (length 20)
+399|3d=|43C|355|3d=|388|322|0d |0a |45E|4eN|44D|3a:|56V|43C 00f 9=C5=82..END:VC
+41A|52R|44D|0d |0a                                          014 ARD..
+
+  There is also subformat of version 2.1 in 3310, but I wasn't able to see it
+  
+  2.Business card from Nokia 51xx, 61xx, 3210, 3310:
+
+---------------------
+//SCKE2 BEGIN:VCARD
+N:name
+TEL:number
+END:VCARD
+
+---------------------
+  Name can not exist
+
+3.WAP Bookmarks:
+   UDH header available (length 7): [06][05][04][ffffffc3][4f][00][00]
+   Date: 01-08-15 19:31:58 +0200
+   8 bit SMS, body is (length 108): [01 ][06 ][2d-][1f ][2b+][61a][70p][70p][6cl][69i][63c][61a][74t][69i][6fo][6en][2f/][78x][2d-][77w][61a][70p][2d-][70p][72r][6fo][76v][2e.][62b][72r][6fo][77w][73s][65e][72r][2d-][62b][6fo][6fo][6bk][6dm][61a][72r][6bk][73s][00 ][81Å][eaÍ][00 ][01 ][00 ][45E][c6∆][7f ][01 ][87á][15 ][11 ][03 ] [43C][6cl][75u][62b][20 ][4eN][6fo][6bk][69i][61a] [00 ][01 ][87á][17 ][11 ][03 ] [68h][74t][74t][70p][3a:][2f/][2f/][6dm][6fo][62b][69i][6cl][65e][2e.][63c][6cl][75u][62b][2e.][6en][6fo][6bk][69i][61a][2e.][63c][6fo][6dm][2f/][00 ][01 ][01 ][01 ]
+   Club Nokia http://mobile.club.nokia.com/
+
+From 6210, Unicode !
+
+0b |05 |04 |c3 |4fO|00 |00 |00 |03 |03 |02 |01              00c ....O.......
+   8 bit SMS, body is (length 128)
+01 |06 |2d-|1f |2b+|61a|70p|70p|6cl|69i|63c|61a|74t|69i|6fo 00f ..-.+applicatio
+6en|2f/|78x|2d-|77w|61a|70p|2d-|70p|72r|6fo|76v|2e.|62b|72r 01e n/x-wap-prov.br
+6fo|77w|73s|65e|72r|2d-|62b|6fo|6fo|6bk|6dm|61a|72r|6bk|73s 02d owser-bookmarks
+00 |81Å|eaÍ|01 |01 |87á|68h|00 |45E|c6∆|7f |01 |87á|15 |11  03c .ÅÍ..áh.E∆..á..
+03 |00 |43C|00 |6cl|00 |75u|00 |62b|00 |20 |00 |4eN|00 |6fo 04b ..C.l.u.b. .N.o
+00 |6bk|00 |69i|00 |61a|00 |20 |01 |42B|01 |05 |00 |6bk|00  05a .k.i.a. .B...k.
+61a|00 |00 |01 |87á|17 |11 |03 |00 |68h|00 |74t|00 |74t|00  069 a...á....h.t.t.
+70p|00 |3a:|00 |2f/|00 |2f/|00 |6dm|00 |6fo|00 |62b|00 |69i 078 p.:././.m.o.b.i
+00 |6cl|00 |65e|00 |2e.|00 |63c                             080 .l.e...c
+
+0b |05 |04 |c3 |4fO|00 |00 |00 |03 |03 |02 |02              00c ....O.......
+   8 bit SMS, body is (length 33)
+00 |6cl|00 |75u|00 |62b|00 |2e.|00 |6en|00 |6fo|00 |6bk|00  00f .l.u.b...n.o.k.
+69i|00 |61a|00 |2e.|00 |63c|00 |6fo|00 |6dm|00 |2f/|00 |00  01e i.a...c.o.m./..
+01 |01 |01                                                  021 ...

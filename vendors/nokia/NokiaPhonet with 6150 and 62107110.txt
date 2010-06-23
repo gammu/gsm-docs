@@ -1,0 +1,36 @@
+Od: owner-gnokii@net.lut.ac.uk w imieniu Juan Panalo
+[jpanalo@hotmail.com]
+Wys³ano: 12 marca 2001 03:43
+Do: gnokii@net.lut.ac.uk
+Temat: Nokia:Phonet with 6150 and 6210/7110
+
+I have been able to communicate with my 6150 (v5.02) using
+infrared with Nokia:Phonet/IrLMP (by method of trial and error
+and some luck). I'd like to share this with you with some questions
+of my own. The packet is:
+
+14         // Frame ID
+7f 0c      // Dest/Src, 7f=broadcast?
+d1         // Mesg type
+00 05      // LenHi, LenLo
+00 01 00   // Header
+03 00      // Subtype, data
+
+The phone responds with a d2 mesg. The phone also periodically
+sends 0a/71 messages.
+
+If I put 0x00 in the dest, the phone just echoes it back to me.
+Also, I have tried other commands but the phone (6150) does not
+seem recognize them (also echoes back).
+
+Now for my question:
+I have tried this with a 6210 (v 4.08) and it does not respond
+at all! What is the difference with 6150 and 6210 with regard
+to Phonet? Thanks in advance.
+
+-jp
+
+_________________________________________________________________________
+Get Your Private, Free E-mail from MSN Hotmail at http://www.hotmail.com.
+
+

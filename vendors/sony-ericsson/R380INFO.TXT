@@ -1,0 +1,457 @@
+This protocol is very closely based on the Psion Link Protocol. However, there are few, quite subtle, differences. 
+General packet format.
+All data is transmitted within packets of the following format: 
+
+Bytes	1	1	1	1	n	1	1	2
+Data	ETB	DLE	STX	Cont	Seq	Data	DLE	ETX	CRC
+
+The Cont and Seq fields are combined into a single byte, with the Cont in the high nibble, and Seq in the low nibble. If the Seq value is greater than 7 then the most significant bit of the Seq nibble is set and an additional byte is inserted into the frame (EPOC variant only): 
+
+Bytes	1	1	1	1	1	n	1	1	2
+Data	ETB	DLE	STX	Cont	(Seq & 7) | 8	Seq >> 3	Data	DLE	ETX	CRC
+
+The maximum total length of a transmitted message is 2410 bytes. This is the length after all characters that need to be escaped, have been. The session layer (NCP) is responsible for splitting and recombining longer messages to fit within this limit. 
+The 16 bit Cyclic Redundancy Check (CRC) is transmitted with the most significant byte followed by the least significant byte. 
+
+Escaped characters.
+
+The following table summarises characters that need to be escaped.
+
+Value	Escape sequence
+0x10	0x10 0x10
+0x11	0x10 0x20
+0x13	0x10 0x21
+
+All occurrences of these values after the header, and before the footer, and in the CRC should be replaced with the appropriate escape sequence.
+CRC calculation.
+Outgoing packets.
+
+The CRC is calculated on all bytes between the header and footer.
+Escaped characters that appear between the header and the footer, and in the calculated CRC are then replaced as shown above.
+
+Incoming packets.
+
+All escape sequences that appear between the header and the footer, and in the CRC should be replaced as shown above.
+The CRC is then calculated on all bytes between the header and the footer.
+
+ 
+The data part of the packet.
+
+The general format of NCP packet is:
+
+Bytes	1	        1	        1	0-n
+Data	Dest channel	Source channel	Type	Data
+
+
+There are two main classes of NCP packets:
+·	Command packets.
+·	Data packets.
+
+Command packets.
+Command packets are distinguished by having a destination channel of 0x00.
+The packet type ranges from 0x01 to 0x08
+
+Data packets.
+Data packets have a NON ZERO destination channel.
+There are 2 types of data packet:
+·	Complete. (0x01)
+·	Partial. (0x02)
+
+If the data part of the packet will fit into a single link layer packet then it is sent in a complete NCP data packet.
+
+If the data is to big to fit inside a single link layer packet, then a series of incomplete packets is sent, followed by a complete packet to finish the transfer. The data part of the general packet described above takes the form of an NCP packet.
+
+ 
+Messages related to the exchange of vcard information.
+
+Type	: 00
+Data	: 01 01
+Purpose	:
+
+17 10 02 3A 03 FC FD 01 00 01 01 10 03 DE F5
+
+Type	: 01
+Data	: 0B 
+	  63 00 6D 00 63 00 73 00 65 00 33 00 32 00 2E 00 64 00 6C 00 6C 00 
+Purpose	: First field is the length of the second field (without zeros).
+	  Second field contains a filename: 'cmcse32.dll'
+
+17 10 02 3D 03 FC FD 01 01 0B 63 00 6D 00 63 00 73 00 65 00 33 00 32 00 2E 00 64 00 6C 00 6C 00 10 03 8B 3B 
+
+Type	: 02
+Data	: None
+Purpose	:
+
+17 10 02 3C 06 FC FD 01 02 10 03 8B E5  
+
+Type	: 03
+Sub type: 00
+Data	: 01 00 01 00 00 01 00 00 00 
+Purpose	:
+
+17 10 02 3E 03 FC FD 01 03 00 01 00 01 00 00 01 00 00 00 10 03 A7 73 
+
+Type	: 03
+Sub type: 06
+Data	: 01 00 01 00 00 01 00 00 00
+	  42 45 47 49 4E 3A 56 43 41 52 44 0D 0A - BEGIN:VCARD\r\n
+	  56 45 52 53 49 4F 4E 3A 32 2E 31 0D 0A - VERSION:2.1\r\n
+	  55 49 44 3A 31 36 31 36 61 33 62 64 66 35 34 64 39 62 39 32 2D 65 30 35 65 61 61 64 35 66 32 37 	  38 31 31 2D 31 35 0D 0A - UID:1616a3bdf54d9b92-e05eaad12811-15\r\n
+	  45 4E 44 3A 56 43 41 52 44 0D 0A - END:VCARD\r\n
+Purpose	: Delete the vcard with this UID from the phone.
+
+17 10 02 3D 05 FC FD 01 03 06 01 00 01 00 00 01 00 00 00 42 45 47 49 4E 3A 56 43 41 52 44 0D 0A 56 45 52 53 49 4F 4E 3A 32 2E 31 0D 0A 55 49 44 3A 31 36 31 36 61 33 62 64 66 35 34 64 39 62 39 32 2D 65 30 35 65 61 61 64 35 66 32 37 38 31 31 2D 31 35 0D 0A 45 4E 44 3A 56 43 41 52 44 0D 0A 10 03 F1 0B
+
+Type	: 03
+Sub type: 07
+Data	: 01 00 01 00 00 01 00 00 00 
+	  42 45 47 49 4E 3A 56 43 41 52 44 0D 0A 	- BEGIN:VCARD\r\n
+	  56 45 52 53 49 4F 4E 3A 32 2E 31 0D 0A 	- VERSION:2.1\r\n
+	  4E 3B 43 48 41 52 53 45 54 3D 55 54 46 2D 38 3A 43 6F 6C 6C 69 6E 73 3B 44 61 76 69 64 3B 3B 	  3B 0D 0A -  N;CHARSET=UTG-8:Collins;David;;;\r\n
+	  4F 52 47 3B 43 48 41 52 53 45 54 3D 55 54 46 2D 38 3A 3B 0D 0A  - ORG;CHARSET=UTG-8;\r\n
+	  41 44 52 3B 57 4F 52 4B 3B 51 55 4F 54 45 44 2D 50 52 49 4E 54 41 42 4C 45 3B 43 48 41 52 53 45 	  54 3D 55 54 46 2D 38 3A 3B 3B 3B 3B 3B 3B 0D 0A 41 44 52 3B 48 4F 4D 45 3B 51 55 4F 54 45 	  44 2D 50 52 49 4E 54 41 42 4C 45 3B 43 48 41 52 53 45 54 3D 55 54 46 2D 38 3A 3B 3B 3B 3B 3B 	  3B 0D 0A 54 45 4C 3B 57 4F 52 4B 3B 43 48 41 52 53 45 54 3D 55 54 46 2D 38 3A 2B 34 34 20 28 	  30 32 33 29 20 36 36 32 31 31 32 0D 0A 45 4E 44 3A 56 43 41 52 44 0D 0A
+Purpose	: Adds a new vcard record to the phone.
+
+Type	: 03
+Sub type: 08
+Data	: 01 00 01 00 00 01 00 00 00 
+	  42 45 47 49 4E 3A 56 43 41 52 44 0D 0A 	- BEGIN:VCARD\r\n
+	  56 45 52 53 49 4F 4E 3A 32 2E 31 0D 0A 	- VERSION:2.1\r\n 
+	  55 49 44 3A 31 36 31 36 61 33 62 64 66 35 34 64 39 62 39 32 2D 65 30 35 62 37 66 61 37 36 63 37 	  30 34 66 2D 34 0D 0A - UID:161613bdf54d9b92-e05b7fa763704f-4\r\n
+	  54 45 4C 3B 57 4F 52 4B 3B 43 48 41 52 53 45 54 3D 55 54 46 2D 38 3A 2B 36 34 20 31 31 31 20 	  33 33 33 33 33 33 0D 	  	  0A - TEL;WORK;CHARSET=UTF-8:+64 111 333333\r\n
+	  45 4E 44 3A 56 43 41 52 44 0D 0A
+Purpose	: Updates a vcard record on the phone.
+	  It looks like only one record can be updated at a time as there is no indication of either the number of 	  records to be updated or there indices - just the vcard record in the message data.
+
+17 10 02 3F 05 FC FD 01 03 08 01 00 01 00 00 01 00 00 00 42 45 47 49 4E 3A 56 43 41 52 44 0D 0A 56 45 52 53 49 4F 4E 3A 32 2E 31 0D 0A 55 49 44 3A 31 36 31 36 61 33 62 64 66 35 34 64 39 62 39 32 2D 65 30 35 62 37 66 61 37 36 63 37 30 34 66 2D 34 0D 0A 54 45 4C 3B 57 4F 52 4B 3B 43 48 41 52 53 45 54 3D 55 54 46 2D 38 3A 2B 36 34 20 31 31 31 20 33 33 33 33 33 33 0D 0A 45 4E 44 3A 56 43 41 52 44 0D 0A 10 03 F6 CE  
+
+Type	: 03
+Sub type: 09
+Data	: 01 00 01 00 00 01 00 00 00 
+Purpose	:
+
+17 10 02 3B 06 FD FC 01 03 09 01 00 01 00 00 01 00 00 00 10 03 A1 C7 
+
+
+Type	: 03
+Sub type: 0D
+Data	: 01 00 01 00 00 01 00 00 00 
+Purpose	: Ask for the first half of the phone GUID
+
+17 10 02 38 04 FC FD 01 03 0D 01 00 01 00 00 01 00 00 00 10 03 97 64 
+
+Type	: 03
+Sub type: 0E
+Data	: 01 00 01 00 00 01 00 00 00 
+	  03 00 00 00 - numbers of records requested.
+	  29 00 00 00 - index of first record requested.
+	  2A 00 00 00 
+	  2B 00 00 00 - index of last record requested.	  
+Purpose	: Requests vcard records. The pc seems to limit the number of vcards requested in this type of message to 10.
+
+17 10 02 39 05 FC FD 01 03 0E 01 00 01 00 00 01 00 00 00 03 00 00 00 29 00 00 00 2A 00 00 00 2B 00 00 00 10 03 01 D3 
+
+Type	: 03
+Sub type: 0F
+Data	: 01 00 01 00 00 01 00 00 00 
+	  D0 07 00 00 - year 2000
+	  0A 00 00 00 - month 10
+	  16 00 00 00 - day 22
+	  08 00 00 00 - hour 08
+	  34 00 00 00 - minute 52
+	  39 00 00 00 - second 57
+Purpose	: Date and time of last modification to P.C. contacts list
+
+17 10 02 39 04 FC FD 01 03 0F 01 00 01 00 00 01 00 00 00 D0 07 00 00 0A 00 00 00 16 00 00 00 08 00 00 00 34 00 00 00 39 00 00 00 10 03 E4 6B 
+
+Type	: 03
+Sub type:10
+Data	: 01 00 01 00 00 01 00 00 00 
+	  14 00 00 00 
+Purpose	: 
+
+17 10 02 3A 04 FC FD 01 03 10 01 00 01 00 00 01 00 00 00 14 00 00 00 10 03 C1 71 
+
+
+
+Type	: 03
+Sub type: 11
+Data	: 01 00 01 00 00 01 00 00 00 
+	  00 00 00 00 
+Purpose	: Requests information about availablity of vcards. Second field indicates info required: 00 00 00 00 - 	  current cards
+	  03 00 00 00 - deleted cards.
+
+17 10 02 38 05 FC FD 01 03 11 01 00 01 00 00 01 00 00 00 00 00 00 00 10 03 DE 3F 
+
+Type	: 03
+Sub type: 12
+Data	: 01 00 01 00 00 01 00 00 00 
+Purpose	:
+
+17 10 02 3A 06 FC FD 01 03 12 01 00 01 00 00 01 00 00 00 10 03 58 F3 
+Type	: 03
+Sub type: 15
+Data	: 01 00 01 00 00 01 00 00 00 
+Purpose	:
+
+17 10 02 3F 03 FC FD 01 03 15 01 00 01 00 00 01 00 00 00 10 03 59 B1 
+
+Type	: 03
+Sub type: 18
+Data	: 01 00 01 00 00 01 00 00 00
+	  0A 00 00 00 - number of arguments
+	  2C 00 00 00 
+	  2C 00 00 00 
+	  2C 00 00 00 
+	  2C 00 00 00 
+	  2C 00 00 00 
+	  2C 00 00 00 
+	  2C 00 00 00 
+	  2C 00 00 00 
+	  2C 00 00 00 
+	  2C 00 00 00 
+Purpose	: This message gets sent when the PC receives a deleted vcard. Possibly tells the phone to permenantly 	  delete the vards from its memory.
+	  Don't know why the index is sent so many times.
+
+17 10 02 3E 05 FC FD 01 03 18 01 00 01 00 00 01 00 00 00 0A 00 00 00 2C 00 00 00 2C 00 00 00 2C 00 00 00 2C 00 00 00 2C 00 00 00 2C 00 00 00 2C 00 00 00 2C 00 00 00 2C 00 00 00 2C 00 00 00 10 03 AD B3
+ 
+Type	: 03
+Sub type: 19
+Data	: 01 00 01 00 00 01 00 00 00 
+Purpose	:
+
+17 10 02 3B 04 FC FD 01 03 19 01 00 01 00 00 01 00 00 00 10 03 46 8A 
+
+Type	: 03
+Sub type: 1C
+Data	: 01 00 01 00 00 01 00 00 00 
+Purpose	:
+
+17 10 02 3C 04 FC FD 01 03 1C 01 00 01 00 00 01 00 00 00 10 03 EC 65 
+
+Type	: 04
+Data	: None
+Purpose	:
+
+17 10 02 3B 03 FC FD 01 04 10 03 00 35
+
+Operating on the contact list.
+
+The following operations are supported on the contacts list:
+
+·	Reading contacts.
+·	Adding contacts.
+·	Updating contacts.
+·	Deleting contacts.
+
+For each of these operations, the following steps need to be carried out:
+·	Set the phone into PLP mode.
+·	Initialise the protocol layers.
+·	Connect to the contact list server.
+·	Carry out necessary initialisation.
+·	Carry out the desired action.
+·	Disconnect from the contact list server.
+·	Close down the protocol layers.
+
+Setting the phone into PLP mode.
+
+This is achieved by using the AT command: at*esyn=1\r\n
+Initialising the protocol layers.
+
+When the phone goes into PLP mode it will send out a single byte (0x11) followed by the following packet:
+
+17 10 02 21 10 03 34 43 
+This packet should be answered with:
+
+17 10 02 21 10 03 34 43 
+
+The phone will then send:
+
+17 10 02 24 00 00 65 6C 10 03 D8 47 
+This packet contains a pseudo random number, and should be answered with an acknowledge:
+
+17 10 02 00 10 03 00 00 
+followed by:
+
+17 10 02 24 00 00 0C 30 10 03 F2 8C 
+This packet also contains a pseudo random number which must be different from the one received from the phone. If it is, then the phone will respond with an acknowledge:
+
+17 10 02 00 10 03 00 00 
+The LINK layer in now initialised and it is now time to initialise the NCP layer. When initialising this layer the first packets that must be sent are the NCP version information packets.
+
+17 10 02 31 00 00 06 10 10 31 00 09 00 10 03 76 5F 
+17 10 02 31 00 00 06 10 10 E0 7F FE D8 10 03 9C F2 
+
+NOTE: the Cont/Seq byte has jumped to 0x31 – the ‘3’ indicates a data pdu.
+All successfully received frames should now be acknowledged, with the ACK containing the Cont/Seq value from the packet being acknowledged.
+
+The next pair of packets exchanged should be requests to connect to the link server. This server allows additional servers and commands to be registered. 
+
+17 10 02 32 00 01 03 4C 49 4E 4B 2E 2A 00 10 03 0B 7E 
+17 10 02 32 00 01 03 4C 49 4E 4B 2E 2A 00 10 03 0B 7E 
+
+On receiving the connection request packet, the phone will respond with a connection response packet, indicating the NCP channel numbers that should be used for communicating with this server:
+17 10 02 33 00 01 04 01 00 10 03 78 29
+
+A similar packet should be sent to the phone:
+17 10 02 33 00 01 04 01 00 10 03 78 29 
+
+NOTE: the link server always communicates on NCP channel 1.
+Connecting to the contact list server.
+
+Before connecting to the contact list server a command must be registered on the link channel:
+17 10 02 34 01 01 01 00 00 00 18 67 00 65 00 6E 00 63 00 73 00 65 00 72 00 76 00 2E 00 72 00 73 00 79 00 00 10 03 B3 73 
+
+The phone replies with a packet containing the name of the server:
+17 10 02 34 01 01 01 01 00 00 00 00 01 00 53 59 53 24 47 45 4E 43 53 45 52 56 2A 00 10 03 24 BA 
+
+We can then connect to this server ny sending the following packet:
+17 10 02 35 00 FC 03 53 59 53 24 47 45 4E 43 53 45 52 56 2A 00 10 03 D8 86 
+
+The phone replies with a packet similar to this:
+17 10 02 35 00 FB 04 FC 00 10 03 67 B3 
+Initialising the contact list server.
+
+Before the desired operation can be carried out on the contacts list, several packets need to be sent to the contacts list server in a specific sequence. Sending the packets in the wrong sequence will cause the phone to crash. To recover the phones battery will need to be removed and refitted. On re-powering the phone, a warning message may be observed informing the user that the phones file system may be corrupted and that it should be reformatted! (Having seen the warning, and ignored it, the phones file system proved not to be corrupted.)
+The meaning of most of the packets that need to be sent to the phone at this time are not known, however their content is constant.
+
+17 10 02 36 FB FC 01 00 01 01 10 03 4B 6F 
+17 10 02 36 FC FB 01 00 02 00 0B 10 03 9C A0 
+ 
+17 10 02 37 FB FC 01 04 10 03 0F EE 
+17 10 02 37 FC FB 01 00 10 03 9B D7 
+
+17 10 02 38 01 FB FC 01 01 0B 63 00 6D 00 63 00 73 00 65 00 33 00 32 00 2E 00 64 00 6C 00 6C 00 10 03 07 5D 
+17 10 02 38 01 FC FB 01 00 2A 18 00 10 10 95 17 00 10 10 10 03 AE D4 
+
+17 10 02 39 01 FB FC 01 03 00 01 00 01 00 00 01 00 00 00 10 03 B7 50 
+17 10 02 39 01 FC FB 01 03 00 01 00 01 00 00 01 00 00 00 10 03 0D 5E 
+
+17 10 02 3A 01 FB FC 01 03 15 01 00 01 00 00 01 00 00 00 10 03 09 FB 
+17 10 02 3A 01 FC FB 01 03 15 01 00 01 00 00 01 00 00 00 00 00 00 00 10 03 62 AF 
+
+During a synchronisation session with the P.C., this packet tells the phone the date and time that the P.C.’s contact list was last modified.
+
+17 10 02 3B 01 FB FC 01 03 0F 01 00 01 00 00 01 00 00 00 D0 07 00 00 01 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 10 03 E9 A4 
+It is possible that the reply from the phone indicates how many changes to the phones contact list there have been from that time.
+
+17 10 02 3B 01 FC FB 01 03 0F 01 00 01 00 00 01 00 00 00 0C 00 00 00 10 03 C3 70 
+
+The following sequence needs to be sent more than once. I have not observed it being sent more than twice, but it would seem that it should be sent until the value returned in the type 03 10 packet is zero (value shown in black).
+17 10 02 3C 01 FB FC 01 03 10 10 01 00 01 00 00 01 00 00 00 14 00 00 00 10 03 0A EC 
+17 10 02 3C 01 FC FB 01 03 10 10 01 00 01 00 00 01 00 00 00 0C 00 00 00 10 03 16 F3 
+
+17 10 02 3D 01 FB FC 01 03 19 01 00 01 00 00 01 00 00 00 10 03 86 1A 
+17 10 02 3D 01 FC FB 01 03 19 01 00 01 00 00 01 00 00 00 10 03 3C 14 
+
+17 10 02 3E 01 FB FC 01 03 1C 01 00 01 00 00 01 00 00 00 10 03 AC 27 
+17 10 02 3E 01 FC FB 01 03 1C 01 00 01 00 00 01 00 00 00 B4 04 00 00 10 03 C3 89 
+
+17 10 02 3F 01 FB FC 01 03 10 10 01 00 01 00 00 01 00 00 00 14 00 00 00 10 03 54 39 
+17 10 02 3F 01 FC FB 01 03 10 10 01 00 01 00 00 01 00 00 00 00 00 00 00 10 03 07 14 
+
+17 10 02 38 02 FB FC 01 03 19 01 00 01 00 00 01 00 00 00 10 03 4D C9 
+17 10 02 38 02 FC FB 01 03 19 01 00 01 00 00 01 00 00 00 10 03 F7 C7 
+
+17 10 02 39 02 FB FC 01 03 1C 01 00 01 00 00 01 00 00 00 10 03 27 9D 
+17 10 02 39 02 FC FB 01 03 1C 01 00 01 00 00 01 00 00 00 B4 04 00 00 10 03 39 90 
+
+
+
+Carry out the desired operation on the contacts list.
+
+The steps shown above are common for all operations.
+
+Reading the contacts list.
+
+The first packet that should be sent to the phone requests information about the availability of contacts. The contacts may be current ‘live’ contacts, or deleted contacts. This packet is requesting information about current contacts:
+17 10 02 3A 02 FB FC 01 03 10 20 01 00 01 00 00 01 00 00 00 00 00 00 00 10 03 6F 71 
+
+The phone replies with a packet indicating how many contacts there are and what their indicies are:
+
+17 10 02 3A 02 FC FB 01 03 10 20 01 00 01 00 00 01 00 00 00 0C 00 00 00 01 00 00 00 03 00 00 00 05 00 00 00 06 00 00 00 07 00 00 00 08 00 00 00 09 00 00 00 0A 00 00 00 0B 00 00 00 0C 00 00 00 10 20 00 00 00 12 00 00 00 10 03 1A 40 
+
+In this case there are 12 (0x0C) contacts and their indices are 1,3,5,6,7,8,9,10,11,12,17 and 18.
+
+Individual contacts my be read as vcard records by requesting them as follows:
+17 10 02 3B 02 FB FC 01 03 0E 01 00 01 00 00 01 00 00 00 01 00 00 00 01 00 00 00 10 03 97 25 
+
+This packet is requesting one vcard with an index of one. While it is possible to request multiple vcards in the same packet, it is more straightforward to read them one at a time. The phone responds with the following packet:
+17 10 02 3B 02 FC FB 01 03 0E 01 00 01 00 00 01 00 00 00 42 45 47 49 4E 3A 56 43 41 52 44 0D 0A 56 45 52 53 49 4F 4E 3A 32 2E 31 0D 0A 52 45 56 3A 32 30 30 31 30 34 30 35 54 31 37 31 32 31 32 5A 0D 0A 55 49 44 3A 31 36 31 36 61 33 62 64 66 35 34 64 39 62 39 32 2D 65 30 35 61 34 35 36 61 62 33 63 37 66 63 2D 31 0D 0A 4E 3A 42 69 6E 67 68 61 6D 3B 44 61 76 65 3B 3B 3B 0D 0A 54 45 4C 3B 57 4F 52 4B 3B 56 4F 49 43 45 3B 43 45 4C 4C 3A 30 36 32 32 37 34 35 35 36 38 0D 0A 54 45 4C 3B 57 4F 52 4B 3B 56 4F 49 43 45 3B 31 3A 2B 33 31 32 39 37 35 31 39 39 37 36 0D 0A 45 4E 44 3A 56 43 41 52 44 0D 0A 10 03 AA 57 
+
+The data part of this packet contains the vcard record. Not all vcard records received from the phone can be converted to phonebook entries. The R380 will allow a new contact to be created if the user enters a first name, last name or organisation name for the contact. A telephone number is not required. 
+
+Adding an entry.
+
+After all the initialisation described above has been carried out, a new contact can be added to the phone by creating a valid vcard record and sending it to the phone as follows:
+
+17 10 02 3A 02 FB FC 01 03 07 01 00 01 00 00 01 00 00 00 42 45 47 49 4E 3A 56 43 41 52 44 0D 0A 56 45 52 53 49 4F 4E 3A 32 2E 31 0D 0A 4E 3A 42 61 72 74 3B 53 69 6D 70 73 6F 6E 3B 3B 3B 0D 0A 54 45 4C 3B 57 4F 52 4B 3A 35 35 35 20 31 32 33 34 35 36 0D 0A 45 4E 44 3A 56 43 41 52 44 0D 0A 10 03 4B 45 
+
+The phone responses with a packet take tells us how many vcards it has added to its contacts list and what their indices where. In this case 1 vcard was added and its index is 20.
+17 10 02 3A 02 FC FB 01 03 07 01 00 01 00 00 01 00 00 00 01 00 00 00 14 00 00 00 10 03 1E 33 
+
+
+ 
+
+Updating contacts.
+
+In order to update a contact its UID is required. It is therefore necessary to read the appropriate contact from the phone, modify the required fields, then write it back to the phone.
+Request the contact:
+17 10 02 3A 02 FB FC 01 03 0E 01 00 01 00 00 01 00 00 00 01 00 00 00 14 00 00 00 10 03 07 C4 
+
+Receive the contact from the phone:
+17 10 02 3A 02 FC FB 01 03 0E 01 00 01 00 00 01 00 00 00 42 45 47 49 4E 3A 56 43 41 52 44 0D 0A 56 45 52 53 49 4F 4E 3A 32 2E 31 0D 0A 52 45 56 3A 32 30 30 31 30 34 31 31 54 31 36 30 35 31 30 5A 0D 0A 55 49 44 3A 31 36 31 36 61 33 62 64 66 35 34 64 39 62 39 32 2D 65 30 35 66 35 65 66 33 63 65 64 35 39 38 2D 32 30 0D 0A 4E 3A 42 61 72 74 3B 53 69 6D 70 73 6F 6E 3B 3B 3B 0D 0A 54 45 4C 3B 57 4F 52 4B 3A 35 35 35 20 31 32 33 34 35 36 0D 0A 45 4E 44 3A 56 43 41 52 44 0D 0A 10 03 E7 82 
+
+Write the updated contact back to the phone:
+17 10 02 3B 02 FB FC 01 03 08 01 00 01 00 00 01 00 00 00 42 45 47 49 4E 3A 56 43 41 52 44 0D 0A 56 45 52 53 49 4F 4E 3A 32 2E 31 0D 0A 52 45 56 3A 32 30 30 31 30 34 31 31 54 31 36 30 35 31 30 5A 0D 0A 55 49 44 3A 31 36 31 36 61 33 62 64 66 35 34 64 39 62 39 32 2D 65 30 35 66 35 65 66 33 63 65 64 35 39 38 2D 32 30 0D 0A 4E 3A 42 61 72 74 3B 53 69 6D 70 73 6F 6E 3B 3B 3B 0D 0A 54 45 4C 3B 57 4F 52 4B 3A 35 35 35 20 37 34 31 38 35 32 0D 0A 45 4E 44 3A 56 43 41 52 44 0D 0A 10 03 88 5E 
+
+The phone confirms the contact has been updated:
+17 10 02 3B 02 FC FB 01 03 08 01 00 01 00 00 01 00 00 00 01 00 00 00 14 00 00 00 10 03 28 8A 
+
+Deleting contacts.
+
+In order to delete a contact from the phone we again need the contacts UID, so the contact must be read before deleteing it:
+17 10 02 3A 02 FB FC 01 03 0E 01 00 01 00 00 01 00 00 00 01 00 00 00 14 00 00 00 10 03 07 C4 
+
+The phone responds with the contact.
+17 10 02 3A 02 FC FB 01 03 0E 01 00 01 00 00 01 00 00 00 42 45 47 49 4E 3A 56 43 41 52 44 0D 0A 56 45 52 53 49 4F 4E 3A 32 2E 31 0D 0A 52 45 56 3A 32 30 30 31 30 34 31 31 54 31 36 30 35 34 39 5A 0D 0A 55 49 44 3A 31 36 31 36 61 33 62 64 66 35 34 64 39 62 39 32 2D 65 30 35 66 35 65 66 33 63 65 64 35 39 38 2D 32 30 0D 0A 4E 3A 42 61 72 74 3B 53 69 6D 70 73 6F 6E 3B 3B 3B 0D 0A 54 45 4C 3B 57 4F 52 4B 3A 35 35 35 20 37 34 31 38 35 32 0D 0A 45 4E 44 3A 56 43 41 52 44 0D 0A 10 03 44 93 
+
+The only vcard fields that are required (between BEGIN and END) are VERSION and UID. 
+17 10 02 3B 02 FB FC 01 03 06 01 00 01 00 00 01 00 00 00 42 45 47 49 4E 3A 56 43 41 52 44 0D 0A 56 45 52 53 49 4F 4E 3A 32 2E 31 0D 0A 55 49 44 3A 31 36 31 36 61 33 62 64 66 35 34 64 39 62 39 32 2D 65 30 35 66 35 65 66 33 63 65 64 35 39 38 2D 32 30 0D 0A 45 4E 44 3A 56 43 41 52 44 0D 0A 10 03 49 72 
+
+The phone responds with a packet containing the data we just sent it:
+17 10 02 3B 02 FC FB 01 03 06 01 00 01 00 00 01 00 00 00 42 45 47 49 4E 3A 56 43 41 52 44 0D 0A 56 45 52 53 49 4F 4E 3A 32 2E 31 0D 0A 55 49 44 3A 31 36 31 36 61 33 62 64 66 35 34 64 39 62 39 32 2D 65 30 35 66 35 65 66 33 63 65 64 35 39 38 2D 32 30 0D 0A 45 4E 44 3A 56 43 41 52 44 0D 0A 10 03 73 FA 
+
+
+
+
+
+
+
+Disconnecting from the contacts list server.
+
+The following packets should be sent to cleanly close the contacts list. At present their purpose is not known:
+17 10 02 3B 02 FB FC 01 03 1C 01 00 01 00 00 01 00 00 00 14 00 00 00 10 03 E6 3B 
+17 10 02 3B 02 FC FB 01 03 1C 01 00 01 00 00 01 00 00 00 B8 04 00 00 10 03 1D C4 
+
+17 10 02 3C 02 FB FC 01 03 12 01 00 01 00 00 01 00 00 00 10 03 36 9F 
+17 10 02 3C 02 FC FB 01 03 12 01 00 01 00 00 01 00 00 00 00 00 00 00 10 03 DD 03 
+
+17 10 02 3D 02 FB FC 01 03 09 01 00 01 00 00 01 00 00 00 10 03 F1 A9 
+17 10 02 3D 02 FC FB 01 03 09 01 00 01 00 00 01 00 00 00 10 03 4B A7 
+
+17 10 02 3E 02 FB FC 01 02 10 03 EF BE 
+17 10 02 3E 02 FC FB 01 00 10 03 
+
+This is an NCP disconnection packet. It closes down the channel used for the contact list server communications:
+17 10 02 3F 02 00 FB 07 FC 10 03 0A AB 
+Closing down the protocol layers.
+
+After the last handle has been closed, the session can be closed down by sending the following packet to the phone:
+17 10 02 10 10 10 03 12 31 
+
+The phone will initially respond by sending packets requesting a connection request packet:
+17 10 02 21 10 03 34 43 
+
+However, when the phone receives no response it will send a single byte (0x11 again), to indicate that it has reverted to AT command mode.
+ 

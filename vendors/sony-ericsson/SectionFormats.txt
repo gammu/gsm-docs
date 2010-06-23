@@ -1,0 +1,363 @@
+SMS PDU header format.
+======================
+
+At the moment the only fields we require from the sms pdu headers are:
+Size, Filename1, Filename2 amd Status/type.
+
+Offset	Field		Data
+------	-----		----
+0x0000	Size		57 40 
+0x0002	Filename1	8D 01 10 00 
+0x0006	Filename2	8C 01 10 00 
+0x000A	Status/type	01 02 
+0x000C	Unknown1	00 00 00 00 00 00 00 00 00 00 01 00 10 00 00 00 
+			00 00 6A 0F 00 10 2C 10 00 10 
+0x0026	Timestamp	BF 8D A4 EE 15 61 E0 00 
+0x002E	Unknown2	B1 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00 
+0x003E	Unknown3	28 09 
+0x0040	Unknown4	00 00 00 00 00 00 00 00 00 00 00 00 00 00 1C 
+0x004F	"SMS PDU"	53 4D 53 20 50 44 55 
+0x0056	Unknown		08 
+0x0057	Mem type(ME)	4D 45
+
+Field Unknown3 seems message dependent.
+
+5740 BF011000BE0110000102 0000000000000000000001001000000000006A0F00102C100010 5C36399B0A62E000 B1000000000000000000000001000000 BC EA 0000000000000000000000000000 1C534D5320504455084D45
+5740 C1011000C00110000102 0000000000000000000001001000000000006A0F00102C100010 BEA9E1B90A62E000 B1000000000000000000000001000000 97 2C 0000000000000000000000000000 1C534D5320504455084D45
+5740 C3011000C20110000102 0000000000000000000001001000000000006A0F00102C100010 F407F9BC0A62E000 B1000000000000000000000001000000 C4 41 0000000000000000000000000000 1C534D5320504455084D45
+
+Message header formats.
+=======================
+
+At the moment, the only fields that we require from the message headers are:
+Size, Filename1 and Status/type.
+
+Received msg header.
+====================
+
+Offset	Field		Data
+------	-----		----
+0x0000	Size		AB 40 
+0x0002	Filename1	8C 01 10 00 
+0x0006	Filename2	02 10 00 00 
+0x000A	Status/type	21 11 
+0x000C	Unknown const	00 00 00 00 00 00 00 00 00 00 01 00 10 00 00 00 
+			00 00 6A 0F 00 10 2C 10 00 10 
+0x0026	Timestamp	00 B0 D1 F3 15 61 E0 00
+0x002E	Unknown		B1 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+			00 00 00 00 01 00 00 00 
+0x0046	Next filename3	8D 01 10 00 
+0x004A	Unknown		00 00 00 00 D8
+0x004F	Display text	44 61 76 65 3E 20 74 65 73 74 20 6D 65 73 73 61 
+			67 65 20 30 33 30 35 30 33 20 20 20 3E 52 45 50 
+			4C 59 20 74 6F 20 6D 65 21 20 20 3E 6D 74 6E 73
+			6D 73 2E 63 6F 6D 9C 22 32 37 38 33 38 38 39 39 
+			30 37 37 30 33 32 37 30 30 22 20 3C 32 37 38 33 
+			38 38 39 39 30 37 37 30 33 32 37 30 30 3E
+
+Read msg header.
+================
+
+Offset	Field		Data
+------	-----		----
+0x0000	Size		AB 40 
+0x0002	Filename	8C 01 10 00 
+0x0006	Filename?	02 10 00 00 
+0x000A	Status/type	01 11 
+0x000C	Unknown const	00 00 00 00 00 00 00 00 00 00 01 00 10 00 00 00 
+			00 00 6A 0F 00 10 2C 10 00 10
+0x0026	Timestamp	00 B0 D1 F3 15 61 E0 00
+0x002E	Unknown		B1 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+			00 00 00 00 01 00 00 00 
+0x0046	Next filname?	8D 01 10 00 
+0x004A	Unknown		00 00 00 00 D8
+0x004F	Display text	44 61 76 65 3E 20 74 65 73 74 20 6D 65 73 73 61 
+			67 65 20 30 33 30 35 30 33 20 20 20 3E 52 45 50 
+			4C 59 20 74 6F 20 6D 65 21 20 20 3E 6D 74 6E 73 
+			6D 73 2E 63 6F 6D 9C 22 32 37 38 33 38 38 39 39 
+			30 37 37 30 33 32 37 30 30 22 20 3C 32 37 38 33 
+			38 38 39 39 30 37 37 30 33 32 37 30 30 3E
+
+
+Status bytes.
+=============
+
+Values seen:
+29 00 	- Newly received msg, msg header does not contain next filename.
+29 01 	- Not fully parsed, sender number not extracted from pdu and appended to msg hdr
+21 11 	- Indicates msg ready for reading
+01 11	- Read
+
+
+Deleted msg header.
+===================
+This is a received/read msg header.
+7F 40 
+      D0 01 10 00 
+                  02 10 00 00 
+                              01 11 00 00 00 00 
+00 00 00 00 00 00 01 00 10 00 00 00 00 00 6A 0F 
+00 10 2C 10 00 10 40 DE 5C F0 0A 62 E0 00 B1
+                                             00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 01 00 00 00 
+                  D1 01 10 00 
+                              D2 01 10 00 	- It appears to have an another filename field
+                                          50 20 - And two bytes here instead of one.
+41 44 4D 4A 47 50 54 57 D6 4A 54 4D 42 50 47 4B 
+54 50 4A 74 22 42 69 6E 67 68 61 6D 20 44 61 76
+65 22 20 3C 2B 33 31 36 32 32 37 34 35 35 36 38
+3E
+
+When the msg was deleted this was inserted between the new umrt and new st.
+7F 40 
+      D0 01 10 00 
+                  02 10 00 00 
+                              01 11 
+                                    00 00 00 00 
+00 00 00 00 00 00 01 00 10 00 00 00 00 00 6A 0F
+00 10 2C 10 00 10 40 DE 5C F0 0A 62 E0 00 B1
+                                             00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 01 00 00 00 
+                  D1 01 10 00 
+                              00 00 00 00 	- This appears to be the only difference between the two msg headers.
+                                          50 20 
+41 44 4D 4A 47 50 54 57 D6 4A 54 4D 42 50 47 4B
+54 50 4A 74 22 42 69 6E 67 68 61 6D 20 44 61 76
+65 22 20 3C 2B 33 31 36 32 32 37 34 35 35 36 38
+3E
+
+
+Used message references table format.
+=====================================
+
+This is the umrt from index33m.bin.
+
+Offset	Field		Data
+------	-----		----
+0x0000	Size		44 41 
+0x0002			01 00 00 00 
+0x0006	Next filename	12 02 10 00 
+0x000A	#Long vals	4E 00 00 00 
+0x000E	Unknown1 const	04 00 00 00 	05 00 00 00 	06 00 00 00 	07 00 00 00 	08 00 00 00 
+			09 00 00 00 	0A 00 00 00 	0B 00 00 00 	0C 00 00 00 	0D 00 00 00 
+			0E 00 00 00 	0F 00 00 00 
+
+0x003E	Used refs.	2E 00 00 06 	31 00 00 09 	39 00 00 08 	22 00 00 0D 	1F 00 00 0D 
+			2D 00 00 0D 	29 00 00 0B 	38 00 00 0A 	25 00 00 0B 	32 00 00 0E 
+			20 00 00 09 	11 00 00 0D 	40 00 00 07 	33 00 00 0A 	2C 00 00 08 
+			46 00 00 04 	3D 00 00 04 	13 00 00 06 	26 00 00 06 	35 00 00 03 
+			36 00 00 03 	43 00 00 07 	1D 00 00 0E 	24 00 00 08 	41 00 00 05 
+			3E 00 00 05 	3C 00 00 07 	27 00 00 0A 	1A 00 00 00 	37 00 00 06 
+			3A 00 00 06 	28 00 00 0D 	10 00 00 0A 	19 00 00 05 	42 00 00 03 
+			3F 00 00 03 	16 00 00 06 	30 00 00 03 	1E 00 00 07 	2B 00 00 05 
+			44 00 00 05 	45 00 00 05 	17 00 00 0B 	23 00 00 0C 	1C 00 00 0D 
+			21 00 00 0B 	12 00 00 04 	47 00 00 00 	49 00 00 00 	4A 00 00 00 
+			4C 00 00 00 	4D 00 00 00 	4F 00 00 00 	50 00 00 00 	52 00 00 00 
+			53 00 00 00 	55 00 00 00 	56 00 00 00 	58 00 00 00 	59 00 00 00 
+			5B 00 00 00 	5C 00 00 00 	2A 00 00 06 	5A 00 00 01 	54 00 00 01 
+			51 00 00 01 
+
+
+The used refs, above is a table of 4-byte values. Below, these values are sorted on the first byte .
+			10 00 00 0A 	11 00 00 0D 	12 00 00 04 	13 00 00 06 	
+					16 00 00 06 	17 00 00 0B 			19 00 00 05 	
+			1A 00 00 00 			1C 00 00 0D 	1D 00 00 0E 	1E 00 00 07 	
+			1F 00 00 0D 	20 00 00 09 	21 00 00 0B 	22 00 00 0D 	23 00 00 0C 	
+			24 00 00 08 	25 00 00 0B 	26 00 00 06 	27 00 00 0A 	28 00 00 0D 	
+			29 00 00 0B 	2A 00 00 06 	2B 00 00 05 	2C 00 00 08 	2D 00 00 0D 	
+			2E 00 00 06 			30 00 00 03 	31 00 00 09 	32 00 00 0E	
+			33 00 00 0A 			35 00 00 03	36 00 00 03 	37 00 00 06 	
+			38 00 00 0A 	39 00 00 08 	3A 00 00 06 			3C 00 00 07 	
+			3D 00 00 04 	3E 00 00 05 	3F 00 00 03 	40 00 00 07 	41 00 00 05 	
+			42 00 00 03 	43 00 00 07 	44 00 00 05 	45 00 00 05 	46 00 00 04 	
+			47 00 00 00 			49 00 00 00 	4A 00 00 00 			
+			4C 00 00 00 	4D 00 00 00 			4F 00 00 00 	50 00 00 00 	
+			51 00 00 01	52 00 00 00 	53 00 00 00 	54 00 00 01 	55 00 00 00 	
+			56 00 00 00 			58 00 00 00 	59 00 00 00 	5A 00 00 01 	
+			5B 00 00 00 	5C 00 00 00 	
+			
+Section table format.
+=====================
+
+The section below is from index33m.bin.
+
+Offset	Field		Data
+------	-----		----
+0x0000	Size		D8 81 
+0x0002			03 00 00 00 
+0x0006	See * below	57 00 00 81 
+0x000A	Current # Offs	5C 00 00 00 00 
+0x000F	Section Offsets	D0 3A 00 00  00 - Current umrt.
+			F0 38 00 00  00 - List indicating number of changes to the Inbox
+			00 00 00 00  00 - First data section in file.
+			0A 00 00 00  00 - Second data section in file.
+			5B 01 00 00  00 - Locale
+			D6 02 00 00  00 - Inbox
+			A3 25 00 00  00 - Outbox
+			00 1F 00 00  00 - Draft
+			16 3C 00 00  00 - Sent
+			B0 00 00 00  00 - Deleted
+			B0 01 00 00  00 - Area information MTM CBS
+			49 20 00 00  00 - SMS, SMS Servive
+			69 02 00 00  00 - Smart Messaging MTM 
+			17 02 00 00  00 - ME
+			5A 00 00 00     - SIM
+
+0x0059	Msg/PDU offsets	0A E7 11 00 00	 0D 53 06 00 00	 04 CF 16 00 00	 06 5E 07 00 00	 8C 00 00 00 00* 
+			8C 3B 00 00 85*	 06 CC 12 00 00	 0B E9 15 00 00	 8B 1B 00 00 8B* 05 83 10 00 00 
+			00 81 0F 00 00	 8B 15 00 00 8C* 0D 5F 16 00 00	 0E 9A 0C 00 00	 07 41 13 00 00 
+			0D 2D 05 00 00	 09 55 0A 00 00	 0B 68 14 00 00	 0D 84 03 00 00	 0C 0F 14 00 00 
+			08 41 0C 00 00	 0B CE 0A 00 00	 06 69 08 00 00	 0A F5 0D 00 00	 0D A7 0E 00 00 
+			0B 47 0B 00 00	 06 99 2C 00 00	 05 8E 11 00 00	 08 63 09 00 00	 0D DD 03 00 00 
+			06 AA 04 00 00	 83 34 00 00 83* 03 35 11 00 00	 09 2B 03 00 00	 0E FA 05 00 00  
+			0A AC 06 00 00	 83 14 00 00 8C* 03 B7 07 00 00	 03 C0 0B 00 00	 06 4E 0E 00 00 
+			0A A1 05 00 00	 08 36 04 00 00	 06 02 10 00 00	 85 2F 00 00 83* 07 00 0F 00 00 
+			04 EA 08 00 00	 05 1B 0D 00 00	 03 DC 10 00 00	 07 DC 09 00 00	 05 74 0D 00 00 
+			03 5B 12 00 00	 07 10 08 00 00	 05 73 15 00 00	 05 B6 13 00 00	 04 05 07 00 00 
+			00 C1 14 00 00	 80 18 00 00 8B* 00 FD 17 00 00	 00 1A 15 00 00	 80 48 00 00 80* 
+			00 77 18 00 00	 00 4B 17 00 00	 80 4B 00 00 80* 00 EF 18 00 00	 00 A4 17 00 00 
+			01 31 2F 00 00x	 00 76 1A 00 00	 00 6B 19 00 00	 01 48 38 00 00x 00 EC 1A 00 00 
+			00 C4 19 00 00	 81 4E 00 00 80* 00 67 1B 00 00	 00 1D 1A 00 00	 01 AD 1C 00 00 
+			00 35 1C 00 00	 00 DC 1B 00 00 
+
+Entries in the above table marked with a * are deleted entries. If the deleted entries in the table are sorted 
+on their second byte:
+			8C 00 00 00 00	 83 14 00 00 8C	 8B 15 00 00 8C	 80 18 00 00 8B	 8B 1B 00 00 8B
+			85 2F 00 00 83	 83 34 00 00 83	 8C 3B 00 00 85	 80 48 00 00 80	 81 4E 00 00 80
+			80 4B 00 00 80
+
+It can be seen that all the gaps but one can be filled in the sorted version of the msg/pdu offsets part of the
+section table. The missing value is 57 which can be found at 0ffset 0x0006 in the section table. This value and 
+the value at offset 0x0008 are used when deleting a msg.
+
+Changes to umrt and section table when a msg is deleted.
+========================================================
+
+When a received msg is selected for deletion several changes have to be made to both the umrt and the section table.
+
+In the section table above two references are marked with an 'x':
+01 31 2F 00 00x - reference to an sms pdu header.
+01 48 38 00 00x - reference to a (read) received msg header.
+
+If this message is deleted then the new umrt will be:
+
+0x0000	Size		3C 41 
+0x0002			01 00 00 00 12 02 10 00 
+0x000A	#Long vals	4C 00 00 00 
+0x000E	Unknown1 const	04 00 00 00 	05 00 00 00 	06 00 00 00 	07 00 00 00 	08 00 00 00 
+			09 00 00 00 	0A 00 00 00 	0B 00 00 00 	0C 00 00 00 	0D 00 00 00 
+			0E 00 00 00 	0F 00 00 00 
+
+0x003E	Used refs.	2E 00 00 06 	31 00 00 09 	39 00 00 08 	22 00 00 0D 	1F 00 00 0D 
+			2D 00 00 0D 	29 00 00 0B 	38 00 00 0A 	25 00 00 0B 	32 00 00 0E 
+			20 00 00 09 	11 00 00 0D 	40 00 00 07 	33 00 00 0A 	2C 00 00 08 
+			46 00 00 04 	3D 00 00 04 	13 00 00 06 	26 00 00 06 	35 00 00 03 
+			36 00 00 03 	43 00 00 07 	1D 00 00 0E 	24 00 00 08 	41 00 00 05 
+			3E 00 00 05 	3C 00 00 07 	27 00 00 0A 	1A 00 00 00 	37 00 00 06 
+			3A 00 00 06 	28 00 00 0D 	10 00 00 0A 	19 00 00 05 	42 00 00 03 
+			3F 00 00 03 	16 00 00 06 	30 00 00 03 	1E 00 00 07 	2B 00 00 05 
+			44 00 00 05 	45 00 00 05 	17 00 00 0B 	23 00 00 0C 	1C 00 00 0D 
+			21 00 00 0B 	12 00 00 04 	47 00 00 00 	49 00 00 00 	4A 00 00 00 
+			4C 00 00 00 	4D 00 00 00 	4F 00 00 00 	50 00 00 00 	52 00 00 00 
+			53 00 00 00 	55 00 00 00 	56 00 00 00 	58 00 00 00 	59 00 00 00 
+			5B 00 00 00	5C 00 00 00	2A 00 00 06	5A 00 00 01
+
+Sorting the used refs again gives:
+			10 00 00 0A 	11 00 00 0D 	12 00 00 04 	13 00 00 06 	
+					16 00 00 06 	17 00 00 0B 			19 00 00 05 	
+			1A 00 00 00 			1C 00 00 0D 	1D 00 00 0E 	1E 00 00 07 	
+			1F 00 00 0D 	20 00 00 09 	21 00 00 0B 	22 00 00 0D 	23 00 00 0C
+			24 00 00 08 	25 00 00 0B	26 00 00 06	27 00 00 0A 	28 00 00 0D 	
+			29 00 00 0B 	2A 00 00 06	2B 00 00 05 	2C 00 00 08 	2D 00 00 0D 	
+			2E 00 00 06 			30 00 00 03 	31 00 00 09 	32 00 00 0E 	
+			33 00 00 0A 			35 00 00 03 	36 00 00 03 	37 00 00 06 	
+			38 00 00 0A 	39 00 00 08 	3A 00 00 06 			3C 00 00 07 	
+			3D 00 00 04 	3E 00 00 05 	3F 00 00 03 	40 00 00 07 	41 00 00 05 
+			42 00 00 03 	43 00 00 07 	44 00 00 05 	45 00 00 05 	46 00 00 04 	
+			47 00 00 00 			49 00 00 00 	4A 00 00 00 	
+			4C 00 00 00 	4D 00 00 00 			4F 00 00 00 	50 00 00 00 	
+					52 00 00 00 	53 00 00 00 			55 00 00 00 	
+			56 00 00 00 			58 00 00 00 	59 00 00 00 	5A 00 00 01
+			5B 00 00 00	5C 00 00 00
+	
+There are now gaps at 14, 15, 18, 1B, 2F, 34, 3B, 48, 4B, 4E, 51, 54 and 57 i.e. there are two new
+gaps at 51 and 54
+
+and the new section table will be:
+
+0x0000	Size	D8 81
+0x0002		03 00 00 00 
+0x0006		54 00 00 81 
+0x000A		5C 00 00 00 00 
+
+0x000F		44 3E 00 00 00 	F0 38 00 00 00 	00 00 00 00 00	0A 00 00 00 00	5B 01 00 00 00 
+		D6 02 00 00 00	A3 25 00 00 00	00 1F 00 00 00	16 3C 00 00 00	B0 00 00 00 00 
+		B0 01 00 00 00	49 20 00 00 00	69 02 00 00 00	17 02 00 00 00	5A 00 00 00 
+
+0x0059		0A E7 11 00 00  0D 53 06 00 00 	04 CF 16 00 00 	06 5E 07 00 00 	8C 00 00 00 00* 
+		8C 3B 00 00 85* 06 CC 12 00 00 	0B E9 15 00 00 	8B 1B 00 00 8B*	05 83 10 00 00 
+		00 81 0F 00 00 	8B 15 00 00 8C*	0D 5F 16 00 00 	0E 9A 0C 00 00 	07 41 13 00 00 
+		0D 2D 05 00 00 	09 55 0A 00 00  0B 68 14 00 00 	0D 84 03 00 00 	0C 0F 14 00 00 
+		08 41 0C 00 00 	0B CE 0A 00 00 	06 69 08 00 00 	0A F5 0D 00 00 	0D A7 0E 00 00 
+		0B 47 0B 00 00 	06 82 3F 00 00x	05 8E 11 00 00 	08 63 09 00 00 	0D DD 03 00 00 
+		06 AA 04 00 00 	83 34 00 00 83*	03 35 11 00 00  09 2B 03 00 00 	0E FA 05 00 00 
+		0A AC 06 00 00 	83 14 00 00 8C*	03 B7 07 00 00 	03 C0 0B 00 00 	06 4E 0E 00 00 
+		0A A1 05 00 00 	08 36 04 00 00 	06 02 10 00 00 	85 2F 00 00 83*	07 00 0F 00 00 
+		04 EA 08 00 00 	05 1B 0D 00 00 	03 DC 10 00 00 	07 DC 09 00 00  05 74 0D 00 00 
+		03 5B 12 00 00 	07 10 08 00 00 	05 73 15 00 00 	05 B6 13 00 00 	04 05 07 00 00 
+		00 C1 14 00 00 	80 18 00 00 8B*	00 FD 17 00 00 	00 1A 15 00 00 	80 48 00 00 80*
+		00 77 18 00 00 	00 4B 17 00 00 	80 4B 00 00 80*	00 EF 18 00 00 	00 A4 17 00 00  
+		81 57 00 00 81*	00 76 1A 00 00 	00 6B 19 00 00 	81 51 00 00 81*	00 EC 1A 00 00 
+		00 C4 19 00 00 	81 4E 00 00 80*	00 67 1B 00 00 	00 1D 1A 00 00 	01 AD 1C 00 00x
+		00 35 1C 00 00 	00 DC 1B 00 00 
+
+Entries in the above table marked with a * are deleted entries. If the deleted entries in the table are sorted 
+on their second byte:
+
+8C 00 00 00 00
+83 14 00 00 8C
+8B 15 00 00 8C
+80 18 00 00 8B
+8B 1B 00 00 8B
+85 2F 00 00 83
+83 34 00 00 83
+8C 3B 00 00 85
+80 48 00 00 80
+80 4B 00 00 80
+81 4E 00 00 80
+81 51 00 00 81*
+81 57 00 00 81*
+
+Differences
+-----------
+1.	The size of the umrt was reduced by 8 bytes - two used refs have been removed (51 and 54).
+
+2.	The number of long vals has been decreased to 0x4C.
+
+3.	The reference to the sms pdu header in the section table - 01 31 2F 00 00 - has been replaced 
+	with 81 57 00 00 81.
+	The 57 is the value at offset 0x0006 in the previous verson of the section table.
+	The 81's are produced by ORing 01 and 00 with the byte at offset 0x0009 in the previous version 
+	of the section table.
+
+4.	The reference to the received msg header in the section table - 01 48 38 00 00 - has been replaced 
+	with 81 51 00 00 81.
+	The 51 is the first byte of the last entry in the old version of the umrt.
+	The 81's are produced by ORing 01 and 00 with the byte at offset 0x0009 in the previous version 
+	of the section table.
+
+5.	The new value at offset 0x0006 in the section table is 54. This is the first byte of last but one 
+	entry in the previous version of the umrt.
+
+NOTE: 	Differences 4 & 5 have changed. When this was last looked at the umrt entries used where the first 
+-----	and second. (Possibly changes on a daily basis... like channel numbers used by the by vcard server.)
+	See Tests03052001.rtf.
+
+
+3C 40 
+01 00 00 00 20 02 10 00 0C 00 00 00 
+04 00 00 00 	05 00 00 00 	06 00 00 00 	07 00 00 00 	08 00 00 00 
+09 00 00 00 	0A 00 00 00 	0B 00 00 00	0C 00 00 00	0D 00 00 00
+0E 00 00 00 	0F 00 00 00

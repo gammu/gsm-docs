@@ -1,0 +1,112 @@
+R380 - discovered directory structure.
+======================================
+
+All the following filenames and directory names where taken from a log file generated during a backup of the R380.
+
+C drive contents:
+-----------------
+
+c:\system\
+	APPS\
+		ADRBOOK\
+			adrbook.ini
+		CALC\
+			Calc.ini
+		CALENDAR\
+			calendar.ini
+		GAME\
+			
+		MESSAGING\
+			messaging.ini
+		NOTEPAD\
+			notepad.ini
+		OSMAN\
+		PASSWORDS\
+		TELE\
+			Voices.ini
+			CallSummary.ini
+			CallLog.ini
+			AudioEngine.ini
+		WAPBROWSER\
+			WAPConfig.cfg
+			Bookmarks.dat
+			History.dat
+			Cache		
+	WCLOCK\
+		wclock.ini
+	DATA\
+		commsdbu.dat
+		Contacts.cdb
+		Mru.dat
+		MachConf.ini
+		Game.ini
+		Almsvr.dat
+		version.ini
+		locale.ini
+		versionz.ini
+		language.ver
+		HWSERVER.INI
+		osman_prevent_erase.ini
+		osman_first_run.ini
+		Roxsetts.ini
+		Osman.ini
+		pcSync.ini
+		eiksvrox_prevent_format.ini
+		eiksvrox_first_run.ini
+		slopfile
+		Eiksvrox.ini 
+	libs\
+	System.ini
+	Mtm\
+		MtmRegistry (might be two words)
+	Mail\
+		Index
+		00001001_S	//This dir contains the SMS files.
+			00001002
+			00001003
+			00001004
+			00001005
+			00001006
+			00100017
+			00100018 
+			00100019
+			0010001A
+			0010001B
+			0010001C
+			0010001D
+			0010001E
+			0010001F
+			00100020
+			00100021
+			00100022
+			00100023
+			00100024
+			00100025
+			00100026
+		00001001
+		00100000_S
+		00100000
+		00100001_S
+		00100001
+		00100002_S
+		00100002
+		00001000
+
+	epoccont.ini
+
+c:\documents
+	notepad
+	MESSAGING
+	WCLOCK
+	agenda
+	CALENDAR
+
+Z drive contents:
+-----------------
+
+Z:\SYSTEM\
+	LIBS\
+		PCS.RSY
+		gencserv.RSY
+
+

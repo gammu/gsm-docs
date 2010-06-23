@@ -1,0 +1,120 @@
+Phonebook entry from 9210
+
+Message: SMS Message Received
+   UDH header available (length 12, UNKNOWN)
+0b |05 |04 |23#|f4 |00 |00 |00 |03 |01 |05 |01              00c ...#........
+   8 bit SMS, body is (length 128)
+42B|45E|47G|49I|4eN|3a:|56V|43C|41A|52R|44D|0d |0a |56V|45E 00f BEGIN:VCARD..VE
+52R|53S|49I|4fO|4eN|3a:|322|2e.|311|0d |0a |52R|45E|56V|3a: 01e RSION:2.1..REV:
+322|300|300|322|300|311|322|377|54T|311|333|300|344|300|300 02d 20020127T130400
+5aZ|0d |0a |4eN|3b;|43C|48H|41A|52R|53S|45E|54T|3d=|55U|54T 03c Z..N;CHARSET=UT
+46F|2d-|388|3a:|6en|61a|7az|77w|69i|73s|6bk|6fo|c4 |85…|3b; 04b F-8:nazwisko.…;
+69i|6dm|69i|65e|c4 |85…|3b;|6dm|69i|64d|64d|6cl|c4 |85…|65e 05a imie.…;middl.…e
+3b;|74t|69i|74t|6cl|c4 |85…|65e|3b;|73s|75u|66f|66f|69i|78x 069 ;titl.…e;suffix
+c4 |85…|0d |0a |41A|44D|52R|3b;|48H|4fO|4dM|45E|3b;|43C|48H 078 .…..ADR;HOME;CH
+41A|52R|53S|45E|54T|3d=|55U|54T                             080 ARSET=UT
+                                                   0b6 ee
+Message: SMS Message Received
+   UDH header available (length 12, UNKNOWN)
+0b |05 |04 |23#|f4 |00 |00 |00 |03 |01 |05 |02              00c ...#........
+   8 bit SMS, body is (length 128)
+46F|2d-|388|3a:|70p|72r|69i|76v|70p|6fo|c4 |85…|3b;|65e|78x 00f F-8:privpo.…;ex
+74t|65e|6en|73s|69i|6fo|6en|c4 |85…|3b;|70p|72r|69i|76v|73s 01e tension.…;privs
+74t|72r|65e|65e|74t|c4 |85…|3b;|70p|72r|69i|76v|63c|69i|74t 02d treet.…;privcit
+79y|c4 |85…|3b;|70p|72r|69i|76v|73s|74t|61a|74t|c4 |85…|65e 03c y.…;privstat.…e
+3b;|70p|72r|69i|76v|7az|69i|70p|c4 |85…|3b;|70p|72r|69i|76v 04b ;privzip.…;priv
+63c|6fo|75u|6en|74t|72r|79y|c4 |85…|0d |0a |41A|44D|52R|3b; 05a country.…..ADR;
+57W|4fO|52R|4bK|3b;|43C|48H|41A|52R|53S|45E|54T|3d=|55U|54T 069 WORK;CHARSET=UT
+46F|2d-|388|3a:|70p|6fo|62b|6fo|78x|c4 |85…|3b;|65e|78x|74t 078 F-8:pobox.…;ext
+c4 |85…|3b;|73s|74t|72r|65e|65e                             080 .…;stree
+                                                   0b6 ET
+Message: SMS Message Received
+   UDH header available (length 12, UNKNOWN)
+0b |05 |04 |23#|f4 |00 |00 |00 |03 |01 |05 |03              00c ...#........
+   8 bit SMS, body is (length 128)
+74t|c4 |85…|3b;|63c|69i|74t|79y|c4 |85…|3b;|73s|74t|61a|74t 00f t.…;city.…;stat
+65e|c4 |85…|3b;|7az|69i|70p|c4 |85…|3b;|63c|6fo|75u|6en|74t 01e e.…;zip.…;count
+72r|c4 |85…|79y|0d |0a |41A|44D|52R|3b;|50P|52R|45E|46F|3b; 02d r.…y..ADR;PREF;
+43C|48H|41A|52R|53S|45E|54T|3d=|55U|54T|46F|2d-|388|3a:|311 03c CHARSET=UTF-8:1
+70p|6fo|62b|6fo|78x|c4 |85…|3b;|3b;|311|73s|74t|72r|65e|65e 04b pobox.…;;1stree
+74t|c4 |85…|c4 |85…|3b;|311|63c|69i|74t|79y|c4 |85…|3b;|311 05a t.….…;1city.…;1
+73s|74t|61a|74t|c4 |85…|65e|3b;|311|7az|69i|70p|c4 |85…|3b; 069 stat.…e;1zip.…;
+311|63c|6fo|75u|6en|74t|72r|79y|c4 |85…|0d |0a |4fO|52R|47G 078 1country.…..ORG
+3b;|43C|48H|41A|52R|53S|45E|54T                             080 ;CHARSET
+                                                   0b6 :e
+Message: SMS Message Received
+   UDH header available (length 12, UNKNOWN)
+0b |05 |04 |23#|f4 |00 |00 |00 |03 |01 |05 |04              00c ...#........
+   8 bit SMS, body is (length 128)
+3d=|55U|54T|46F|2d-|388|3a:|66f|69i|72r|6dm|61a|c4 |85…|3b; 00f =UTF-8:firma.…;
+0d |0a |54T|49I|54T|4cL|45E|3b;|43C|48H|41A|52R|53S|45E|54T 01e ..TITLE;CHARSET
+3d=|55U|54T|46F|2d-|388|3a:|6aj|6fo|62b|20 |74t|69i|74t|6cl 02d =UTF-8:job titl
+65e|c4 |85…|0d |0a |54T|45E|4cL|3b;|56V|4fO|49I|43C|45E|3a: 03c e.…..TEL;VOICE:
+311|322|333|0d |0a |54T|45E|4cL|3b;|56V|4fO|49I|43C|45E|3b; 04b 123..TEL;VOICE;
+43C|45E|4cL|4cL|3a:|344|355|366|0d |0a |54T|45E|4cL|3b;|46F 05a CELL:456..TEL;F
+41A|58X|3a:|377|388|399|0d |0a |45E|4dM|41A|49I|4cL|3b;|49I 069 AX:789..EMAIL;I
+4eN|54T|45E|52R|4eN|45E|54T|3b;|43C|48H|41A|52R|53S|45E|54T 078 NTERNET;CHARSET
+3d=|55U|54T|46F|2d-|388|3a:|65e                             080 =UTF-8:e
+
+Message: SMS Message Received
+   UDH header available (length 12, UNKNOWN)
+0b |05 |04 |23#|f4 |00 |00 |00 |03 |01 |05 |05              00c ...#........
+   8 bit SMS, body is (length 81)
+6dm|61a|69i|6cl|c4 |85…|0d |0a |42B|44D|41A|59Y|3a:|311|399 00f mail.…..BDAY:19
+399|300|300|311|322|377|0d |0a |54T|45E|4cL|3b;|56V|4fO|49I 01e 900127..TEL;VOI
+43C|45E|3b;|50P|41A|47G|45E|52R|3a:|311|311|311|311|0d |0a  02d CE;PAGER:1111..
+55U|52R|4cL|3b;|43C|48H|41A|52R|53S|45E|54T|3d=|55U|54T|46F 03c URL;CHARSET=UTF
+2d-|388|3a:|77w|77w|77w|c4 |85…|0d |0a |45E|4eN|44D|3a:|56V 04b -8:www.…..END:V
+43C|41A|52R|44D|0d |0a                                      051 CARD..
+
+visible in 6210
+
+default numer:123
+komorka: 456
+faks:789
+numer:1111
+email: email¥
+address: privpo¥;extension¥;privstreet¥;privcitya;privstata;privzip¥
+opis: nazwisko¥ imie¥
+
+visible in 9210
+
+last name:nazwisko¥
+first name:imie¥
+middle name:middle¥
+title:titl¥e
+suffix:suffix¥
+company:firma¥
+jobtitle:job titlea
+tel:123
+gsm:456
+pager:1111
+fax:789
+mail:email¥
+url:www¥
+dtmf:1234356
+address:
+pobox:1pobox¥
+street:1street¥¥
+zip/postalcode: 1zip¥
+city:1city¥
+state/province:1stat¥e
+country:1country¥
+address business:
+pobox:pobox¥
+extension:ext¥
+street:street¥
+zip/postal:zip¥
+city:city¥
+state/province:state¥
+country:country¥
+address private:
+pobox:privpo¥
+extension:extension¥
+street:privstreet¥
+zip/postal:privzip¥
+city:privcity¥
+state/province:privstat¥e
+country:privcountry¥
+note:¥note
+birthday:27/01/1990

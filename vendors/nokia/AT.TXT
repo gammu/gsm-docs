@@ -1,0 +1,12 @@
+ATDT number;
+  dial voice
+AT+CGSN
+  get IMEI
+AT+CGMI
+  get phone manufacter
+AT+CGMM
+  get phone model
+AT+CGMR
+  get hardware and firmware version
+AT+VTS=a,b,c,d;
+  send "abcd" DTMF sequence

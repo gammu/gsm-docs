@@ -1,0 +1,24 @@
+Od: owner-gnokii@net.lut.ac.uk w imieniu florent colliau
+[fcolliau@yahoo.fr]
+Wys³ano: 29 marca 2001 16:27
+Do: gnokii@net.lut.ac.uk
+Temat: BIZARRE STRINGS
+
+I have a 6210 and it send me the following frames (on
+FBUS) just after a phone software crash :
+
+ 1f ff 00 d0 00 01 01 01 31
+ 1e ff 00 d0 00 03 01 01 e0 00 ff 2d
+ 1e 14 00 f4 00 01 03 00 1d e1
+
+Does someone ever seen one of these frames before ?
+
+Thanks a lot!!
+
+Florent
+
+
+___________________________________________________________
+Do You Yahoo!? -- Pour dialoguer en direct avec vos amis, 
+Yahoo! Messenger : http://fr.messenger.yahoo.com
+

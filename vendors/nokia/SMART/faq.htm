@@ -1,0 +1,9353 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <title>FAQ</title>
+</head>
+<body text="#000000" link="#0033CC" vlink="#551A8B" alink="#CC9933">
+&nbsp;
+<br>The purpose of this FAQ is to give answers to developers questions
+concerning smart messaging development. This document is subject to change
+without notice.
+<br>&nbsp;
+<p><a href="#info">1. How can I get more information about Smart Messaging?</a>
+<br><a href="#logos">2. How can I get new ringing tone and graphical logos
+and pictures to my mobile phone?</a>
+<br><a href="#support">3. Which Nokia phones support Smart Messaging?</a>
+<br><a href="#specifications">4. Where can I get the business card and
+calendar event message specifications?</a>
+<br><a href="#pc">5. How can I send short message (SMS) from my PC using
+mobile phone in text mode?</a>
+<br><a href="#pdu">6. How can I send short message (SMS) from my PC using
+mobile phone in PDU mode?</a>
+<br><a href="#tpdu">7. How can I encode the short message TPDU (7bit, no
+user-data-header)?</a>
+<br><a href="#encode">8. How can I encode the short message TPDU (8 bit,
+User-data-header)?</a>
+<br><a href="#operator">9. How can I encode operator logo message user
+data (8 bit)?</a>
+<br><a href="#cli">10. How can I encode Caller Line Identification (CLI)
+icon message user data (8 bit)?</a>
+<br><a href="#ota">11. How can I encode an OTA bitmap?</a>
+<br><a href="#tone">12. How can I encode ringing tone message user data
+(8 bit)?</a>
+<br><a href="#vcard">13. How can I encode vCard message user data (8 bit)?</a>
+<br><a href="#vcal">14. How can I encode vCalendar message user data (8
+bit)?</a>
+<br><a href="#oroplogo">15. How can I restore the original operator logo?</a>
+<br><a href="#picture">16. How can I encode Picture message user data (8
+bit)?</a>
+<br><a href="#profile">17. How can I encode Downloadable Profile message
+user data (8 bit)?</a>
+<br><a href="#bitmap">18. How can I encode concatenated SMS message?</a>
+<br><a href="#encoding">19. How can I encode a 72X14 operator logo as a
+single message, and is it even an acceptable format, as it doesn't seem
+to follow the specification?</a>
+<br>&nbsp;
+<p><a NAME="info"></a><b>1. How can I get more information about Smart
+Messaging?</b>
+<br>The best way to get information is to go to the <a href="http://www.forum.nokia.com/">http://www.forum.nokia.com/</a>
+website and the Smart Messaging section. The Smart Messaging specification
+3.0.0 and all the other documents give you good starting point. This FAQ
+and the discussion board will help you in more detailed questions.
+<p><a NAME="logos"></a><b>2. How can I get new ringing tone and graphical
+logos and pictures to my mobile phone?</b>
+<br>In order to get ringing tones and logos to your mobile phone, please
+contact the Club Nokia Careline in Europe. Club Nokia Careline supports
+and gives information to Club Nokia members. Visit <a href="http://www.club.nokia.com/" target="_blank">Club
+Nokia</a> for more information. Your network service provider may also
+have working services where you can get ringing tones and logos.
+<p><a NAME="support"></a><b>3. Which Nokia phones support Smart Messaging?</b>
+<br>Most of the Nokia mobile phones are capable of receiving smart messages.
+Those messages can contain ringing tones, operator logos, group graphics
+(caller line identification icons), picture messages, business cards (vCard
+) and calendar bookings (vCal). Also the TTML (Tagged Text Mark-up Language)
+and DMCP (Dynamic Menu Control Protocol) are supported in some phone models.
+Following Nokia phones support different smart messages. Please notice
+that this table includes only GSM phone models.
+<br>&nbsp;
+<table BORDER CELLSPACING=0 WIDTH="390" >
+<caption>&nbsp;</caption>
+
+<tr>
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>Ringing tone</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>Opera- tor logo</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>CLI icon</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>Picture mes- sage</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>Busi- ness card (vCard)</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>Calendar reser- vation (vCal)</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>Down- load- able Profile</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>WAP Settings</b></center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center><b>3210</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center><b>3310</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center><b>3330</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center><b>5110</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center><b>5130</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center><b>5510</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center><b>6110</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center><b>6130</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center><b>6150</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center><b>6210</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center><b>6250</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center><b>7110</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center><b>8110i</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center><b>8210</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center><b>8310</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center><b>8810</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center><b>8850</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center><b>8890</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center><b>9110</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center><b>9110i</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center><b>9210</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center><b>X</b></center>
+</td>
+</tr>
+</table>
+
+<p><a href="#top">Top of page</a>
+<p><a NAME="specifications"></a><b>4. Where can I get the business card
+and calendar event message specifications?</b>
+<br>Most of Nokia phones support vCard and vCal smart messages. Those specifications
+are specified by the Versit Consortium. Specifications are named as "The
+Electronic Calendaring and Scheduling Exchange Format" and "The Electronic
+Business Card". Visit <a href="http://www.imc.org/" target="_blank">http://www.imc.org/</a>
+for more information.
+<p><a href="#top">Top of page</a>
+<p><a NAME="pc"></a><b>5. How can I send short message (SMS) from my PC
+using mobile phone in text mode?</b>
+<br>Short messages containing 7bit textual information can be sent from
+the PC program to mobile phone. The mobile phone must be installed as a
+modem to the PC's operating system. And the phone must be connected to
+the PC using cable or infrared. See also " AT Command Set for Nokia GSM
+Products" in Smart Messaging documents. To send text mode SMS:
+<br>&nbsp;
+<table BORDER CELLSPACING=0 CELLPADDING=2 WIDTH="390" >
+
+<tr>
+<td VALIGN=TOP WIDTH="195" BGCOLOR="#DFDFDF">AT command</td>
+
+<td VALIGN=TOP WIDTH="195" BGCOLOR="#DFDFDF">Description</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="195">AT+CMGF=1&lt;enter/carriage return></td>
+
+<td VALIGN=TOP WIDTH="195">The SMS sending mode is changed to text mode
+(default is 0, PDU mode)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="195">AT+CMGS="+4441793181022" &lt;enter/carriage
+return> &lt;text entered> &lt;ctrl+z></td>
+
+<td VALIGN=TOP WIDTH="195">The message is sent to entered to number +4441793181022.
+Replace this number with your own number.</td>
+</tr>
+</table>
+
+<p>The modem responds with "+CMGS: &lt; TP-Message-reference value in integer
+format>" and OK, and the message is sent. Sending can be cancelled by using
+an &lt;ESC> character. &lt;ctrl-z> must be used to indicate the ending
+of a message body.
+<p><a href="#top">Top of page</a>
+<p><a NAME="pdu"></a><b>6. How can I send short message (SMS) from my PC
+using mobile phone in PDU mode?</b>
+<br>Short message can be sent from the PC program using AT commands. The
+mobile phone must be installed as a modem to the PC's operating system.
+And the phone must be connected to the PC using cable or infrared. This
+section includes example how message containing textual information is
+sent from the PC program to mobile phone using PDU mode.
+<br>See also " AT Command Set for Nokia GSM Products" in Smart Messaging
+documents.
+<p>To send PDU mode SMS:
+<br>&nbsp;
+<table BORDER CELLSPACING=0 CELLPADDING=2 WIDTH="390" >
+
+<tr>
+<td VALIGN=TOP WIDTH="195" BGCOLOR="#DFDFDF">AT command</td>
+
+<td VALIGN=TOP WIDTH="195" BGCOLOR="#DFDFDF">Description</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="195">AT+CMGF=0&lt;enter/carriage return></td>
+
+<td VALIGN=TOP WIDTH="195">The SMS sending mode is changed to PDU mode
+(default is 0, PDU mode).</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="195">AT+CMGS=<b>&lt;length></b> &lt;enter/carriage
+return><b>&lt;pdu></b>&lt;ctrl-Z></td>
+
+<td VALIGN=TOP WIDTH="195">Sends a message from the DTE to the network
+(SMS-SUBMIT). <b>&lt;length></b> is the length of the actual TPDU in octets.
+The RP layer SC (short message centre) address octets are not counted in
+the length. <b>&lt;pdu></b> is the RP SC address Address-Value field followed
+by a TPDU in hexadecimal format.</td>
+</tr>
+</table>
+
+<p>The modem responds with "+CMGS: &lt; TP-Message-reference value in integer
+format>" and OK, and the message is sent. Sending can be cancelled by using
+an &lt;ESC> character. &lt;ctrl-z> must be used to indicate the ending
+of a message body.
+<p>Error responses from the phone see: "AT Command Set for Nokia GSM Products"
+in Smart Messaging documents.
+<p><a href="#top">Top of page</a>
+<p><a NAME="tpdu"></a><b>7. How can I encode the short message TPDU (7bit,
+no user-data-header)</b>
+<br>SMS-SUBMIT and SMS-DELIVER are TPDUs (Transfer Protocol Data Unit).
+Those can be build different ways, structure is explained more detailed
+in GSM 03.40 specification. SUBMIT goes from phone to network and DELIVER
+is coming from network to phone. Here is included an example of sending
+a 7bit short message with the SMS PDU mode.
+<p>Example how this is done in practise using normal terminal program.
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="400" >
+
+<tr>
+<td WIDTH="200">AT+CMGF=0</td>
+
+<td WIDTH="200">set SMS PDU mode on</td>
+</tr>
+
+<tr>
+<td>OK</td>
+
+<td></td>
+</tr>
+
+<tr>
+<td>AT+CMGS=29</td>
+
+<td>length of the SMS PDU (decimal), The RP layer SC address octets are
+not counted in the length.</td>
+</tr>
+
+<tr>
+<td COLSPAN="2" WIDTH="400">079153485002020911000C915348870420140000A71
+<br>154747A0E4ACF41F4F29C9E769F4121&nbsp;</td>
+</tr>
+
+<tr>
+<td>+CMGS: 212</td>
+
+<td>message reference is shown</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<br>OK</td>
+</tr>
+</table>
+
+<p><b>Table 1. &lt;pdu>, RP SC Address-Value field followed by a TPDU in
+hexadecimal format</b>
+<br>&nbsp;
+<table BORDER CELLSPACING=0 CELLPADDING=2 WIDTH="390" >
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>RP SC address (optional)</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Value</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Description</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Status</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>&nbsp;</td>
+
+<td VALIGN=TOP>
+<center>07</center>
+</td>
+
+<td VALIGN=TOP>Address length&nbsp;</td>
+
+<td VALIGN=TOP>Length of the address is 7. Including the type of numbering
+plan indication.</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>&nbsp;</td>
+
+<td VALIGN=TOP>
+<center>91</center>
+</td>
+
+<td VALIGN=TOP>Type of address&nbsp;</td>
+
+<td VALIGN=TOP>International address using ISDN telephone numbering plan.</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>&nbsp;</td>
+
+<td VALIGN=TOP>
+<center>53
+<br>48
+<br>50
+<br>02
+<br>02
+<br>09</center>
+</td>
+
+<td VALIGN=TOP>Short message service centre address&nbsp;</td>
+
+<td VALIGN=TOP>The short message service centre number. F.ex +35 84 05
+20 20 10 is encoded as 53 48 50 02 02 09. In this case the address takes
+6 octets.</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>TPDU Octet 1 bits</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Value (hex11)</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Description</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Status</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>7</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0</center>
+</td>
+
+<td VALIGN=TOP>TP-Reply -Path&nbsp;</td>
+
+<td VALIGN=TOP>Reply path no set</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>6</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0</center>
+</td>
+
+<td VALIGN=TOP>TP-User-Data -header-indicator&nbsp;</td>
+
+<td VALIGN=TOP>Indication that user data doesn't contain additional header.</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>5</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0</center>
+</td>
+
+<td VALIGN=TOP>TP-Status -Report-Request&nbsp;</td>
+
+<td VALIGN=TOP>Not requested</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>4</center>
+</td>
+
+<td VALIGN=TOP>
+<center>1</center>
+</td>
+
+<td VALIGN=TOP>TP-Validity -Period-Format&nbsp;</td>
+
+<td VALIGN=TOP>Relative format (bits 4 and 3)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>3</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0</center>
+</td>
+
+<td VALIGN=TOP>TP-Validity -Period-Format&nbsp;</td>
+
+<td VALIGN=TOP>Relative format (bits 4 and 3)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>2</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0</center>
+</td>
+
+<td VALIGN=TOP>TP-Rejected -Dublicates</td>
+
+<td VALIGN=TOP>Do not reject duplicates in SC</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>1</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0</center>
+</td>
+
+<td VALIGN=TOP>TP-Message -Type-Indicator&nbsp;</td>
+
+<td VALIGN=TOP>type:SMS-SUBMIT (from phone to network), (bits 1 and 0)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>0</center>
+</td>
+
+<td VALIGN=TOP>
+<center>1</center>
+</td>
+
+<td VALIGN=TOP>TP-Message -Type-Indicator&nbsp;</td>
+
+<td VALIGN=TOP>type:SMS-SUBMIT (from phone to network), (bits 1 and 0)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>TPDU Octet 2</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Value</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Description</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Status</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>TP-Message -Reference&nbsp;</td>
+
+<td VALIGN=TOP>Given by the phone, application/ user does not need to fill
+this octet.</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>TPDU Octet 3</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Value</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Description</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Status</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0C</center>
+</td>
+
+<td VALIGN=TOP>Address length in semi-octets.&nbsp;</td>
+
+<td VALIGN=TOP>Length of the address is 12 in semi-octets. Length the type
+of numbering plan indication.</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>TPDU Octet 4</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Value</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Description</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Status</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center>91</center>
+</td>
+
+<td VALIGN=TOP>Type of address&nbsp;</td>
+
+<td VALIGN=TOP>International address using ISDN telephone numbering plan.</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>TPDU Octet 5-10</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Value</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Description</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Status</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center>53
+<br>48
+<br>87
+<br>04
+<br>20
+<br>14</center>
+</td>
+
+<td VALIGN=TOP>TP-Destination -Address&nbsp;</td>
+
+<td VALIGN=TOP>The destination telephone number. F.ex +35 84 78 40 02 41
+is encoded as 53 48 87 04 20 14. In this case the address takes 6 octets.
+The address can be 2 to 12 octets long.</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>TPDU Octet 11</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Value</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Description</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Status</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>TP-Protocol -Identifier, consist one octet. For the details,
+see GSM 03.40 specification, version 7.2.0, page 53.&nbsp;</td>
+
+<td VALIGN=TOP>Parameter identifying the above layer protocol, if any.
+Note that for the straightforward case of simple MS-to-SC short message
+transfer, the TP-Protocol-Identifier is set to the value 00.&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>TPDU Octet 12 bits</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Value (hex00)</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Description</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Status</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>7</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0</center>
+</td>
+
+<td VALIGN=TOP>TP-Data -Coding-Scheme used in TP-User -Data, consist one
+octet. See GSM 3.38</td>
+
+<td VALIGN=TOP>Functionality (bits 7 and 6) related to usage of bits 4-0.</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>6</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0</center>
+</td>
+
+<td VALIGN=TOP>&nbsp;</td>
+
+<td VALIGN=TOP>Functionality (bits 7 and 6) related to usage of bits 4-0.</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>5</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0</center>
+</td>
+
+<td VALIGN=TOP>&nbsp;</td>
+
+<td VALIGN=TOP>Indicates that text is uncompressed.</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>4</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0</center>
+</td>
+
+<td VALIGN=TOP>&nbsp;</td>
+
+<td VALIGN=TOP>Indicated that bits 1 and 0 have no message class meaning.</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>3</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0</center>
+</td>
+
+<td VALIGN=TOP>Alphabet being used (bits 3 and 2)</td>
+
+<td VALIGN=TOP>7bit message</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>2</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0</center>
+</td>
+
+<td VALIGN=TOP>Alphabet being used (bits 3 and 2)</td>
+
+<td VALIGN=TOP>7bit message</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>1</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0</center>
+</td>
+
+<td VALIGN=TOP>Reserved</td>
+
+<td VALIGN=TOP>No meaning, indicated by bit 4</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>0</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0</center>
+</td>
+
+<td VALIGN=TOP>Reserved</td>
+
+<td VALIGN=TOP>No meaning, indicated by bit 4</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>TPDU Octet 13</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Value</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Description</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Status</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center>A7</center>
+</td>
+
+<td VALIGN=TOP>TP-Validity -Period (Relative format). See GSM 03.40, version
+7.2.0, page 55 for details</td>
+
+<td VALIGN=TOP>A7 -> 24 hours</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>TPDU Octet 14</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Value</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Description</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Status</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center>11</center>
+</td>
+
+<td VALIGN=TOP>TP-User -Data-Length</td>
+
+<td VALIGN=TOP>Parameter indicating the length of the TP-User-Data field
+to follow. Represented as amount of septets (integer). 11 hex -> 17 septets.
+This is because of 7-bit user data. User data is coded to seven databits,
+because SMS have to be sent to air in 7 bit format.
+<br>Length includes the user data header (not included in this example)
+and data itself.</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>TPDU Octet 115-29</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Value</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Description</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Status</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center>54747A0E 4ACF41F4F 29C9E769 F4121</center>
+</td>
+
+<td VALIGN=TOP>TP-User-Data</td>
+
+<td VALIGN=TOP>The user data. Format of the user data depends, what kind
+of message is sent. This example includes text string "This is testing
+!". 17 septets + fill bits = 15 octets.</td>
+</tr>
+</table>
+
+<p><a href="#top">Top of page</a>
+<p><a NAME="encode"></a><b>8. How can I encode the short message TPDU (8
+bit, User-data-header)</b>
+<br>SMS-SUBMIT and SMS-DELIVER are TPDUs (Transfer Protocol Data Unit).
+Those can be build different ways, structure is explained more detailed
+in GSM 03.40 specification. SUBMIT goes from phone to network and DELIVER
+is coming from network to phone. Here is included an example of sending
+a 8bit short message with the SMS PDU mode.
+<p>Example of how this is done in practise using normal terminal program.
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 >
+
+<tr>
+<td>AT+CMGF=0</td>
+
+<td>set SMS PDU mode on</td>
+</tr>
+
+<tr>
+<td>OK</td>
+
+<td></td>
+</tr>
+
+<tr>
+<td>AT+CMGS=50</td>
+
+<td>length of the SMS PDU, The RP layer SC address is not included in this
+example.</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<br>0051000C9153487004633200F5A72406050415811581 024A3A51D195CDD008001B20550590610560558550548540
+8208499000</td>
+</tr>
+
+<tr>
+<td>+CMGS: 212</td>
+
+<td>message reference is shown</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<br>OK</td>
+</tr>
+</table>
+
+<p><b>Table 2. &lt;pdu>, TPDU in hexadecimal format</b>
+<br>&nbsp;
+<table BORDER CELLSPACING=0 CELLPADDING=2 WIDTH="390" >
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>RP SC address (optional)</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Value</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Description</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Status</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>&nbsp;</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>Address length&nbsp;</td>
+
+<td VALIGN=TOP>Length of the address is 0, because the address is not included
+in this message.</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>TPDU Octet 1 bits</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Value
+<br>(hex 51)</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Description</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Status</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>7</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0</center>
+</td>
+
+<td VALIGN=TOP>TP-Reply-Path&nbsp;</td>
+
+<td VALIGN=TOP>Reply path no set</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>6</center>
+</td>
+
+<td VALIGN=TOP>
+<center>1</center>
+</td>
+
+<td VALIGN=TOP>TP-User -Data-Header -Indicator&nbsp;</td>
+
+<td VALIGN=TOP>Indication that user data contains an additional header.</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>5</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0</center>
+</td>
+
+<td VALIGN=TOP>TP-Status -Report-Request</td>
+
+<td VALIGN=TOP>Not requested</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>4</center>
+</td>
+
+<td VALIGN=TOP>
+<center>1</center>
+</td>
+
+<td VALIGN=TOP>TP-Validity -Period-Format</td>
+
+<td VALIGN=TOP>Relative format (bits 4 and 3)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>3</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0</center>
+</td>
+
+<td VALIGN=TOP>TP-Validity -Period-Format</td>
+
+<td VALIGN=TOP>Relative format (bits 4 and 3)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>2</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0</center>
+</td>
+
+<td VALIGN=TOP>TP-Reject -Duplicates</td>
+
+<td VALIGN=TOP>Do not reject duplicates in SC</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>1</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0</center>
+</td>
+
+<td VALIGN=TOP>TP-Message -Type -Indicator</td>
+
+<td VALIGN=TOP>type:SMS-SUBMIT (from phone to network), (bits 1 and 0)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>0</center>
+</td>
+
+<td VALIGN=TOP>
+<center>1</center>
+</td>
+
+<td VALIGN=TOP>TP-Message -Type -Indicator</td>
+
+<td VALIGN=TOP>type:SMS-SUBMIT (from phone to network), (bits 1 and 0)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>TPDU Octet 2</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Value</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Description</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Status</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>TP-Message -Reference&nbsp;</td>
+
+<td VALIGN=TOP>Given by the phone, application/user does not need to fill
+this octet.</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>TPDU Octet 3</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Value</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Description</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Status</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0C</center>
+</td>
+
+<td VALIGN=TOP>Address length in semi-octets.&nbsp;</td>
+
+<td VALIGN=TOP>Length of the address is 12 in semi-octets. Length includes
+the type of numbering plan indication.</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>TPDU Octet 4</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Value</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Description</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Status</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center>91</center>
+</td>
+
+<td VALIGN=TOP>Type of address&nbsp;</td>
+
+<td VALIGN=TOP>International address using ISDN telephone numbering plan.</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>TPDU Octets 5-10</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Value</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Description</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Status</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center>21
+<br>48
+<br>70
+<br>04
+<br>63
+<br>32</center>
+</td>
+
+<td VALIGN=TOP>TP-Destination-Address</td>
+
+<td VALIGN=TOP>The destination telephone number. F.ex +12 84 07 40 36 23
+is encoded as 21 48 70 04 63 32. In this case the address takes 6 octets.
+The address can be 2 to 12 octets long.</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>TPDU Octet 11</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Value</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Description</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Status</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>TP-Protocol-Identifier, consist one octet. For the details,
+see GSM 03.40 specification, version 7.2.0, page 53.</td>
+
+<td VALIGN=TOP>Parameter identifying the above layer protocol, if any.
+Note that for the straightforward case of simple MS-to-SC short message
+transfer, the TP-Protocol-Identifier is set to the value 00.</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>TPDU Octet 12 bits</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Value
+<br>(hex F5)</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Description</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Status</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>7</center>
+</td>
+
+<td VALIGN=TOP>
+<center>1</center>
+</td>
+
+<td VALIGN=TOP>TP-Data-Coding-Scheme used in TP-User-Data, consist one
+octet. See GSM 3.38</td>
+
+<td VALIGN=TOP>Functionality (bits 7 - 4) related to usage of bits 3 -
+0.</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>6</center>
+</td>
+
+<td VALIGN=TOP>
+<center>1</center>
+</td>
+
+<td VALIGN=TOP>&nbsp;</td>
+
+<td VALIGN=TOP>Functionality (bits 7 - 4) related to usage of bits 3 -
+0.</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>5</center>
+</td>
+
+<td VALIGN=TOP>
+<center>1</center>
+</td>
+
+<td VALIGN=TOP>&nbsp;</td>
+
+<td VALIGN=TOP>Functionality (bits 7 - 4) related to usage of bits 3 -
+0.</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>4</center>
+</td>
+
+<td VALIGN=TOP>
+<center>1</center>
+</td>
+
+<td VALIGN=TOP>&nbsp;</td>
+
+<td VALIGN=TOP>Functionality (bits 7 - 4) related to usage of bits 3 -
+0.</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>3</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0</center>
+</td>
+
+<td VALIGN=TOP>reserved, set to 0</td>
+
+<td VALIGN=TOP>&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>2</center>
+</td>
+
+<td VALIGN=TOP>
+<center>1</center>
+</td>
+
+<td VALIGN=TOP>Message coding</td>
+
+<td VALIGN=TOP>8-bit data</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>1</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0</center>
+</td>
+
+<td VALIGN=TOP>Message class (bits 1 and 0)</td>
+
+<td VALIGN=TOP>Class 1, Default meaning: ME-specific</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>0</center>
+</td>
+
+<td VALIGN=TOP>
+<center>1</center>
+</td>
+
+<td VALIGN=TOP>Message class (bits 1 and 0)</td>
+
+<td VALIGN=TOP>Class 1, Default meaning: ME-specific</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>TPDU Octet 13</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Value</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Description</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Status</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center>A7</center>
+</td>
+
+<td VALIGN=TOP>TP-Validity -Period (Relative format). See GSM 03.40, version
+7.2.0, page 55 for details.</td>
+
+<td VALIGN=TOP>A7 -> 24 hours.</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>TPDU Octet 14</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Value</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Description</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Status</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>
+<center>24</center>
+</td>
+
+<td VALIGN=TOP>TP-User -Data-Length</td>
+
+<td VALIGN=TOP>Parameter indicating the length of the TP-User-Data field
+to follow. Represented as amount of octets (integer). 24 hex -> 36 octets.
+Length includes the user data header and data itself.</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>TPDU Octets 15-50</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Value</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Description</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Status</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>06050415 81158102 4A3A51D 195CDD0 08001B20 55059061 05605585
+50548540 82084990 00</td>
+
+<td VALIGN=TOP>TP-User -Data</td>
+
+<td VALIGN=TOP>The user data. Format of the user data depends, what kind
+of message is sent. This message includes user data header and the user
+data itself. The example is ringing tone message.</td>
+</tr>
+</table>
+
+<p><a href="#top">Top of page</a>
+<p><a NAME="operator"></a><b>9. How can I encode operator logo message
+user data (8 bit)?</b>
+<br>This example shows how to encode the operator logo message userdata.
+The length of the userdata is such a long that the message must be sent
+as a concatenated message (two parts). The length of the first part is
+140 (dec) which is 8C (hex), and the length of the second part is 19 (dec)
+which is 13 (hex).
+<p>Here is the hex coded user data and the details of the data is explained
+in the tables 3a and 3b.
+<p>The first part:
+<br>0B05041582000000030102013042F4500A00480E01FFFFFFFFFFFFF
+<br>FFFFF000000000000000000FFFFFFFFFFFFFFFFFF00000000000000
+<br>000010F000000000000000000000000000000000000000000000000
+<br>0000000000000000000000000000000000000000000000000000000
+<br>0000000000000000000000000000000000000000000000000000000
+<br>00000
+<p>The second part:
+<br>0B050415820000000301020200000000000001
+<br>&nbsp;
+<p><b>Table 3a. The first part of the Operator logo message user data (length
+140 octets -> hex 8C)</b>
+<br>&nbsp;
+<table BORDER CELLSPACING=0 CELLPADDING=2 WIDTH="390" >
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Octet number</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Value</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Description</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>1</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0B</center>
+</td>
+
+<td VALIGN=TOP>Length of the User Data Header</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>2</center>
+</td>
+
+<td VALIGN=TOP>
+<center>05</center>
+</td>
+
+<td VALIGN=TOP>IEI - Information Element Identifier (Application port addressing
+scheme, 16 bit port address)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>3</center>
+</td>
+
+<td VALIGN=TOP>
+<center>04</center>
+</td>
+
+<td VALIGN=TOP>IEDL - Information Element Data Length</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>4</center>
+</td>
+
+<td VALIGN=TOP>
+<center>15</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (octets 4 &amp; 5 --> 1582 - destination
+port)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>5</center>
+</td>
+
+<td VALIGN=TOP>
+<center>82</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>6</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (octets 6 &amp; 7 --> 0000 - originator
+port)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>7</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>8</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>IEI - Information Element Identifier (Concatenated short
+message, 8 bit reference number)&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>9</center>
+</td>
+
+<td VALIGN=TOP>
+<center>03</center>
+</td>
+
+<td VALIGN=TOP>IEDL - Information Element Data Length&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>10</center>
+</td>
+
+<td VALIGN=TOP>
+<center>01</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (Concatenated short message reference
+number)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>11</center>
+</td>
+
+<td VALIGN=TOP>
+<center>02</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (Total number of (concatenated)
+messages (0-255))</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>12</center>
+</td>
+
+<td VALIGN=TOP>
+<center>01</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (Sequence number of current short
+message)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>13</center>
+</td>
+
+<td VALIGN=TOP>
+<center>30</center>
+</td>
+
+<td VALIGN=TOP>Operator logo version number. ISO-8859-1 character "0"</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>14</center>
+</td>
+
+<td VALIGN=TOP>
+<center>42</center>
+</td>
+
+<td VALIGN=TOP>MCC (Mobile Country Code), octets 14 and 15, little-endian
+BCD, filled with F16', 244 -> 42 F4
+<br>Notice: To see the logo on the phone's screen, octets 14 and 15 must
+be defined with the settings of the current operator.&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>15</center>
+</td>
+
+<td VALIGN=TOP>
+<center>F4</center>
+</td>
+
+<td VALIGN=TOP>MCC (Mobile Country Code), octets 14 and 15, little-endian
+BCD, filled with F16', 244 -> 42 F4
+<br>Notice: To see the logo on the phone's screen, octets 14 and 15 must
+be defined with the settings of the current operator.&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>16</center>
+</td>
+
+<td VALIGN=TOP>
+<center>50</center>
+</td>
+
+<td VALIGN=TOP>MNC (Mobile Network Code) coding, little-endian BCD, filled
+with F16', 05 -> 50&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>17</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0A</center>
+</td>
+
+<td VALIGN=TOP>ISO-8859-1 "Line feed" character&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>18</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>InfoField, See "Smart Messaging Specification 3.0.0" for
+details.&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>19</center>
+</td>
+
+<td VALIGN=TOP>
+<center>48</center>
+</td>
+
+<td VALIGN=TOP>The width of the bitmap. Hex 48 -> 72 decimal&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>20</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0E</center>
+</td>
+
+<td VALIGN=TOP>The height of the bitmap. Hex 0E -> 14 decimal&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>21</center>
+</td>
+
+<td VALIGN=TOP>
+<center>01</center>
+</td>
+
+<td VALIGN=TOP>The depth of the bitmap (number of gray scales).&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>22-140</center>
+</td>
+
+<td VALIGN=TOP COLSPAN="2">Value: FFFFFFFFFFFFFFFFFF000000000000000000FFFFFFFF
+<br>FFFFFFFFFF00000000000000000010F0000000000000
+<br>00000000000000000000000000000000000000000000
+<br>00000000000000000000000000000000000000000000
+<br>00000000000000000000000000000000000000000000
+<br>000000000000000000
+<p>Description: OTA bitmap data.</td>
+</tr>
+</table>
+
+<p><b>Table 3b. The second part of the Operator logo message user data
+(length 19 octets -> hex 13)</b>
+<br>&nbsp;
+<table BORDER CELLSPACING=0 CELLPADDING=2 WIDTH="390" >
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Octet number</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Value</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Description</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>1</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0B</center>
+</td>
+
+<td VALIGN=TOP>Length of the User Data Header</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>2</center>
+</td>
+
+<td VALIGN=TOP>
+<center>05</center>
+</td>
+
+<td VALIGN=TOP>IEI - Information Element Identifier (Application port addressing
+scheme, 16 bit port address)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>3</center>
+</td>
+
+<td VALIGN=TOP>
+<center>04</center>
+</td>
+
+<td VALIGN=TOP>IEDL - Information Element Data Length</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>4</center>
+</td>
+
+<td VALIGN=TOP>
+<center>15</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (octets 4 &amp; 5 --> 1582 - destination
+port)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>5</center>
+</td>
+
+<td VALIGN=TOP>
+<center>82</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>6</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (octets 6 &amp; 7 --> 0000 - originator
+port)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>7</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>8</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>IEI - Information Element Identifier (Concatenated short
+message, 8 bit reference number)&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>9</center>
+</td>
+
+<td VALIGN=TOP>
+<center>03</center>
+</td>
+
+<td VALIGN=TOP>IEDL - Information Element Data Length&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>10</center>
+</td>
+
+<td VALIGN=TOP>
+<center>01</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (Concatenated short message reference
+number)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>11</center>
+</td>
+
+<td VALIGN=TOP>
+<center>02</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (Total number of (concatenated)
+messages (0-255))</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>12</center>
+</td>
+
+<td VALIGN=TOP>
+<center>02</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (Sequence number of current short
+message)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>13-19</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00000000000001</center>
+</td>
+
+<td VALIGN=TOP>The rest of the OTA bitmap data.</td>
+</tr>
+</table>
+
+<p><a href="#top">Top of page</a>
+<p><a NAME="cli"></a><b>10. How can I encode Caller Line Identification
+(CLI) icon message user data (8 bit)?</b>
+<br>This example shows how to encode the Caller Line Identification icon
+(Caller group graphic) message user data. The length of the userdata is
+138 octets, which is 8A in hexadecimal presentation.
+<p>Here is the hex coded user data and the details of the data is explained
+in the table 4.
+<p>060504158300003000480E010000000000000000000000000000000000
+<br>0000007904100000000000008504100000000000008104100000000000
+<br>0081041038F38000000081041045144000000081041045144000000081
+<br>041045144000000085041045144000000079F41F38F380000000000000
+<br>00100000000000000001E00000000000000000000000
+<br>&nbsp;
+<p><b>Table 4. CLI icon message user data (length 138 octets -> hex 8A)</b>
+<br>&nbsp;
+<table BORDER CELLSPACING=0 CELLPADDING=2 WIDTH="390" >
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Octet number</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Value</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Description</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>1</center>
+</td>
+
+<td VALIGN=TOP>
+<center>06</center>
+</td>
+
+<td VALIGN=TOP>Length of the User Data Header</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>2</center>
+</td>
+
+<td VALIGN=TOP>
+<center>05</center>
+</td>
+
+<td VALIGN=TOP>IEI - Information Element Identifier (Application port addressing
+scheme, 16 bit port address)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>3</center>
+</td>
+
+<td VALIGN=TOP>
+<center>04</center>
+</td>
+
+<td VALIGN=TOP>IEDL - Information Element Data Length</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>4</center>
+</td>
+
+<td VALIGN=TOP>
+<center>15</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (octets 4 &amp; 5 --> 1583 - destination
+port)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>5</center>
+</td>
+
+<td VALIGN=TOP>
+<center>83</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>6</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (octets 6 &amp; 7 --> 0000 - originator
+port)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>7</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>8</center>
+</td>
+
+<td VALIGN=TOP>
+<center>30</center>
+</td>
+
+<td VALIGN=TOP>CLI Icon version number. ISO-8859-1 character "0"</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>9</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>InfoField, See "Smart Messaging Specification 3.0.0" for
+details.</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>10</center>
+</td>
+
+<td VALIGN=TOP>
+<center>48</center>
+</td>
+
+<td VALIGN=TOP>The width of the bitmap. Hex 48 -> 72 decimal</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>11</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0E</center>
+</td>
+
+<td VALIGN=TOP>The height of the bitmap. Hex 0E -> 14 decimal</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>12</center>
+</td>
+
+<td VALIGN=TOP>
+<center>01</center>
+</td>
+
+<td VALIGN=TOP>The depth of the bitmap (number gray scales).</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>13-138</center>
+</td>
+
+<td VALIGN=TOP>
+<center>&nbsp;</center>
+</td>
+
+<td VALIGN=TOP>OTA bitmap data</td>
+</tr>
+</table>
+
+<p><a href="#top">Top of page</a>
+<p><a NAME="ota"></a><b>11. How can I encode an OTA bitmap?</b>
+<br>OTA Bitmap is used as a part of the following Smart Messaging formats:
+Operator logo, CLI icon, Picture Message and Downloadable Profile. In today's
+Nokia phones the maximum size of the operator logo and the CLI icon is
+72x14 pixels, while the maximum size of the picture message and the screen
+saver is 72x28 pixels.
+<p>An OTA Bitmap consists of a bitmap header and a bitmap data. The size
+of the bitmap is specified in the header. Several other information (ie.
+number of colors) are also defined there, but those informations handle
+issues that are not supported in today's Nokia phones. So these values
+are similar in all OTA Bitmap headers.
+<p>Typical OTA Bitmap (72x14 pixels) header is: <i>00480E01</i>
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="400" >
+
+<tr>
+<td WIDTH="50"><i>00</i></td>
+
+<td WIDTH="350">'Infofield'</td>
+</tr>
+
+<tr>
+<td><i>48</i></td>
+
+<td>'Width of the bitmap is 72 pixels'</td>
+</tr>
+
+<tr>
+<td><i>0E</i></td>
+
+<td>'Height of the bitmap is 14 pixels'</td>
+</tr>
+
+<tr>
+<td>01</td>
+
+<td>'Number of colors or grey shades (only one color)'</td>
+</tr>
+</table>
+
+<p>The image data is located after the header information and is encoded
+as follows. Each semi-octet in the OTA bitmap presents 4 pixels in the
+original bitmap. Because one row takes 18 semi-octets, the whole 72x14
+size (operator logo and CLI icon) bitmap takes 18x14 = 252 semi-octets
+= 126 octets. In the case of the picture message and screen saver the whole
+72x28 size bitmap takes 18x28 = 504 semi-octets = 252 octets.
+<p>For example, if the first four pixels of the image are 1010 (1 - black,
+0 - white), the first semi-octet of the OTA bitmap data is hex A.
+<p>This is an example of a simple OTA bitmap (72x14 pixels). In the picture,
+there are two black lines and several black dots.
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="400" >
+<caption>&nbsp;</caption>
+
+<tr>
+<td WIDTH="150"><font face="courier new">FFFFFFFFFFFFFFFFFF</font></td>
+
+<td WIDTH="250"><font face="courier new">&lt;- First line black</font></td>
+</tr>
+
+<tr>
+<td><font face="courier new">000000000000000000</font></td>
+
+<td><font face="courier new">&lt;- Second line white</font></td>
+</tr>
+
+<tr>
+<td WIDTH="150"><font face="courier new">FFFFFFFFFFFFFFFFFF</font></td>
+
+<td WIDTH="250"><font face="courier new">&nbsp;</font></td>
+</tr>
+
+<tr>
+<td><font face="courier new">000000000000000000</font></td>
+
+<td><font face="courier new">&nbsp;</font></td>
+</tr>
+
+<tr>
+<td><font face="courier new">10F000000000000000</font></td>
+
+<td><font face="courier new">&lt;- Fourth pixel of this line is</font></td>
+</tr>
+
+<tr>
+<td><font face="courier new">000000000000000000</font></td>
+
+<td><font face="courier new">&nbsp;&nbsp; black and 9-12 pixels are</font></td>
+</tr>
+
+<tr>
+<td><font face="courier new">000000000000000000</font></td>
+
+<td><font face="courier new">&nbsp;&nbsp; also black</font></td>
+</tr>
+
+<tr>
+<td><font face="courier new">000000000000000000</font></td>
+
+<td><font face="courier new">&nbsp;</font></td>
+</tr>
+
+<tr>
+<td><font face="courier new">000000000000000000</font></td>
+
+<td><font face="courier new">&nbsp;</font></td>
+</tr>
+
+<tr>
+<td><font face="courier new">000000000000000000</font></td>
+
+<td><font face="courier new">&nbsp;</font></td>
+</tr>
+
+<tr>
+<td><font face="courier new">000000000000000000</font></td>
+
+<td><font face="courier new">&nbsp;</font></td>
+</tr>
+
+<tr>
+<td><font face="courier new">000000000000000000</font></td>
+
+<td><font face="courier new">&nbsp;</font></td>
+</tr>
+
+<tr>
+<td><font face="courier new">000000000000000000</font></td>
+
+<td><font face="courier new">&nbsp;</font></td>
+</tr>
+
+<tr>
+<td><font face="courier new">000000000000000001</font></td>
+
+<td><font face="courier new">&lt;- Last pixel of this</font></td>
+</tr>
+
+<tr>
+<td><font face="courier new">&nbsp;</font></td>
+
+<td><font face="courier new">&nbsp;&nbsp; row/bitmap is black</font></td>
+</tr>
+</table>
+
+<p>For more information, please refer to the Smart Messaging Specification
+3.0.0.
+<p><a href="#top">Top of page</a>
+<p><a NAME="tone"></a><b>12. How can I encode ringing tone message user
+data (8 bit)?</b>
+<br>This example shows how to encode the ringing tone message user data.
+The length of the user data is 37 octets, which is 25 in hexadecimal presentation.
+<p>Here is the hex coded user data and the details of the data are explained
+in the tables 5 and 6.
+<p>06050415810000024A3A51D195CDD004001B2055059061056055855
+<br>0548540820849900000
+<br>&nbsp;
+<p><b>Table 5. Ringing tone message user data (length 37 octets -> hex
+25)</b>
+<br>&nbsp;
+<table BORDER CELLSPACING=0 CELLPADDING=2 WIDTH="390" >
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Octet number</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Value</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Description</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>1</center>
+</td>
+
+<td VALIGN=TOP>
+<center>06</center>
+</td>
+
+<td VALIGN=TOP>Length of the User Data Header</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>2</center>
+</td>
+
+<td VALIGN=TOP>
+<center>05</center>
+</td>
+
+<td VALIGN=TOP>IEI - Information Element Identifier (Application port addressing
+scheme, 16 bit port address)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>3</center>
+</td>
+
+<td VALIGN=TOP>
+<center>04</center>
+</td>
+
+<td VALIGN=TOP>IEDL - Information Element Data Length</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>4</center>
+</td>
+
+<td VALIGN=TOP>
+<center>15</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (octets 4 &amp; 5 --> 1581 - destination
+port)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>5</center>
+</td>
+
+<td VALIGN=TOP>
+<center>81</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>6</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (octets 6 &amp; 7 --> 0000 - originator
+port)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>7</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data</td>
+</tr>
+</table>
+
+<p>The rest of the user data (024A3A51D195CDD004001B2055059061056055855054854082084
+<br>9900000) has been encoded from the bit string which is explained in
+the table 6. The whole bit string must be devided to octets and then transferred
+to hex code. For more information please refer to the Smart Messaging Specification
+3.0.0.
+<p><b>Table 6. Ringing tone bit string</b>
+<br>&nbsp;
+<table BORDER CELLSPACING=0 CELLPADDING=2 WIDTH="390" >
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#DFDFDF">Bit string</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">Description</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">Value</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>00000010</td>
+
+<td VALIGN=TOP>&lt;command-length></td>
+
+<td VALIGN=TOP>Number of command part presents</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>01001010</td>
+
+<td VALIGN=TOP>&lt;ringing-tone-programming></td>
+
+<td VALIGN=TOP>Command part 1 (with filler bit)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>0011101</td>
+
+<td VALIGN=TOP>&lt;sound></td>
+
+<td VALIGN=TOP>Command part 2</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>001</td>
+
+<td VALIGN=TOP>&lt;basic song type></td>
+
+<td VALIGN=TOP>&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>0100</td>
+
+<td VALIGN=TOP>&lt;song title length></td>
+
+<td VALIGN=TOP>4 characters (ISO-8859-1)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>01110100</td>
+
+<td VALIGN=TOP>the first character</td>
+
+<td VALIGN=TOP>t</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>01100101</td>
+
+<td VALIGN=TOP>the second character</td>
+
+<td VALIGN=TOP>e</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>01110011</td>
+
+<td VALIGN=TOP>the third character</td>
+
+<td VALIGN=TOP>s</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>01110100</td>
+
+<td VALIGN=TOP>the fourth character</td>
+
+<td VALIGN=TOP>t</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>00000001</td>
+
+<td VALIGN=TOP>&lt;song sequence length></td>
+
+<td VALIGN=TOP>1 song patterns</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>000</td>
+
+<td VALIGN=TOP>&lt;pattern header></td>
+
+<td VALIGN=TOP>pattern header id</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>00</td>
+
+<td VALIGN=TOP>&lt;pattern id></td>
+
+<td VALIGN=TOP>A-part</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>0000</td>
+
+<td VALIGN=TOP>&lt;loop value></td>
+
+<td VALIGN=TOP>no loop&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>00001101</td>
+
+<td VALIGN=TOP>&lt;pattern specifier></td>
+
+<td VALIGN=TOP>&lt;length of the new pattern> 13 pattern instructions&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>100</td>
+
+<td VALIGN=TOP>&lt;tempo instruction id></td>
+
+<td VALIGN=TOP>&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>10000</td>
+
+<td VALIGN=TOP>&lt;beats per minute></td>
+
+<td VALIGN=TOP>160 (i.e. length of 1/4 note = 0,38 sec.)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>001</td>
+
+<td VALIGN=TOP>&lt;note instruction id></td>
+
+<td VALIGN=TOP>&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>0101</td>
+
+<td VALIGN=TOP>&lt;note value></td>
+
+<td VALIGN=TOP>note E</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>010</td>
+
+<td VALIGN=TOP>&lt;note duration></td>
+
+<td VALIGN=TOP>1/4 note</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>00</td>
+
+<td VALIGN=TOP>&lt;note duration specifier></td>
+
+<td VALIGN=TOP>no special duration</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>001</td>
+
+<td VALIGN=TOP>&lt;note instruction id></td>
+
+<td VALIGN=TOP>&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>0110</td>
+
+<td VALIGN=TOP>&lt;note value></td>
+
+<td VALIGN=TOP>note F</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>010</td>
+
+<td VALIGN=TOP>&lt;note duration></td>
+
+<td VALIGN=TOP>1/4 note</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>00</td>
+
+<td VALIGN=TOP>&lt;note duration specifier></td>
+
+<td VALIGN=TOP>no special duration</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>001</td>
+
+<td VALIGN=TOP>&lt;note instruction id></td>
+
+<td VALIGN=TOP>&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>1000</td>
+
+<td VALIGN=TOP>&lt;note instruction></td>
+
+<td VALIGN=TOP>note G</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>010</td>
+
+<td VALIGN=TOP>&lt;note duration></td>
+
+<td VALIGN=TOP>1/4 note</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>00</td>
+
+<td VALIGN=TOP>&lt;note duration specifier></td>
+
+<td VALIGN=TOP>no special duration</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>001</td>
+
+<td VALIGN=TOP>&lt;note instruction id></td>
+
+<td VALIGN=TOP>&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>0101</td>
+
+<td VALIGN=TOP>&lt;note value></td>
+
+<td VALIGN=TOP>note E</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>100</td>
+
+<td VALIGN=TOP>&lt;note duration></td>
+
+<td VALIGN=TOP>1/16 note</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>00</td>
+
+<td VALIGN=TOP>&lt;note duration specifier></td>
+
+<td VALIGN=TOP>no special duration</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>001</td>
+
+<td VALIGN=TOP>&lt;note instruction id></td>
+
+<td VALIGN=TOP>&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>0101</td>
+
+<td VALIGN=TOP>&lt;note value></td>
+
+<td VALIGN=TOP>note E</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>011</td>
+
+<td VALIGN=TOP>&lt;note duration></td>
+
+<td VALIGN=TOP>1/8 note</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>00</td>
+
+<td VALIGN=TOP>&lt;note duration specifier></td>
+
+<td VALIGN=TOP>no special duration</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>001</td>
+
+<td VALIGN=TOP>&lt;note instruction id></td>
+
+<td VALIGN=TOP>&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>0101</td>
+
+<td VALIGN=TOP>&lt;note value></td>
+
+<td VALIGN=TOP>note E</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>010</td>
+
+<td VALIGN=TOP>&lt;note duration></td>
+
+<td VALIGN=TOP>1/4 note</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>00</td>
+
+<td VALIGN=TOP>&lt;note duration specifier></td>
+
+<td VALIGN=TOP>no special duration</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>001</td>
+
+<td VALIGN=TOP>&lt;note instruction id></td>
+
+<td VALIGN=TOP>&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>0101</td>
+
+<td VALIGN=TOP>&lt;note value></td>
+
+<td VALIGN=TOP>note E</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>001</td>
+
+<td VALIGN=TOP>&lt;note duration></td>
+
+<td VALIGN=TOP>1/2 note</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>00</td>
+
+<td VALIGN=TOP>&lt;note duration specifier></td>
+
+<td VALIGN=TOP>no special duration</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>001</td>
+
+<td VALIGN=TOP>&lt;note instruction id></td>
+
+<td VALIGN=TOP>&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>0101</td>
+
+<td VALIGN=TOP>&lt;note value></td>
+
+<td VALIGN=TOP>note E</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>000</td>
+
+<td VALIGN=TOP>&lt;note duration></td>
+
+<td VALIGN=TOP>full note</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>00</td>
+
+<td VALIGN=TOP>&lt;note duration specifier></td>
+
+<td VALIGN=TOP>no special duration</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>010</td>
+
+<td VALIGN=TOP>&lt;scale instruction id></td>
+
+<td VALIGN=TOP>&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>00</td>
+
+<td VALIGN=TOP>&lt;note scale></td>
+
+<td VALIGN=TOP>Scale-1 (i.e. Note A is 440 Hz)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>001</td>
+
+<td VALIGN=TOP>&lt;note instructon id></td>
+
+<td VALIGN=TOP>&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>0000</td>
+
+<td VALIGN=TOP>&lt;note value></td>
+
+<td VALIGN=TOP>pause</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>010</td>
+
+<td VALIGN=TOP>&lt;note duration></td>
+
+<td VALIGN=TOP>1/4 note</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>00</td>
+
+<td VALIGN=TOP>&lt;note duration specifier></td>
+
+<td VALIGN=TOP>no special duration</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>010</td>
+
+<td VALIGN=TOP>&lt;scale instruction id></td>
+
+<td VALIGN=TOP>&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>01</td>
+
+<td VALIGN=TOP>&lt;note scale></td>
+
+<td VALIGN=TOP>Scale-2 (i.e. Note A is 880 Hz), default</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>001</td>
+
+<td VALIGN=TOP>&lt;note instruction id></td>
+
+<td VALIGN=TOP>&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>1001</td>
+
+<td VALIGN=TOP>&lt;note value></td>
+
+<td VALIGN=TOP>Gis i.e. As'</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>000</td>
+
+<td VALIGN=TOP>&lt;note duration></td>
+
+<td VALIGN=TOP>full note</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>00</td>
+
+<td VALIGN=TOP>&lt;note duration specifier></td>
+
+<td VALIGN=TOP>no special duration</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>0000000</td>
+
+<td VALIGN=TOP>&nbsp;</td>
+
+<td VALIGN=TOP>filler bits</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>00000000</td>
+
+<td VALIGN=TOP>&lt;command end></td>
+
+<td VALIGN=TOP>The end of the ringing tone data</td>
+</tr>
+</table>
+
+<p><a href="#top">Top of page</a>
+<p><a NAME="vcard"></a><b>13. How can I encode vCard message user data
+(8 bit)?</b>
+<p>This example shows how to encode the vCard message userdata.
+<p>The vCard message content is:
+<br>&nbsp;
+<blockquote><font face="courier new">BEGIN:VCARD</font>
+<br><font face="courier new">VERSION:2.1</font>
+<br><font face="courier new">N:Smith;Mike</font>
+<br><font face="courier new">TEL;PREF:+55512345</font>
+<br><font face="courier new">END:VCARD</font></blockquote>
+Here is the hex coded user data of the example above. The details of the
+data are explained in the table 7. The length of the user data is 78 octets,
+which is 4E in hexadecimal presentation.
+<p>06050423F40000424547494E3A56434152440D0A56455253494F4E
+<br>3A322E310D0A4E3A536D6974683B4D696B650D0A54454C3B5052
+<br>45463A2B35353531323334350D0A454E443A56434152440D0A
+<br>&nbsp;
+<p><b>Table 7. vCard message user data (length 78 octets -> hex 4E)</b>
+<br>&nbsp;
+<table BORDER CELLSPACING=0 CELLPADDING=2 WIDTH="390" >
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Octet number</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Value</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Description</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>1</center>
+</td>
+
+<td VALIGN=TOP>
+<center>06</center>
+</td>
+
+<td VALIGN=TOP>Length of the User Data Header</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>2</center>
+</td>
+
+<td VALIGN=TOP>
+<center>05</center>
+</td>
+
+<td VALIGN=TOP>IEI - Information Element Identifier (Application port addressing
+scheme, 16 bit port address)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>3</center>
+</td>
+
+<td VALIGN=TOP>
+<center>04</center>
+</td>
+
+<td VALIGN=TOP>IEDL - Information Element Data Length</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>4</center>
+</td>
+
+<td VALIGN=TOP>
+<center>23</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (octets 4 &amp; 5 --> 23F4 - destination
+port)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>5</center>
+</td>
+
+<td VALIGN=TOP>
+<center>F4</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>6</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (octets 6 &amp; 7 --> 0000 - originator
+port)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>7</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>8</center>
+</td>
+
+<td VALIGN=TOP>
+<center>42</center>
+</td>
+
+<td VALIGN=TOP>B</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>9</center>
+</td>
+
+<td VALIGN=TOP>
+<center>45</center>
+</td>
+
+<td VALIGN=TOP>E</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>10</center>
+</td>
+
+<td VALIGN=TOP>
+<center>47</center>
+</td>
+
+<td VALIGN=TOP>G</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>11</center>
+</td>
+
+<td VALIGN=TOP>
+<center>49</center>
+</td>
+
+<td VALIGN=TOP>I</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>12</center>
+</td>
+
+<td VALIGN=TOP>
+<center>4E</center>
+</td>
+
+<td VALIGN=TOP>N</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>13</center>
+</td>
+
+<td VALIGN=TOP>
+<center>3A</center>
+</td>
+
+<td VALIGN=TOP>:</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>14</center>
+</td>
+
+<td VALIGN=TOP>
+<center>56</center>
+</td>
+
+<td VALIGN=TOP>V</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>15</center>
+</td>
+
+<td VALIGN=TOP>
+<center>43</center>
+</td>
+
+<td VALIGN=TOP>C</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>16</center>
+</td>
+
+<td VALIGN=TOP>
+<center>41</center>
+</td>
+
+<td VALIGN=TOP>A</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>17</center>
+</td>
+
+<td VALIGN=TOP>
+<center>52</center>
+</td>
+
+<td VALIGN=TOP>R</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>18</center>
+</td>
+
+<td VALIGN=TOP>
+<center>44</center>
+</td>
+
+<td VALIGN=TOP>D</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>19</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0D</center>
+</td>
+
+<td VALIGN=TOP>&lt;CR> Carriage Return</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>20</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0A</center>
+</td>
+
+<td VALIGN=TOP>&lt;LF> Line Feed</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>21</center>
+</td>
+
+<td VALIGN=TOP>
+<center>56</center>
+</td>
+
+<td VALIGN=TOP>V</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>22</center>
+</td>
+
+<td VALIGN=TOP>
+<center>45</center>
+</td>
+
+<td VALIGN=TOP>E</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>23</center>
+</td>
+
+<td VALIGN=TOP>
+<center>52</center>
+</td>
+
+<td VALIGN=TOP>R</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>24</center>
+</td>
+
+<td VALIGN=TOP>
+<center>53</center>
+</td>
+
+<td VALIGN=TOP>S</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>25</center>
+</td>
+
+<td VALIGN=TOP>
+<center>49</center>
+</td>
+
+<td VALIGN=TOP>I</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>26</center>
+</td>
+
+<td VALIGN=TOP>
+<center>4F</center>
+</td>
+
+<td VALIGN=TOP>O</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>27</center>
+</td>
+
+<td VALIGN=TOP>
+<center>4E</center>
+</td>
+
+<td VALIGN=TOP>N</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>28</center>
+</td>
+
+<td VALIGN=TOP>
+<center>3A</center>
+</td>
+
+<td VALIGN=TOP>:</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>29</center>
+</td>
+
+<td VALIGN=TOP>
+<center>32</center>
+</td>
+
+<td VALIGN=TOP>2</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>30</center>
+</td>
+
+<td VALIGN=TOP>
+<center>2E</center>
+</td>
+
+<td VALIGN=TOP>.</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>31</center>
+</td>
+
+<td VALIGN=TOP>
+<center>31</center>
+</td>
+
+<td VALIGN=TOP>1</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>32</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0D</center>
+</td>
+
+<td VALIGN=TOP>&lt;CR> Carriage Return</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>33</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0A</center>
+</td>
+
+<td VALIGN=TOP>&lt;LF> Line Feed</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>34</center>
+</td>
+
+<td VALIGN=TOP>
+<center>4E</center>
+</td>
+
+<td VALIGN=TOP>N</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>35</center>
+</td>
+
+<td VALIGN=TOP>
+<center>3A</center>
+</td>
+
+<td VALIGN=TOP>:</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>36</center>
+</td>
+
+<td VALIGN=TOP>
+<center>53</center>
+</td>
+
+<td VALIGN=TOP>S</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>37</center>
+</td>
+
+<td VALIGN=TOP>
+<center>6D</center>
+</td>
+
+<td VALIGN=TOP>m</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>38</center>
+</td>
+
+<td VALIGN=TOP>
+<center>69</center>
+</td>
+
+<td VALIGN=TOP>i</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>39</center>
+</td>
+
+<td VALIGN=TOP>
+<center>74</center>
+</td>
+
+<td VALIGN=TOP>t</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>40</center>
+</td>
+
+<td VALIGN=TOP>
+<center>68</center>
+</td>
+
+<td VALIGN=TOP>h</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>41</center>
+</td>
+
+<td VALIGN=TOP>
+<center>3B</center>
+</td>
+
+<td VALIGN=TOP>;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>42</center>
+</td>
+
+<td VALIGN=TOP>
+<center>4D</center>
+</td>
+
+<td VALIGN=TOP>M</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>43</center>
+</td>
+
+<td VALIGN=TOP>
+<center>69</center>
+</td>
+
+<td VALIGN=TOP>i</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>44</center>
+</td>
+
+<td VALIGN=TOP>
+<center>6B</center>
+</td>
+
+<td VALIGN=TOP>k</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>45</center>
+</td>
+
+<td VALIGN=TOP>
+<center>65</center>
+</td>
+
+<td VALIGN=TOP>e</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>46</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0D</center>
+</td>
+
+<td VALIGN=TOP>&lt;CR> Carriage Return</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>47</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0A</center>
+</td>
+
+<td VALIGN=TOP>&lt;LF> Line Feed</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>48</center>
+</td>
+
+<td VALIGN=TOP>
+<center>54</center>
+</td>
+
+<td VALIGN=TOP>T</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>49</center>
+</td>
+
+<td VALIGN=TOP>
+<center>45</center>
+</td>
+
+<td VALIGN=TOP>E</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>50</center>
+</td>
+
+<td VALIGN=TOP>
+<center>4C</center>
+</td>
+
+<td VALIGN=TOP>L</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>51</center>
+</td>
+
+<td VALIGN=TOP>
+<center>3B</center>
+</td>
+
+<td VALIGN=TOP>;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>52</center>
+</td>
+
+<td VALIGN=TOP>
+<center>50</center>
+</td>
+
+<td VALIGN=TOP>P</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>53</center>
+</td>
+
+<td VALIGN=TOP>
+<center>52</center>
+</td>
+
+<td VALIGN=TOP>R</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>54</center>
+</td>
+
+<td VALIGN=TOP>
+<center>45</center>
+</td>
+
+<td VALIGN=TOP>E</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>55</center>
+</td>
+
+<td VALIGN=TOP>
+<center>46</center>
+</td>
+
+<td VALIGN=TOP>F</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>56</center>
+</td>
+
+<td VALIGN=TOP>
+<center>3A</center>
+</td>
+
+<td VALIGN=TOP>:</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>57</center>
+</td>
+
+<td VALIGN=TOP>
+<center>2B</center>
+</td>
+
+<td VALIGN=TOP>+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>58</center>
+</td>
+
+<td VALIGN=TOP>
+<center>35</center>
+</td>
+
+<td VALIGN=TOP>5</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>59</center>
+</td>
+
+<td VALIGN=TOP>
+<center>35</center>
+</td>
+
+<td VALIGN=TOP>5</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>60</center>
+</td>
+
+<td VALIGN=TOP>
+<center>35</center>
+</td>
+
+<td VALIGN=TOP>5</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>61</center>
+</td>
+
+<td VALIGN=TOP>
+<center>31</center>
+</td>
+
+<td VALIGN=TOP>1</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>62</center>
+</td>
+
+<td VALIGN=TOP>
+<center>32</center>
+</td>
+
+<td VALIGN=TOP>2</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>63</center>
+</td>
+
+<td VALIGN=TOP>
+<center>33</center>
+</td>
+
+<td VALIGN=TOP>3</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>64</center>
+</td>
+
+<td VALIGN=TOP>
+<center>34</center>
+</td>
+
+<td VALIGN=TOP>4</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>65</center>
+</td>
+
+<td VALIGN=TOP>
+<center>35</center>
+</td>
+
+<td VALIGN=TOP>5</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>66</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0D</center>
+</td>
+
+<td VALIGN=TOP>&lt;CR> Carriage Return</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>67</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0A</center>
+</td>
+
+<td VALIGN=TOP>&lt;LF> Line Feed</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>68</center>
+</td>
+
+<td VALIGN=TOP>
+<center>45</center>
+</td>
+
+<td VALIGN=TOP>E</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>69</center>
+</td>
+
+<td VALIGN=TOP>
+<center>4E</center>
+</td>
+
+<td VALIGN=TOP>N</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>70</center>
+</td>
+
+<td VALIGN=TOP>
+<center>44</center>
+</td>
+
+<td VALIGN=TOP>D</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>71</center>
+</td>
+
+<td VALIGN=TOP>
+<center>3A</center>
+</td>
+
+<td VALIGN=TOP>:</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>72</center>
+</td>
+
+<td VALIGN=TOP>
+<center>56</center>
+</td>
+
+<td VALIGN=TOP>V</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>73</center>
+</td>
+
+<td VALIGN=TOP>
+<center>43</center>
+</td>
+
+<td VALIGN=TOP>C</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>74</center>
+</td>
+
+<td VALIGN=TOP>
+<center>41</center>
+</td>
+
+<td VALIGN=TOP>A</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>75</center>
+</td>
+
+<td VALIGN=TOP>
+<center>52</center>
+</td>
+
+<td VALIGN=TOP>R</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>76</center>
+</td>
+
+<td VALIGN=TOP>
+<center>44</center>
+</td>
+
+<td VALIGN=TOP>D</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>77</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0D</center>
+</td>
+
+<td VALIGN=TOP>&lt;CR> Carriage Return</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>78</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0A</center>
+</td>
+
+<td VALIGN=TOP>&lt;LF> Line Feed</td>
+</tr>
+</table>
+
+<p><a href="#top">Top of page</a>
+<p><a NAME="vcal"></a><b>14. How can I encode vCalendar message user data
+(8 bit)?</b>
+<p>This example shows how to encode vCalendar message user data.
+<p>The vCalendar message content is:
+<br>&nbsp;
+<blockquote><font face="courier new">BEGIN:VCALENDAR</font>
+<br><font face="courier new">VERSION:1.0</font>
+<br><font face="courier new">BEGIN:VEVENT</font>
+<br><font face="courier new">DESCRIPTION:Steering Group meeting in Portal</font>
+<br><font face="courier new">DTSTART:20000906T100000</font>
+<br><font face="courier new">DTEND:20000906T120000</font>
+<br><font face="courier new">END:VEVENT</font>
+<br><font face="courier new">END:VCALENDAR</font></blockquote>
+Here is the hex coded user data and the details of the data are explained
+in the tables 8a and 8b. The length of the user data is so long that the
+message must be sent as a concatenated message (two parts). The length
+of the first part is 140 (dec) which is 8C (hex), and the length of the
+second part is 49 (dec) which is 31 (hex).
+<p>The first part:
+<br>0B050423F500000003020201424547494E3A5643414C454E444152
+<br>0D0A56455253494F4E3A312E300D0A424547494E3A564556454E54
+<br>0D0A4445534352495054494F4E3A5374656572696E672047726F75
+<br>70206D656574696E6720696E20506F7274616C0D0A445453544152
+<br>543A3230303030393036543130303030300D0A4454454E443A3230
+<br>3030303930
+<p>The second part:
+<br>0B050423F50000000302020236543132303030300D0A454E443A56
+<br>4556454E540D0A454E443A5643414C454E4441520D0A
+<br>&nbsp;
+<p><b>Table 8a. The first part of the vCalendar message user data. (length
+140 octets -> hex 8C)</b>
+<br>&nbsp;
+<table BORDER CELLSPACING=0 CELLPADDING=2 WIDTH="390" >
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Octet number</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Value</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Description</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>1</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0B</center>
+</td>
+
+<td VALIGN=TOP>Length of the User Data Header</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>2</center>
+</td>
+
+<td VALIGN=TOP>
+<center>05</center>
+</td>
+
+<td VALIGN=TOP>IEI - Information Element Identifier (Application port addressing
+scheme, 16 bit port address)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>3</center>
+</td>
+
+<td VALIGN=TOP>
+<center>04</center>
+</td>
+
+<td VALIGN=TOP>IEDL - Information Element Data Length</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>4</center>
+</td>
+
+<td VALIGN=TOP>
+<center>23</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (octets 4 &amp; 5 --> 23F5 - destination
+port) .</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>5</center>
+</td>
+
+<td VALIGN=TOP>
+<center>F5</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>6</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (octets 6 &amp; 7 --> 23F5 - destination
+port)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>7</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>8</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>IEI - Information Element Identifier (Concatenated short
+message, 8 bit reference number)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>9</center>
+</td>
+
+<td VALIGN=TOP>
+<center>03</center>
+</td>
+
+<td VALIGN=TOP>IEDL - Information Element Data Length</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>10</center>
+</td>
+
+<td VALIGN=TOP>
+<center>02</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (Concatenated short message reference
+number)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>11</center>
+</td>
+
+<td VALIGN=TOP>
+<center>02</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (Total number of (concatenated)
+messages (0-255))</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>12</center>
+</td>
+
+<td VALIGN=TOP>
+<center>01</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (Sequence number of current short
+message)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>13</center>
+</td>
+
+<td VALIGN=TOP>
+<center>42</center>
+</td>
+
+<td VALIGN=TOP>B</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>14</center>
+</td>
+
+<td VALIGN=TOP>
+<center>45</center>
+</td>
+
+<td VALIGN=TOP>E</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>15</center>
+</td>
+
+<td VALIGN=TOP>
+<center>47</center>
+</td>
+
+<td VALIGN=TOP>G</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>16</center>
+</td>
+
+<td VALIGN=TOP>
+<center>49</center>
+</td>
+
+<td VALIGN=TOP>I</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>17</center>
+</td>
+
+<td VALIGN=TOP>
+<center>4E</center>
+</td>
+
+<td VALIGN=TOP>N</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>18</center>
+</td>
+
+<td VALIGN=TOP>
+<center>3A</center>
+</td>
+
+<td VALIGN=TOP>:</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>19</center>
+</td>
+
+<td VALIGN=TOP>
+<center>56</center>
+</td>
+
+<td VALIGN=TOP>V</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>20</center>
+</td>
+
+<td VALIGN=TOP>
+<center>43</center>
+</td>
+
+<td VALIGN=TOP>C</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>21</center>
+</td>
+
+<td VALIGN=TOP>
+<center>41</center>
+</td>
+
+<td VALIGN=TOP>A</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>22</center>
+</td>
+
+<td VALIGN=TOP>
+<center>4C</center>
+</td>
+
+<td VALIGN=TOP>L</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>23</center>
+</td>
+
+<td VALIGN=TOP>
+<center>45</center>
+</td>
+
+<td VALIGN=TOP>E</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>24</center>
+</td>
+
+<td VALIGN=TOP>
+<center>4E</center>
+</td>
+
+<td VALIGN=TOP>N</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>25</center>
+</td>
+
+<td VALIGN=TOP>
+<center>44</center>
+</td>
+
+<td VALIGN=TOP>D</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>26</center>
+</td>
+
+<td VALIGN=TOP>
+<center>41</center>
+</td>
+
+<td VALIGN=TOP>A</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>27</center>
+</td>
+
+<td VALIGN=TOP>
+<center>52</center>
+</td>
+
+<td VALIGN=TOP>R</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>28</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0D</center>
+</td>
+
+<td VALIGN=TOP>&lt;CR> Carriage Return</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>29</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0A</center>
+</td>
+
+<td VALIGN=TOP>&lt;LF> Line Feed</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>30</center>
+</td>
+
+<td VALIGN=TOP>
+<center>56</center>
+</td>
+
+<td VALIGN=TOP>V</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>31</center>
+</td>
+
+<td VALIGN=TOP>
+<center>45</center>
+</td>
+
+<td VALIGN=TOP>E</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>32</center>
+</td>
+
+<td VALIGN=TOP>
+<center>52</center>
+</td>
+
+<td VALIGN=TOP>R</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>33</center>
+</td>
+
+<td VALIGN=TOP>
+<center>53</center>
+</td>
+
+<td VALIGN=TOP>S</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>34</center>
+</td>
+
+<td VALIGN=TOP>
+<center>49</center>
+</td>
+
+<td VALIGN=TOP>I</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>35</center>
+</td>
+
+<td VALIGN=TOP>
+<center>4F</center>
+</td>
+
+<td VALIGN=TOP>O</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>36</center>
+</td>
+
+<td VALIGN=TOP>
+<center>4E</center>
+</td>
+
+<td VALIGN=TOP>N</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>37</center>
+</td>
+
+<td VALIGN=TOP>
+<center>3A</center>
+</td>
+
+<td VALIGN=TOP>:</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>38</center>
+</td>
+
+<td VALIGN=TOP>
+<center>31</center>
+</td>
+
+<td VALIGN=TOP>1</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>39</center>
+</td>
+
+<td VALIGN=TOP>
+<center>2E</center>
+</td>
+
+<td VALIGN=TOP>.</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>40</center>
+</td>
+
+<td VALIGN=TOP>
+<center>30</center>
+</td>
+
+<td VALIGN=TOP>0</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>41</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0D</center>
+</td>
+
+<td VALIGN=TOP>&lt;CR> Carriage Return</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>42</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0A</center>
+</td>
+
+<td VALIGN=TOP>&lt;LF> Line Feed</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>43</center>
+</td>
+
+<td VALIGN=TOP>
+<center>42</center>
+</td>
+
+<td VALIGN=TOP>B</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>44</center>
+</td>
+
+<td VALIGN=TOP>
+<center>45</center>
+</td>
+
+<td VALIGN=TOP>E</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>45</center>
+</td>
+
+<td VALIGN=TOP>
+<center>47</center>
+</td>
+
+<td VALIGN=TOP>G</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>46</center>
+</td>
+
+<td VALIGN=TOP>
+<center>49</center>
+</td>
+
+<td VALIGN=TOP>I</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>47</center>
+</td>
+
+<td VALIGN=TOP>
+<center>4E</center>
+</td>
+
+<td VALIGN=TOP>N</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>48</center>
+</td>
+
+<td VALIGN=TOP>
+<center>3A</center>
+</td>
+
+<td VALIGN=TOP>:</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>49</center>
+</td>
+
+<td VALIGN=TOP>
+<center>56</center>
+</td>
+
+<td VALIGN=TOP>V</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>50</center>
+</td>
+
+<td VALIGN=TOP>
+<center>45</center>
+</td>
+
+<td VALIGN=TOP>E</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>51</center>
+</td>
+
+<td VALIGN=TOP>
+<center>56</center>
+</td>
+
+<td VALIGN=TOP>V</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>52</center>
+</td>
+
+<td VALIGN=TOP>
+<center>45</center>
+</td>
+
+<td VALIGN=TOP>E</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>53</center>
+</td>
+
+<td VALIGN=TOP>
+<center>4E</center>
+</td>
+
+<td VALIGN=TOP>N</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>54</center>
+</td>
+
+<td VALIGN=TOP>
+<center>54</center>
+</td>
+
+<td VALIGN=TOP>T</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>55</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0D</center>
+</td>
+
+<td VALIGN=TOP>&lt;CR> Carriage Return</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>56</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0A</center>
+</td>
+
+<td VALIGN=TOP>&lt;LF> Line Feed</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>57</center>
+</td>
+
+<td VALIGN=TOP>
+<center>44</center>
+</td>
+
+<td VALIGN=TOP>D</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>58</center>
+</td>
+
+<td VALIGN=TOP>
+<center>45</center>
+</td>
+
+<td VALIGN=TOP>E</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>59</center>
+</td>
+
+<td VALIGN=TOP>
+<center>53</center>
+</td>
+
+<td VALIGN=TOP>S</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>60</center>
+</td>
+
+<td VALIGN=TOP>
+<center>43</center>
+</td>
+
+<td VALIGN=TOP>C</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>61</center>
+</td>
+
+<td VALIGN=TOP>
+<center>52</center>
+</td>
+
+<td VALIGN=TOP>R</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>62</center>
+</td>
+
+<td VALIGN=TOP>
+<center>49</center>
+</td>
+
+<td VALIGN=TOP>I</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>63</center>
+</td>
+
+<td VALIGN=TOP>
+<center>50</center>
+</td>
+
+<td VALIGN=TOP>P</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>64</center>
+</td>
+
+<td VALIGN=TOP>
+<center>54</center>
+</td>
+
+<td VALIGN=TOP>T</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>65</center>
+</td>
+
+<td VALIGN=TOP>
+<center>49</center>
+</td>
+
+<td VALIGN=TOP>I</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>66</center>
+</td>
+
+<td VALIGN=TOP>
+<center>4F</center>
+</td>
+
+<td VALIGN=TOP>O</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>67</center>
+</td>
+
+<td VALIGN=TOP>
+<center>4E</center>
+</td>
+
+<td VALIGN=TOP>N</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>68</center>
+</td>
+
+<td VALIGN=TOP>
+<center>3A</center>
+</td>
+
+<td VALIGN=TOP>:</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>69</center>
+</td>
+
+<td VALIGN=TOP>
+<center>53</center>
+</td>
+
+<td VALIGN=TOP>S</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>70</center>
+</td>
+
+<td VALIGN=TOP>
+<center>74</center>
+</td>
+
+<td VALIGN=TOP>t</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>71</center>
+</td>
+
+<td VALIGN=TOP>
+<center>65</center>
+</td>
+
+<td VALIGN=TOP>e</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>72</center>
+</td>
+
+<td VALIGN=TOP>
+<center>65</center>
+</td>
+
+<td VALIGN=TOP>e</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>73</center>
+</td>
+
+<td VALIGN=TOP>
+<center>72</center>
+</td>
+
+<td VALIGN=TOP>r</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>74</center>
+</td>
+
+<td VALIGN=TOP>
+<center>69</center>
+</td>
+
+<td VALIGN=TOP>i</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>75</center>
+</td>
+
+<td VALIGN=TOP>
+<center>6E</center>
+</td>
+
+<td VALIGN=TOP>n</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>76</center>
+</td>
+
+<td VALIGN=TOP>
+<center>67</center>
+</td>
+
+<td VALIGN=TOP>g</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>77</center>
+</td>
+
+<td VALIGN=TOP>
+<center>20</center>
+</td>
+
+<td VALIGN=TOP>&lt;SPACE></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>78</center>
+</td>
+
+<td VALIGN=TOP>
+<center>47</center>
+</td>
+
+<td VALIGN=TOP>G</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>79</center>
+</td>
+
+<td VALIGN=TOP>
+<center>72</center>
+</td>
+
+<td VALIGN=TOP>r</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>80</center>
+</td>
+
+<td VALIGN=TOP>
+<center>6F</center>
+</td>
+
+<td VALIGN=TOP>o</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>81</center>
+</td>
+
+<td VALIGN=TOP>
+<center>75</center>
+</td>
+
+<td VALIGN=TOP>u</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>82</center>
+</td>
+
+<td VALIGN=TOP>
+<center>70</center>
+</td>
+
+<td VALIGN=TOP>p</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>83</center>
+</td>
+
+<td VALIGN=TOP>
+<center>20</center>
+</td>
+
+<td VALIGN=TOP>&lt;SPACE></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>84</center>
+</td>
+
+<td VALIGN=TOP>
+<center>6D</center>
+</td>
+
+<td VALIGN=TOP>m</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>85</center>
+</td>
+
+<td VALIGN=TOP>
+<center>65</center>
+</td>
+
+<td VALIGN=TOP>e</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>86</center>
+</td>
+
+<td VALIGN=TOP>
+<center>65</center>
+</td>
+
+<td VALIGN=TOP>e</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>87</center>
+</td>
+
+<td VALIGN=TOP>
+<center>74</center>
+</td>
+
+<td VALIGN=TOP>t</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>88</center>
+</td>
+
+<td VALIGN=TOP>
+<center>69</center>
+</td>
+
+<td VALIGN=TOP>i</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>89</center>
+</td>
+
+<td VALIGN=TOP>
+<center>6E</center>
+</td>
+
+<td VALIGN=TOP>n</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>90</center>
+</td>
+
+<td VALIGN=TOP>
+<center>67</center>
+</td>
+
+<td VALIGN=TOP>g</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>91</center>
+</td>
+
+<td VALIGN=TOP>
+<center>20</center>
+</td>
+
+<td VALIGN=TOP>&lt;SPACE></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>92</center>
+</td>
+
+<td VALIGN=TOP>
+<center>69</center>
+</td>
+
+<td VALIGN=TOP>i</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>93</center>
+</td>
+
+<td VALIGN=TOP>
+<center>6E</center>
+</td>
+
+<td VALIGN=TOP>n</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>94</center>
+</td>
+
+<td VALIGN=TOP>
+<center>20</center>
+</td>
+
+<td VALIGN=TOP>&lt;SPACE></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>95</center>
+</td>
+
+<td VALIGN=TOP>
+<center>50</center>
+</td>
+
+<td VALIGN=TOP>P</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>96</center>
+</td>
+
+<td VALIGN=TOP>
+<center>6F</center>
+</td>
+
+<td VALIGN=TOP>o</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>97</center>
+</td>
+
+<td VALIGN=TOP>
+<center>72</center>
+</td>
+
+<td VALIGN=TOP>r</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>98</center>
+</td>
+
+<td VALIGN=TOP>
+<center>74</center>
+</td>
+
+<td VALIGN=TOP>t</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>99</center>
+</td>
+
+<td VALIGN=TOP>
+<center>61</center>
+</td>
+
+<td VALIGN=TOP>a</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>100</center>
+</td>
+
+<td VALIGN=TOP>
+<center>6C</center>
+</td>
+
+<td VALIGN=TOP>I</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>101</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0D</center>
+</td>
+
+<td VALIGN=TOP>&lt;CR> Carriage Return</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>102</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0A</center>
+</td>
+
+<td VALIGN=TOP>&lt;LF> Line Feed</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>103</center>
+</td>
+
+<td VALIGN=TOP>
+<center>44</center>
+</td>
+
+<td VALIGN=TOP>D</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>104</center>
+</td>
+
+<td VALIGN=TOP>
+<center>54</center>
+</td>
+
+<td VALIGN=TOP>T</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>105</center>
+</td>
+
+<td VALIGN=TOP>
+<center>53</center>
+</td>
+
+<td VALIGN=TOP>S</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>106</center>
+</td>
+
+<td VALIGN=TOP>
+<center>54</center>
+</td>
+
+<td VALIGN=TOP>T</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>107</center>
+</td>
+
+<td VALIGN=TOP>
+<center>41</center>
+</td>
+
+<td VALIGN=TOP>A</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>108</center>
+</td>
+
+<td VALIGN=TOP>
+<center>52</center>
+</td>
+
+<td VALIGN=TOP>R</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>109</center>
+</td>
+
+<td VALIGN=TOP>
+<center>54</center>
+</td>
+
+<td VALIGN=TOP>T</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>110</center>
+</td>
+
+<td VALIGN=TOP>
+<center>3A</center>
+</td>
+
+<td VALIGN=TOP>:</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>111</center>
+</td>
+
+<td VALIGN=TOP>
+<center>32</center>
+</td>
+
+<td VALIGN=TOP>2</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>112</center>
+</td>
+
+<td VALIGN=TOP>
+<center>30</center>
+</td>
+
+<td VALIGN=TOP>0</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>113</center>
+</td>
+
+<td VALIGN=TOP>
+<center>30</center>
+</td>
+
+<td VALIGN=TOP>0</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>114</center>
+</td>
+
+<td VALIGN=TOP>
+<center>30</center>
+</td>
+
+<td VALIGN=TOP>0</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>115</center>
+</td>
+
+<td VALIGN=TOP>
+<center>30</center>
+</td>
+
+<td VALIGN=TOP>0</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>116</center>
+</td>
+
+<td VALIGN=TOP>
+<center>39</center>
+</td>
+
+<td VALIGN=TOP>9</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>117</center>
+</td>
+
+<td VALIGN=TOP>
+<center>30</center>
+</td>
+
+<td VALIGN=TOP>0</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>118</center>
+</td>
+
+<td VALIGN=TOP>
+<center>36</center>
+</td>
+
+<td VALIGN=TOP>6</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>119</center>
+</td>
+
+<td VALIGN=TOP>
+<center>54</center>
+</td>
+
+<td VALIGN=TOP>T</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>120</center>
+</td>
+
+<td VALIGN=TOP>
+<center>31</center>
+</td>
+
+<td VALIGN=TOP>1</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>121</center>
+</td>
+
+<td VALIGN=TOP>
+<center>30</center>
+</td>
+
+<td VALIGN=TOP>0</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>122</center>
+</td>
+
+<td VALIGN=TOP>
+<center>30</center>
+</td>
+
+<td VALIGN=TOP>0</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>123</center>
+</td>
+
+<td VALIGN=TOP>
+<center>30</center>
+</td>
+
+<td VALIGN=TOP>0</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>124</center>
+</td>
+
+<td VALIGN=TOP>
+<center>30</center>
+</td>
+
+<td VALIGN=TOP>0</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>125</center>
+</td>
+
+<td VALIGN=TOP>
+<center>30</center>
+</td>
+
+<td VALIGN=TOP>0</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>126</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0D</center>
+</td>
+
+<td VALIGN=TOP>&lt;CR> Carriage Return</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>127</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0A</center>
+</td>
+
+<td VALIGN=TOP>&lt;LF> Line Feed</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>128</center>
+</td>
+
+<td VALIGN=TOP>
+<center>44</center>
+</td>
+
+<td VALIGN=TOP>D</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>129</center>
+</td>
+
+<td VALIGN=TOP>
+<center>54</center>
+</td>
+
+<td VALIGN=TOP>T</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>130</center>
+</td>
+
+<td VALIGN=TOP>
+<center>45</center>
+</td>
+
+<td VALIGN=TOP>E</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>131</center>
+</td>
+
+<td VALIGN=TOP>
+<center>4E</center>
+</td>
+
+<td VALIGN=TOP>N</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>132</center>
+</td>
+
+<td VALIGN=TOP>
+<center>44</center>
+</td>
+
+<td VALIGN=TOP>D</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>133</center>
+</td>
+
+<td VALIGN=TOP>
+<center>3A</center>
+</td>
+
+<td VALIGN=TOP>:</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>134</center>
+</td>
+
+<td VALIGN=TOP>
+<center>32</center>
+</td>
+
+<td VALIGN=TOP>2</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>135</center>
+</td>
+
+<td VALIGN=TOP>
+<center>30</center>
+</td>
+
+<td VALIGN=TOP>0</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>136</center>
+</td>
+
+<td VALIGN=TOP>
+<center>30</center>
+</td>
+
+<td VALIGN=TOP>0</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>137</center>
+</td>
+
+<td VALIGN=TOP>
+<center>30</center>
+</td>
+
+<td VALIGN=TOP>0</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>138</center>
+</td>
+
+<td VALIGN=TOP>
+<center>30</center>
+</td>
+
+<td VALIGN=TOP>0</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>139</center>
+</td>
+
+<td VALIGN=TOP>
+<center>39</center>
+</td>
+
+<td VALIGN=TOP>9</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>140</center>
+</td>
+
+<td VALIGN=TOP>
+<center>30</center>
+</td>
+
+<td VALIGN=TOP>0</td>
+</tr>
+</table>
+
+<p><b>Table 8b. The second part of the vCalendar message user data. (length
+49 octets -> hex 31)</b>
+<br>&nbsp;
+<table BORDER CELLSPACING=0 CELLPADDING=2 WIDTH="390" >
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Octet number</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Value</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Description</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>1</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0B</center>
+</td>
+
+<td VALIGN=TOP>Length of the User Data Header</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>2</center>
+</td>
+
+<td VALIGN=TOP>
+<center>05</center>
+</td>
+
+<td VALIGN=TOP>IEI - Information Element Identifier (Application port addressing
+scheme, 16 bit port address)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>3</center>
+</td>
+
+<td VALIGN=TOP>
+<center>04</center>
+</td>
+
+<td VALIGN=TOP>IEDL - Information Element Data Length</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>4</center>
+</td>
+
+<td VALIGN=TOP>
+<center>23</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (octets 4 &amp; 5 --> 23F5 - destination
+port)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>5</center>
+</td>
+
+<td VALIGN=TOP>
+<center>F5</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>6</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (octets 6 &amp; 7 --> 0000 - originator
+port)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>7</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>8</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>IEI - Information Element Identifier (concatenated short
+message, 8 bit reference number)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>9</center>
+</td>
+
+<td VALIGN=TOP>
+<center>03</center>
+</td>
+
+<td VALIGN=TOP>IEDL - Information Element Data Length&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>10</center>
+</td>
+
+<td VALIGN=TOP>
+<center>02</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (Concatenated short message reference
+number)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>11</center>
+</td>
+
+<td VALIGN=TOP>
+<center>02</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (Total number of (concatenated)
+messages (0-255))</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>12</center>
+</td>
+
+<td VALIGN=TOP>
+<center>02</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (Sequence number of current short
+message)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>13</center>
+</td>
+
+<td VALIGN=TOP>
+<center>36</center>
+</td>
+
+<td VALIGN=TOP>6</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>14</center>
+</td>
+
+<td VALIGN=TOP>
+<center>54</center>
+</td>
+
+<td VALIGN=TOP>T</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>15</center>
+</td>
+
+<td VALIGN=TOP>
+<center>31</center>
+</td>
+
+<td VALIGN=TOP>1</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>16</center>
+</td>
+
+<td VALIGN=TOP>
+<center>32</center>
+</td>
+
+<td VALIGN=TOP>2</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>17</center>
+</td>
+
+<td VALIGN=TOP>
+<center>30</center>
+</td>
+
+<td VALIGN=TOP>0</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>18</center>
+</td>
+
+<td VALIGN=TOP>
+<center>30</center>
+</td>
+
+<td VALIGN=TOP>0</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>19</center>
+</td>
+
+<td VALIGN=TOP>
+<center>30</center>
+</td>
+
+<td VALIGN=TOP>0</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>20</center>
+</td>
+
+<td VALIGN=TOP>
+<center>30</center>
+</td>
+
+<td VALIGN=TOP>0</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>21</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0D</center>
+</td>
+
+<td VALIGN=TOP>&lt;CR> Carriage Return</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>22</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0A</center>
+</td>
+
+<td VALIGN=TOP>&lt;LF> Line Feed</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>23</center>
+</td>
+
+<td VALIGN=TOP>
+<center>45</center>
+</td>
+
+<td VALIGN=TOP>E</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>24</center>
+</td>
+
+<td VALIGN=TOP>
+<center>4E</center>
+</td>
+
+<td VALIGN=TOP>N</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>25</center>
+</td>
+
+<td VALIGN=TOP>
+<center>44</center>
+</td>
+
+<td VALIGN=TOP>D</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>26</center>
+</td>
+
+<td VALIGN=TOP>
+<center>3A</center>
+</td>
+
+<td VALIGN=TOP>:</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>27</center>
+</td>
+
+<td VALIGN=TOP>
+<center>56</center>
+</td>
+
+<td VALIGN=TOP>V</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>28</center>
+</td>
+
+<td VALIGN=TOP>
+<center>45</center>
+</td>
+
+<td VALIGN=TOP>E</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>29</center>
+</td>
+
+<td VALIGN=TOP>
+<center>56</center>
+</td>
+
+<td VALIGN=TOP>V</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>30</center>
+</td>
+
+<td VALIGN=TOP>
+<center>45</center>
+</td>
+
+<td VALIGN=TOP>E</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>31</center>
+</td>
+
+<td VALIGN=TOP>
+<center>4E</center>
+</td>
+
+<td VALIGN=TOP>N</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>32</center>
+</td>
+
+<td VALIGN=TOP>
+<center>54</center>
+</td>
+
+<td VALIGN=TOP>T</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>33</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0D</center>
+</td>
+
+<td VALIGN=TOP>&lt;CR> Carriage Return</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>34</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0A</center>
+</td>
+
+<td VALIGN=TOP>&lt;LF> Line Feed</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>35</center>
+</td>
+
+<td VALIGN=TOP>
+<center>45</center>
+</td>
+
+<td VALIGN=TOP>E</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>36</center>
+</td>
+
+<td VALIGN=TOP>
+<center>4E</center>
+</td>
+
+<td VALIGN=TOP>N</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>37</center>
+</td>
+
+<td VALIGN=TOP>
+<center>44</center>
+</td>
+
+<td VALIGN=TOP>D</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>38</center>
+</td>
+
+<td VALIGN=TOP>
+<center>3A</center>
+</td>
+
+<td VALIGN=TOP>:</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>39</center>
+</td>
+
+<td VALIGN=TOP>
+<center>56</center>
+</td>
+
+<td VALIGN=TOP>V</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>40</center>
+</td>
+
+<td VALIGN=TOP>
+<center>43</center>
+</td>
+
+<td VALIGN=TOP>C</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>41</center>
+</td>
+
+<td VALIGN=TOP>
+<center>41</center>
+</td>
+
+<td VALIGN=TOP>A</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>42</center>
+</td>
+
+<td VALIGN=TOP>
+<center>4C</center>
+</td>
+
+<td VALIGN=TOP>L</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>43</center>
+</td>
+
+<td VALIGN=TOP>
+<center>45</center>
+</td>
+
+<td VALIGN=TOP>E</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>44</center>
+</td>
+
+<td VALIGN=TOP>
+<center>4E</center>
+</td>
+
+<td VALIGN=TOP>N</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>45</center>
+</td>
+
+<td VALIGN=TOP>
+<center>44</center>
+</td>
+
+<td VALIGN=TOP>D</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>46</center>
+</td>
+
+<td VALIGN=TOP>
+<center>41</center>
+</td>
+
+<td VALIGN=TOP>A</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>47</center>
+</td>
+
+<td VALIGN=TOP>
+<center>52</center>
+</td>
+
+<td VALIGN=TOP>R</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>48</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0D</center>
+</td>
+
+<td VALIGN=TOP>&lt;CR> Carriage Return</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>49</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0A</center>
+</td>
+
+<td VALIGN=TOP>&lt;LF> Line Feed</td>
+</tr>
+</table>
+
+<p><a href="#top">Top of page</a>
+<p><a NAME="oroplogo"></a><b>15. How can I restore the original operator
+logo?</b>
+<p>The easiest way to remove previously downloaded operator logo and restore
+the original one is to send almost normal operator logo message to the
+phone. The differences to the normal operator logo message are values of
+the octets 9, 10 and 11, which determine values of the MCC and MNC. The
+octets must have different values than the current operator's values. For
+example the values of the octets 9 - 11 could be 000000. The content of
+the OTA bitmap has no relevance in the message, therefore the OTA bitmap
+data can be missing (header information is mandatory). When receiving this
+kind of operator logo message the logo must be saved and after that the
+original operator logo appears on the screen.
+<p>For example, the userdata of the message which removes old operator
+logo:
+<p>06050415820000300000000A00000001
+<p>The description of the user data octets is explained in detail in the
+FAQ <a href="#operator">question 9</a> (table 3a).
+<p><a href="#top">Top of page</a>
+<p><a NAME="picture"></a><b>16. How can I encode Picture message user data
+(8 bit)?</b>
+<p>This example shows how to encode Picture message user data. The example
+includes a picture and text "Test".
+<p>The length of the Picture message user data is so long that the message
+must be sent as a concatenated message (three parts). Here is the hex coded
+user data and the details of the data are explained in tables 9a, 9b and
+9c. The length of the first part is 140 (dec) which is 8C (hex), the length
+of the second part is 140 (dec) which is 8C (hex), and the length of the
+third part is 23 (dec) which is 17 (hex).
+<p>The first part:
+<br>0B0504158A00000003010301300000045465737402010000481C01666
+<br>6666666666666669999999999999999998000000000000000014000000
+<br>06000E000024000000E900310000280000031080CF3B8018000004004
+<br>11044401400000FFFE2F8B12024000000000538CAA02800000000062
+<br>89C4018000000000414140014000000000014280024000200000
+<p>The second part:
+<br>0B0504158A00000003010302014280028001F0000000A28001800FFE0
+<br>00000A500015FFFFFFFFFFEA57FFA400AAA00000055000282015004
+<br>40015D08A1881024800040FF0201404100010003ABE00244000008200
+<br>D55588280101440001AAAAC0180000000003555560140010000806AA
+<br>AAB0240000000005555550280000000000000000199999999999999
+<p>The third part:
+<br>0B0504158A000000030103039999666666666666666666
+<p>For more information, please refer to the Smart Messaging Specification
+3.0.0.
+<p><b>Table 9a. The first part of the Picture message user data. (length
+140 octets -> hex 8C)</b>
+<br>&nbsp;
+<table BORDER CELLSPACING=0 CELLPADDING=2 WIDTH="390" >
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Octet number</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Value</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Description</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>1</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0B</center>
+</td>
+
+<td VALIGN=TOP>Length of the User Data Header</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>2</center>
+</td>
+
+<td VALIGN=TOP>
+<center>05</center>
+</td>
+
+<td VALIGN=TOP>IEI - Information Element Identifier (Application port addressing
+scheme, 16 bit port address)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>3</center>
+</td>
+
+<td VALIGN=TOP>
+<center>04</center>
+</td>
+
+<td VALIGN=TOP>IEDL - Information Element Data Length</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>4</center>
+</td>
+
+<td VALIGN=TOP>
+<center>15</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (octets 4 &amp; 5 --> 158A - destination
+port)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>5</center>
+</td>
+
+<td VALIGN=TOP>
+<center>8A</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>6</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (octets 6 &amp; 7 --> 0000 - originator
+port)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>7</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>8</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>IEI - Information Element Identifier (Concatenated short
+message, 8 bit reference number)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>9</center>
+</td>
+
+<td VALIGN=TOP>
+<center>03</center>
+</td>
+
+<td VALIGN=TOP>IEDL - Information Element Data Length&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>10</center>
+</td>
+
+<td VALIGN=TOP>
+<center>01</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (Concatenated short message reference
+number)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>11</center>
+</td>
+
+<td VALIGN=TOP>
+<center>03</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (Total number of (concatenated)
+messages (0-255))</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>12</center>
+</td>
+
+<td VALIGN=TOP>
+<center>01</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (Sequence number of current short
+message)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>13</center>
+</td>
+
+<td VALIGN=TOP>
+<center>30</center>
+</td>
+
+<td VALIGN=TOP>Identifier for version, current version is (ASCII) zero
+"0". If it is not "0", stop the processing the message.</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>14</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>"00" &lt;Item-length> &lt;ISO-8859-1-char>*</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>15</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>Text length (octets 15 &amp; 16)&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>16</center>
+</td>
+
+<td VALIGN=TOP>
+<center>04</center>
+</td>
+
+<td VALIGN=TOP>Text length (octets 15 &amp; 16)&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>17</center>
+</td>
+
+<td VALIGN=TOP>
+<center>54</center>
+</td>
+
+<td VALIGN=TOP>T</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>18</center>
+</td>
+
+<td VALIGN=TOP>
+<center>65</center>
+</td>
+
+<td VALIGN=TOP>e</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>19</center>
+</td>
+
+<td VALIGN=TOP>
+<center>73</center>
+</td>
+
+<td VALIGN=TOP>s</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>20</center>
+</td>
+
+<td VALIGN=TOP>
+<center>74</center>
+</td>
+
+<td VALIGN=TOP>t</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>21</center>
+</td>
+
+<td VALIGN=TOP>
+<center>02</center>
+</td>
+
+<td VALIGN=TOP>"02" = &lt;Item length> &lt;OTA bitmap></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>22</center>
+</td>
+
+<td VALIGN=TOP>
+<center>01</center>
+</td>
+
+<td VALIGN=TOP>&lt;Item-length> (octets 22 &amp; 23)&nbsp;
+<br>value 0100(hex) = 256(dec)
+<br>= 4 octets for header and the rest for OTA bitmap data</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>23</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>&lt;Item-length> (octets 22 &amp; 23)
+<br>value 0100(hex) = 256(dec)
+<br>= 4 octets for header and the rest for OTA bitmap data</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>24</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>The first byte of the bitmap must be 00 (hex); i.e. OTA
+bitmap header field 'number of animated icons' must hold 0, indicating
+that there is no animation, just a single static image.</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>25</center>
+</td>
+
+<td VALIGN=TOP>
+<center>48</center>
+</td>
+
+<td VALIGN=TOP>width = 48(hex) = 72(dec)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>26</center>
+</td>
+
+<td VALIGN=TOP>
+<center>1C</center>
+</td>
+
+<td VALIGN=TOP>height = 1C(hex) = 28(dec)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>27</center>
+</td>
+
+<td VALIGN=TOP>
+<center>01</center>
+</td>
+
+<td VALIGN=TOP>The depth of the bitmap (number of grey scales)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>28-140</center>
+</td>
+
+<td VALIGN=TOP COLSPAN="2">Value: 66666666666666666699999999999999999980000
+0000000000001400000006000E000024000000E90031000
+<br>0280000031080CF3B801800000400411044401400000FFF
+<br>E2F8B12024000000000538CAA0280000000006289C4018
+<br>000000000414140014000000000014280024000200000
+<p>Description: OTA bitmap visible data</td>
+</tr>
+</table>
+
+<p><b>Table 9b. The second part of the Picture message user data. (length
+140 octets -> hex 8C)</b>
+<br>&nbsp;
+<table BORDER CELLSPACING=0 CELLPADDING=2 WIDTH="390" >
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Octet number</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Value</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Description</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>1</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0B</center>
+</td>
+
+<td VALIGN=TOP>Length of the User Data Header</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>2</center>
+</td>
+
+<td VALIGN=TOP>
+<center>05</center>
+</td>
+
+<td VALIGN=TOP>IEI - Information Element Identifier (Application port addressing
+scheme, 16 bit port address)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>3</center>
+</td>
+
+<td VALIGN=TOP>
+<center>04</center>
+</td>
+
+<td VALIGN=TOP>IEDL - Information Element Data Length</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>4</center>
+</td>
+
+<td VALIGN=TOP>
+<center>15</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (octets 4 &amp; 5 --> 158A - destination
+port)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>5</center>
+</td>
+
+<td VALIGN=TOP>
+<center>8A</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>6</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (octets 6 &amp; 7 --> 0000 - originator
+port)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>7</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>8</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>IEI - Information Element Identifier (concatenated short
+message, 8 bit reference number)&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>9</center>
+</td>
+
+<td VALIGN=TOP>
+<center>03</center>
+</td>
+
+<td VALIGN=TOP>IEDL - Information Element Data Length&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>10</center>
+</td>
+
+<td VALIGN=TOP>
+<center>01</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (Concatenated short message reference
+number)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>11</center>
+</td>
+
+<td VALIGN=TOP>
+<center>03</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (Total number of (concatenated)
+messages (0-255))</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>12</center>
+</td>
+
+<td VALIGN=TOP>
+<center>02</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (Sequence number of current short
+message)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>13-140</center>
+</td>
+
+<td VALIGN=TOP COLSPAN="2">Value: 014280028001F0000000A28001800FFE000000A5
+<br>00015FFFFFFFFFFEA57FFA400AAA00000055000282015
+<br>00440015D08A1881024800040FF0201404100010003ABE
+<br>00244000008200D55588280101440001AAAAC018000000
+<br>0003555560140010000806AAAAB0240000000005555550
+<br>280000000000000000199999999999999
+<p>Description: OTA bitmap visible data continues</td>
+</tr>
+</table>
+
+<p><b>Table 9c. The third part of the Picture message user data. (length
+23 octets -> hex 17)</b>
+<br>&nbsp;
+<table BORDER CELLSPACING=0 CELLPADDING=2 WIDTH="390" >
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Octet number</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Value</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Description</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>1</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0B</center>
+</td>
+
+<td VALIGN=TOP>Length of the User Data Header</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>2</center>
+</td>
+
+<td VALIGN=TOP>
+<center>05</center>
+</td>
+
+<td VALIGN=TOP>IEI - Information Element Identifier (Application port addressing
+scheme, 16 bit port address)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>3</center>
+</td>
+
+<td VALIGN=TOP>
+<center>04</center>
+</td>
+
+<td VALIGN=TOP>IEDL - Information Element Data Length</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>4</center>
+</td>
+
+<td VALIGN=TOP>
+<center>15</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (octets 4 &amp; 5 --> 158A - destination
+port)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>5</center>
+</td>
+
+<td VALIGN=TOP>
+<center>8A</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>6</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (octets 6 &amp; 7 --> 0000 - originator
+port)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>7</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>8</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>IEI - Information Element Identifier (Concatenated short
+message, 8 bit reference number)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>9</center>
+</td>
+
+<td VALIGN=TOP>
+<center>03</center>
+</td>
+
+<td VALIGN=TOP>IEDL - Information Element Data Length&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>10</center>
+</td>
+
+<td VALIGN=TOP>
+<center>01</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (Concatenated short message reference
+number)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>11</center>
+</td>
+
+<td VALIGN=TOP>
+<center>03</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (Total number of (concatenated)
+messages (0-255))</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>12</center>
+</td>
+
+<td VALIGN=TOP>
+<center>03</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (Sequence number of current short
+message)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>13-23</center>
+</td>
+
+<td VALIGN=TOP COLSPAN="2">Value: 9999666666666666666666
+<p>Description: The rest of the OTA bitmap visible data</td>
+</tr>
+</table>
+
+<p><a href="#top">Top of page</a>
+<p><a NAME="profile"></a><b>17. How can I encode Downloadable Profile message
+user data (8 bit)?</b>
+<br>This example shows how to encode Downloadable Profile message user
+data. The profile message example includes three parts: profile name, ringing
+tone and screen saver.
+<p>The length of the Downloadable Profile message user data is so long
+that the message must be sent as a concatenated message (four parts). Here
+is the hex coded user data and the details of the data are explained in
+tables 10a, 10b, 10c and 10d. The length of parts 1-3 is 140 (dec) which
+is 8C (hex), and length of the fourth part is 54 (dec) which is 36 (hex).
+<p>The first part:
+<br>0B0504158A00000003010401300400100053004D0053002000540065
+<br>00730074030090024A3A6589C9A585B989BDC9D40400C920A2AC2
+<br>2D49C81A61A428AB08B52720698690A26C49C69A8186184289B12
+<br>71A6A0618610A2AC22D49C81A61A428AB08B52720698692698A22
+<br>C26C2A826C22C49A2106186186288B09B0AA09B0AA09B0AB49C1
+<br>2718618718A22
+<p>The second part:
+<br>0B0504158A00000003010402C26849C6289A12718A26849C61A6288B
+<br>09B0AA09B0AA08B0AA52698A22C26C2A826C22C49A200006010000
+<br>481C0180000BFFFFFFD00001410012000000480082210022FFFFFF44
+<br>008411FC42800001423F88090082BFFFFD410090050102A000054080
+<br>A0000002AFFFF5400000000002A80015400000009802ABFFD5403F
+<br>8001
+<p>The third part:
+<br>0B0504158A000000030104032402AA0055402480112402AAFF554024
+<br>80392402AA815540208054C802AABD55402080100002AAA555400000
+<br>100002AAA555400000110402AABD55401300110402AA815540248011
+<br>2402AAFF55402480012402AA005540248001FC02ABFFD54019000000
+<br>02A80015400000000002AFFFF5400000050102A000054080A0090082
+<p>The fourth part:
+<br>0B0504158A00000003010404BFFFFD41009011FC42800001423F8821
+<br>0022FFFFFF44008441001200000048008280000BFFFFFFD00001
+<p>For more information, please refer to the Smart Messaging Specification
+3.0.0.
+<p><b>Table 10a. The first part of the Downloadable Profile message user
+data. (length 140 octets -> hex 8C)</b>
+<br>&nbsp;
+<table BORDER CELLSPACING=0 CELLPADDING=2 WIDTH="390" >
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Octet number</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Value</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Description</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>1</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0B</center>
+</td>
+
+<td VALIGN=TOP>Length of the User Data Header</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>2</center>
+</td>
+
+<td VALIGN=TOP>
+<center>05</center>
+</td>
+
+<td VALIGN=TOP>IEI - Information Element Identifier (Application port addressing
+scheme, 16 bit port address)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>3</center>
+</td>
+
+<td VALIGN=TOP>
+<center>04</center>
+</td>
+
+<td VALIGN=TOP>IEDL - Information Element Data Length</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>4</center>
+</td>
+
+<td VALIGN=TOP>
+<center>15</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (octets 4 &amp; 5 --> 158A - destination
+port)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>5</center>
+</td>
+
+<td VALIGN=TOP>
+<center>8A</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>6</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (octets 6 &amp; 7 --> 0000 - originator
+port)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>7</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>8</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>IEI - Information Element Identifier (Concatenated short
+message, 8 bit reference number)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>9</center>
+</td>
+
+<td VALIGN=TOP>
+<center>03</center>
+</td>
+
+<td VALIGN=TOP>IEDL - Information Element Data Length&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>10</center>
+</td>
+
+<td VALIGN=TOP>
+<center>01</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (Concatenated short message reference
+number)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>11</center>
+</td>
+
+<td VALIGN=TOP>
+<center>04</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (Total number of (concatenated)
+messages (0-255))</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>12</center>
+</td>
+
+<td VALIGN=TOP>
+<center>01</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (Sequence number of current short
+message)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>13</center>
+</td>
+
+<td VALIGN=TOP>
+<center>30</center>
+</td>
+
+<td VALIGN=TOP>Identifier for version, current version is (ASCII) zero
+"0". If it is not "0", stop the processing the message.</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>14</center>
+</td>
+
+<td VALIGN=TOP>
+<center>04</center>
+</td>
+
+<td VALIGN=TOP>Item type 04 (Item length &amp; Profile Name). The profile
+name must be encoded to unicode characters.&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>15</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>Item length (octets 15 &amp; 16)&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>16</center>
+</td>
+
+<td VALIGN=TOP>
+<center>10</center>
+</td>
+
+<td VALIGN=TOP>Item length (octets 15 &amp; 16)&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>17</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>18</center>
+</td>
+
+<td VALIGN=TOP>
+<center>53</center>
+</td>
+
+<td VALIGN=TOP>S</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>19</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>20</center>
+</td>
+
+<td VALIGN=TOP>
+<center>4D</center>
+</td>
+
+<td VALIGN=TOP>M</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>21</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>22</center>
+</td>
+
+<td VALIGN=TOP>
+<center>53</center>
+</td>
+
+<td VALIGN=TOP>S</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>23</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>24</center>
+</td>
+
+<td VALIGN=TOP>
+<center>20</center>
+</td>
+
+<td VALIGN=TOP>&lt;space>&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>25</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>26</center>
+</td>
+
+<td VALIGN=TOP>
+<center>54</center>
+</td>
+
+<td VALIGN=TOP>T</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>27</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>28</center>
+</td>
+
+<td VALIGN=TOP>
+<center>65</center>
+</td>
+
+<td VALIGN=TOP>e</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>29</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>30</center>
+</td>
+
+<td VALIGN=TOP>
+<center>73</center>
+</td>
+
+<td VALIGN=TOP>s</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>31</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>32</center>
+</td>
+
+<td VALIGN=TOP>
+<center>74</center>
+</td>
+
+<td VALIGN=TOP>t</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>33</center>
+</td>
+
+<td VALIGN=TOP>
+<center>03</center>
+</td>
+
+<td VALIGN=TOP>Item type 03 (ringing tone)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>34</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>Item length (octets 34 &amp; 35)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>35</center>
+</td>
+
+<td VALIGN=TOP>
+<center>90</center>
+</td>
+
+<td VALIGN=TOP>Item length (octets 34 &amp; 35)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>36-140</center>
+</td>
+
+<td VALIGN=TOP COLSPAN="2">Value: 024A3A6589C9A585B989BDC9D40400C920A2AC22D49
+<br>C81A61A428AB08B52720698690A26C49C69A8186184
+<br>289B1271A6A0618610A2AC22D49C81A61A428AB08B5
+<br>2720698692698A22C26C2A826C22C49A21061861862
+<br>88B09B0AA09B0AA09B0AB49C12718618718A22
+<p>Description: Ringing tone data. For more information of encoding a ringing
+tone format, please refer to the FAQ question 12 ("How can I encode ringing
+tone user data (8bit)?") and the Smart Messaging specification.</td>
+</tr>
+</table>
+
+<p><b>Table 10b. The second part of the Downloadable Profile message user
+data. (length 140 octets -> hex 8C)</b>
+<br>&nbsp;
+<table BORDER CELLSPACING=0 CELLPADDING=2 WIDTH="390" >
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Octet number</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Value</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Description</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>1</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0B</center>
+</td>
+
+<td VALIGN=TOP>Length of the User Data Header</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>2</center>
+</td>
+
+<td VALIGN=TOP>
+<center>05</center>
+</td>
+
+<td VALIGN=TOP>IEI - Information Element Identifier (Application port addressing
+scheme, 16 bit port address)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>3</center>
+</td>
+
+<td VALIGN=TOP>
+<center>04</center>
+</td>
+
+<td VALIGN=TOP>IEDL - Information Element Data Length</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>4</center>
+</td>
+
+<td VALIGN=TOP>
+<center>15</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (octets 4 &amp; 5 --> 158A - destination
+port)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>5</center>
+</td>
+
+<td VALIGN=TOP>
+<center>8A</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>6</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (octets 6 &amp; 7 --> 0000 - originator
+port)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>7</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>8</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>IEI - Information Element Identifier (Concatenated short
+message, 8 bit reference number)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>9</center>
+</td>
+
+<td VALIGN=TOP>
+<center>03</center>
+</td>
+
+<td VALIGN=TOP>IEDL - Information Element Data Length&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>10</center>
+</td>
+
+<td VALIGN=TOP>
+<center>01</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (Concatenated short message reference
+number)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>11</center>
+</td>
+
+<td VALIGN=TOP>
+<center>04</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (Total number of (concatenated)
+messages (0-255))</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>12</center>
+</td>
+
+<td VALIGN=TOP>
+<center>02</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (Sequence number of current short
+message)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>13-52</center>
+</td>
+
+<td VALIGN=TOP COLSPAN="2">Value: C26849C6289A12718A26849C61A6288B09B0AA09B0AA
+<br>08B0AA52698A22C26C2A826C22C49A2000
+<p>Description: Ringing tone data continues.</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>55</center>
+</td>
+
+<td VALIGN=TOP>
+<center>06</center>
+</td>
+
+<td VALIGN=TOP>Item type 06 (screen saver)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>56</center>
+</td>
+
+<td VALIGN=TOP>
+<center>01</center>
+</td>
+
+<td VALIGN=TOP>Item length (octets 56 &amp; 57). Length is 256 bytes</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>57</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>Item length (octets 56 &amp; 57). Length is 256 bytes</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>58-140</center>
+</td>
+
+<td VALIGN=TOP COLSPAN="2">Value: 00481C0180000BFFFFFFD000014100120000004800822
+<br>10022FFFFFF44008411FC42800001423F88090082BFFF
+<br>FD410090050102A000054080A0000002AFFFF54000000
+<br>00002A80015400000009802ABFFD5403F8001
+<p>Description: OTA bitmap format, 72x28 bitmap. For more information,
+please refer to the FAQ question 11 ("How can I encode an OTA bitmap?")
+and the Smart Messaging specification.</td>
+</tr>
+</table>
+
+<p><b>Table 10c. The third part of the Downloadable Profile message user
+data. (length 140 octets -> hex 8C)</b>
+<br>&nbsp;
+<table BORDER CELLSPACING=0 CELLPADDING=2 WIDTH="390" >
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Octet number</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Value</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Description</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>1</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0B</center>
+</td>
+
+<td VALIGN=TOP>Length of the User Data Header</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>2</center>
+</td>
+
+<td VALIGN=TOP>
+<center>05</center>
+</td>
+
+<td VALIGN=TOP>IEI - Information Element Identifier (Application port addressing
+scheme, 16 bit port address)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>3</center>
+</td>
+
+<td VALIGN=TOP>
+<center>04</center>
+</td>
+
+<td VALIGN=TOP>IEDL - Information Element Data Length</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>4</center>
+</td>
+
+<td VALIGN=TOP>
+<center>15</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (octets 4 &amp; 5 --> 158A - destination
+port)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>5</center>
+</td>
+
+<td VALIGN=TOP>
+<center>8A</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>6</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (octets 6 &amp; 7 --> 0000 - originator
+port)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>7</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>8</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>IEI - Information Element Identifier (Concatenated short
+message, 8 bit reference number)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>9</center>
+</td>
+
+<td VALIGN=TOP>
+<center>03</center>
+</td>
+
+<td VALIGN=TOP>IEDL - Information Element Data Length&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>10</center>
+</td>
+
+<td VALIGN=TOP>
+<center>01</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (Concatenated short message reference
+number)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>11</center>
+</td>
+
+<td VALIGN=TOP>
+<center>04</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (Total number of (concatenated)
+messages (0-255))</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>12</center>
+</td>
+
+<td VALIGN=TOP>
+<center>03</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (Sequence number of current short
+message)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>13-140</center>
+</td>
+
+<td VALIGN=TOP COLSPAN="2">Value: 2402AA0055402480112402AAFF55402480392402AA815
+<br>540208054C802AABD55402080100002AAA55540000010
+<br>0002AAA555400000110402AABD55401300110402AA815
+<br>5402480112402AAFF55402480012402AA005540248001
+<br>FC02ABFFD5401900000002A80015400000000002AFFFF
+<br>5400000050102A000054080A0090082&nbsp;
+<p>Description: The OTA bitmap data continues.</td>
+</tr>
+</table>
+
+<p><b>Table 10d. The fourth part of the Downloadable Profile message user
+data. (length 54 octets -> hex 36)</b>
+<br>&nbsp;
+<table BORDER CELLSPACING=0 CELLPADDING=2 WIDTH="390" >
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Octet number</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Value</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Description</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>1</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0B</center>
+</td>
+
+<td VALIGN=TOP>Length of the User Data Header</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>2</center>
+</td>
+
+<td VALIGN=TOP>
+<center>05</center>
+</td>
+
+<td VALIGN=TOP>IEI - Information Element Identifier (Application port addressing
+scheme, 16 bit port address)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>3</center>
+</td>
+
+<td VALIGN=TOP>
+<center>04</center>
+</td>
+
+<td VALIGN=TOP>IEDL - Information Element Data Length</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>4</center>
+</td>
+
+<td VALIGN=TOP>
+<center>15</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (octets 4 &amp; 5 --> 158A - destination
+port)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>5</center>
+</td>
+
+<td VALIGN=TOP>
+<center>8A</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>6</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (octets 6 &amp; 7 --> 0000 - originator
+port)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>7</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>8</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>IEI - Information Element Identifier (Concatenated short
+message, 8 bit reference number)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>9</center>
+</td>
+
+<td VALIGN=TOP>
+<center>03</center>
+</td>
+
+<td VALIGN=TOP>IEDL - Information Element Data Length&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>10</center>
+</td>
+
+<td VALIGN=TOP>
+<center>01</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (Concatenated short message reference
+number)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>11</center>
+</td>
+
+<td VALIGN=TOP>
+<center>04</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (Total number of (concatenated)
+messages (0-255))</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>12</center>
+</td>
+
+<td VALIGN=TOP>
+<center>04</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (Sequence number of current short
+message)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>13-54</center>
+</td>
+
+<td VALIGN=TOP COLSPAN="2">Value: BFFFFD41009011FC42800001423F88210022FFFFFF440
+<br>08441001200000048008280000BFFFFFFD00001&nbsp;
+<p>Description: The rest of the OTA bitmap data.</td>
+</tr>
+</table>
+
+<p><a NAME="bitmap"></a><b>18. How can I encode concatenated SMS message?</b>
+<p>The User Data part of an SMS is limited to 140 octets. With some Smart
+Messaging formats there is more than 140 octets of User Data, and so these
+must be sent using a series of messages. The User Data parts of these messages
+are then concatenated (after stripping off the User Data Headers) to form
+the full message.
+<p>The octets which specify the concatenation are defined in the User Data
+Header of each SMS in the series. There are five (5) octets required as
+follows:
+<p><b>Table 11. Description of extra octets needed for concatenated messages</b>
+<br>&nbsp;
+<table BORDER CELLSPACING=0 CELLPADDING=2 WIDTH="390" >
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Octet number</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Value</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Description</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>1</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>IEI - Information Element Identifier (Concatenated short
+message, 8 bit reference number)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>2</center>
+</td>
+
+<td VALIGN=TOP>
+<center>03</center>
+</td>
+
+<td VALIGN=TOP>IEDL - Information Element Data Length</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>3</center>
+</td>
+
+<td VALIGN=TOP>
+<center>01</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (Concatenated short message reference
+number)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>4</center>
+</td>
+
+<td VALIGN=TOP>
+<center>05</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (Total number of (concatenated)
+messages (0-255))</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>5</center>
+</td>
+
+<td VALIGN=TOP>
+<center>01</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (Sequence number of current short
+message)</td>
+</tr>
+</table>
+
+<p>The reference number can be anything, so long as it is unique for each
+series of messages sent. As an example in a 5-part series with the reference
+number=10 decimal (A hex) these octets would be:
+<br>&nbsp;
+<p><b>Table 12. Example of "Concatenation octets" for a 5-message series
+(reference number 10 -> hex A)</b>
+<table BORDER CELLSPACING=0 CELLPADDING=2 WIDTH="390" >
+<caption>&nbsp;
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>SMS number</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>"Concatenation octets"</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>1</center>
+</td>
+
+<td VALIGN=TOP>00030A0501</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>2</center>
+</td>
+
+<td VALIGN=TOP>00030A0502</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>3</center>
+</td>
+
+<td VALIGN=TOP>00030A0503</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>4</center>
+</td>
+
+<td VALIGN=TOP>00030A0504</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>5</center>
+</td>
+
+<td VALIGN=TOP>00030A0505</td>
+</tr>
+</table>
+
+<p>Note that this set of octets is only one <b>part</b> of the User Data
+Header. For a full example, please see question 8.
+<p><a href="#top">Top of page</a>
+<br>&nbsp;
+<p><a NAME="encoding"></a><b>19. How can I encode a 72X14 operator logo
+as a single message, and is it even an acceptable format, as it doesn't
+seem to follow the specification?</b>
+<p>The User Data part of an SMS is limited to 140 octets. The User Data
+Header takes 7 octets (1 length-of-user-data-header, 1 address, 1 address-length,
+4 address itself). The actual bitmap part of a 72x14 OTA bitmap takes 9x14
+= 126 octets. The OTA bitmap headers, when constructed according to specifications,
+take 9 more octets (1 OTA bitmap-version-number, 3 MCC+MNC, 1 Linefeed,
+1 InfoField, 1 width, 1 height, 1 depth). (See Table 3a of question 9.)
+This makes a total of 142 octets - too long by an annoying two octets!
+This means that according to the specifications, any operator logo would
+require two SMS messages.
+<p>There is a workaround which allows these logos to be sent using only
+one SMS. This workaround currently works with Nokia phones, but no support
+for single-message logos can be promised to nor should it be assumed by
+developers. It must be stressed that functioning of single-message logos
+in future Nokia terminals or terminals provided by other vendors supporting
+Smart Messaging cannot be guaranteed. (Note that a 72x13 OTA bitmap will
+fit into a single SMS message and still comply with specifications! These
+types of bitmaps will be guaranteed to be compatible, whereas a 72x14 logo
+sent using the method described below will not.)
+<p>In any case, the workaround for a 72x14 logo is such that the two octets
+on either side of the MCC+MNC octets are left out completely. These octets
+are the OTA bitmap-version-number and the linefeed character. Thus, the
+single-SMS version of sending the logo from question 9 is as follows:
+<p>Here is the hex coded user data and details of the data are explained
+in table 13.
+<p>0605041582000042F45000480E01FFFFFFFFFFFFFFFFFF00000000
+<br>0000000000FFFFFFFFFFFFFFFFFF00000000000000000010F00000
+<br>000000000000000000000000000000000000000000000000000000
+<br>000000000000000000000000000000000000000000000000000000
+<br>0000000000000000000000000000000000000000000000000000000
+<br>000000001
+<p><b>Table 13. Single-message operator logo message user data (length
+140 octets -> hex 8C)</b>
+<br>&nbsp;
+<table BORDER CELLSPACING=0 CELLPADDING=2 WIDTH="390" >
+
+<tr>
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Octet number</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Value</center>
+</td>
+
+<td VALIGN=TOP BGCOLOR="#DFDFDF">
+<center>Description</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>1</center>
+</td>
+
+<td VALIGN=TOP>
+<center>06</center>
+</td>
+
+<td VALIGN=TOP>Length of the User Data Header</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>2</center>
+</td>
+
+<td VALIGN=TOP>
+<center>05</center>
+</td>
+
+<td VALIGN=TOP>IEI - Information Element Identifier (Application port addressing
+scheme, 16 bit port address)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>3</center>
+</td>
+
+<td VALIGN=TOP>
+<center>04</center>
+</td>
+
+<td VALIGN=TOP>IEDL - Information Element Data Length</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>4</center>
+</td>
+
+<td VALIGN=TOP>
+<center>15</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (octets 4 &amp; 5 --> 1582 - destination
+port)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>5</center>
+</td>
+
+<td VALIGN=TOP>
+<center>82</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>6</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data (octets 6 &amp; 7 --> 0000 - originator
+port)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>7</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>Information Element Data</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>8</center>
+</td>
+
+<td VALIGN=TOP>
+<center>42</center>
+</td>
+
+<td VALIGN=TOP ROWSPAN="2">MCC (Mobile Country Code), octets 14 and 15,
+little-endian BCD, filled with F16', 244 -> 42 F4
+<br>Notice: To see the logo on the phone's screen, octets 8 and 9 must
+be defined with the settings of the current operator.&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>9</center>
+</td>
+
+<td VALIGN=TOP>
+<center>F4</center>
+</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>10</center>
+</td>
+
+<td VALIGN=TOP>
+<center>50</center>
+</td>
+
+<td VALIGN=TOP>MNC (Mobile Network Code) coding, little-endian BCD, filled
+with F16', 05->50</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>11</center>
+</td>
+
+<td VALIGN=TOP>
+<center>00</center>
+</td>
+
+<td VALIGN=TOP>InfoField, See "Smart Messaging Specification 3.0.0" for
+details.</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>12</center>
+</td>
+
+<td VALIGN=TOP>
+<center>48</center>
+</td>
+
+<td VALIGN=TOP>The width of the bitmap. Hex 48->72 decimal</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>13</center>
+</td>
+
+<td VALIGN=TOP>
+<center>0E</center>
+</td>
+
+<td VALIGN=TOP>The height of the bitmap. Hex 0E->14 decimal</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>14</center>
+</td>
+
+<td VALIGN=TOP>
+<center>01</center>
+</td>
+
+<td VALIGN=TOP>The depth of the bitmap (number of grey sclaes)</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP>
+<center>15-140</center>
+</td>
+
+<td VALIGN=TOP COLSPAN="2">Value: FFFFFFFFFFFFFFFFFF000000000000000000FFFFFFFFFF
+<br>FFFFFFFF00000000000000000010F000000000000000000
+<br>00000000000000000000000000000000000000000000000
+<br>000000000000000000000000000000000000000000000000
+<br>000000000000000000000000000000000000000000000000
+<br>000000000000000&nbsp;
+<p>Description: OTA bitmap data.</td>
+</tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,399 @@
+Normal communication.
+
+During normal communications five types of packet where observed being transferred between the P.C. and the phone:
+·	Type 0x04
+·	Type 0x08
+·	Type 0x10
+·	Type 0x20
+·	Acknowledge
+
+During this phase of communications the phone is passive - it will only transmit data in response to a request and / or a command from the P.C. All packets are of fixed length (9 bytes), except an acknowledge packet which is fixed at 5 bytes.
+
+Basic packet structure.
+
+Type 0x04 packet.
+
+A typical type 0x04 packet is shown below:
+01 31 FA 00 02 00 00 04 03
+
+01 31 - Packet header.
+FA    - Additive checksum for this Packet.
+00    - Always seems to be 0.
+02    - This is the total Data Length -5.
+00    - Always seems to be 0.
+00    - Always seems to be 0.
+04 03 - Packet footer.
+
+Calculation of packet checksum.
+
+The packet checksum = 0x100  (the sum of bytes 3 to 7 inclusive).
+
+Data length.
+
+It is assumed that only one byte in a type 0x04 packet is used to give an indication of the data length, as this was the only case observed.
+
+Purpose.
+
+Type 0x04 packets can be regarded as a "Request to send" packet. 
+
+ 
+Type 0x08 packet.
+
+A typical type 0x08 packet is shown below:
+01 31 ED 28 F3 F0 00 08 03 
+
+01 31  - Packet header.
+ED     - Additive checksum for this Packet.
+28     - Number of data bytes in following (type 0x20) packets. This field has a              
+         maximum value of 0x28.
+F3 F0  - Additive checksum for actual DATA bytes.
+00     - Sequence number: alternates between 0 and 1 for packets sent by the phone. It is always zero for packets sent by the P.C.
+08 03  - Packet footer.
+
+Calculation of packet checksum.
+
+The packet checksum = 0x200 (the sum of bytes 3 to 7 inclusive).
+
+Data length.
+Specifies how many actual data bytes will follow in type 0x20 packets. This number will be padded out to a multiple of 5 to fill complete type 0x20 packets.
+
+Data checksum = 0x10000 (The sum of all the DATA bytes in the following type 0x20 packets) 
+(Data bytes as specified by the number in the type 0x08 packet.)
+
+ 
+Type 0x10 packet.
+
+A typical type 0x10 packet is shown below:
+01 31 F0 00 01 00 00 10 03
+
+01 31   - Packet header.
+F0      - Additive checksum for this Packet.
+00      -  Related to the sequence number when received from the phone.
+00 
+00 
+00 
+10 03   - Packet footer. 
+
+Calculation of packet checksum.
+
+The packet checksum = 0x100  (the sum of bytes 3 to 7 inclusive).
+
+Purpose.
+
+Type 10 Packets appear to be both a "Clear to send" AND a high level ack.
+
+When the P.C. sends a type 0x04 packet the phone always responds with an ack followed by a type 0x10 packet with sequence number set to 0x00. The P.C. then sends a type 0x08 packet containing a sequence number. This packet is acknowledged by the phone. The P.C. then sends it data packets, each of which is acknowleged by the phone. On reception of all the data packets, the phone sends a type 0x10 packet that contains the sequence number contained in the type 0x08 packet that started the transfer.
+It seems that the P.C. only ever sends type 0x10 packets with the sequence number set to 0x00, even though the type 0x08 packets from the phone contain the same sequence information as those from the P.C.
+
+ 
+Type 0x20 packet.
+
+Type 0x20 packets cannot generally be looked at individualy. The majority of messages are split over at least two type 0x20 packets. 
+
+A data message from the P.C.
+
+01 31 E8 61 00 1A FF 20 03      
+01 31 03 00 00 00 00 20 03 
+01 31 00 00 00 13 03 20 03 
+01 31 05 04 07 A2 88 20 03
+01 31 81 21 15 63 A6 20 03
+01 31 5E 06 81 20 79 20 03
+01 31 15 99 87 00 00 20 03
+
+The first packet of the message:
+01 31      - Packet header.
+E8         - Always E8 from the P.C.
+61 00 1A   - 'Channel'(??), message type and ???
+FF         - Always seems to be FF from the pc. This byte is used in the type 20 Packet header that the phone responds with.
+20 03      - Packet footer.
+
+The rest of the packets in the message contain the message data, with each Packet containing up to 5 bytes of actual data. One or more bytes in the last packet may be ‘filler’ bytes. These filler bytes are not used in the calculation of the data checksum contained in the type 0x08 packet.
+
+The first packet of a  data message from the phone:
+01 31	- Packet header.
+8E 	- Always 8E from the phone.
+A8 4F 	- 'Channel'(??) and message type.
+FF F8 	- Always FF F8 from the phone. It seems that the byte set to FF will always be equal to the last data byte of the first type 20 packet that the phone receives. 
+20 03 	- Packet footer.
+
+Acknowledge packet.
+
+An acknowledge packet is shown below:
+01 60 69 6E 03
+
+Purpose
+
+The phone sends one of these packets in response to each valid packet received from the P.C.
+
+Examples of normal communication sequences.
+
+In the following examples, packets send by the P.C. are shown in blue and those received from the phone are shown in red.
+
+Example 1: Requesting the signal strength from the phone.
+01 31 FC 00 00 00 00 04 03 
+01 60 69 6E 03 
+01 31 F0 00 00 00 00 10 03 
+01 31 A0 05 FD 56 00 08 03 
+01 60 69 6E 03 
+01 31 E8 A8 04 17 FF 20 03 
+01 60 69 6E 03 
+01 31 F0 00 00 00 00 10 03 
+01 31 F4 00 08 00 00 04 03 
+01 31 F0 00 00 00 00 10 03 
+01 60 69 6E 03 
+01 31 62 0D FC 8D 00 08 03 
+01 31 8E A8 2D FF F8 20 03 
+01 31 00 01 00 05 00 20 03 
+01 31 03 00 10 05 00 20 03 
+01 31 F0 00 00 00 00 10 03 
+01 60 69 6E 03 
+
+Example 2: Reading a long SMS message from the phone.
+
+Acknowledgement packets from the phone have been removed for clarity.
+The first part of the communications sequence is similar to that shown above.
+
+01 31 F8 00 04 00 00 04 03
+01 31 F0 00 00 00 00 10 03
+ 
+01 31 F2 09 FD 00 00 08 03
+01 31 E8 A8 4E 20 FF 20 03
+01 31 00 03 00 00 54 20 03
+01 31 F0 00 00 00 00 10 03
+
+01 31 F2 00 0A 00 00 04 03
+01 31 F0 00 00 00 00 10 03
+01 31 66 0F F9 89 01 08 03
+01 31 8E A8 4F FF F8 20 03
+01 31 00 03 FF FF 00 20 03
+01 31 00 01 00 05 F4 20 03
+01 31 F0 00 00 00 00 10 03
+
+01 31 FA 00 02 00 00 04 03
+01 31 F0 00 00 00 00 10 03
+01 31 8F 07 FD 64 01 08 03
+01 31 E8 91 01 21 FF 20 03
+01 31 01 01 00 00 00 20 03
+01 31 EF 01 00 00 00 10 03
+
+The sequence shown below contains the actual SMS message requested by the P.C. Although it is one complete message it can be seen that it has been split into two batches of packets. A point to note is that there is only one type 0x04 packet for the message.
+
+01 31 C9 00 33 00 00 04 03 - 1 
+01 31 F0 00 00 00 00 10 03
+01 31 ED 28 F3 F0 00 08 03 - 2 
+01 31 8E 91 21 FF F8 20 03
+01 31 21 06 30 01 01 20 03
+01 31 07 91 13 56 13 20 03
+01 31 13 13 F3 04 0B 20 03
+01 31 91 13 26 72 54 20 03
+01 31 85 F7 00 00 00 20 03
+01 31 11 92 90 42 10 20 03
+01 31 00 15 C4 A7 33 20 03
+01 31 F0 00 00 00 00 10 03
+
+01 31 48 10 FA A5 01 08 03 - 3 
+01 31 C8 24 82 82 C1 20 03
+01 31 60 30 18 0C 06 20 03
+01 31 83 C1 60 30 18 20 03
+01 31 04 24 82 82 C1 20 03 - 4 
+01 31 F0 00 00 00 00 10 03
+
+Looking at the type 0x04 packet marked 1, above, it can be seen that the data length is given as 0x33. Normally this figure would be five less than the number of data bytes specified in the following type 0x08 packet. However, in this case it is five less that the total number of data bytes in the complete message. 
+
+From the type 0x08 packets marked 2 & 3, above, it can be seen that the total number of data bytes in the message is 0x38 (0x28 + 0x10).
+
+In the type 0x20 packet marked 4, above, the values shown in pink are filler bytes.
+
+If it is assumed that only one byte in the type 0x04 packet is used to specify the data length and the transmission pattern seen above is used, then maximum values can be calculated:
+
+Maximum data length: 0x104 bytes (0xFF + 0x05).
+Maximum number of batches: 7 (260 / 40 = 6.5 (decimal))
+
+
+ 
+Phonebook messages.
+
+Query available phonebooks.
+Set a phonebook.
+Query phonebook structure.
+Read a phonebook entry.
+Write a phonebook entry.
+
+All messages from the P.C. to do with the phonebook seem to be in two parts:
+The first part seems it (re)initialise the phonebook interface, although this message is slightly different from the message that is sent during the initialisation phase proper.
+
+In the messges below only the actual data part of the type 0x20 packets will be discussed.
+
+Query available phonebooks.
+
+The P.C. sends:
+E8 A8 40 20 FF 00 02 00 00
+
+40 - Phonebook message.
+02 - Query available phonebooks
+
+The phone sends:
+8E A8 41 FF F8 00 02 FF FF 00 3C 06 00 01 00 02 00 03 00 04 00 05 00 06 2B
+
+06 - Number of phonebooks available.
+01 - FD
+02 - LD
+03 - ME, the phone memory.
+04 - MD 
+05 - SM, the SIM phonebook.
+06 - TA
+
+
+Selecting a phonebook.
+
+The P.C. sends:
+E8 A8 40 20 FF 00 01 00 00 00 03
+
+01 - Set new phonebook.
+03 - The new phonebook (ME).
+
+The phone sends:
+8E A8 41 FF F8 00 01 FF FF 01 FF 
+
+01 - Result code (OK).
+
+
+
+Query phonebook stucture
+
+The P.C. sends:
+E8 A8 42 20 FF 00 02 00 00 
+
+42 - Open phonebook for reading.
+02 - Query structure.
+
+The phone sends:
+8E A8 43 FF F8 00 02 FF FF 85 0D 00 65 00 B9 14 0A 22 23 F8 
+
+02 - Query structure.
+65 - Phonebook start index.
+B9 - Phonebook end index.
+14 - Maximum name length.
+0A - Maximum phone number length.
+
+Read phonebook entry.
+
+The P.C. sends:
+E8 A8 42 20 FF 00 01 00 00 00 01 00 02
+
+42 - Open phonebook for reading.
+01 - Read entry or entries.
+01 - First entry requested.
+02 - Last entry requested.
+
+The phone sends.
+8E A8 44 FF F8 00 01 13 31 31 31 31 31 31 31 31 31 31 31 31 31 31 31 31 31 31 31 81 04 44 75 63 6B
+
+01 - Phonebook index.
+13 - Length of phone number.
+31 - The phone number.
+81 - Phone number flags: 81 = domestic, 91 = international, 0 = none/invalid.
+04 - Length of the name.
+44 - The name.
+
+Multiple phonebook entries can be requested in one message. If this is the case then each entry will be sent to the P.C. in its own message i.e. each phonebook entry will be preceeded by a type 0x04 packet. However, each message may be split across multiple batches.
+
+ 
+Write phonebook entry.
+
+The P.C. sends:
+E8 A8 48 20 FF 00 01 00 00 00 17 07 34 33 32 31 35 36 37 81 08 41 4E 20 4F 74 68 65 72
+
+48 - Open phonebook for writing.
+17 - Index to write.
+07 - Length of phone number.
+34 - The phone number field.
+81 - Phone number flags.
+08 - Length of the name field.
+41 - The name field.
+
+The phone sends:
+8E A8 49 FF F8 00 01 FF FF 00 4B
+
+ 
+SMS messages.
+
+Read an SMS message.
+
+The P.C. sends:
+E8 91 01 21 FF 01 01
+
+01 - Read message.
+01 - Message index.
+
+The phone sends:
+8E 91 21 FF F8 21 06 30 01 01 07 91 13 56 13 13 13 F3 04 0B 91 13 26 72 54 85 F7 00 00 00 11 92 90 42 10 00 15 C4 A7 33
+
+(This message was transmitted in two batches, but only the first is shown.)
+
+01 - SMS message number.
+01 - Messages left to read.
+07 - Length of service center number field.
+91 - Flag of service centre number type (international).
+13 - Service centre number as bcd, with bytes reversed.
+04 - The message??? No details of this field are required as code is already in place to decode sms messages.
+
+Delete an sms message.
+
+The P.C. sends:
+E8 91 08 21 FF 08 03
+
+08 - Delete SMS message.
+03 - Index of message to delete.
+
+The phone sends:
+8E 91 27 FF F8 27 03 00 7D
+
+27 - Delete SMS message confirmed.
+03 - Index of message deleted.
+
+ 
+Sending an SMS message.
+
+The P.C. sends:
+
+E8 91 07 1F FF 07 02 07 91 13 56 13 13 13 F3 B1 00 0A 81 60 22 47 55 86 00 00 AD 15 CD F9 19 34 2F BB E9 20 B3 FC DD 06 C1 C7 F4 F7 9B 3D 07
+
+07 - length of service center number.
+91 - flag for service center number.
+13 - Service center number in bcd with bytes reversed.
+B1 - The message?
+
+The phone sends two messages:
+8E 91 2A FF F8 
+2A 04 F0 00 
+
+8E 91 25 FF F8 
+25 00 C5
+
+Although it seems that both these messages are SMS related (indicated by the 0x91 in the data header), there purpose is not known. Possibly inticate that the message has been sent to the network and beeen received by the recipient?
+
+
+ 
+Initiating calls.
+
+While the phone supports voice, data and fax calls, it appears as if it is not possible to initiate voice calls using the protocol discussed in this document.
+
+
+The dialing of a call goes through three stages, the first to of which are always the same. The third stage is discussed below.
+
+Dialing a data call.
+
+The P.C. sends:
+E8 61 00 1A FF 03 00 00 00 00 00 00 00 13 03 05 04 07 A2 88 81 21 15 63 A6 5E 06 81 20 79 15 99 87
+
+13 - The number of data bytes after this byte.
+03 - These bytes never seem to change.
+A2 - Changes with the type of call (data/fax).
+81 - This byte never seems to change.
+21 - Changes with the type of call (data/fax).
+15 - These bytes never seem to change.
+A6 - Seems to change with the type of call (data/fax).
+06 - The number of bytes after this one i.e. in the phone number field.
+81 - Phone number flags (national/international).
+20 - The phone number.

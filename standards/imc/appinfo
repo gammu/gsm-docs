@@ -1,0 +1,49 @@
+Appoitment calendar info from 9210
+
+   UDH header available (length 12, UNKNOWN)
+0b |05 |04 |23#|f5õ|00 |00 |00 |03 |02 |03 |01              00c ...#õ.......
+   8 bit SMS, body is (length 128)
+42B|45E|47G|49I|4eN|3a:|56V|43C|41A|4cL|45E|4eN|44D|41A|52R 00f BEGIN:VCALENDAR
+0d |0a |56V|45E|52R|53S|49I|4fO|4eN|3a:|311|2e.|300|0d |0a  01e ..VERSION:1.0..
+42B|45E|47G|49I|4eN|3a:|56V|45E|56V|45E|4eN|54T|0d |0a |55U 02d BEGIN:VEVENT..U
+49I|44D|3a:|366|0d |0a |44D|45E|53S|43C|52R|49I|50P|54T|49I 03c ID:6..DESCRIPTI
+4fO|4eN|3a:|61a|70p|70p|6fo|69i|74t|6dm|65e|6en|74t|0d |0a  04b ON:appoitment..
+44D|54T|53S|54T|41A|52R|54T|3a:|322|300|300|322|300|311|322 05a DTSTART:2002012
+377|54T|300|399|300|300|300|300|0d |0a |44D|54T|45E|4eN|44D 069 7T090000..DTEND
+3a:|322|300|300|322|300|311|322|377|54T|311|399|300|300|300 078 :20020127T19000
+300|0d |0a |58X|2d-|45E|50P|4fO                             080 0..X-EPO
+
+   UDH header available (length 12, UNKNOWN)
+0b |05 |04 |23#|f5õ|00 |00 |00 |03 |02 |03 |02              00c ...#õ.......
+   8 bit SMS, body is (length 128)
+43C|41A|47G|45E|4eN|44D|41A|45E|4eN|54T|52R|59Y|54T|59Y|50P 00f CAGENDAENTRYTYP
+45E|3a:|41A|50P|50P|4fO|49I|4eN|54T|4dM|45E|4eN|54T|0d |0a  01e E:APPOINTMENT..
+41A|41A|4cL|41A|52R|4dM|3b;|54T|59Y|50P|45E|3d=|58X|2d-|45E 02d AALARM;TYPE=X-E
+50P|4fO|43C|53S|4fO|55U|4eN|44D|3a:|322|300|300|322|300|311 03c POCSOUND:200201
+322|377|54T|300|388|344|355|300|300|3b;|3b;|300|3b;|64d|75u 04b 27T084500;;0;du
+6dm|6dm|79y|0d |0a |43C|4cL|41A|53S|53S|3a:|50P|55U|42B|4cL 05a mmy..CLASS:PUBL
+49I|43C|0d |0a |44D|43C|52R|45E|41A|54T|45E|44D|3a:|322|300 069 IC..DCREATED:20
+300|322|300|311|322|377|54T|300|300|300|300|300|300|0d |0a  078 020127T000000..
+52R|52R|55U|4cL|45E|3a:|44D|311                             080 RRULE:D1
+
+Message: SMS Message Received
+   UDH header available (length 12, UNKNOWN)
+0b |05 |04 |23#|f5õ|00 |00 |00 |03 |02 |03 |03              00c ...#õ.......
+   8 bit SMS, body is (length 63)
+20 |23#|300|0d |0a |4cL|41A|53S|54T|2d-|4dM|4fO|44D|49I|46F 00f  #0..LAST-MODIF
+49I|45E|44D|3a:|322|300|300|322|300|311|322|377|54T|311|322 01e IED:20020127T12
+322|366|300|300|0d |0a |45E|4eN|44D|3a:|56V|45E|56V|45E|4eN 02d 2600..END:VEVEN
+54T|0d |0a |45E|4eN|44D|3a:|56V|43C|41A|4cL|45E|4eN|44D|41A 03c T..END:VCALENDA
+52R|0d |0a                                                  03f R..
+
+9210
+appoitment
+timed:yes
+start:9:00
+end:10:00
+duration:10:00
+alarm:08:45
+repeat type:daily
+repeat interval:1 day
+repeat indefinitely:yes
+start:27/01/2002

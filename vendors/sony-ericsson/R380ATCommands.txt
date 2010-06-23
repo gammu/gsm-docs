@@ -1,0 +1,191 @@
+at
+OK
+Read selected message service.
+at+csms?
++CSMS: 0, 1, 1, 1
+
+OK
+
+Read prefered message storage.
+at+cpms?
++CPMS: "SM",0,7,"SM",0,7,"ME",0,15
+
+OK
+
+Read message format. Only supports format 0 (pdu).
+at+cmgf?
++CMGF: 0
+
+OK
+
+Read service centre address.
+at+csca?
++CSCA: "31653131313",145
+
+OK
+
+Read text mode parameters - this is mandatory if text mode is supported.
+at+csmp?
+ERROR
+
+Show text mode parameters - this is mandatory if text mode is supported.
+at+csdh?
+ERROR
+
+Read cell broadcast message types.
+at+cscb?
++CSCB: 0,""
+
+OK
+
+Read new msg indication to TE params
+at+cnmi=?
++CNMI: (3),(0-3),(0,2),(0),(0)
+
+OK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+List sms messages. Tried =0, got OK. Tried other numbers, got error. Tried command again, then =0, got error.
+at+cmgl=?
++CMGL: (0-4)
+
+OK
+
+
+Delete message
+at+cmgd=?
+OK
+This caused a message in the outbox to be deleted...
+at+cmgd=1
+OK
+But 4 messages where still indicated...
+at+cmgl=?         
++CMGL: (0-4)
+
+OK
+at+cmgd=1
+OK
+at+cpbs="SM"
+OK
+at+cmgd=1
+OK
+at+cmgd=2
+OK
+at+cmgd=3
+OK
+at+cmgd=4
+OK
+at+cmgd=5
+OK
+at+cmgd=6
+OK
+at+cmgd=7
+OK
+at+cmgd=8
++CME ERROR: 100
+
+at+cpbs="ME"
+OK
+at+cmgd=1
+OK
+at+cmgd=2
+OK
+at+cmgd=3
+OK
+at+cmgd=4
+OK
+at+cmgd=5
+OK
+at+cmgd=6
+OK
+at+cmgd=7
+OK
+at+cmgd=8
++CME ERROR: 100
+
+Try all cpms memory combinations. The error responses are expected as each time the memory is set the respose indicates that there are no sms messages stored in the phone.
+at+cpms=?         
++CPMS: ("ME","SM"),("ME","SM"),("ME")                                     
+
+OK  
+at+cpms=        
++CME ERROR: 100               
+at+cpms="ME","ME","ME"                      
++CPMS: 0,15,0,15,0,15                     
+
+OK  
+at+cmgr=1         
++CMS ERROR: 500               
+at+cmgd=1         
+OK  
+at+cpms="ME","SM","ME"                      
++CPMS: 0,15,0,7,0,15                    
+
+OK  
+at+cmgr=?         
+OK  
+at+cmgr=1         
++CMS ERROR: 500               
+at+cpms="SM","ME","ME"                      
++CPMS: 0,7,0,15,0,15
+
+OK
+at+cmgr=?
+OK
+at+cmgr=1
++CMS ERROR: 500
+at+cmgd=?
+OK
+at+cmgd=1
+OK
+at+cpms="SM","SM","ME"
++CPMS: 0,7,0,7,0,15
+
+OK
+at+cmgr=?
+OK
+at+cmgr=1
++CMS ERROR: 500
+at+cmgd=?
+OK
+at+cmgd=1
+OK
+Read SMS messages.
+at+cmgr=?
+OK
+
+at+cmgr=1
++CMS ERROR: 500
+
+Phonebook search: works fine for sim
+
+at+cpbr=?
++CPBR: (1-85),80,10
+
+OK
+at+cpbr=1
++CPBR: 1,"0297515978",129,"?MARY"
+
+OK
+
+at+cpbf="?M"
++CPBF: 1,"0297515978",129,"?MARY"

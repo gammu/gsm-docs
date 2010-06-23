@@ -1,0 +1,137 @@
+Subject: 7110 over IrDA programming notes
+Date: Mon, 14 Aug 2000 11:46:37 +0100
+From: Reuben Harris <reuben.harris@snowvalley.com>
+To: 7110 gnokii <gnokii@net.lut.ac.uk>
+CC: George Tohn <g_tohn@mail.ru>
+
+Hi all --
+
+At the w/end, I received a request for more general protocol information on
+communicating with a 7110 over IrDA.  Here goes :
+
+Firstly, you need to establish a connection to your phone. On modern Win32,
+IrDA is done through sockets. I have no idea if IrDA on Linux is accessed
+through the sockets layer or not... I certainly hope so, or the example code
+won't make much sense to you! If sockets are irrelevant to this, skip to the
+bottom where there are a few notes on message construction which is the real
+topic of this post.
+
+1. Open your socket :
+
+  s = socket(AF_IRDA, SOCK_STREAM, 0);
+
+2. Find the 7110. This is a bit hairy :
+
+  #define DEVICE_LIST_LEN   10
+  unsigned char DevListBuff[sizeof(DEVICELIST) - sizeof(IRDA_DEVICE_INFO) +
+(sizeof(IRDA_DEVICE_INFO) * DEVICE_LIST_LEN)];
+  int iDeviceListLen   = sizeof(DevListBuff);
+  PDEVICELIST   pDevList   = (PDEVICELIST) &DevListBuff;
+  pDevList->numDevice = 0;
+
+  // Exit if socket is not in connected state
+  if( SOCKET_ERROR == getsockopt(s, SOL_IRLMP, IRLMP_ENUMDEVICES, (char
+*)pDevList, &iDeviceListLen) )  {
+    TRACE("IrDA: getsockopt() failed. WSAGetLastError = %d\n",
+::WSAGetLastError());
+    return 0;
+  }
+
+  // No devices
+  else if (pDevList->numDevice == 0) {
+    TRACE("IrDA: No IrDA devices discovered or cached.\n");
+    return 0;
+  }
+
+  // At least one device.
+  else {
+
+    // Enum the devices, looking for a Nokia one
+    bool bFound = false;
+    for( int i=0 ; i<(int)pDevList->numDevice; i++ ) {
+
+      // Get local pointer to device name
+      char* szDeviceName = pDevList->Device[i].irdaDeviceName;
+      TRACE("IrDA: device: %s\n", szDeviceName);
+
+      // Found it! This is a bit crap... we're just looking for
+      // any device with a substring "Nokia".
+      if( 0 != strstr(szDeviceName, "Nokia") ) {
+        bFound = true;
+        break;
+      }
+    }
+
+    // Exit if phone not found
+    if( !bFound ) {
+      return 0;
+    }
+
+3. Having found the phone, the next step is to connect to the correct
+service. For 7110's, we want Nokia:PhoNet.
+
+  // IAS query
+  BYTE IASQueryBuff[sizeof(IAS_QUERY)];// - 3 + IAS_QUERY_ATTRIB_MAX_LEN];
+  int IASQueryLen = sizeof(IASQueryBuff);
+  PIAS_QUERY pIASQuery = (PIAS_QUERY) &IASQueryBuff;
+  memcpy(&pIASQuery->irdaDeviceID[0], &pDevList->Device[i].irdaDeviceID[0],
+4);
+  memcpy(&pIASQuery->irdaClassName[0], "IrDA:IrCOMM", 12);
+  memcpy(&pIASQuery->irdaAttribName[0], "Parameters", 11);
+  if( SOCKET_ERROR == getsockopt(s, SOL_IRLMP, IRLMP_IAS_QUERY, (char*)
+pIASQuery, &IASQueryLen) ) {
+    TRACE("IrDA: getsockopt() with IRLMP_IAS_QUERY failed.\n");
+    return 0;
+  }
+
+  // Connect to service
+  SOCKADDR_IRDA DestSockAddr = { AF_IRDA, {0, 0, 0, 0}, "" };
+  strcpy(DestSockAddr.irdaServiceName, "Nokia:PhoNet");
+  memcpy(&DestSockAddr.irdaDeviceID[0],
+&pDevList->Device[0].irdaDeviceID[0], 4);
+  if( SOCKET_ERROR == connect(s, (const struct sockaddr *) &DestSockAddr,
+sizeof(SOCKADDR_IRDA)) ) {
+    TRACE("IrDA: connect() failed.\n");
+    return 0;
+  }
+
+  // Success!
+  return 1;
+
+OK, so far so good.  Having established the connection, you can start
+talking straight away. You do NOT need to send any 0x55's to synch the
+phone. Typically, the first message one sends is the
+get-model-and-serial-number call... type 0xD1, subtype 03, if memory serves
+correctly.
+
+Some notes on how Nokia messages are different on IrDA, compared to FBUS :
+
+1. The first byte of each message is 0x14, *not* 0x1E as for FBUS. This may
+not be essential... I haven't really tested.
+
+2. The next two bytes are the same as for FBUS, ie 0x00 0x0C for sending
+messages, and 0x0C 0x00 for incoming messages.
+
+3. Message type + length word are the same as in FBUS.  Note it's a length
+*word* - not just a fixed zero followed by a length byte.
+
+4. First three bytes following the length word are the same as they ever
+were in FBUS... 0,1,0.
+
+5. Next byte, the message subtype, is exactly the same.
+
+6. Message body.
+
+And that's it!  The bytes that follow the message body in FBUS can be
+totally forgotten about... no packet number, no sequence number, and no XOR
+checksum!
+
+Best of all, there's no limit on message (packet) size... you do not have to
+break your messages up into 130-byte packets with IrDA.
+
+On the whole, IrDA is much much easier than FBUS... my Win32 app has
+approximate 1/5 as much messaging code for IrDA than it does for FBUS.
+
+All the best,
+
+-- Reuben Harris

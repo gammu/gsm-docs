@@ -1,0 +1,36 @@
+Reading SMS message files.
+==========================
+
+	Get a directory listing of c:\system\mail\00001001_S\*
+
+	open directory 
+	read directory
+	create a list
+	parse message and add dir entries to the list
+	close directory (close handle)
+	return the list	
+
+	loop while still entries in list
+
+		if entry is a directory
+			build name
+			get a directory listing
+		
+			loop while still entries in list
+		
+				if entry is a file
+					build name
+					read dir entry for file (gets size, modified time etc)
+					open file
+					read file (first 0x18 bytes)
+					if file is an sms message
+						read rest of file
+						parse file
+						add to sms message list
+					if end
+					close file
+				if end
+			loop end
+		if end
+	loop end
+

@@ -1,0 +1,20 @@
+Od: owner-gnokii@net.lut.ac.uk w imieniu Marchioni Valérian [loub@skynet.be]
+Wys&sup3;ano: 11 listopada 2001 21:50
+Do: GNU Nokia mailing List
+Temat: Power ON GSM
+      Hello,
+
+      One week ago, i asked if there was a way to Power ON the GSM using FBUS.
+      Now, I found it and I want to inform you how to do because I think it could be interesting for some people in the list who wanted to know it.
+
+      I discover that GSM ignores messages on the Bus when he's powered off AND its battery charger is not connected.
+      So, to power ON the GSM when it's off, you'll need to  put an external voltage on the GSM and simply send  a request for a reset (Hard or soft give the same results in this case).
+      See the Gnokii source for the reset function.
+
+      Thank you all for your support, specially Marcin who answer my question.
+
+      Valérian 
+             
+     
+____________________________________________________
+  IncrediMail - Email has finally evolved - Click Here 

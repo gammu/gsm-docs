@@ -1,0 +1,145 @@
+Graphical User Programmable Ringer Tone Format
+----------------------------------------------
+By this feature the user can compose a Ringer Tone of his own, play,
+save and send the same to another mobile as SMS.
+The Maximum number of Notes in a musical tone is 35 notes.
+
+The Music tone, which is sent as an SMS, has the following format:
+
+1.Header
+2.Tempo value
+3.Musical Data
+4.Delimiter
+5.Checksum
+
+Breakup of the Music SMS,
+-------------------------
+Header: L35& This is a constant string for all musical tone SMS.
+[By using 'Send As SMS' option user can send composed Ringer Tone to other
+compatible Motorola phone. To differentiate Music SMS from Normal SMS,
+special header is attached.]
+
+Tempo Value: This is either 1 or 2 or 3 or 4 followed by a space(e.g. "2 ").
+Default is 2.
+
+Musical Data : It consists of 1 or more notes,
+subject to a maximum of 35 Notes , the format of which is given below.
+
+Delimiter : && This represents the end of musical notes in the tone.
+
+Checksum : Two bytes. The algorithm for calculation of the
+checksum is given below.
+
+Step1: Calculate one byte XOR sum of the all the bytes of the musical
+data starting after the space in the tempo value(not including space)
+till the && (not inclusive of &&). Let us say this is XY.
+Step 2: Separate X and Y into two bytes X0 and 0Y.
+Step 3: Take 0Y and add hex 30. This becomes 3Y. Call this byte 1.
+Step 4: Take X0 and shift right by 4 bits. This becomes 0X.
+Step 5: Add hex 30 to 0X. This becomes 3X. Call this byte 2.
+Step 6: Two byte checksum is <byte 2><byte1>
+
+Musical Data:
+-------------
+There are a total of four attributes related to each note in the
+composed music. Namely,
+
+1. Symbol of the note (alphabets from A .. G and a .. g )
+2. Flatness or Sharpness of the note
+3. Octave of the note (Lower, Mid, Higher)
+4. Duration of the note (Value varies from 1 to 6)
+
+Out of these four attributes, attribute 1 and 4 are compulsory and
+attribute 2 and 3 are optional. Once user enters in the GPRT feature,
+keypad will get converted into piano keys.
+
+Keymap will be as follow,
+
+6 - 'A' , 'a'
+7 - 'B' , 'b'
+1 - 'C' , 'c'
+2 - 'D' , 'd'
+3 - 'E' , 'e'
+4 - 'F' , 'f'
+5 - 'G' , 'g'
+0 - 'R' ( Rest note )
+9 - For toggle between Flat and Sharp(#)
+
+By default the note will be flat until and unless user makes it
+as sharp intentionally. Once user changes this attribute,
+it will be applicable for all the further notes until he toggles
+it again. The capital and small alphabets give visual indication
+for the flatness or sharpness of the note respectively.
+
+User can see three horizontal lines corresponding to each octave.
+He can select the desired octave by using the side (volume) keys.
+If he doesn't select octave, by default, mid octave will be selected
+
+Press and hold mechanism is implemented for calculating the note duration.
+It will give the effect of real time composition of the melody.
+The key press duration is mapped to the duration 1 to 6 internally.
+
+All the things, which we have discussed so far, are for real
+time composition - on the handset. Apart from that, user can edit the
+composed music. Once the Music Tone Editor is entered, user will find
+a string of Alphabets and duration at the bottom. He can move the
+cursor to the desired position and edit the note and its duration as well.
+Action list (see footnote) for this will provide following options for the user,
+
+1. Play Music
+2. Save Music
+3. Erase Music
+4. Change Tempo
+5. Send As SMS
+
+Play Music will play the composed music.
+
+Save Music will save the same on user's phone.
+
+Erase Music will not make it blank but it will overwrite 'Motorola Default Song' on user
+composed music. First time when user invokes Music Editor, he will see 'Motorola Default
+Song' Notes on display.
+
+Tempo is the attribute which applies to the whole Tone and not to the single note. By
+option 'Change Tempo', user can change tempo of the whole melody from 1 to 4.
+
+Here is one user composed note as a sample.
+
+C#+4
+
+Here 'C' is note identifier.
+# indicate it is sharp
++ indicates higher Octave and
+4 indicates duration
+
+As we see 'C' and '4' are compulsory attributes and '#' and '+' are optional attributes. So
+user can make it C+4 for Flat note (Sharpness not specified), C#4 for Mid octave (Octave not
+specified) or simply C4 for flat, mid-octave (Sharpness and Octave both are not specified)
+
+Now let's see one full Tone composed by user,
+
+D#+4C+3D#5F6A6B-3C#2D#-3G-2A4D#+4C+3D#5F6A6B-3C#2D#-3G-
+2A4D#+4C+3D#5F6A6B-3C#2D#-3G-2A4D#+4C+3D#5F6A6
+
+If user wants to send it as Music SMS, header and trailer part will attach to it.
+Let's assume we have to send the Tone with tempo value 3.
+The Music SMS will appear as follows,
+
+L35&3 D#+4C+3D#5F6A6B-3C#2D#-3G-2A4D#+4C+3D#5F6A6B-3C#2D#-3
+G-2A4D#+4C+3D#5F6A6B-3C#2D#-3G-2A4D#+4C+3D#5F6A6&&<checksum>
+
+At the receiving end the contents between header L35&3 and trailer && will
+be treated as Music SMS. Its checksum is calculated, it is verified with that
+of sent checksum along with SMS. If it is matching then that is treated as Music SMS.
+
+Note : There are some constraints while composing the Music tone. Those are,
+
+1 A# is not available in Lower octave, it will be played as A# mid octave
+
+2 B# and E# are not available in all octave, they will be played
+as flat in all octaves
+
+3 F# and G# are not available in higher octave, they will be played in mid octave
+
+Footnote * : This is the action list for normal operation. If user fills all rest notes another
+action list will appear and that contains only one action item that for erasing the Music
