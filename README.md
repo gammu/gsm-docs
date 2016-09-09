@@ -3,4 +3,4 @@ gsm-docs
 
 GSM related documentation, useful for development of [Gammu][1].
 
-[1]:http://wammu.eu/
+[1]:https://wammu.eu/
